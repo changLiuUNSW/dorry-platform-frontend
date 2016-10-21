@@ -13,10 +13,21 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
 
+  notification: string;
+  notState: boolean;
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
     this.getStoppedContainers();
+  }
+
+  showNot() {
+    this.notState = true;
+    this.notification = "Service restarted";
+    setTimeout(function() {
+      this.notState = false;
+    }.bind(this), 3000);
   }
 
   getStoppedContainers() {
@@ -26,7 +37,8 @@ export class ContainersStoppedComponent implements OnInit {
 
   restartContainer(id: string) {
     this.containerService.restartContainer(id)
-      .then(data => this.getStoppedContainers());
+      .then(data => this.getStoppedContainers())
+      .then(() => this.showNot());
   }
 
 }

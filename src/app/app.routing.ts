@@ -10,6 +10,10 @@ const appRoutes: Routes = [
     component: ContainersComponent
   },
   {
+    path: 'services',
+    component: ContainersComponent
+  },
+  {
     path: 'apps',
     component: ImagesComponent
   }

@@ -62,9 +62,9 @@ export class ImagesComponent implements OnInit {
     console.log("remove Image : " + id);
   }
 
-  //show message after removing image
-  //1.success:Remove the app successfully
-  //2.error: Remove the app error
+  // show message after removing image
+  // success:Remove the app successfully
+  // error: Remove the app error
   private alertMessage: string; // alert dialog message after removing image
   private messageState: boolean; // whether need to show the message
   private isError: boolean;//is message correctly
@@ -82,9 +82,9 @@ export class ImagesComponent implements OnInit {
 
     this.messageState = true;
     this.alertMessage = message;
-    // setTimeout(function() {
-    //   this.messageState = false;
-    // }.bind(this), 3000);
+    setTimeout(function() {
+      this.messageState = false;
+    }.bind(this), 3000);
   }
 
 

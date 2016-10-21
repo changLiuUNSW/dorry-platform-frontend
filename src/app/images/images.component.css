@@ -31,6 +31,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.app-name:hover {
+  text-decoration: underline;
 }
 
 .app-btn {
@@ -43,6 +48,7 @@
   margin: auto;
   text-align: center;
   line-height: 23px;
+  cursor: pointer;
 }
 
 .app-img:hover .app-removebtn {
@@ -61,7 +67,7 @@
 
 .alert {
   opacity: 0.7;
-  position: absolute;
+  position: fixed;
   z-index: 4;
   left: 0;
   right: 0;
@@ -77,11 +83,12 @@
 
 .image-details {
   margin: auto;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  cursor: default;
 }
 
 .modal-content {
@@ -151,6 +158,11 @@
 .detail-close {
   float: right;
   cursor: pointer;
+}
+
+.detail-close:hover {
+  background: rgba(91, 91, 91, 1);
+  border-radius: 50%;
 }
 
 

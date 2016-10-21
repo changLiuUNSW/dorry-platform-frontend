@@ -21,8 +21,8 @@
   vertical-align: middle;
 }
 
-.navbtn a:hover {
-  background: rgba(255, 255, 255, 0.37);
+.navbtn:hover {
+  background: rgba(91, 91, 91, 0.23);
 }
 
 .right-part {
@@ -36,14 +36,16 @@
 }
 
 .content {
-  min-height: 836px;
+  position: relative;
   display: inline-block;
+  top: 60px;
+  bottom: 60px;
   width: 100%;
 }
 
 .mathead {
   height: 60px;
-  width: 100%;
+  width: calc(100% - 87px);
   background: rgba(0, 0, 0, 0.16);
   line-height: 60px;
   font-size: 24px;
@@ -51,16 +53,18 @@
   color: white;
   text-align: right;
   padding-right: 68px;
+  position: fixed;
+  top: 0;
 }
 
 .footer {
   height: 60px;
-  width: 100%;
+  width: calc(100% - 87px);
   line-height: 60px;
   font-size: 24px;
   font-weight: bold;
   color: white;
-  position: static;
+  position: fixed;
   bottom: 0;
   text-align: right;
   padding-right: 68px;

@@ -8,12 +8,15 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ImagesService {
+  // private address = 'http://localhost:5000';
   private address = 'http://192.168.10.84:5000';
 
   //docker remote api part
   private list = '/images/json?all=0';//[GET]  list images
   private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
   private inspect = '/images/{id}/json';//[GET] inspect image;
+
+  private create = '/containers/create';
 
   constructor(private http: Http) { }
 
@@ -62,6 +65,15 @@ export class ImagesService {
     else {
       return res.json();
     }
+  }
+
+  createContainer(id: string) {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: this.address + this.inspect
+      }))
+      .toPromise();
   }
 
   private extractData(res: Response) {

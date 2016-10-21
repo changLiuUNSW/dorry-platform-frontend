@@ -6,9 +6,11 @@
   "scripts": {
     "start": "ng serve --host 0.0.0.0",
     "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
+    "test": "tsc && karma start karma.conf.js --single-run --no-fail-on-empty-test-suite ",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "coverage": "http-server -c-1 -o -p 9875 ./coverage",
+    "docco": "docco -o doc/ src/app/**/*.ts"
   },
   "private": true,
   "dependencies": {
@@ -21,21 +23,27 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "core-js": "^2.4.1",
+    "process-nextick-args": "^1.0.7",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
+    "http-server": "0.8.5",
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.15",
     "codelyzer": "~0.0.26",
+    "istanbul": "^0.4.5",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
-    "karma": "1.2.0",
+    "karma": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
+    "karma-coverage":"^1.1.1",
     "protractor": "4.0.5",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",

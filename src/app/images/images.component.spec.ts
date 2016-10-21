@@ -1,11 +1,21 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
-import { ImagesComponent } from './images.component';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ImagesComponent} from './images.component';
+import { ImagesService } from './images.service';
+
+let fixture: ComponentFixture<ImagesComponent>;
+let comp: ImagesComponent;
 
 describe('Component: Images', () => {
-  it('should create an instance', () => {
-    let component = new ImagesComponent();
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ImagesComponent],
+      providers: [ImagesService]
+    });
+
+    fixture = TestBed.createComponent(ImagesComponent);
+    comp = fixture.componentInstance;
   });
+
 });

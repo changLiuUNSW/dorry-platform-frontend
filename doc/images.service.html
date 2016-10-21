@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>images.service.ts</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="containers-error.component.spec.html">
+                  containers-error.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-error.component.html">
+                  containers-error.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.spec.html">
+                  containers-running.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.html">
+                  containers-running.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.spec.html">
+                  containers-stopped.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.html">
+                  containers-stopped.component.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.spec.html">
+                  container.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.html">
+                  container.service.ts
+                </a>
+              
+                
+                <a class="source" href="container.html">
+                  container.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.spec.html">
+                  containers.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.html">
+                  containers.component.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.spec.html">
+                  footer.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.html">
+                  footer.component.ts
+                </a>
+              
+                
+                <a class="source" href="imageInfo.html">
+                  imageInfo.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.spec.html">
+                  images.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.html">
+                  images.component.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.spec.html">
+                  images.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.html">
+                  images.service.ts
+                </a>
+              
+                
+                <a class="source" href="mock-images.html">
+                  mock-images.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.spec.html">
+                  masthead.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.html">
+                  masthead.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.spec.html">
+                  navbar.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.html">
+                  navbar.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbtn.html">
+                  navbtn.ts
+                </a>
+              
+                
+                <a class="source" href="index.html">
+                  index.ts
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>images.service.ts</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Injectable, Injector } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Headers, Http, Response, Request, RequestMethod, RequestOptions } from <span class="hljs-string">'@angular/http'</span>;
+<span class="hljs-keyword">import</span> { Observable } from <span class="hljs-string">'rxjs/Observable'</span>;
+<span class="hljs-keyword">import</span> { ImageInfo } from <span class="hljs-string">'./imageInfo'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/toPromise'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/map'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/catch'</span>;
+
+@Injectable()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesService {
+  <span class="hljs-keyword">private</span> address = <span class="hljs-string">'http://localhost:5000'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>docker remote api part</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> list = <span class="hljs-string">'/images/json?all=0'</span>;<span class="hljs-comment">//[GET]  list images</span>
+  <span class="hljs-keyword">private</span> remove = <span class="hljs-string">'/images/{id}?force=1'</span>;<span class="hljs-comment">//[DELETE]  remove image ,add image id after the url</span>
+  <span class="hljs-keyword">private</span> inspect = <span class="hljs-string">'/images/{id}/json'</span>;<span class="hljs-comment">//[GET] inspect image;</span>
+
+  <span class="hljs-keyword">constructor</span>(private http: Http) { }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>get all image infoes from docker daemon</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  getImageInfoes() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
+      <span class="hljs-keyword">new</span> Request({
+        method: RequestMethod.Get,
+        url: <span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.list
+      }))
+      .toPromise()
+      .then(<span class="hljs-keyword">this</span>.extractData)
+      .catch(<span class="hljs-keyword">this</span>.handleError);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>remove image by image id</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  removeImage(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.delete(<span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.remove.replace(<span class="hljs-string">"{id}"</span>, id))
+      .toPromise()
+      .then(<span class="hljs-keyword">this</span>.getRemoveImageResMsg,
+      <span class="hljs-keyword">this</span>.extractData
+      )
+      .catch(<span class="hljs-keyword">this</span>.handleError);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>inspect image by image id
+get the json object after call the function
+the create form : 2016-09-23T16:29:57.276868291Z</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  inspectImage(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.get(<span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.inspect.replace(<span class="hljs-string">"{id}"</span>, id))
+      .toPromise()
+      .then(<span class="hljs-keyword">this</span>.extractData)
+      .catch(<span class="hljs-keyword">this</span>.handleError);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>get remove image response code
+reponse code:
+200 - no error
+404 - no such image
+409 - conflict
+500 - server error</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  getRemoveImageResMsg(res: Response) {
+    <span class="hljs-keyword">if</span> (res.status) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"Remove the app successfully"</span>;
+    }
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> res.json();
+    }
+  }
+
+  <span class="hljs-keyword">private</span> extractData(res: Response) {
+    <span class="hljs-built_in">console</span>.log(res.toString())
+    <span class="hljs-keyword">let</span> body = res.json();
+    <span class="hljs-built_in">console</span>.log(res.json());
+    <span class="hljs-keyword">return</span> body;
+  }
+
+  <span class="hljs-keyword">private</span> handleError(error: <span class="hljs-built_in">any</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>In a real world app, we might use a remote logging infrastructure
+We’d also dig deeper into the error to get a better message</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">let</span> errMsg = (error.message) ? error.message :
+      error.status ? <span class="hljs-string">`<span class="hljs-subst">${error.status}</span> - <span class="hljs-subst">${error.statusText}</span>`</span> : <span class="hljs-string">'Server error'</span>;
+    <span class="hljs-built_in">console</span>.error(errMsg); <span class="hljs-comment">// log to console instead</span>
+    <span class="hljs-keyword">return</span> Promise.reject(errMsg);
+  }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

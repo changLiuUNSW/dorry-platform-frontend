@@ -12,9 +12,13 @@ import { ContainerService } from '../containers/container.service';
 })
 export class ContainersErrorComponent implements OnInit {
   containers: Container[];
+
   showAlert: boolean;
   showAlertAll: boolean;
   containerId: string;
+
+  notification: string;
+  notState: boolean;
 
   constructor(private containerService: ContainerService) { }
 
@@ -24,6 +28,14 @@ export class ContainersErrorComponent implements OnInit {
     this.showAlertAll = false;
   }
 
+  showNot() {
+    this.notState = true;
+    this.notification = "Service removed";
+    setTimeout(function() {
+      this.notState = false;
+    }.bind(this), 3000);
+  }
+
   getErrorContainers() {
     this.containerService.getErrorContainers()
       .then(data => this.containers = data);
@@ -31,7 +43,8 @@ export class ContainersErrorComponent implements OnInit {
 
   removeContainer(id: string) {
     this.containerService.removeContainer(id)
-      .then(data => this.getErrorContainers());
+      .then(data => this.getErrorContainers())
+      .then(() => this.showNot());
   }
 
   removeAll() {
@@ -41,7 +54,8 @@ export class ContainersErrorComponent implements OnInit {
         for (let container of this.containers) {
           this.removeContainer(container["Id"]);
         }
-      });
+      })
+      .then(() => this.showNot());
   }
 
   displayAlert(id: string) {

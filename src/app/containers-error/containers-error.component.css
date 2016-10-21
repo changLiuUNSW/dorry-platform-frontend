@@ -10,7 +10,10 @@
   color: #FFFFFF;
   font-size: 24px;
   font-weight: bold;
-  cursor: pointer;
+}
+
+.service-header-left {
+  cursor: default;
 }
 
 .service-header-right {
@@ -19,7 +22,7 @@
   font-weight: normal;
   font-size: 18px;
   height: 22px;
-  line-height: 22px;
+  line-height: 33px;
   cursor: pointer;
 }
 
@@ -76,6 +79,7 @@
   top: 44px;
   left: 42px;
   padding: 0;
+  cursor: default;
 }
 
 .alert-footer {
@@ -89,6 +93,7 @@
 
 .alert-message {
   padding-left: 20px;
+  cursor: default;
 }
 
 .btn-alert {
