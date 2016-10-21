@@ -1,6 +1,7 @@
 # DorryWeb
 
 [![Gitter chat](https://badges.gitter.im/MatchboxDorry/dorry-web.png)](https://gitter.im/dorry-web/Lobby)
+[![Build Status](https://travis-ci.org/MatchboxDorry/dorry-web.svg?branch=develop)](https://travis-ci.org/MatchboxDorry/dorry-web)
 
 ### Project Description
 Dorry Web is a web interface for Docker Remote API and Docker Registry API. It integrates the functions of managing local docker container and image, pulling and pushing images from docker registry, and setting up an user account.
