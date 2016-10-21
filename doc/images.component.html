@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>images.component.ts</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="containers-error.component.spec.html">
+                  containers-error.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-error.component.html">
+                  containers-error.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.spec.html">
+                  containers-running.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.html">
+                  containers-running.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.spec.html">
+                  containers-stopped.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.html">
+                  containers-stopped.component.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.spec.html">
+                  container.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.html">
+                  container.service.ts
+                </a>
+              
+                
+                <a class="source" href="container.html">
+                  container.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.spec.html">
+                  containers.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.html">
+                  containers.component.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.spec.html">
+                  footer.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.html">
+                  footer.component.ts
+                </a>
+              
+                
+                <a class="source" href="imageInfo.html">
+                  imageInfo.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.spec.html">
+                  images.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.html">
+                  images.component.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.spec.html">
+                  images.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.html">
+                  images.service.ts
+                </a>
+              
+                
+                <a class="source" href="mock-images.html">
+                  mock-images.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.spec.html">
+                  masthead.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.html">
+                  masthead.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.spec.html">
+                  navbar.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.html">
+                  navbar.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbtn.html">
+                  navbtn.ts
+                </a>
+              
+                
+                <a class="source" href="index.html">
+                  index.ts
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>images.component.ts</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { DEFAULTURL, IMAGELIST, ImageUrl } from <span class="hljs-string">'./mock-images'</span>;
+<span class="hljs-keyword">import</span> { ImagesService } from <span class="hljs-string">'./images.service'</span>;
+<span class="hljs-keyword">import</span> { Observable } from <span class="hljs-string">'rxjs/Observable'</span>;
+<span class="hljs-keyword">import</span> { ImageInfo } from <span class="hljs-string">'./imageInfo'</span>;
+<span class="hljs-keyword">import</span> {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from <span class="hljs-string">'@angular/core'</span>;
+
+@Component({
+  selector: <span class="hljs-string">'app-images'</span>,
+  templateUrl: <span class="hljs-string">'./images.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./images.component.css'</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesComponent <span class="hljs-keyword">implements</span> OnInit {
+
+  imageList: ImageUrl[];
+  imageInfoes: ImageInfo[];
+
+  showAlert: <span class="hljs-built_in">boolean</span>;
+  imageId: <span class="hljs-built_in">string</span>;
+
+  <span class="hljs-keyword">constructor</span>(private imagesService: ImagesService) { }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.imageList = IMAGELIST;
+    <span class="hljs-keyword">this</span>.getImageInfoes();
+    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">false</span>;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>bindding the ImageInfo and image url</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  initImages() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.imageInfoes);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> imageInfo of <span class="hljs-keyword">this</span>.imageInfoes) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> imageUrl of <span class="hljs-keyword">this</span>.imageList) {
+        <span class="hljs-keyword">if</span> (imageInfo.RepoTags[<span class="hljs-number">0</span>] == imageUrl.name)
+          imageInfo.url = imageUrl.name;
+        <span class="hljs-keyword">else</span>
+          imageInfo.url = DEFAULTURL;
+      }
+    }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>get json object array from Docker Daemon</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  getImageInfoes() {
+    <span class="hljs-keyword">this</span>.imagesService.getImageInfoes()
+      .then(data =&gt; <span class="hljs-keyword">this</span>.imageInfoes = data)
+      .then(data =&gt; <span class="hljs-keyword">this</span>.initImages());
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>remove image event when click remove button</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  removeImage(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">this</span>.imagesService.removeImage(id)
+      .then(msg =&gt; <span class="hljs-keyword">this</span>.showMessage(msg))
+      .then(msg =&gt; <span class="hljs-keyword">this</span>.getImageInfoes());
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"remove Image : "</span> + id);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>show message after removing image
+1.success:Remove the app successfully
+2.error: Remove the app error</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> alertMessage: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// alert dialog message after removing image</span>
+  <span class="hljs-keyword">private</span> messageState: <span class="hljs-built_in">boolean</span>; <span class="hljs-comment">// whether need to show the message</span>
+  <span class="hljs-keyword">private</span> isError: <span class="hljs-built_in">boolean</span>;<span class="hljs-comment">//is message correctly</span>
+  showMessage(msg: <span class="hljs-built_in">any</span>) {
+    <span class="hljs-keyword">let</span> msgType = <span class="hljs-keyword">typeof</span> msg;
+    <span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">if</span> (msgType == <span class="hljs-string">"string"</span>) {
+      message = msg;
+      <span class="hljs-keyword">this</span>.isError = <span class="hljs-literal">false</span>;
+    }
+    <span class="hljs-keyword">else</span> {
+      message = msg.message;
+      <span class="hljs-keyword">this</span>.isError = <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-keyword">this</span>.messageState = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">this</span>.alertMessage = message;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>setTimeout(function() {
+  this.messageState = false;
+}.bind(this), 3000);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>click image icon show image info</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> showInfoWindow: <span class="hljs-built_in">boolean</span>; <span class="hljs-comment">//whether need to show imageinfo popup window</span>
+  <span class="hljs-keyword">private</span> detailApp: ImageInfo;<span class="hljs-comment">//the app need to show detail</span>
+  openDetailInfo(app: ImageInfo) {
+    <span class="hljs-built_in">console</span>.log(app.Id);
+    <span class="hljs-keyword">this</span>.showInfoWindow = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">this</span>.detailApp = app;
+    <span class="hljs-keyword">this</span>.imagesService.inspectImage(app.Id)
+      .then(data =&gt; <span class="hljs-keyword">this</span>.detailApp.createDate = <span class="hljs-keyword">this</span>.formatCreatedTime(data.Created));
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>format the create time of image
+Input: 2016-09-23T16:29:57.276868291Z,etc
+Output: string 2016-09-23 16:29:57</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  formatCreatedTime(created: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">let</span> datetime: <span class="hljs-built_in">string</span>;
+    datetime = created.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">0</span>].replace(<span class="hljs-string">"T"</span>, <span class="hljs-string">" "</span>);
+    <span class="hljs-keyword">return</span> datetime;
+  }
+
+  closeDetailInfo() {
+    <span class="hljs-keyword">this</span>.showInfoWindow = <span class="hljs-literal">false</span>;
+  }
+
+  displayAlert(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">true</span>;
+  }
+
+  hideAlert(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">false</span>;
+  }
+
+  getImageId(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.imageId = id;
+  }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

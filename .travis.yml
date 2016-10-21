@@ -3,7 +3,7 @@ language: node_js
 
 # Multiple versions of the language here
 node_js:
-  - '4.2.1'
+  - '4.2.6'
 
 # Install dependencies
 before_install:
