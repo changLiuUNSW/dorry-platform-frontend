@@ -8,6 +8,7 @@ node_js:
 # Install dependencies
 before_install:
   # - sudo apt-get install vim
+  - "npm install npm -g"
 
 # Setup the ARM environment, then build and run your Dockerfile
 install:
