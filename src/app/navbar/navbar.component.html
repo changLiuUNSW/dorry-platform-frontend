@@ -1,6 +1,7 @@
 <div class="sidenav">
 
   <div class="navbtn" *ngFor="let btn of btnlist" (click)="onSelect(btn)">
+
     <div [ngSwitch]="btn.isClicked">
       <div *ngSwitchCase="false">
         <a [ngStyle]="{'background':'rgba(0, 0, 0, 0)'}" routerLink="{{btn.url}}"><img src={{btn.out}}/></a>
@@ -9,6 +10,7 @@
         <a [ngStyle]="{'background':'url(assets/widget.png)'}" routerLink="{{btn.url}}"><img src={{btn.out}}/></a>
       </div>
     </div>
+
   </div>
 </div>
 

@@ -15,6 +15,8 @@ export class ImagesService {
   private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
   private inspect = '/images/{id}/json';//[GET] inspect image;
 
+  private create = '/containers/create';
+
   constructor(private http: Http) { }
 
   //get all image infoes from docker daemon
@@ -62,6 +64,15 @@ export class ImagesService {
     else {
       return res.json();
     }
+  }
+
+  createContainer(id: string) {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: this.address + this.inspect
+      }))
+      .toPromise();
   }
 
   private extractData(res: Response) {

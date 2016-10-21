@@ -79,6 +79,7 @@
   top: 44px;
   left: 42px;
   padding: 0;
+  cursor: default;
 }
 
 .alert-footer {
@@ -92,6 +93,7 @@
 
 .alert-message {
   padding-left: 20px;
+  cursor: default;
 }
 
 .btn-alert {

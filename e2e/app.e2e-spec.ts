@@ -3,7 +3,7 @@ import { DorryWebPage } from './app.po';
 describe('dorry-web App', function() {
   let page: DorryWebPage;
   // Service button events testing flags
-  var testServiceBtn = false;
+  var testServiceBtn = true;
   var testRemoveAll = false;
   // App button events testing flags
   var testAppBtn = true;
@@ -13,88 +13,59 @@ describe('dorry-web App', function() {
   });
 
   /***************************************************************************
-   * Testing static text contents
+   * Test static text contents
    **************************************************************************/
-  it('should display masthead', () => {
+  it('should display masthead and footer', () => {
     page.navigateToHome();
     expect(page.getMasthead()).toEqual('masthead works!');
-  });
-
-  it('should display footer', () => {
-    page.navigateToHome();
     expect(page.getFooter()).toEqual('footer works!');
   });
 
-  it('should display error service header', () => {
+  it('should display headers on service page', () => {
     page.navigateToService();
     expect(page.getErrorServiceHeader())
       .toEqual('Oops! There Is Something Wrong');
-  });
-
-  it('should display remove all button', () => {
-    page.navigateToService();
     expect(page.getRemoveAll()).toEqual('Remove All');
+    expect(page.getStoppedServiceHeader()).toEqual('Stopped Service');
+    expect(page.getRunningServiceHeader()).toEqual('Running Service');
   });
-
-  // it('should display stopped service header', () => {
-  //   page.navigateToService();
-  //   expect(page.getStoppedServiceHeader()).toEqual('Stopped Service');
-  // });
-  //
-  // it('should display running service header', () => {
-  //   page.navigateToService();
-  //   expect(page.getRunningServiceHeader()).toEqual('Running Service');
-  // });
 
   /***************************************************************************
-   * Testing click events of services
+   * Test click events of services
    **************************************************************************/
   if (testServiceBtn) {
-    it('should stop the first running service', () => {
+    it('should test click events of services', () => {
       page.navigateToService();
+      // Stop the first running service
       page.stopService(2);
-    });
-
-    it('should restart the first stopped service', () => {
-      page.navigateToService();
+      // Restart the first stopped service
       page.restartService(2);
-    });
-
-    it('should remove the first Error service', () => {
-      page.navigateToService();
+      // Remove the first Error service
       page.removeService(2);
       page.clickYes();
-    });
 
-    if (testRemoveAll) {
-      it('should remove all services', () => {
-        page.navigateToService();
-        page.removeAll();
-        page.clickYes();
-        expect(page.getErrorServiceCount()).toEqual(0);
-      });
-    }
+      // Remove all services
+      if (testRemoveAll) {
+        it('should remove all services', () => {
+          page.navigateToService();
+          page.removeAll();
+          page.clickYes();
+          expect(page.getErrorServiceCount()).toEqual(0);
+        });
+      }
+    });
   }
 
   /***************************************************************************
-   ***************************************************************************
-   ***************************************************************************
-   ***************************************************************************
-   ***************************************************************************
-   ***************************************************************************/
-
-  /***************************************************************************
-   * Testing click events of apps
+   * Test click events of apps
    **************************************************************************/
   if (testAppBtn) {
-    it('should display then close the app details', () => {
+    it('should test click events of apps', () => {
       page.navigateToApp();
+      // Display then close the app details
       page.checkAppDetails();
       page.closeDetails();
-    });
-
-    it('should remove an app', () => {
-      page.navigateToApp();
+      // Remove an app
       page.removeApp();
     });
   }

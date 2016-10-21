@@ -11,7 +11,7 @@
         <img class="app-details" (click)="openDetailInfo(app)" src={{app.url}} style="height:90px;width:90px;"/>
       </div>
       <!-- name of the app -->
-      <div class="app-name">
+      <div class="app-name" (click)="openDetailInfo(app)">
         {{app.RepoTags[0]}}
       </div>
       <!-- start app button part -->
