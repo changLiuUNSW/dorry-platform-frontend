@@ -6,10 +6,11 @@
   "scripts": {
     "start": "ng serve --host 0.0.0.0",
     "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
+    "test": "tsc && karma start karma.conf.js --single-run --no-fail-on-empty-test-suite ",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "coverage": "http-server -c-1 -o -p 9875 ./coverage"
+    "coverage": "http-server -c-1 -o -p 9875 ./coverage",
+    "docco": "docco -o doc/ src/app/**/*.ts"
   },
   "private": true,
   "dependencies": {

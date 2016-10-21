@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>navbar.component.ts</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="containers-error.component.spec.html">
+                  containers-error.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-error.component.html">
+                  containers-error.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.spec.html">
+                  containers-running.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-running.component.html">
+                  containers-running.component.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.spec.html">
+                  containers-stopped.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers-stopped.component.html">
+                  containers-stopped.component.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.spec.html">
+                  container.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="container.service.html">
+                  container.service.ts
+                </a>
+              
+                
+                <a class="source" href="container.html">
+                  container.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.spec.html">
+                  containers.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="containers.component.html">
+                  containers.component.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.spec.html">
+                  footer.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.html">
+                  footer.component.ts
+                </a>
+              
+                
+                <a class="source" href="imageInfo.html">
+                  imageInfo.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.spec.html">
+                  images.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.html">
+                  images.component.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.spec.html">
+                  images.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.html">
+                  images.service.ts
+                </a>
+              
+                
+                <a class="source" href="mock-images.html">
+                  mock-images.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.spec.html">
+                  masthead.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.html">
+                  masthead.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.spec.html">
+                  navbar.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="navbar.component.html">
+                  navbar.component.ts
+                </a>
+              
+                
+                <a class="source" href="navbtn.html">
+                  navbtn.ts
+                </a>
+              
+                
+                <a class="source" href="index.html">
+                  index.ts
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>navbar.component.ts</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NavbarBtn } from <span class="hljs-string">'./navbtn'</span>;
+<span class="hljs-keyword">import</span> { MastheadComponent } from <span class="hljs-string">'../masthead/masthead.component'</span>;
+<span class="hljs-keyword">import</span> { FooterComponent } from <span class="hljs-string">'../footer/footer.component'</span>;
+
+@Component({
+  selector: <span class="hljs-string">'app-navbar'</span>,
+  templateUrl: <span class="hljs-string">'./navbar.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./navbar.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NavbarComponent <span class="hljs-keyword">implements</span> OnInit {
+  btnlist: NavbarBtn[];
+
+  <span class="hljs-keyword">constructor</span>() { }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.btnlist = BTNLIST;
+  }
+
+  onSelect(btn: NavbarBtn) {
+    <span class="hljs-keyword">this</span>.resetBtn();
+    <span class="hljs-keyword">if</span> (!btn.isClicked) {
+      btn.isClicked = <span class="hljs-literal">true</span>;
+      <span class="hljs-keyword">this</span>.changeBtn(btn);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (btn.isClicked) {
+      btn.isClicked = <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.changeBtn(btn);
+    }
+  }
+
+  changeBtn(btn: NavbarBtn) {
+    <span class="hljs-keyword">if</span> (!btn.isClicked) {
+      btn.out = btn.img;
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (btn.isClicked) {
+      btn.out = btn.clickedImg;
+    }
+  }
+
+  resetBtn() {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> btn of <span class="hljs-keyword">this</span>.btnlist) {
+      btn.out = btn.img;
+      btn.isClicked = <span class="hljs-literal">false</span>;
+    }
+  }
+
+}
+
+<span class="hljs-keyword">const</span> BTNLIST: NavbarBtn[] = [
+  {
+    name: <span class="hljs-string">"dorry"</span>, out: <span class="hljs-string">"assets/logo.png"</span>, img: <span class="hljs-string">"assets/logo.png"</span>, clickedImg: <span class="hljs-string">"assets/logo.png"</span>, url: <span class="hljs-string">"/"</span>, isClicked: <span class="hljs-literal">false</span>
+  },
+  { name: <span class="hljs-string">"services"</span>, out: <span class="hljs-string">"assets/containers.png"</span>, img: <span class="hljs-string">"assets/containers.png"</span>, clickedImg: <span class="hljs-string">"assets/containers-1.png"</span>, url: <span class="hljs-string">"/"</span>, isClicked: <span class="hljs-literal">false</span> },
+  { name: <span class="hljs-string">"apps"</span>, out: <span class="hljs-string">"assets/apps.png"</span>, img: <span class="hljs-string">"assets/apps.png"</span>, clickedImg: <span class="hljs-string">"assets/apps-1.png"</span>, url: <span class="hljs-string">"/apps"</span>, isClicked: <span class="hljs-literal">false</span> },
+];</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
