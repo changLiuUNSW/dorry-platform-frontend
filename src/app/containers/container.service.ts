@@ -7,7 +7,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ContainerService {
-  private origin = 'http://localhost:5000';
+  // private origin = 'http://localhost:5000';
+  private origin = 'http://192.168.10.84:5000';
   private paramRunning = '/containers/json?all=0';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
   private paramError = '/containers/json?filters={"status":["exited","dead","restarting"]}';

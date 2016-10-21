@@ -58,3 +58,16 @@
   top: 56px;
   font-weight: bold;
 }
+
+.alert {
+  opacity: 0.7;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 90px;
+  margin: auto;
+  line-height: 2em;
+  width: 600px;
+  text-align: center;
+}

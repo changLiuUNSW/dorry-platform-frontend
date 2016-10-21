@@ -13,10 +13,21 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
 
+  notification: string;
+  notState: boolean;
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
     this.getRunningContainers();
+  }
+
+  showNot() {
+    this.notState = true;
+    this.notification = "Service stopped";
+    setTimeout(function() {
+      this.notState = false;
+    }.bind(this), 3000);
   }
 
   getRunningContainers() {
@@ -26,7 +37,8 @@ export class ContainersRunningComponent implements OnInit {
 
   stopContainer(id: string) {
     this.containerService.stopContainer(id)
-      .then(data => this.getRunningContainers());
+      .then(data => this.getRunningContainers())
+      .then(() => this.showNot());
   }
 
 }
