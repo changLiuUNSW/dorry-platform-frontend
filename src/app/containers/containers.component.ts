@@ -7,7 +7,7 @@ import { ContainersStoppedComponent } from '../containers-stopped/containers-sto
 @Component({
   selector: 'app-containers',
   templateUrl: './containers.component.html',
-  styleUrls: ['./containers.component.css']
+  styleUrls: ['./containers.component.css', '../app.component.css']
 })
 export class ContainersComponent implements OnInit, DoCheck {
 

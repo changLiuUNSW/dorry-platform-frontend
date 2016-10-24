@@ -1,10 +1,10 @@
 <!-- Notification -->
-<div *ngIf="notState" class="alert alert-success" role="alert">{{ notification }}</div>
+<div *ngIf="notState" class="notification-success" role="alert">{{ notification }}</div>
 
-<div class="service-list-container">
+<div *ngIf="hasErrorService" class="service-list-container">
   <div class="error-service-header">
-    <span class="service-header-left">Oops! There Is Something Wrong</span>
-    <span class="service-header-right" (click)="displayAlertAll()">
+    <span class="service-header-left cursor-default">Oops! There Is Something Wrong</span>
+    <span class="service-header-right cursor-pointer" (click)="displayAlertAll()">
       <img src="assets/trash.png" style="margin:0"/>
       Remove All
     </span>
@@ -15,8 +15,8 @@
         <div class="icon-wrong">
           <img src="assets/wrong.png"/>
         </div>
-        <img *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
-        <img *ngSwitchDefault src="assets/icons/default.png" style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchDefault src="assets/icons/default.png" style="height:71px; width:71px"/>
       </span>
 
       <span class="service-misc">
@@ -43,12 +43,13 @@
 </div>
 
 <!-- The alert dialog for remove one service -->
+<div class="alert-global alert-dialog-style" *ngIf="showAlert"></div>
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body modal-body">
+  <div class="alert-body cursor-default modal-body">
     <span>
       <img src="assets/alert.png"/>
-      <span class="alert-message">Do you want to remove this service?</span>
+      <span class="alert-message cursor-default">Do you want to remove this service?</span>
     </span>
   </div>
   <div class="alert-footer modal-footer">
@@ -58,9 +59,10 @@
 </div>
 
 <!-- The alert dialog for remove all services -->
+<div class="alert-global alert-dialog-style" *ngIf="showAlertAll"></div>
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlertAll"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlertAll">
-  <div class="alert-body modal-body">
+  <div class="alert-body modal-body cursor-default">
     <span>
       <img src="assets/alert.png"/>
       <span class="alert-message">Do you want to remove all services?</span>

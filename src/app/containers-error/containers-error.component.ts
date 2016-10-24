@@ -7,11 +7,13 @@ import { ContainerService } from '../containers/container.service';
   templateUrl: './containers-error.component.html',
   styleUrls: [
     './containers-error.component.css',
-    '../containers/containers.component.css'
+    '../containers/containers.component.css',
+    '../app.component.css'
   ]
 })
 export class ContainersErrorComponent implements OnInit {
   containers: Container[];
+  hasErrorService: boolean;
 
   showAlert: boolean;
   showAlertAll: boolean;
@@ -38,7 +40,10 @@ export class ContainersErrorComponent implements OnInit {
 
   getErrorContainers() {
     this.containerService.getErrorContainers()
-      .then(data => this.containers = data);
+      .then(data => this.containers = data)
+      .then(data => {
+        this.hasErrorService = (this.containers.length !== 0);
+      });
   }
 
   removeContainer(id: string) {

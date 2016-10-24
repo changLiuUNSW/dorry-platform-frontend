@@ -10,12 +10,14 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class NavbarComponent implements OnInit {
   btnlist: NavbarBtn[];
+  dorryBtn: NavbarBtn;
 
   constructor() { }
 
   ngOnInit() {
     this.btnlist = BTNLIST;
     this.btnlist[0].isClicked = true;
+    this.dorryBtn = dorryBtn;
   }
 
   onSelect(btn: NavbarBtn) {
@@ -46,9 +48,9 @@ export class NavbarComponent implements OnInit {
     }
   }
 }
-
+const dorryBtn: NavbarBtn = { name: "dorry", out: "assets/logo.png", img: "assets/logo.png", clickedImg: "assets/logo.png", url: "/", isClicked: false };
 const BTNLIST: NavbarBtn[] = [
-  { name: "dorry", out: "assets/logo.png", img: "assets/logo.png", clickedImg: "assets/logo.png", url: "/", isClicked: false },
-  { name: "services", out: "assets/containers.png", img: "assets/containers.png", clickedImg: "assets/containers-1.png", url: "/services", isClicked: false },
+  // { name: "dorry", out: "assets/logo.png", img: "assets/logo.png", clickedImg: "assets/logo.png", url: "/", isClicked: false },
+  { name: "services", out: "assets/containers-1.png", img: "assets/containers.png", clickedImg: "assets/containers-1.png", url: "/services", isClicked: false },
   { name: "apps", out: "assets/apps.png", img: "assets/apps.png", clickedImg: "assets/apps-1.png", url: "/apps", isClicked: false },
 ];

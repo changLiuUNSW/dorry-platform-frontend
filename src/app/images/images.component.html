@@ -1,5 +1,5 @@
-<div *ngIf="messageState" class="alert alert-success" role="alert">{{alertMessage}}</div>
-<div *ngIf="messageState && isError" class="alert alert-danger" role="alert">{{alertMessage}}</div>
+<div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
+<div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
 <div class="applist-container">
   <div class="app-list" *ngFor="let app of imageInfoes">
     <div class="app-container">
@@ -22,7 +22,8 @@
 </div>
 
 <!-- image detail info -->
-<div class="modal-dialog" *ngIf="showInfoWindow">
+<div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>
+<div class="image-details cursor-default modal-dialog" *ngIf="showInfoWindow">
   <div class="image-details modal-content">
     <!-- <button class="detail-close" type="button" data-dismiss="modal" aria-hidden="true" (click)="closeDetailInfo()">×</button> -->
     <div class="modal-body">
@@ -57,9 +58,10 @@
 </div>
 
 <!-- The alert dialog for remove one appliacation -->
+<div class="alert-global alert-dialog-style" *ngIf="showAlert"></div>
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body modal-body">
+  <div class="alert-body modal-body cursor-default">
     <span>
       <img src="assets/alert.png"/>
       <span class="alert-message">Do you want to remove this app?</span>

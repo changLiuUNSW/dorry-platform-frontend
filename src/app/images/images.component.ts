@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'app-images',
   templateUrl: './images.component.html',
-  styleUrls: ['./images.component.css'],
+  styleUrls: ['./images.component.css', '../app.component.css'],
 })
 export class ImagesComponent implements OnInit {
 
@@ -72,11 +72,11 @@ export class ImagesComponent implements OnInit {
     let msgType = typeof msg;
     let message: string;
     if (msgType == "string") {
-      message = msg;
+      message = "Success";
       this.isError = false;
     }
     else {
-      message = msg.message;
+      message = "Failure";
       this.isError = true;
     }
 

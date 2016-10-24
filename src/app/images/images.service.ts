@@ -8,8 +8,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ImagesService {
-  // private address = 'http://localhost:5000';
-  private address = 'http://192.168.10.84:5000';
+  private address = 'http://localhost:5000';
+  // private address = 'http://192.168.10.84:5000';
 
   //docker remote api part
   private list = '/images/json?all=0';//[GET]  list images
@@ -36,7 +36,8 @@ export class ImagesService {
   removeImage(id: string) {
     return this.http.delete(this.address + this.remove.replace("{id}", id))
       .toPromise()
-      .then(this.getRemoveImageResMsg,
+      .then(
+      this.getRemoveImageResMsg,
       this.extractData
       )
       .catch(this.handleError);
@@ -67,6 +68,7 @@ export class ImagesService {
     }
   }
 
+  // curl -v -X POST -H "Content-Type: application/json" -d '{"Image": " registry:2.",}' http://localhost:2376/containers/create?name=registry
   createContainer(id: string) {
     return this.http.request(
       new Request({
