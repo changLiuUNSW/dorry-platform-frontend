@@ -278,8 +278,8 @@
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>show message after removing image
-1.success:Remove the app successfully
-2.error: Remove the app error</p>
+success:Remove the app successfully
+error: Remove the app error</p>
 
             </div>
             
@@ -299,7 +299,11 @@
     }
 
     <span class="hljs-keyword">this</span>.messageState = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">this</span>.alertMessage = message;</pre></div></div>
+    <span class="hljs-keyword">this</span>.alertMessage = message;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">this</span>.messageState = <span class="hljs-literal">false</span>;
+    }.bind(<span class="hljs-keyword">this</span>), <span class="hljs-number">3000</span>);
+  }</pre></div></div>
             
         </li>
         
@@ -309,23 +313,6 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>setTimeout(function() {
-  this.messageState = false;
-}.bind(this), 3000);</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  }</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>click image icon show image info</p>
 
@@ -344,11 +331,11 @@
         </li>
         
         
-        <li id="section-8">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>format the create time of image
 Input: 2016-09-23T16:29:57.276868291Z,etc

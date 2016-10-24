@@ -177,8 +177,7 @@
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/catch'</span>;
 
 @Injectable()
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesService {
-  <span class="hljs-keyword">private</span> address = <span class="hljs-string">'http://localhost:5000'</span>;</pre></div></div>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesService {</pre></div></div>
             
         </li>
         
@@ -189,15 +188,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>docker remote api part</p>
+              <p>private address = ‘<a href="http://localhost:5000">http://localhost:5000</a>‘;</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> list = <span class="hljs-string">'/images/json?all=0'</span>;<span class="hljs-comment">//[GET]  list images</span>
-  <span class="hljs-keyword">private</span> remove = <span class="hljs-string">'/images/{id}?force=1'</span>;<span class="hljs-comment">//[DELETE]  remove image ,add image id after the url</span>
-  <span class="hljs-keyword">private</span> inspect = <span class="hljs-string">'/images/{id}/json'</span>;<span class="hljs-comment">//[GET] inspect image;</span>
-
-  <span class="hljs-keyword">constructor</span>(private http: Http) { }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> address = <span class="hljs-string">'http://192.168.10.84:5000'</span>;</pre></div></div>
             
         </li>
         
@@ -207,6 +202,27 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>docker remote api part</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> list = <span class="hljs-string">'/images/json?all=0'</span>;<span class="hljs-comment">//[GET]  list images</span>
+  <span class="hljs-keyword">private</span> remove = <span class="hljs-string">'/images/{id}?force=1'</span>;<span class="hljs-comment">//[DELETE]  remove image ,add image id after the url</span>
+  <span class="hljs-keyword">private</span> inspect = <span class="hljs-string">'/images/{id}/json'</span>;<span class="hljs-comment">//[GET] inspect image;</span>
+
+  <span class="hljs-keyword">private</span> create = <span class="hljs-string">'/containers/create'</span>;
+
+  <span class="hljs-keyword">constructor</span>(private http: Http) { }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>get all image infoes from docker daemon</p>
 
@@ -226,11 +242,11 @@
         </li>
         
         
-        <li id="section-4">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>remove image by image id</p>
 
@@ -248,11 +264,11 @@
         </li>
         
         
-        <li id="section-5">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>inspect image by image id
 get the json object after call the function
@@ -270,11 +286,11 @@ the create form : 2016-09-23T16:29:57.276868291Z</p>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>get remove image response code
 reponse code:
@@ -294,6 +310,15 @@ reponse code:
     }
   }
 
+  createContainer(id: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
+      <span class="hljs-keyword">new</span> Request({
+        method: RequestMethod.Post,
+        url: <span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.inspect
+      }))
+      .toPromise();
+  }
+
   <span class="hljs-keyword">private</span> extractData(res: Response) {
     <span class="hljs-built_in">console</span>.log(res.toString())
     <span class="hljs-keyword">let</span> body = res.json();
@@ -306,11 +331,11 @@ reponse code:
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>In a real world app, we might use a remote logging infrastructure
 We’d also dig deeper into the error to get a better message</p>

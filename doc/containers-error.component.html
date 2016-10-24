@@ -182,9 +182,13 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContainersErrorComponent <span class="hljs-keyword">implements</span> OnInit {
   containers: Container[];
+
   showAlert: <span class="hljs-built_in">boolean</span>;
   showAlertAll: <span class="hljs-built_in">boolean</span>;
   containerId: <span class="hljs-built_in">string</span>;
+
+  notification: <span class="hljs-built_in">string</span>;
+  notState: <span class="hljs-built_in">boolean</span>;
 
   <span class="hljs-keyword">constructor</span>(private containerService: ContainerService) { }
 
@@ -194,6 +198,14 @@
     <span class="hljs-keyword">this</span>.showAlertAll = <span class="hljs-literal">false</span>;
   }
 
+  showNot() {
+    <span class="hljs-keyword">this</span>.notState = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">this</span>.notification = <span class="hljs-string">"Service removed"</span>;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">this</span>.notState = <span class="hljs-literal">false</span>;
+    }.bind(<span class="hljs-keyword">this</span>), <span class="hljs-number">3000</span>);
+  }
+
   getErrorContainers() {
     <span class="hljs-keyword">this</span>.containerService.getErrorContainers()
       .then(data =&gt; <span class="hljs-keyword">this</span>.containers = data);
@@ -201,7 +213,8 @@
 
   removeContainer(id: <span class="hljs-built_in">string</span>) {
     <span class="hljs-keyword">this</span>.containerService.removeContainer(id)
-      .then(data =&gt; <span class="hljs-keyword">this</span>.getErrorContainers());
+      .then(data =&gt; <span class="hljs-keyword">this</span>.getErrorContainers())
+      .then(() =&gt; <span class="hljs-keyword">this</span>.showNot());
   }
 
   removeAll() {
@@ -211,7 +224,8 @@
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> container of <span class="hljs-keyword">this</span>.containers) {
           <span class="hljs-keyword">this</span>.removeContainer(container[<span class="hljs-string">"Id"</span>]);
         }
-      });
+      })
+      .then(() =&gt; <span class="hljs-keyword">this</span>.showNot());
   }
 
   displayAlert(id: <span class="hljs-built_in">string</span>) {

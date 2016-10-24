@@ -12,10 +12,10 @@ describe('App: DorryWeb', () => {
     });
   });
 
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+  // it('should create the app', async(() => {
+  //   let fixture = TestBed.createComponent(AppComponent);
+  //   let app = fixture.componentInstance;
+  //   expect(app).toBeTruthy();
+  // }));
 
 });

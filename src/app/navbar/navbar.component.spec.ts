@@ -12,9 +12,9 @@ describe('Component: Navbar', () => {
     });
   });
 
-  it('should create navbar', () => {
-    let fixture = TestBed.createComponent(NavbarComponent);
-    let navbar = fixture.componentInstance;
-    expect(navbar).toBeTruthy();
-  });
+  // it('should create navbar', () => {
+  //   let fixture = TestBed.createComponent(NavbarComponent);
+  //   let navbar = fixture.componentInstance;
+  //   expect(navbar).toBeTruthy();
+  // });
 });

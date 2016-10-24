@@ -2,7 +2,8 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 module.exports = function(config) {
-  config.set({
+
+  var configuration = {
     basePath: '',
     frameworks: ['jasmine', 'angular-cli'],
     plugins: [
@@ -10,6 +11,7 @@ module.exports = function(config) {
       require('karma-coverage'),
       require('karma-chrome-launcher'),
       require('karma-firefox-launcher'),
+      require('karma-phantomjs-launcher'),
       require('karma-remap-istanbul'),
       require('angular-cli/plugins/karma'),
       require('karma-coverage')
@@ -44,7 +46,17 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'Firefox'],
-    singleRun: false
-  });
+    browsers: ['Chrome', 'PhantomJS'],
+    singleRun: false,
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    }
+  }
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
+  config.set(configuration);
 };
