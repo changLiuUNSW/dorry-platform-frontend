@@ -1,6 +1,7 @@
 # Define the language used
 language: node_js
-
+sudo: required
+dist: trusty
 # Multiple versions of the language here
 node_js:
   - '4.2.6'
