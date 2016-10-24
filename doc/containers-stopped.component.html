@@ -183,10 +183,21 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContainersStoppedComponent <span class="hljs-keyword">implements</span> OnInit {
   containers: Container[];
 
+  notification: <span class="hljs-built_in">string</span>;
+  notState: <span class="hljs-built_in">boolean</span>;
+
   <span class="hljs-keyword">constructor</span>(private containerService: ContainerService) { }
 
   ngOnInit(): <span class="hljs-built_in">void</span> {
     <span class="hljs-keyword">this</span>.getStoppedContainers();
+  }
+
+  showNot() {
+    <span class="hljs-keyword">this</span>.notState = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">this</span>.notification = <span class="hljs-string">"Service restarted"</span>;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">this</span>.notState = <span class="hljs-literal">false</span>;
+    }.bind(<span class="hljs-keyword">this</span>), <span class="hljs-number">3000</span>);
   }
 
   getStoppedContainers() {
@@ -196,7 +207,8 @@
 
   restartContainer(id: <span class="hljs-built_in">string</span>) {
     <span class="hljs-keyword">this</span>.containerService.restartContainer(id)
-      .then(data =&gt; <span class="hljs-keyword">this</span>.getStoppedContainers());
+      .then(data =&gt; <span class="hljs-keyword">this</span>.getStoppedContainers())
+      .then(() =&gt; <span class="hljs-keyword">this</span>.showNot());
   }
 
 }</pre></div></div>
