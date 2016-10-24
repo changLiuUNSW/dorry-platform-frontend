@@ -168,19 +168,44 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit, DoCheck } from <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { ContainerService } from <span class="hljs-string">'../containers/container.service'</span>;
+<span class="hljs-keyword">import</span> { ContainersErrorComponent } from <span class="hljs-string">'../containers-error/containers-error.component'</span>;
+<span class="hljs-keyword">import</span> { ContainersRunningComponent } from <span class="hljs-string">'../containers-running/containers-running.component'</span>;
+<span class="hljs-keyword">import</span> { ContainersStoppedComponent } from <span class="hljs-string">'../containers-stopped/containers-stopped.component'</span>;
 
 @Component({
   selector: <span class="hljs-string">'app-containers'</span>,
   templateUrl: <span class="hljs-string">'./containers.component.html'</span>,
   styleUrls: [<span class="hljs-string">'./containers.component.css'</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContainersComponent <span class="hljs-keyword">implements</span> OnInit {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContainersComponent <span class="hljs-keyword">implements</span> OnInit, DoCheck {
 
-  <span class="hljs-keyword">constructor</span>() { }
+  <span class="hljs-keyword">constructor</span>(private containerService: ContainerService) { }
 
   ngOnInit() {
   }
+
+  ngDoCheck() {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>if (true) {
+  this.containerService.getRunningContainers();
+  this.containerService.getStoppedContainers();
+  this.containerService.getErrorContainers();
+}</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  }
 
 }</pre></div></div>
             
