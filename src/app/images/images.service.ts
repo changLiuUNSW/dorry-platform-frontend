@@ -8,15 +8,15 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ImagesService {
-  // private address = 'http://localhost:5000';
-  private address = 'http://192.168.10.84:5000';
+  private address = 'http://localhost:5000';
+  // private address = 'http://192.168.10.84:5000';
 
   //docker remote api part
   private list = '/images/json?all=0';//[GET]  list images
   private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
   private inspect = '/images/{id}/json';//[GET] inspect image;
-
   private create = '/containers/create';
+  private start = '/containers/{id}/start';
 
   constructor(private http: Http) { }
 
@@ -36,7 +36,8 @@ export class ImagesService {
   removeImage(id: string) {
     return this.http.delete(this.address + this.remove.replace("{id}", id))
       .toPromise()
-      .then(this.getRemoveImageResMsg,
+      .then(
+      this.getRemoveImageResMsg,
       this.extractData
       )
       .catch(this.handleError);
@@ -67,13 +68,25 @@ export class ImagesService {
     }
   }
 
-  createContainer(id: string) {
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Post,
-        url: this.address + this.inspect
-      }))
-      .toPromise();
+  // Create a container
+  createContainer(name: string) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = {
+      "Tty": true,
+      "Image": String(name),
+      "Cmd": ["/bin/sh"]
+    };
+    return this.http.post((this.address + this.create), body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  // Start a container
+  startContainer(id: string) {
+    return this.http.post((this.address + this.start.replace('{id}', id)), {})
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {

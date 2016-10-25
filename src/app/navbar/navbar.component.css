@@ -13,9 +13,17 @@
 .navbtn a {
   width: 87px;
   display: block;
-  transition: all 0.2s ease;
-  font-size: 38px;
-  height: 71px;
+  transition: all 0.4s ease;
+  height: 72px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.dorry-btn {
+  width: 87px;
+  display: block;
+  height: 72px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
@@ -38,16 +46,16 @@
 .content {
   position: relative;
   display: inline-block;
-  top: 60px;
+  top: 72px;
   bottom: 60px;
   width: 100%;
 }
 
 .mathead {
-  height: 60px;
+  height: 72px;
   width: calc(100% - 87px);
   background: rgba(0, 0, 0, 0.16);
-  line-height: 60px;
+  line-height: 72px;
   font-size: 24px;
   font-weight: bold;
   color: white;

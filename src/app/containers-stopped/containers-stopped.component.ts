@@ -7,11 +7,13 @@ import { ContainerService } from '../containers/container.service';
   templateUrl: './containers-stopped.component.html',
   styleUrls: [
     './containers-stopped.component.css',
-    '../containers/containers.component.css'
+    '../containers/containers.component.css',
+    '../app.component.css'
   ]
 })
 export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
+  hasStoppedService: boolean;
 
   notification: string;
   notState: boolean;
@@ -32,7 +34,10 @@ export class ContainersStoppedComponent implements OnInit {
 
   getStoppedContainers() {
     this.containerService.getStoppedContainers()
-      .subscribe(data => this.containers = data);
+      .subscribe(data => {
+        this.containers = data;
+        this.hasStoppedService = (this.containers.length !== 0);
+      });
   }
 
   restartContainer(id: string) {

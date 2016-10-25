@@ -7,11 +7,13 @@ import { ContainerService } from '../containers/container.service';
   templateUrl: './containers-running.component.html',
   styleUrls: [
     './containers-running.component.css',
-    '../containers/containers.component.css'
+    '../containers/containers.component.css',
+    '../app.component.css'
   ]
 })
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
+  hasRunningService: boolean;
 
   notification: string;
   notState: boolean;
@@ -32,7 +34,10 @@ export class ContainersRunningComponent implements OnInit {
 
   getRunningContainers() {
     this.containerService.getRunningContainers()
-      .then(data => this.containers = data);
+      .then(data => this.containers = data)
+      .then(data => {
+        this.hasRunningService = (this.containers.length !== 0);
+      });
   }
 
   stopContainer(id: string) {

@@ -1,13 +1,16 @@
 <!-- Notification -->
-<div *ngIf="notState" class="alert alert-success" role="alert">{{ notification }}</div>
+<div *ngIf="notState" class="notification-success" role="alert">{{ notification }}</div>
 
+<div *ngIf="hasRunningService" class="service-header running-service-header">
+  Running Service
+</div>
 <div class="service-list-container">
   <div class="service-list" *ngFor="let container of containers">
     <div class="service-container running-service-container">
       <!-- Service icon -->
       <span class="service-img" [ngSwitch]="container.iconAssigned">
-        <img *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
-        <img *ngSwitchDefault src="assets/icons/default.png" style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:71px; width:71px"/>
       </span>
 
       <span class="service-misc">
