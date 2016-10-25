@@ -3,13 +3,7 @@ import { DEFAULTURL, IMAGELIST, ImageUrl } from './mock-images';
 import { ImagesService } from './images.service';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
   selector: 'app-images',
@@ -34,7 +28,7 @@ export class ImagesComponent implements OnInit {
 
   //bindding the ImageInfo and image url
   initImages() {
-    console.log(this.imageInfoes);
+    // console.log(this.imageInfoes);
 
     for (let imageInfo of this.imageInfoes) {
       for (let imageUrl of this.imageList) {
@@ -59,7 +53,24 @@ export class ImagesComponent implements OnInit {
     this.imagesService.removeImage(id)
       .then(msg => this.showMessage(msg))
       .then(msg => this.getImageInfoes());
-    console.log("remove Image : " + id);
+    // console.log("remove Image : " + id);
+  }
+
+  // Create a container
+  createContainer(image: ImageInfo) {
+    this.imagesService.inspectImage(image.Id)
+      .then(data => {
+        this.imagesService.createContainer(data[Object.keys(data)[1]])
+          .subscribe(data => {
+            this.startContainer(data[Object.keys(data)[0]])
+          });
+      });
+  }
+
+  // Start a container
+  startContainer(id: string) {
+    this.imagesService.startContainer(id)
+      .subscribe(data => data);
   }
 
   // show message after removing image
@@ -92,7 +103,7 @@ export class ImagesComponent implements OnInit {
   private showInfoWindow: boolean; //whether need to show imageinfo popup window
   private detailApp: ImageInfo;//the app need to show detail
   openDetailInfo(app: ImageInfo) {
-    console.log(app.Id);
+    // console.log(app.Id);
     this.showInfoWindow = true;
     this.detailApp = app;
     this.imagesService.inspectImage(app.Id)

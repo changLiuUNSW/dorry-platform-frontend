@@ -5,7 +5,7 @@
   <div class="error-service-header">
     <span class="service-header-left cursor-default">Oops! There Is Something Wrong</span>
     <span class="service-header-right cursor-pointer" (click)="displayAlertAll()">
-      <img src="assets/trash.png" style="margin:0"/>
+      <img src="assets/trash.svg" style="margin:0"/>
       Remove All
     </span>
   </div>
@@ -13,10 +13,10 @@
     <div class="service-container error-service-container">
       <span class="service-img" [ngSwitch]="container.iconAssigned">
         <div class="icon-wrong">
-          <img src="assets/wrong.png"/>
+          <img src="assets/wrong.svg"/>
         </div>
         <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
-        <img class="service-img" *ngSwitchDefault src="assets/icons/default.png" style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:71px; width:71px"/>
       </span>
 
       <span class="service-misc">
@@ -48,7 +48,7 @@
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
   <div class="alert-body cursor-default modal-body">
     <span>
-      <img src="assets/alert.png"/>
+      <img src="assets/alert.svg"/>
       <span class="alert-message cursor-default">Do you want to remove this service?</span>
     </span>
   </div>
@@ -64,7 +64,7 @@
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlertAll">
   <div class="alert-body modal-body cursor-default">
     <span>
-      <img src="assets/alert.png"/>
+      <img src="assets/alert.svg"/>
       <span class="alert-message">Do you want to remove all services?</span>
     </span>
   </div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="33px" height="24px" viewBox="0 0 33 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Services" transform="translate(-25.000000, -78.000000)" fill="#D69B96">
+            <g id="menu" transform="translate(0.031250, -0.015625)">
+                <g id="services" transform="translate(0.000000, 60.000000)">
+                    <g id="Group-6" transform="translate(25.000000, 18.000000)">
+                        <g id="service">
+                            <path d="M2.9895203,23.1414651 C4.64058677,23.1414651 5.9790406,21.7666513 5.9790406,20.0707325 C5.9790406,18.3748138 4.64058677,17 2.9895203,17 C1.33845383,17 0,18.3748138 0,20.0707325 C0,21.7666513 1.33845383,23.1414651 2.9895203,23.1414651 Z" id="Oval-2"></path>
+                            <ellipse id="Oval-2-Copy" cx="11.9112712" cy="8" rx="2.92065844" ry="3"></ellipse>
+                            <ellipse id="Oval-2-Copy-2" cx="20.9707458" cy="15.0707325" rx="2.9895203" ry="3.07073253"></ellipse>
+                            <ellipse id="Oval-2-Copy-3" cx="30.0556245" cy="3" rx="2.92065844" ry="3"></ellipse>
+                            <polyline id="Rectangle-3" points="11.8498356 7 10.9885267 8.26349249 21.6491911 15.9309528 22.5105001 14.6674603 11.8498356 7"></polyline>
+                            <polyline id="Rectangle-3" points="28.442774 3 29.6728507 3.88470696 22.2081731 14.8349752 20.9780964 13.9502682 28.442774 3"></polyline>
+                            <polyline id="Rectangle-3" points="10.4615485 8 11.6916252 8.88470696 4.22694758 19.8349752 2.99687091 18.9502682 10.4615485 8"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

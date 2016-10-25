@@ -7,15 +7,15 @@ export class ImageUrl {
   }
 }
 
-export const DEFAULTURL: string = "assets/icons/default.png";
+export const DEFAULTURL: string = "assets/icons/default.svg";
 
 export const IMAGELIST: ImageUrl[] = [
-  { name: 'Gogs', url: 'assets/icons/gogs.png' },
-  { name: 'Mediawiki', url: 'assets/icons/mediawiki.png' },
-  { name: 'Gitlab', url: 'assets/icons/gitlab.png' },
-  { name: 'SAMBA', url: 'assets/icons/samba.png' },
-  { name: 'LDAP', url: 'assets/icons/ldap.png' },
-  { name: 'Jenkins', url: 'assets/icons/jenkins.png' },
-  { name: 'Mysql', url: 'assets/icons/mysql.png' },
-  { name: 'default', url: 'assets/icons/default.png' },
+  { name: 'Gogs', url: 'assets/icons/gogs.svg' },
+  { name: 'Mediawiki', url: 'assets/icons/mediawiki.svg' },
+  { name: 'Gitlab', url: 'assets/icons/gitlab.svg' },
+  { name: 'SAMBA', url: 'assets/icons/samba.svg' },
+  { name: 'LDAP', url: 'assets/icons/ldap.svg' },
+  { name: 'Jenkins', url: 'assets/icons/jenkins.svg' },
+  { name: 'Mysql', url: 'assets/icons/mysql.svg' },
+  { name: 'default', url: 'assets/icons/default.svg' },
 ];
