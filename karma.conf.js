@@ -1,6 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
-
+process.env.PHANTOMJS_BIN = 'node_modules/phantomjs/bin/phantomjs';
 module.exports = function(config) {
 
   var configuration = {
