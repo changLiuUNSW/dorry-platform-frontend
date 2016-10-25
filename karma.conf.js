@@ -31,11 +31,12 @@ module.exports = function(config) {
       }
     },
     coverageReporter: {
-      reporters: [{
-        type: 'json',
-        subdir: '.',
-        file: 'coverage-final.json'
-      }]
+      type: 'text-summary',
+      // reporters: [{
+      //   type: 'json',
+      //   subdir: '.',
+      //   file: 'coverage-final.json'
+      // }]
     },
     angularCli: {
       config: './angular-cli.json',
