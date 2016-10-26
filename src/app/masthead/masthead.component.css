@@ -1,0 +1,11 @@
+.username {
+  color: #000000;
+  font-size: 24px;
+  float: right;
+  font-weight: 400;
+}
+
+.userheader {
+  width: 46px;
+  height: 46px;
+}
