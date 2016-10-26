@@ -83,7 +83,7 @@ export class ImagesComponent implements OnInit {
     let msgType = typeof msg;
     let message: string;
     if (msgType == "string") {
-      message = "Success";
+      message = msg;
       this.isError = false;
     }
     else {
