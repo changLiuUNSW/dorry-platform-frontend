@@ -7,7 +7,8 @@ import { ImagesComponent } from './images/images.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: ContainersComponent
+    redirectTo: '/services',
+    pathMatch: 'full'
   },
   {
     path: 'services',

@@ -1,16 +1,9 @@
 <div class="sidenav">
   <div class="dorry-btn">
-    <a [ngStyle]="{'background':'rgba(0, 0, 0, 0)'}" routerLink="{{dorryBtn.url}}"><img src={{dorryBtn.out}}/></a>
+    <img src="assets/logo.svg"/>
   </div>
   <div class="navbtn" *ngFor="let btn of btnlist" (click)="onSelect(btn)">
-    <div [ngSwitch]="btn.isClicked">
-      <div *ngSwitchCase="false">
-        <a [ngStyle]="{'background':'rgba(0, 0, 0, 0)'}" routerLink="{{btn.url}}"><img src={{btn.out}}/></a>
-      </div>
-      <div *ngSwitchCase="true">
-        <a [ngStyle]="{'background':'url(assets/widget.svg)'}" routerLink="{{btn.url}}"><img src={{btn.out}}/></a>
-      </div>
-    </div>
+    <a routerLink="{{btn.url}}" routerLinkActive="active"><img src={{btn.out}}/></a>
   </div>
 </div>
 

@@ -1,5 +1,6 @@
 <div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
 <div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
+
 <div class="applist-container">
   <div class="app-list" *ngFor="let app of imageInfoes">
     <div class="app-container">
@@ -14,7 +15,7 @@
         {{app.RepoTags[0]}}
       </div>
       <!-- start app button part -->
-      <div class="app-btn" (click)="createContainer(app)">
+      <div class="app-btn" (click)="createContainer(app)" (click)="showMessage('Container created')">
         Start New
       </div>
     </div>

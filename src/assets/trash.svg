@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="19px" height="21px" viewBox="0 0 19 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Services-Copy-8" transform="translate(-1709.000000, -128.000000)">
+            <g id="wrong-services" transform="translate(156.000000, 106.000000)">
+                <g id="Group-4" transform="translate(1553.000000, 22.000000)">
+                    <g id="Group-18">
+                        <rect id="Rectangle-5" fill="#FFFFFF" x="7.125" y="0" width="4.75" height="3.2"></rect>
+                        <rect id="Rectangle-8" fill="#FFFFFF" x="0" y="3.2" width="19" height="1.6"></rect>
+                        <polyline id="Path-5" stroke="#FFFFFF" points="0.655294343 5.88285281 4.08747748 19.7661505 15.1038135 19.7661505 18.3013488 5.88285281"></polyline>
+                        <path d="M5.55971998,6.70656143 L8.8043765,19.2439427" id="Line" stroke="#FFFFFF" stroke-linecap="square"></path>
+                        <path d="M13.4214186,6.8 L11.0724801,19.3098517" id="Line" stroke="#FFFFFF" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
