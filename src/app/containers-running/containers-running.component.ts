@@ -39,7 +39,6 @@ export class ContainersRunningComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasRunningService = (this.containers.length !== 0);
-        this.reloadEvent.emit(true);
         console.log("Running containers");
       });
   }
@@ -47,7 +46,8 @@ export class ContainersRunningComponent implements OnInit {
   stopContainer(id: string) {
     this.containerService.stopContainer(id)
       .then(data => this.getRunningContainers())
-      .then(() => this.showNot());
+      .then(() => this.showNot())
+      .then(() => this.reloadEvent.emit(true));
   }
 
 }
