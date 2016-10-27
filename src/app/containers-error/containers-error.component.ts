@@ -52,8 +52,12 @@ export class ContainersErrorComponent implements OnInit {
   removeContainer(id: string) {
     this.containerService.removeContainer(id)
       .then(data => this.getErrorContainers())
-      .then(() => this.showNot())
-      .then(() => this.reloadEvent.emit(true));
+      .then(() => {
+        this.showNot();
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 600);
+      });
   }
 
   removeAll() {
@@ -64,8 +68,12 @@ export class ContainersErrorComponent implements OnInit {
           this.removeContainer(container["Id"]);
         }
       })
-      .then(() => this.showNot())
-      .then(() => this.reloadEvent.emit(true));
+      .then(() => {
+        this.showNot();
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 600);
+      });
   }
 
   displayAlert(id: string) {
