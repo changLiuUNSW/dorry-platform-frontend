@@ -10,6 +10,7 @@ import { ContainersStoppedComponent } from '../containers-stopped/containers-sto
   styleUrls: ['./containers.component.css', '../app.component.css']
 })
 export class ContainersComponent implements OnInit, DoCheck {
+  reload = true;
 
   constructor(private containerService: ContainerService) { }
 
@@ -17,11 +18,8 @@ export class ContainersComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    // if (true) {
-    //   this.containerService.getRunningContainers();
-    //   this.containerService.getStoppedContainers();
-    //   this.containerService.getErrorContainers();
-    // }
+    if (this.reload) {
+      console.log("I am checking Everything");
+    }
   }
-
 }

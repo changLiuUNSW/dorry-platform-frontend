@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, Input } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -11,7 +11,7 @@ import { ContainerService } from '../containers/container.service';
     '../app.component.css'
   ]
 })
-export class ContainersErrorComponent implements OnInit {
+export class ContainersErrorComponent implements OnInit, DoCheck {
   containers: Container[];
   hasErrorService: boolean;
 
@@ -22,6 +22,8 @@ export class ContainersErrorComponent implements OnInit {
   notification: string;
   notState: boolean;
 
+  @Input() reload: boolean;
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
@@ -29,6 +31,14 @@ export class ContainersErrorComponent implements OnInit {
     this.showAlert = false;
     this.showAlertAll = false;
   }
+
+  // ngDoCheck() {
+  //   if (this.reload) {
+  //     this.getErrorContainers();
+  //     console.log("I am checking error");
+  //   }
+  //   this.reload = false;
+  // }
 
   showNot() {
     this.notState = true;
@@ -44,6 +54,7 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
       });
+    this.reload = true;
   }
 
   removeContainer(id: string) {

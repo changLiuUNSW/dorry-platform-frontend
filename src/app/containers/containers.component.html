@@ -1,10 +1,10 @@
 <div [ngStyle]="{'margin-top':'40px'}">
   <!-- Error services -->
-  <app-containers-error></app-containers-error>
+  <app-containers-error [reload]="reload"></app-containers-error>
 
   <!-- Stopped services -->
-  <app-containers-stopped></app-containers-stopped>
+  <app-containers-stopped [reload]="reload"></app-containers-stopped>
 
   <!-- Running service -->
-  <app-containers-running></app-containers-running>
+  <app-containers-running [reload]="reload"></app-containers-running>
 </div>

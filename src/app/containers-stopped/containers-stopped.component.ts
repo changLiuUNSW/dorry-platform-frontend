@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, Input } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -11,18 +11,28 @@ import { ContainerService } from '../containers/container.service';
     '../app.component.css'
   ]
 })
-export class ContainersStoppedComponent implements OnInit {
+export class ContainersStoppedComponent implements OnInit, DoCheck {
   containers: Container[];
   hasStoppedService: boolean;
 
   notification: string;
   notState: boolean;
 
+  @Input() reload: boolean;
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
     this.getStoppedContainers();
   }
+
+  // ngDoCheck() {
+  //   if (this.reload) {
+  //     this.getStoppedContainers();
+  //     console.log("I am checking stop");
+  //   }
+  //   this.reload = false;
+  // }
 
   showNot() {
     this.notState = true;
@@ -38,6 +48,7 @@ export class ContainersStoppedComponent implements OnInit {
         this.containers = data;
         this.hasStoppedService = (this.containers.length !== 0);
       });
+    this.reload = true;
   }
 
   restartContainer(id: string) {
