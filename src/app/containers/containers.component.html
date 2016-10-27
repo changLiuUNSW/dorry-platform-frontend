@@ -1,11 +1,11 @@
 <div [ngStyle]="{'margin-top':'40px'}">
 
   <!-- Error services -->
-  <app-containers-error (reloadEvent)="reload($event)"></app-containers-error>
+  <app-containers-error (reloadEvent)="reload()"></app-containers-error>
 
   <!-- Stopped services -->
-  <app-containers-stopped (reloadEvent)="reload($event)"></app-containers-stopped>
+  <app-containers-stopped (reloadEvent)="reload()"></app-containers-stopped>
 
   <!-- Running service -->
-  <app-containers-running (reloadEvent)="reload($event)"></app-containers-running>
+  <app-containers-running (reloadEvent)="reload()"></app-containers-running>
 </div>

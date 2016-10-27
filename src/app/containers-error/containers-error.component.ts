@@ -46,7 +46,7 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
         this.reloadEvent.emit(true);
-        console.log("getErrorContainers");
+        console.log("Error containers");
       });
   }
 

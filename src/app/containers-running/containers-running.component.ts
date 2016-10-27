@@ -40,7 +40,7 @@ export class ContainersRunningComponent implements OnInit {
       .then(data => {
         this.hasRunningService = (this.containers.length !== 0);
         this.reloadEvent.emit(true);
-        console.log("getRunningContainers");
+        console.log("Running containers");
       });
   }
 

@@ -16,8 +16,7 @@ export class ContainersComponent implements OnInit {
   ngOnInit() {
   }
 
-  reload(agreed: boolean) {
+  reload() {
     console.log('Fucking event works');
   }
-
 }
