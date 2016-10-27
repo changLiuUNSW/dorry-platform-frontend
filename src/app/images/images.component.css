@@ -13,9 +13,10 @@
   cursor: pointer;
 }
 
-
+.app-details:hover {
+  background: white;
+}
 /*app part : app container;app img ;app name*/
-
 .app-container {
   text-align: center;
   padding: 35px 67px 0;
@@ -37,8 +38,7 @@
 .app-name:hover {
   text-decoration: underline;
 }
-
-.app-btn {
+/*.app-btn {
   color: rgba(0, 0, 0, 0.40);
   background: rgba(255, 255, 255, 0.21);
   font-size: 9px;
@@ -51,6 +51,35 @@
   cursor: pointer;
 }
 
+.app-btn:hover {
+  background: white;
+}*/
+/*-----------------------------------------*/
+.app-btn {
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  line-height: 15px;
+  width: 58px;
+  text-align: center;
+  border-color: #d0d0d0;
+  border-width: 1px;
+  border-style: solid;
+  color: #f0f0f0;
+}
+
+.app-btn:hover {
+  background: rgba(255, 255, 255, 0.59);
+  opacity: 0.59;
+  color: #000000;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.app-btn:active {
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+/*-----------------------------------------*/
 .app-img:hover .app-removebtn {
   visibility: visible;
 }
@@ -65,22 +94,44 @@
   cursor: pointer;
 }
 
-.alert {
-  opacity: 0.7;
+.notification-success {
+  opacity: 0.8;
+  color: #ffffff;
   position: fixed;
   z-index: 4;
   left: 0;
   right: 0;
-  top: 90px;
+  top: 95px;
   margin: auto;
-  line-height: 2em;
-  width: 600px;
+  line-height: 80px;
+  width: 559px;
+  height: 80px;
   text-align: center;
+  border-radius: 15px;
+  background-image: url("assets/black.png");
+  border: 0;
+  font-size: 20px;
 }
 
-
+.notification-failure {
+  opacity: 0.8;
+  color: #ffffff;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 95px;
+  margin: auto;
+  line-height: 80px;
+  width: 559px;
+  height: 80px;
+  text-align: center;
+  border-radius: 15px;
+  background-image: url("assets/orange.png");
+  border: 0;
+  font-size: 20px;
+}
 /* popup box - image details info box part */
-
 .image-details {
   margin: auto;
   position: fixed;
@@ -88,7 +139,6 @@
   right: 0;
   top: 0;
   bottom: 0;
-  cursor: default;
 }
 
 .modal-content {
@@ -164,20 +214,18 @@
   background: rgba(91, 91, 91, 1);
   border-radius: 50%;
 }
-
-
 /* alert dialog css style */
-
-.alert-dialog {
+/*.alert-dialog {
   background: rgba(66, 65, 65, 0.9);
   z-index: 50;
-  /* blur filters */
+   blur filters
   -webkit-filter: blur(27px);
   -moz-filter: blur(27px);
   -o-filter: blur(27px);
   -ms-filter: blur(27px);
   filter: blur(27px);
-}
+}*/
+.alert-dialog {}
 
 .alert-content {
   background: rgba(66, 65, 65, 0);
@@ -235,6 +283,9 @@
 }
 
 .btn-yes {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #dadada;
   background: rgba(218, 218, 218, 0.41);
   color: rgba(255, 255, 255, 0.62);
 }
@@ -242,4 +293,14 @@
 .btn-no {
   background: rgba(218, 218, 218, 0.41);
   color: rgba(255, 255, 255, 0.70);
+}
+
+.alert-global {
+  height: 100vh;
+  width: 100vw;
+  z-index: 20;
+}
+
+.image-details {
+  z-index: 50;
 }

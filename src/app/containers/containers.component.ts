@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ContainerService } from '../containers/container.service';
 import { ContainersErrorComponent } from '../containers-error/containers-error.component';
 import { ContainersRunningComponent } from '../containers-running/containers-running.component';
@@ -7,21 +7,16 @@ import { ContainersStoppedComponent } from '../containers-stopped/containers-sto
 @Component({
   selector: 'app-containers',
   templateUrl: './containers.component.html',
-  styleUrls: ['./containers.component.css']
+  styleUrls: ['./containers.component.css', '../app.component.css']
 })
-export class ContainersComponent implements OnInit, DoCheck {
+export class ContainersComponent implements OnInit {
 
   constructor(private containerService: ContainerService) { }
 
   ngOnInit() {
   }
 
-  ngDoCheck() {
-    // if (true) {
-    //   this.containerService.getRunningContainers();
-    //   this.containerService.getStoppedContainers();
-    //   this.containerService.getErrorContainers();
-    // }
+  reload() {
+    console.log('Fucking event works');
   }
-
 }

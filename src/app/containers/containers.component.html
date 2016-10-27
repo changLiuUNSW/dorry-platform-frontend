@@ -1,13 +1,11 @@
-<app-containers-error></app-containers-error>
+<div [ngStyle]="{'margin-top':'40px'}">
 
-<!-- Service stopped header -->
-<div class="service-header stopped-service-header">
-  Stopped Service
-</div>
-<app-containers-stopped></app-containers-stopped>
+  <!-- Error services -->
+  <app-containers-error (reloadEvent)="reload()"></app-containers-error>
 
-<!-- Service running header -->
-<div class="service-header running-service-header">
-  Running Service
+  <!-- Stopped services -->
+  <app-containers-stopped (reloadEvent)="reload()"></app-containers-stopped>
+
+  <!-- Running service -->
+  <app-containers-running (reloadEvent)="reload()"></app-containers-running>
 </div>
-<app-containers-running></app-containers-running>

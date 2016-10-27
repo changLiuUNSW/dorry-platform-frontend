@@ -17,6 +17,28 @@
 .service-img {
   cursor: pointer;
 }
+/*.service-img:hover {
+  box-shadow: inset 0 0 14px rgba(255,255,255,0.5);
+}*/
+.service-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.service-shadow:hover {
+  box-shadow: inset 0 0 14px 0 rgba(255,255,255,0.5);
+  border-radius: 14px;
+  top: 0;
+  left: 0;
+}
+
+.service-img-container {
+  display: inline-block;
+  position: relative;
+}
 
 .service-misc {
   float: right;
@@ -56,18 +78,63 @@
   text-align: center;
   position: absolute;
   top: 56px;
-  font-weight: bold;
+  border-color: #d0d0d0;
+  border-width: 1px;
+  border-style: solid;
+  color: #f0f0f0;
 }
 
-.alert {
-  opacity: 0.7;
+.service-btn:hover {
+  background: rgba(255, 255, 255, 0.59);
+  opacity: 0.59;
+  color: #000000;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.service-btn:active {
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.notification-success {
+  opacity: 0.8;
+  color: #ffffff;
   position: fixed;
   z-index: 4;
   left: 0;
   right: 0;
-  top: 90px;
+  top: 95px;
   margin: auto;
-  line-height: 2em;
-  width: 600px;
+  line-height: 80px;
+  width: 559px;
+  height: 80px;
   text-align: center;
+  border-radius: 15px;
+  background-image: url("assets/black.png");
+  border: 0;
+  font-size: 20px;
+}
+
+.notification-failure {
+  opacity: 0.8;
+  color: #ffffff;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 95px;
+  margin: auto;
+  line-height: 80px;
+  width: 559px;
+  height: 80px;
+  text-align: center;
+  border-radius: 15px;
+  background-image: url("assets/orange.png");
+  border: 0;
+  font-size: 20px;
+}
+
+.alert-global {
+  height: 100vh;
+  width: 100vw;
+  z-index: 20;
 }

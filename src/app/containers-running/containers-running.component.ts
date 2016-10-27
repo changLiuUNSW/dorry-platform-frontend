@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -7,14 +7,18 @@ import { ContainerService } from '../containers/container.service';
   templateUrl: './containers-running.component.html',
   styleUrls: [
     './containers-running.component.css',
-    '../containers/containers.component.css'
+    '../containers/containers.component.css',
+    '../app.component.css'
   ]
 })
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
+  hasRunningService: boolean;
 
   notification: string;
   notState: boolean;
+
+  @Output() reloadEvent = new EventEmitter<boolean>();
 
   constructor(private containerService: ContainerService) { }
 
@@ -32,7 +36,12 @@ export class ContainersRunningComponent implements OnInit {
 
   getRunningContainers() {
     this.containerService.getRunningContainers()
-      .then(data => this.containers = data);
+      .then(data => this.containers = data)
+      .then(data => {
+        this.hasRunningService = (this.containers.length !== 0);
+        this.reloadEvent.emit(true);
+        console.log("Running containers");
+      });
   }
 
   stopContainer(id: string) {
