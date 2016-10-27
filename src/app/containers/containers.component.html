@@ -1,11 +1,9 @@
 <div [ngStyle]="{'margin-top':'40px'}">
+  <button type="button" class="btn btn-success" style="margin-left:90%; margin-bottom: 20px" (click)="error.getErrorContainers()" (click)="stopped.getStoppedContainers()" (click)=" running.getRunningContainers()">Refresh</button>
 
-  <!-- Error services -->
-  <app-containers-error (reloadEvent)="reload()"></app-containers-error>
+  <app-containers-error #error (reloadEvent)="error.getErrorContainers()" (reloadEvent)="stopped.getStoppedContainers()" (reloadEvent)=" running.getRunningContainers()"></app-containers-error>
 
-  <!-- Stopped services -->
-  <app-containers-stopped (reloadEvent)="reload()"></app-containers-stopped>
+  <app-containers-stopped #stopped (reloadEvent)="error.getErrorContainers()" (reloadEvent)="stopped.getStoppedContainers()" (reloadEvent)=" running.getRunningContainers()"></app-containers-stopped>
 
-  <!-- Running service -->
-  <app-containers-running (reloadEvent)="reload()"></app-containers-running>
+  <app-containers-running #running (reloadEvent)="error.getErrorContainers()" (reloadEvent)="stopped.getStoppedContainers()" (reloadEvent)=" running.getRunningContainers()"></app-containers-running>
 </div>
