@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -18,6 +18,8 @@ export class ContainersStoppedComponent implements OnInit {
   notification: string;
   notState: boolean;
 
+  @Output() reloadEvent = new EventEmitter<boolean>();
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
@@ -34,9 +36,11 @@ export class ContainersStoppedComponent implements OnInit {
 
   getStoppedContainers() {
     this.containerService.getStoppedContainers()
-      .subscribe(data => {
-        this.containers = data;
+      .then(data => this.containers = data)
+      .then(data => {
         this.hasStoppedService = (this.containers.length !== 0);
+        this.reloadEvent.emit(true);
+        console.log("Stopped containers");
       });
   }
 

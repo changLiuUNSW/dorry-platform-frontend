@@ -41,13 +41,14 @@ export class ContainerService {
   //
   // param      None
   // returns    Observable<Container[]>
-  getStoppedContainers(): Observable<Container[]> {
+  getStoppedContainers(): Promise<Container[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: this.origin + this.paramStopped
       }))
-      .map(this.extractData)
+      .toPromise()
+      .then(this.extractData)
       .catch(this.handleError);
   }
 

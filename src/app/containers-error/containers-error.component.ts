@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -22,6 +22,8 @@ export class ContainersErrorComponent implements OnInit {
   notification: string;
   notState: boolean;
 
+  @Output() reloadEvent = new EventEmitter<boolean>();
+
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
@@ -43,6 +45,8 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
+        this.reloadEvent.emit(true);
+        console.log("Error containers");
       });
   }
 
