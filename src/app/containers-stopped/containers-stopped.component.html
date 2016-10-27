@@ -8,9 +8,10 @@
   <div class="service-list" *ngFor="let container of containers">
     <div class="service-container stopped-service-container">
       <!-- Service icon -->
-      <span class="service-img" [ngSwitch]="container.iconAssigned">
+      <span class="service-img-container" [ngSwitch]="container.iconAssigned">
         <img class="service-img service-img-stopped" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
         <img class="service-img service-img-stopped" *ngSwitchDefault src="assets/icons/default.svg" style="height:71px; width:71px"/>
+        <div class="service-shadow"></div>
       </span>
 
       <span class="service-misc">

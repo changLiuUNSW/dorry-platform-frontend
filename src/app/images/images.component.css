@@ -38,8 +38,7 @@
 .app-name:hover {
   text-decoration: underline;
 }
-
-.app-btn {
+/*.app-btn {
   color: rgba(0, 0, 0, 0.40);
   background: rgba(255, 255, 255, 0.21);
   font-size: 9px;
@@ -54,8 +53,33 @@
 
 .app-btn:hover {
   background: white;
+}*/
+/*-----------------------------------------*/
+.app-btn {
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  line-height: 15px;
+  width: 58px;
+  text-align: center;
+  border-color: #d0d0d0;
+  border-width: 1px;
+  border-style: solid;
+  color: #f0f0f0;
 }
 
+.app-btn:hover {
+  background: rgba(255, 255, 255, 0.59);
+  opacity: 0.59;
+  color: #000000;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.app-btn:active {
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+/*-----------------------------------------*/
 .app-img:hover .app-removebtn {
   visibility: visible;
 }

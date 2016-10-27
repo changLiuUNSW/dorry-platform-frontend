@@ -17,9 +17,27 @@
 .service-img {
   cursor: pointer;
 }
+/*.service-img:hover {
+  box-shadow: inset 0 0 14px rgba(255,255,255,0.5);
+}*/
+.service-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-.service-img:hover {
-  background: white;
+.service-shadow:hover {
+  box-shadow: inset 0 0 14px 0 rgba(255,255,255,0.5);
+  border-radius: 14px;
+  top: 0;
+  left: 0;
+}
+
+.service-img-container {
+  display: inline-block;
+  position: relative;
 }
 
 .service-misc {
