@@ -39,7 +39,7 @@ export class ContainersStoppedComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasStoppedService = (this.containers.length !== 0);
-        console.log("Stopped containers");
+        // console.log("Stopped containers");
       });
   }
 

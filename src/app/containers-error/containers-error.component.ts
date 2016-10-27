@@ -45,7 +45,7 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
-        console.log("Error containers");
+        // console.log("Error containers");
       });
   }
 

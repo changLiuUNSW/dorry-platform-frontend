@@ -39,7 +39,7 @@ export class ContainersRunningComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasRunningService = (this.containers.length !== 0);
-        console.log("Running containers");
+        // console.log("Running containers");
       });
   }
 
