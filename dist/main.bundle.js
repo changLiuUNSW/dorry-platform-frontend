@@ -44724,9 +44724,6 @@ var ContainersComponent = (function () {
     }
     ContainersComponent.prototype.ngOnInit = function () {
     };
-    ContainersComponent.prototype.reload = function () {
-        console.log('Fucking event works');
-    };
     ContainersComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
             selector: 'app-containers',
@@ -59394,7 +59391,6 @@ var ContainersErrorComponent = (function () {
             .then(function (data) { return _this.containers = data; })
             .then(function (data) {
             _this.hasErrorService = (_this.containers.length !== 0);
-            _this.reloadEvent.emit(true);
             console.log("Error containers");
         });
     };
@@ -59402,7 +59398,8 @@ var ContainersErrorComponent = (function () {
         var _this = this;
         this.containerService.removeContainer(id)
             .then(function (data) { return _this.getErrorContainers(); })
-            .then(function () { return _this.showNot(); });
+            .then(function () { return _this.showNot(); })
+            .then(function () { return _this.reloadEvent.emit(true); });
     };
     ContainersErrorComponent.prototype.removeAll = function () {
         var _this = this;
@@ -59414,7 +59411,8 @@ var ContainersErrorComponent = (function () {
                 _this.removeContainer(container["Id"]);
             }
         })
-            .then(function () { return _this.showNot(); });
+            .then(function () { return _this.showNot(); })
+            .then(function () { return _this.reloadEvent.emit(true); });
     };
     ContainersErrorComponent.prototype.displayAlert = function (id) {
         this.showAlert = true;
@@ -59494,7 +59492,6 @@ var ContainersRunningComponent = (function () {
             .then(function (data) { return _this.containers = data; })
             .then(function (data) {
             _this.hasRunningService = (_this.containers.length !== 0);
-            _this.reloadEvent.emit(true);
             console.log("Running containers");
         });
     };
@@ -59502,7 +59499,8 @@ var ContainersRunningComponent = (function () {
         var _this = this;
         this.containerService.stopContainer(id)
             .then(function (data) { return _this.getRunningContainers(); })
-            .then(function () { return _this.showNot(); });
+            .then(function () { return _this.showNot(); })
+            .then(function () { return _this.reloadEvent.emit(true); });
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
@@ -59565,7 +59563,6 @@ var ContainersStoppedComponent = (function () {
             .then(function (data) { return _this.containers = data; })
             .then(function (data) {
             _this.hasStoppedService = (_this.containers.length !== 0);
-            _this.reloadEvent.emit(true);
             console.log("Stopped containers");
         });
     };
@@ -59573,7 +59570,8 @@ var ContainersStoppedComponent = (function () {
         var _this = this;
         this.containerService.restartContainer(id)
             .then(function (data) { return _this.getStoppedContainers(); })
-            .then(function () { return _this.showNot(); });
+            .then(function () { return _this.showNot(); })
+            .then(function () { return _this.reloadEvent.emit(true); });
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Output */])(), 
@@ -62896,7 +62894,7 @@ module.exports = "<!-- Notification -->\n<div *ngIf=\"notState\" class=\"notific
 /* 653 */
 /***/ function(module, exports) {
 
-module.exports = "<div [ngStyle]=\"{'margin-top':'40px'}\">\n\n  <!-- Error services -->\n  <app-containers-error (reloadEvent)=\"reload()\"></app-containers-error>\n\n  <!-- Stopped services -->\n  <app-containers-stopped (reloadEvent)=\"reload()\"></app-containers-stopped>\n\n  <!-- Running service -->\n  <app-containers-running (reloadEvent)=\"reload()\"></app-containers-running>\n</div>\n"
+module.exports = "<div [ngStyle]=\"{'margin-top':'40px'}\">\n  <button type=\"button\" class=\"btn btn-success\" style=\"margin-left:90%; margin-bottom: 20px\" (click)=\"error.getErrorContainers()\" (click)=\"stopped.getStoppedContainers()\" (click)=\" running.getRunningContainers()\">Refresh</button>\n\n  <app-containers-error #error (reloadEvent)=\"error.getErrorContainers()\" (reloadEvent)=\"stopped.getStoppedContainers()\" (reloadEvent)=\" running.getRunningContainers()\"></app-containers-error>\n\n  <app-containers-stopped #stopped (reloadEvent)=\"error.getErrorContainers()\" (reloadEvent)=\"stopped.getStoppedContainers()\" (reloadEvent)=\" running.getRunningContainers()\"></app-containers-stopped>\n\n  <app-containers-running #running (reloadEvent)=\"error.getErrorContainers()\" (reloadEvent)=\"stopped.getStoppedContainers()\" (reloadEvent)=\" running.getRunningContainers()\"></app-containers-running>\n</div>\n"
 
 /***/ },
 /* 654 */
