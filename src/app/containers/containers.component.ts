@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ContainerService } from '../containers/container.service';
 import { ContainersErrorComponent } from '../containers-error/containers-error.component';
 import { ContainersRunningComponent } from '../containers-running/containers-running.component';
@@ -9,17 +9,15 @@ import { ContainersStoppedComponent } from '../containers-stopped/containers-sto
   templateUrl: './containers.component.html',
   styleUrls: ['./containers.component.css', '../app.component.css']
 })
-export class ContainersComponent implements OnInit, DoCheck {
-  reload = true;
+export class ContainersComponent implements OnInit {
 
   constructor(private containerService: ContainerService) { }
 
   ngOnInit() {
   }
 
-  ngDoCheck() {
-    if (this.reload) {
-      console.log("I am checking Everything");
-    }
+  reload(agreed: boolean) {
+    console.log('Fucking event works');
   }
+
 }

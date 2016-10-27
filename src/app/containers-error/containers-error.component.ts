@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -11,7 +11,7 @@ import { ContainerService } from '../containers/container.service';
     '../app.component.css'
   ]
 })
-export class ContainersErrorComponent implements OnInit, DoCheck {
+export class ContainersErrorComponent implements OnInit {
   containers: Container[];
   hasErrorService: boolean;
 
@@ -22,7 +22,7 @@ export class ContainersErrorComponent implements OnInit, DoCheck {
   notification: string;
   notState: boolean;
 
-  @Input() reload: boolean;
+  @Output() reloadEvent = new EventEmitter<boolean>();
 
   constructor(private containerService: ContainerService) { }
 
@@ -31,14 +31,6 @@ export class ContainersErrorComponent implements OnInit, DoCheck {
     this.showAlert = false;
     this.showAlertAll = false;
   }
-
-  // ngDoCheck() {
-  //   if (this.reload) {
-  //     this.getErrorContainers();
-  //     console.log("I am checking error");
-  //   }
-  //   this.reload = false;
-  // }
 
   showNot() {
     this.notState = true;
@@ -53,8 +45,9 @@ export class ContainersErrorComponent implements OnInit, DoCheck {
       .then(data => this.containers = data)
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
+        this.reloadEvent.emit(true);
+        console.log("getErrorContainers");
       });
-    this.reload = true;
   }
 
   removeContainer(id: string) {

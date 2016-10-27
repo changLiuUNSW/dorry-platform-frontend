@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -11,28 +11,20 @@ import { ContainerService } from '../containers/container.service';
     '../app.component.css'
   ]
 })
-export class ContainersRunningComponent implements OnInit, DoCheck {
+export class ContainersRunningComponent implements OnInit {
   containers: Container[];
   hasRunningService: boolean;
 
   notification: string;
   notState: boolean;
 
-  @Input() reload: boolean;
+  @Output() reloadEvent = new EventEmitter<boolean>();
 
   constructor(private containerService: ContainerService) { }
 
   ngOnInit(): void {
     this.getRunningContainers();
   }
-
-  // ngDoCheck() {
-  //   if (this.reload) {
-  //     this.getRunningContainers();
-  //     console.log("I am checking running");
-  //   }
-  //   this.reload = false;
-  // }
 
   showNot() {
     this.notState = true;
@@ -47,8 +39,9 @@ export class ContainersRunningComponent implements OnInit, DoCheck {
       .then(data => this.containers = data)
       .then(data => {
         this.hasRunningService = (this.containers.length !== 0);
+        this.reloadEvent.emit(true);
+        console.log("getRunningContainers");
       });
-    this.reload = true;
   }
 
   stopContainer(id: string) {
