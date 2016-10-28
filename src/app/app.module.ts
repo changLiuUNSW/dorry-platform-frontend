@@ -10,12 +10,16 @@ import { ContainersComponent } from './containers/containers.component';
 import { ContainersErrorComponent } from './containers-error/containers-error.component';
 import { ContainersStoppedComponent } from './containers-stopped/containers-stopped.component';
 import { ContainersRunningComponent } from './containers-running/containers-running.component';
+import { MarketComponent } from './market/market.component';
 import { MastheadComponent } from './masthead/masthead.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
+import { AppService } from './app.service';
+
 import { routing } from './app.routing';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { routing } from './app.routing';
     ContainersErrorComponent,
     ContainersStoppedComponent,
     ContainersRunningComponent,
+    MarketComponent,
     MastheadComponent,
     FooterComponent
   ],
@@ -37,7 +42,8 @@ import { routing } from './app.routing';
   ],
   providers: [
     ImagesService,
-    ContainerService
+    ContainerService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
-
+process.env.PHANTOMJS_BIN = 'node_modules/phantomjs/bin/phantomjs';
 module.exports = function(config) {
 
   var configuration = {
@@ -31,11 +31,12 @@ module.exports = function(config) {
       }
     },
     coverageReporter: {
-      reporters: [{
-        type: 'json',
-        subdir: '.',
-        file: 'coverage-final.json'
-      }]
+      type: 'text-summary',
+      // reporters: [{
+      //   type: 'json',
+      //   subdir: '.',
+      //   file: 'coverage-final.json'
+      // }]
     },
     angularCli: {
       config: './angular-cli.json',
@@ -46,7 +47,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['PhantomJS'],
     singleRun: false,
     customLaunchers: {
       Chrome_travis_ci: {

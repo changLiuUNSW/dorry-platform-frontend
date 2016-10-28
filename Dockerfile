@@ -7,3 +7,5 @@ RUN chown root /etc/nginx/conf.d/default.conf && \
     chgrp root /etc/nginx/conf.d/default.conf
 
 CMD ["/bin/sh", "/start-nginx.sh"]
+
+

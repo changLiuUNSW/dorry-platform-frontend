@@ -1,4 +1,7 @@
-**System:**
+**Dorry UI Build Versin:**
+Version:
+
+**Operation System:**
 Name:
 Version:
 
