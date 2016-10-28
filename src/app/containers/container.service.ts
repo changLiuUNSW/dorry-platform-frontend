@@ -7,8 +7,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ContainerService {
-  private origin = 'http://localhost:5000';
-  // private origin = 'http://192.168.10.84:5000';
+  private address = 'http://localhost:5000';
+  // private address = 'http://192.168.10.84:5000';
   private paramRunning = '/containers/json?all=0';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
   private paramError = '/containers/json?filters={"status":["exited","dead","restarting"]}';
@@ -28,7 +28,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramRunning
+        url: this.address + this.paramRunning
       }))
       .toPromise()
       .then(this.extractData)
@@ -44,7 +44,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramStopped
+        url: this.address + this.paramStopped
       }))
       .toPromise()
       .then(this.extractData)
@@ -60,7 +60,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramError
+        url: this.address + this.paramError
       }))
       .toPromise()
       .then(this.extractData)
@@ -76,7 +76,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramAll
+        url: this.address + this.paramAll
       }))
       .toPromise()
       .then(this.extractData)
@@ -92,7 +92,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Delete,
-        url: this.origin + this.toBeRemoved.replace("{id}", id)
+        url: this.address + this.toBeRemoved.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -106,7 +106,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.origin + this.toBeStopped.replace("{id}", id)
+        url: this.address + this.toBeStopped.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -120,7 +120,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.origin + this.toBeRestarted.replace("{id}", id)
+        url: this.address + this.toBeRestarted.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -150,4 +150,5 @@ export class ContainerService {
     console.error(errMsg); // log to console instead
     return Promise.reject(errMsg);
   }
+
 }

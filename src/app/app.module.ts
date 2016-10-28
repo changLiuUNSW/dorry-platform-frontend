@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
+import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
 @NgModule({
@@ -39,7 +40,8 @@ import { routing } from './app.routing';
   ],
   providers: [
     ImagesService,
-    ContainerService
+    ContainerService,
+    MarketService
   ],
   bootstrap: [AppComponent]
 })
