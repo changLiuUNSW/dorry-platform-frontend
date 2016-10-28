@@ -6,10 +6,12 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { Constant } from '../constant';
+
 @Injectable()
 export class ImagesService {
   //private address = 'http://localhost:5000';
-  private address = 'http://192.168.10.84:5000';
+  private address = Constant.DAEMONADDR;
 
   //docker remote api part
   private list = '/images/json?all=0';//[GET]  list images
