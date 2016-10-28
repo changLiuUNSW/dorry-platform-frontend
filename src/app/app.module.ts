@@ -17,7 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
 import { AppService } from './app.service';
-
+import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
 
@@ -43,7 +43,8 @@ import { routing } from './app.routing';
   providers: [
     ImagesService,
     ContainerService,
-    AppService
+    AppService,
+    MarketService
   ],
   bootstrap: [AppComponent]
 })

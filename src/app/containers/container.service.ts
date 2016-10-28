@@ -8,8 +8,8 @@ import { Constant } from '../constant';
 
 @Injectable()
 export class ContainerService {
-  //private origin = 'http://localhost:5000';
-  private origin = Constant.DAEMONADDR;
+  private address = Constant.DAEMONADDR;
+
   private paramRunning = '/containers/json?all=0';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
   private paramError = '/containers/json?filters={"status":["exited","dead","restarting"]}';
@@ -20,7 +20,6 @@ export class ContainerService {
 
   constructor(private http: Http) { }
 
-
   // Function getRunningContainers() sends http GET request and asynchronously
   // obtains running containers.
   //
@@ -30,7 +29,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramRunning
+        url: this.address + this.paramRunning
       }))
       .toPromise()
       .then(this.extractData)
@@ -46,13 +45,12 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramStopped
+        url: this.address + this.paramStopped
       }))
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
-
 
   // Function getErrorContainers() sends http GET request and asynchronously
   // obtains error containers.
@@ -63,7 +61,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramError
+        url: this.address + this.paramError
       }))
       .toPromise()
       .then(this.extractData)
@@ -79,13 +77,12 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.origin + this.paramAll
+        url: this.address + this.paramAll
       }))
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
-
 
   // Function removeContainer() sends http DELETE request and asynchronously
   // remove the container with specified id.
@@ -96,7 +93,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Delete,
-        url: this.origin + this.toBeRemoved.replace("{id}", id)
+        url: this.address + this.toBeRemoved.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -110,7 +107,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.origin + this.toBeStopped.replace("{id}", id)
+        url: this.address + this.toBeStopped.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -124,7 +121,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.origin + this.toBeRestarted.replace("{id}", id)
+        url: this.address + this.toBeRestarted.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -154,4 +151,5 @@ export class ContainerService {
     console.error(errMsg); // log to console instead
     return Promise.reject(errMsg);
   }
+
 }

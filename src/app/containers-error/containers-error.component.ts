@@ -97,4 +97,5 @@ export class ContainersErrorComponent implements OnInit {
   getContainerId(id: string) {
     this.containerId = id;
   }
+
 }
