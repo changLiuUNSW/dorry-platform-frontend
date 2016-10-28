@@ -35,8 +35,8 @@
 
 .right-part {
   height: 100%;
-  overflow: auto;
   width: 100%;
+  /*overflow: auto;*/
   position: absolute;
   background: linear-gradient(135deg, #c78575, #373d85);
   float: left;
@@ -46,9 +46,11 @@
 .content {
   position: relative;
   display: inline-block;
+  overflow: auto;
   top: 60px;
   bottom: 60px;
   width: 100%;
+  height: calc(100% - 60px);
 }
 
 .mathead {
@@ -79,5 +81,5 @@
 }
 
 .active {
-  background: url(assets/widget.svg);
+  background: url("assets/widget.svg");
 }
