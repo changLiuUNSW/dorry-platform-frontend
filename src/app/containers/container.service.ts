@@ -40,7 +40,7 @@ export class ContainerService {
   // obtains stopped containers.
   //
   // param      None
-  // returns    Observable<Container[]>
+  // returns    Promise<Container[]>
   getStoppedContainers(): Promise<Container[]> {
     return this.http.request(
       new Request({

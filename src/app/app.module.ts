@@ -20,7 +20,6 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
-
 @NgModule({
   declarations: [
     AppComponent,

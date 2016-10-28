@@ -10,7 +10,6 @@ import { Constant } from '../constant';
 
 @Injectable()
 export class ImagesService {
-  //private address = 'http://localhost:5000';
   private address = Constant.DAEMONADDR;
 
   //docker remote api part
