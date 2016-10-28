@@ -56,7 +56,7 @@ export class ContainersErrorComponent implements OnInit {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);
-        }.bind(this), 600);
+        }.bind(this), 300);
       });
   }
 
@@ -72,7 +72,7 @@ export class ContainersErrorComponent implements OnInit {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);
-        }.bind(this), 600);
+        }.bind(this), 300);
       });
   }
 
