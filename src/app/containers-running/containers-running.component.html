@@ -4,7 +4,7 @@
 <div *ngIf="hasRunningService" class="service-header running-service-header">
   Running Service
 </div>
-<div class="service-list-container">
+<div *ngIf="hasRunningService" class="service-list-container">
   <div class="service-list" *ngFor="let container of containers">
     <div *ngIf="container.Names[0] !== '/DORRY-WEB'" class="service-container running-service-container">
       <!-- Service icon -->

@@ -26,9 +26,9 @@ export class AppService {
   }
 
   private extractData(res: Response) {
-    console.log(res.toString())
+    // console.log(res.toString())
     let body = res.json();
-    console.log(res.json());
+    // console.log(res.json());
     return body;
   }
 
