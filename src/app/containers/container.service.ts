@@ -19,7 +19,6 @@ export class ContainerService {
 
   constructor(private http: Http) { }
 
-
   // Function getRunningContainers() sends http GET request and asynchronously
   // obtains running containers.
   //
@@ -52,7 +51,6 @@ export class ContainerService {
       .catch(this.handleError);
   }
 
-
   // Function getErrorContainers() sends http GET request and asynchronously
   // obtains error containers.
   //
@@ -84,7 +82,6 @@ export class ContainerService {
       .then(this.extractData)
       .catch(this.handleError);
   }
-
 
   // Function removeContainer() sends http DELETE request and asynchronously
   // remove the container with specified id.
