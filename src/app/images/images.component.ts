@@ -26,10 +26,8 @@ export class ImagesComponent implements OnInit {
     this.showAlert = false;
   }
 
-  //bindding the ImageInfo and image url
+  // Bindding the ImageInfo and image url
   initImages() {
-    // console.log(this.imageInfoes);
-
     for (let imageInfo of this.imageInfoes) {
       for (let imageUrl of this.imageList) {
         if (imageInfo.RepoTags[0] == imageUrl.name)
@@ -40,14 +38,14 @@ export class ImagesComponent implements OnInit {
     }
   }
 
-  //get json object array from Docker Daemon
+  // Get json object array from Docker Daemon
   getImageInfoes() {
     this.imagesService.getImageInfoes()
       .then(data => this.imageInfoes = data)
       .then(data => this.initImages());
   }
 
-  //remove image event when click remove button
+  // Remove image event when click remove button
   removeImage(id: string) {
     let message: string;
     this.imagesService.removeImage(id)
@@ -74,11 +72,11 @@ export class ImagesComponent implements OnInit {
   }
 
   // show message after removing image
-  // success:Remove the app successfully
+  // success: Remove the app successfully
   // error: Remove the app error
   private alertMessage: string; // alert dialog message after removing image
   private messageState: boolean; // whether need to show the message
-  private isError: boolean;//is message correctly
+  private isError: boolean; // is message correctly
   showMessage(msg: any) {
     let msgType = typeof msg;
     let message: string;
@@ -101,7 +99,7 @@ export class ImagesComponent implements OnInit {
 
   //click image icon show image info
   private showInfoWindow: boolean; //whether need to show imageinfo popup window
-  private detailApp: ImageInfo;//the app need to show detail
+  private detailApp: ImageInfo; // the app need to show detail
   openDetailInfo(app: ImageInfo) {
     // console.log(app.Id);
     this.showInfoWindow = true;

@@ -39,15 +39,19 @@ export class ContainersStoppedComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasStoppedService = (this.containers.length !== 0);
-        console.log("Stopped containers");
+        // console.log("Stopped containers");
       });
   }
 
   restartContainer(id: string) {
     this.containerService.restartContainer(id)
       .then(data => this.getStoppedContainers())
-      .then(() => this.showNot())
-      .then(() => this.reloadEvent.emit(true));
+      .then(() => {
+        this.showNot();
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 600);
+      });
   }
 
 }

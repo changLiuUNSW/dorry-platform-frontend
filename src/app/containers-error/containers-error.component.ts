@@ -45,15 +45,19 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         this.hasErrorService = (this.containers.length !== 0);
-        console.log("Error containers");
+        // console.log("Error containers");
       });
   }
 
   removeContainer(id: string) {
     this.containerService.removeContainer(id)
       .then(data => this.getErrorContainers())
-      .then(() => this.showNot())
-      .then(() => this.reloadEvent.emit(true));
+      .then(() => {
+        this.showNot();
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 600);
+      });
   }
 
   removeAll() {
@@ -64,8 +68,12 @@ export class ContainersErrorComponent implements OnInit {
           this.removeContainer(container["Id"]);
         }
       })
-      .then(() => this.showNot())
-      .then(() => this.reloadEvent.emit(true));
+      .then(() => {
+        this.showNot();
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 600);
+      });
   }
 
   displayAlert(id: string) {
