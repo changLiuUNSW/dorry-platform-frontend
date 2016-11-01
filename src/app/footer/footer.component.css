@@ -1,4 +1,11 @@
 p {
   color: #9c9c9c;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+span {
+  color: #9c9c9c;
+  font-weight: bold;
   font-size: 14px;
 }

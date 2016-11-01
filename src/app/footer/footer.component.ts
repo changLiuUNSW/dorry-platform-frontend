@@ -9,9 +9,9 @@ import { Constant } from '../constant';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  private footer: string = "";
   private versionInfo;
-  private dorrywebVersion: string = Constant.BUILDVERSION;
+  private apiVersion = "";
+  private uiVersion: string = Constant.BUILDVERSION;
 
   constructor(private appService: AppService) { }
 
@@ -22,6 +22,6 @@ export class FooterComponent implements OnInit {
   getVersionInfo() {
     this.appService.getVersion()
       .then(data => this.versionInfo = data)
-      .then(() => this.footer = "Docker API Version: " + this.versionInfo.ApiVersion + " UI Version: " + this.dorrywebVersion);
+      .then(() => this.apiVersion = this.versionInfo.ApiVersion);
   }
 }
