@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Response } from '@angular/http';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
@@ -17,6 +18,7 @@ export class ContainersRunningComponent implements OnInit {
 
   notification: string;
   notState: boolean;
+  res: Response;
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
@@ -50,7 +52,7 @@ export class ContainersRunningComponent implements OnInit {
   stopContainer(id: string) {
     this.containerService.stopContainer(id)
       .then(data => this.getRunningContainers())
-      .then(() => {
+      .then(data => {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);

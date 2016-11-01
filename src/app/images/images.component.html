@@ -48,9 +48,12 @@
         <div class="detail-info-right">
           <ul>
             <div>{{detailApp.createDate}}</div>
-            <div>{{detailApp.Id}}</div>
+            <div>{{detailApp.Id.split(":")[1].slice(0, 12)}}</div>
             <div>{{detailApp.RepoTags[0]}}</div>
-            <div>{{detailApp.Size}}</div>
+            <div>
+              {{(detailApp.Size / 1000000).toFixed(3)}}
+              MB
+            </div>
           </ul>
         </div>
       </div>

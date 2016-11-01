@@ -10,9 +10,9 @@ import { Constant } from '../constant';
 export class ContainerService {
   private address = Constant.DAEMONADDR;
 
-  private paramRunning = '/containers/json?all=0';
+  private paramRunning = '/containers/json?filters={"status":["running"]}';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
-  private paramError = '/containers/json?filters={"status":["exited","dead","restarting"]}';
+  private paramError = '/containers/json?filters={"status":["exited","dead","restarting","created"]}';
   private paramAll = '/containers/json?all=1';
   private toBeRemoved = '/containers/{id}?v=1?force=1';
   private toBeStopped = '/containers/{id}/stop?t=5';
