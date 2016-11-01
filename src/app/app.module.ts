@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -43,7 +44,8 @@ import { routing } from './app.routing';
     ImagesService,
     ContainerService,
     AppService,
-    MarketService
+    MarketService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
