@@ -52,7 +52,7 @@ export class ContainersErrorComponent implements OnInit {
   removeContainer(id: string) {
     this.containerService.removeContainer(id)
       .then(data => this.getErrorContainers())
-      .then(() => {
+      .then(data => {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);
@@ -68,7 +68,7 @@ export class ContainersErrorComponent implements OnInit {
           this.removeContainer(container["Id"]);
         }
       })
-      .then(() => {
+      .then(data => {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);
