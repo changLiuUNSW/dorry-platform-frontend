@@ -38,8 +38,12 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .then(data => this.containers = data)
       .then(data => {
-        this.hasRunningService = (this.containers.length !== 0);
-        // console.log("Running containers");
+        if (data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
+          this.hasRunningService = ((this.containers.length - 1) !== 0);
+        else
+          this.hasRunningService = (this.containers.length !== 0);
+        // console.log('hasRunningService: ' + this.hasRunningService + '\n'
+        //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]].Names[0]);
       });
   }
 
@@ -50,7 +54,7 @@ export class ContainersRunningComponent implements OnInit {
         this.showNot();
         setTimeout(function() {
           this.reloadEvent.emit(true);
-        }.bind(this), 600);
+        }.bind(this), 300);
       });
   }
 
