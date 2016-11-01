@@ -2,6 +2,8 @@ import { Injectable, Injector } from '@angular/core';
 import { Headers, Http, Response, Request, RequestMethod, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
+import { MAGIC_BOXES } from './MagicBox';
+
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -73,12 +75,9 @@ export class ImagesService {
   createContainer(name: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let body = {
-      "Tty": true,
-      "Image": String(name),
-      "Cmd": ["/bin/sh"]
-    };
-    return this.http.post((this.address + this.create), body, options)
+    console.log(name);
+    console.log(MAGIC_BOXES[name]);
+    return this.http.post((this.address + this.create), MAGIC_BOXES[name], options)
       .map(this.extractData)
       .catch(this.handleError);
   }
