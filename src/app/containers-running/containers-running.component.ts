@@ -18,6 +18,7 @@ export class ContainersRunningComponent implements OnInit {
 
   notification: string;
   notState: boolean;
+  isError: boolean;
   res: Response;
 
   @Output() reloadEvent = new EventEmitter<boolean>();
@@ -28,13 +29,15 @@ export class ContainersRunningComponent implements OnInit {
     this.getRunningContainers();
   }
 
-  showNot() {
+  showNot(msg: string) {
     this.notState = true;
-    this.notification = "Service stopped";
+    this.notification = msg;
     setTimeout(function() {
       this.notState = false;
+      this.isError = false;
     }.bind(this), 3000);
   }
+
 
   getRunningContainers() {
     this.containerService.getRunningContainers()
@@ -51,13 +54,34 @@ export class ContainersRunningComponent implements OnInit {
 
   stopContainer(id: string) {
     this.containerService.stopContainer(id)
-      .then(data => this.getRunningContainers())
+      .then(data => this.getRunningContainers(),
+      (err: any) => this.errMsg(err.status))
       .then(data => {
-        this.showNot();
+        if (!this.isError) {
+          this.showNot("Service stopped");
+        }
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
       });
+  }
+
+  //status code
+  //204: success
+  //304: container already stopped
+  //404: no such container
+  //500: server error
+  private errMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 404) {
+      this.showNot("No such container");
+    }
+    else if (statusCode == 304) {
+      this.showNot("Container already stopped");
+    }
+    else if (statusCode == 500) {
+      this.showNot("Server error");
+    }
   }
 
 }

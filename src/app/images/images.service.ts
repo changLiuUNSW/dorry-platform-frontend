@@ -64,6 +64,7 @@ export class ImagesService {
   //500 - server error
   getRemoveImageResMsg(res: Response) {
     if (res.status) {
+      console.log(res.status);
       return "Remove the app successfully";
     }
     else {
@@ -101,7 +102,7 @@ export class ImagesService {
     // We'd also dig deeper into the error to get a better message
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
+    console.error(">>>>>>>>>>" + errMsg + "<<<<<<<<<<<"); // log to console instead
     return Promise.reject(errMsg);
   }
 }

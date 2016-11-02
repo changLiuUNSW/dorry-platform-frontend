@@ -1,5 +1,7 @@
 <!-- Notification -->
-<div *ngIf="notState" class="notification-success" role="alert">{{ notification }}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{ notification }}</div>
+
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{ notification }}</div>
 
 <div *ngIf="hasErrorService" class="service-list-container">
   <div class="error-service-header">

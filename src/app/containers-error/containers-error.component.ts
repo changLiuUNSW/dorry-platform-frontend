@@ -21,6 +21,7 @@ export class ContainersErrorComponent implements OnInit {
 
   notification: string;
   notState: boolean;
+  isError: boolean;
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
@@ -32,11 +33,12 @@ export class ContainersErrorComponent implements OnInit {
     this.showAlertAll = false;
   }
 
-  showNot() {
+  showNot(msg: string) {
     this.notState = true;
-    this.notification = "Service removed";
+    this.notification = msg;
     setTimeout(function() {
       this.notState = false;
+      this.isError = false;
     }.bind(this), 3000);
   }
 
@@ -51,13 +53,34 @@ export class ContainersErrorComponent implements OnInit {
 
   removeContainer(id: string) {
     this.containerService.removeContainer(id)
-      .then(data => this.getErrorContainers())
+      .then(data => this.getErrorContainers(),
+      (err: any) => this.errMsg(err.status))
       .then(data => {
-        this.showNot();
+        if (!this.isError) {
+          this.showNot("Service removed");
+        }
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
       });
+  }
+
+  //status code
+  //204: success
+  //400: bad parameter
+  //409: conflict
+  //500: server error
+  private errMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 400) {
+      this.showNot("Bad parameter");
+    }
+    else if (statusCode == 409) {
+      this.showNot("Conflict");
+    }
+    else if (statusCode == 500) {
+      this.showNot("Server error");
+    }
   }
 
   removeAll() {
@@ -69,7 +92,7 @@ export class ContainersErrorComponent implements OnInit {
         }
       })
       .then(data => {
-        this.showNot();
+        this.showNot("Service removed");
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);

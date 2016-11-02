@@ -123,7 +123,18 @@ export class ContainerService {
         method: RequestMethod.Post,
         url: this.address + this.toBeRestarted.replace("{id}", id)
       }))
-      .toPromise();
+      .toPromise()
+      .then(this.getRestartStatus);
+  }
+
+  getRestartStatus(res: Response) {
+    if (res.status) {
+      console.log(res.status);
+      return "Restatus Container successfully";
+    }
+    else {
+      return res.json();
+    }
   }
 
   // Function extractData() extracts the data from the http response, which is
@@ -132,6 +143,7 @@ export class ContainerService {
   // param      {Response} res
   // returns    None
   private extractData(res: Response) {
+    console.log("Response Status:" + res.status);
     // console.log(res.toString());
     let body = res.json();
     // console.log(res.json());
