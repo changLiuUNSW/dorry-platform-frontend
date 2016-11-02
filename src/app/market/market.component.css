@@ -1,0 +1,70 @@
+.item-list {
+  margin: 34px 51px;
+}
+
+.item-container {
+  display: inline-block;
+  width: 255px;
+  height: 141px;
+  background: rgba(0, 0, 0, 0.11);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.38);
+  margin: 16px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.item-container:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
+}
+
+.item-img {
+  float: left;
+  padding: 35px 0 0 25px;
+}
+
+.item-misc {
+  float: left;
+  padding: 35px 0 0 9px;
+}
+
+.item-name {
+  padding: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #e9e9e9;
+}
+
+.item-name:hover {
+  color: #ffffff
+}
+
+.item-size {
+  padding: 0 0 11px 0;
+  font-size: 10px;
+  color: #e7e7e7;
+}
+
+.item-install {
+  font-size: 14px;
+  color: #7e5c59;
+  background: rgba(255, 255, 255, 0.41);
+  height: 21px;
+  width: 70px;
+  border-radius: 2px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.item-install:hover {
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.38);
+}
+
+.item-install:active {
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.38);
+}
+
+.item-sash {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
