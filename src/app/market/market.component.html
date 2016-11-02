@@ -5,7 +5,7 @@
     </span>
 
     <span class="item-misc cursor-default">
-      <div class="item-name cursor-pointer">
+      <div class="item-name cursor-pointer" (click)="toggleDetail()" (click)="getItem(item)">
         {{ item.Name }}
       </div>
       <div class="item-size">
@@ -17,6 +17,23 @@
     </span>
     <div *ngIf="item.Installed" class="item-sash">
       <img src="assets/sash.svg"/>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showDetail" class="modal-base"></div>
+<div *ngIf="showDetail" class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="toggleDetail()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title">
+        <strong>Details</strong>
+      </h4>
+    </div>
+    <div class="modal-body">
+      xxxxxx
     </div>
   </div>
 </div>

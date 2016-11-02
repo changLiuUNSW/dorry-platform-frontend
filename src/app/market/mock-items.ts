@@ -1,6 +1,6 @@
-export class MockItem { }
+import { Item } from './market';
 
-export const MOCK_ITEMS: MockItem[] = [
+export const MOCK_ITEMS: Item[] = [
   {
     Name: 'LDAP',
     Size: '25 MB',
