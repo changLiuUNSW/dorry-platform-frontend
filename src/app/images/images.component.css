@@ -18,7 +18,10 @@
 .app-details:hover {
   filter: grayscale(30%);
 }
+
+
 /*app part : app container;app img ;app name*/
+
 .app-container {
   text-align: center;
   padding: 35px 67px 0;
@@ -40,6 +43,8 @@
 .app-name:hover {
   text-decoration: underline;
 }
+
+
 /*.app-btn {
   color: rgba(0, 0, 0, 0.40);
   background: rgba(255, 255, 255, 0.21);
@@ -56,7 +61,10 @@
 .app-btn:hover {
   background: white;
 }*/
+
+
 /*-----------------------------------------*/
+
 .app-btn {
   cursor: pointer;
   font-size: 10px;
@@ -81,7 +89,10 @@
 .app-btn:active {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
+
+
 /*-----------------------------------------*/
+
 .app-img:hover .app-removebtn {
   visibility: visible;
 }
@@ -133,7 +144,10 @@
   border: 0;
   font-size: 20px;
 }
+
+
 /* popup box - image details info box part */
+
 .image-details {
   margin: auto;
   position: fixed;
@@ -216,7 +230,11 @@
   background: rgba(91, 91, 91, 1);
   border-radius: 50%;
 }
+
+
 /* alert dialog css style */
+
+
 /*.alert-dialog {
   background: rgba(66, 65, 65, 0.9);
   z-index: 50;
@@ -227,6 +245,7 @@
   -ms-filter: blur(27px);
   filter: blur(27px);
 }*/
+
 .alert-dialog {}
 
 .alert-content {
