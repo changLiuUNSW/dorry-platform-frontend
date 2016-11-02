@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
 import { Item, Repo } from './market';
 
+import { MockItem, MOCK_ITEMS } from './mock-item';
+
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
@@ -12,6 +14,7 @@ import { Item, Repo } from './market';
 })
 export class MarketComponent implements OnInit {
   repo: Repo;
+  items = MOCK_ITEMS;
 
   constructor(private marketService: MarketService) { }
 

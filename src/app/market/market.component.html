@@ -1,9 +1,22 @@
-<h1>
-  market works!
-</h1>
+<div class="item-list">
+  <div class="item-container" *ngFor="let item of items">
+    <span class="item-img">
+      <img class="" src={{item.Img}} style="height:71px; width:71px"/>
+    </span>
 
-<div class="repo-list" *ngIf="repo">
-  <div class="repo-container">
-    {{ repo }}
+    <span class="item-misc cursor-default">
+      <div class="item-name cursor-pointer">
+        {{ item.Name }}
+      </div>
+      <div class="item-size">
+        {{ item.Size }}
+      </div>
+      <div *ngIf="!item.Installed" class="item-install cursor-pointer">
+        Install
+      </div>
+    </span>
+    <div *ngIf="item.Installed" class="item-sash">
+      <img src="assets/sash.svg"/>
+    </div>
   </div>
 </div>
