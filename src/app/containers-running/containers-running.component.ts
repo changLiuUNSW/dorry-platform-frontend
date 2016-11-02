@@ -43,12 +43,12 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .then(data => this.containers = data)
       .then(data => {
-        if (data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
+        if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
           this.hasRunningService = ((this.containers.length - 1) !== 0);
         else
           this.hasRunningService = (this.containers.length !== 0);
         // console.log('hasRunningService: ' + this.hasRunningService + '\n'
-        //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]].Names[0]);
+        //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]]);
       });
   }
 

@@ -17,11 +17,16 @@
   color: #D0D0D0;
   font-weight: normal;
   font-size: 18px;
-  height: 22px;
+  height: 24px;
   line-height: 33px;
+  opacity: 0.7;
 }
 
 .service-header-right:hover {
+  opacity: 1;
+}
+
+.service-header-right:active {
   text-decoration: underline;
 }
 
