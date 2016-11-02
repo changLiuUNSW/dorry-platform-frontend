@@ -13,6 +13,7 @@ import { ContainerService } from '../containers/container.service';
 })
 export class ContainersErrorComponent implements OnInit {
   containers: Container[];
+  container: Container;
   hasErrorService: boolean;
 
   showAlert: boolean;
@@ -73,13 +74,13 @@ export class ContainersErrorComponent implements OnInit {
   private errMsg(statusCode: Number) {
     this.isError = true;
     if (statusCode == 400) {
-      this.showNot("Bad parameter");
+      this.showNot(" has Bad parameter");
     }
     else if (statusCode == 409) {
-      this.showNot("Conflict");
+      this.showNot(" has Conflict");
     }
     else if (statusCode == 500) {
-      this.showNot("Server error");
+      this.showNot(" has Server error");
     }
   }
 
@@ -92,7 +93,7 @@ export class ContainersErrorComponent implements OnInit {
         }
       })
       .then(data => {
-        this.showNot("Service removed");
+        this.showNot(" removed");
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
@@ -117,8 +118,9 @@ export class ContainersErrorComponent implements OnInit {
     this.showAlertAll = false;
   }
 
-  getContainerId(id: string) {
-    this.containerId = id;
+  getContainer(container: Container) {
+    console.log(container);
+    this.container = container;
   }
 
 }

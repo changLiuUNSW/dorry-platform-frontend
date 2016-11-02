@@ -1,7 +1,7 @@
 <!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">{{ notification }}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
 
-<div *ngIf="notState && isError" class="notification-failure" role="alert">{{ notification }}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
 
 <div *ngIf="hasErrorService" class="service-list-container">
   <div class="error-service-header">
@@ -37,7 +37,7 @@
           {{container.Ports[0].PublicPort}}
         </div>
         <!-- Remove Button -->
-        <div class="service-btn-remove service-btn" (click)="displayAlert()" (click)="getContainerId(container.Id)">
+        <div class="service-btn-remove service-btn" (click)="displayAlert()" (click)="getContainer(container)">
           Remove
         </div>
       </span>
@@ -56,7 +56,7 @@
     </span>
   </div>
   <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeContainer(containerId)" (click)="hideAlert()">Yes</button>
+    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeContainer(container.Id)" (click)="hideAlert()">Yes</button>
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>

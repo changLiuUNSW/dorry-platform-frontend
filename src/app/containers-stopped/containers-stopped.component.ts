@@ -13,6 +13,7 @@ import { ContainerService } from '../containers/container.service';
 })
 export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
+  container: Container;
   hasStoppedService: boolean;
 
   notification: string;
@@ -45,13 +46,15 @@ export class ContainersStoppedComponent implements OnInit {
       });
   }
 
-  restartContainer(id: string) {
+  restartContainer(container: Container) {
+    this.container = container;
+    let id = container.Id;
     this.containerService.restartContainer(id)
       .then(data => this.getStoppedContainers(),
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot("Service restarted");
+          this.showNot(" restarted");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
@@ -66,10 +69,10 @@ export class ContainersStoppedComponent implements OnInit {
   private errMsg(statusCode: Number) {
     this.isError = true;
     if (statusCode == 404) {
-      this.showNot("No such container");
+      this.showNot(" ,No such container");
     }
     else if (statusCode == 500) {
-      this.showNot("Server error");
+      this.showNot(" has Server error");
     }
   }
 

@@ -14,6 +14,7 @@ import { ContainerService } from '../containers/container.service';
 })
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
+  container: Container;
   hasRunningService: boolean;
 
   notification: string;
@@ -52,13 +53,16 @@ export class ContainersRunningComponent implements OnInit {
       });
   }
 
-  stopContainer(id: string) {
+  stopContainer(container: Container) {
+    this.container = container;
+    let id = container.Id;
+
     this.containerService.stopContainer(id)
       .then(data => this.getRunningContainers(),
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot("Service stopped");
+          this.showNot(" stopped");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
@@ -74,13 +78,13 @@ export class ContainersRunningComponent implements OnInit {
   private errMsg(statusCode: Number) {
     this.isError = true;
     if (statusCode == 404) {
-      this.showNot("No such container");
+      this.showNot(" ,No such container");
     }
     else if (statusCode == 304) {
-      this.showNot("Container already stopped");
+      this.showNot(" already stopped");
     }
     else if (statusCode == 500) {
-      this.showNot("Server error");
+      this.showNot(" has Server error");
     }
   }
 

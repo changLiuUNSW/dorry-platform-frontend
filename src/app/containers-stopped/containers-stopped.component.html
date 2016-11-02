@@ -1,7 +1,7 @@
 <!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">{{ notification }}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
 
-<div *ngIf="notState && isError" class="notification-failure" role="alert">{{ notification }}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
 
 <div *ngIf="hasStoppedService" class="service-header stopped-service-header">
   Stopped Service
@@ -31,7 +31,7 @@
           {{container.Ports[0].PublicPort}}
         </div>
         <!-- Restart Button -->
-        <div class="service-btn-restart service-btn" (click)="restartContainer(container.Id)">
+        <div class="service-btn-restart service-btn" (click)="restartContainer(container)">
           Restart
         </div>
       </span>
