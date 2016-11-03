@@ -58,7 +58,7 @@ export class ContainersErrorComponent implements OnInit {
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot("Service removed");
+          this.showNot(" removed");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
