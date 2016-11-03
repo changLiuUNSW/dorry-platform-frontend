@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, Request, RequestMethod, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Item, Repo } from './market';
+import { Item } from './market';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MarketService {
-  private address = 'https://DorryCloud:5000';
+  // private address = 'https://DorryCloud:5000';
+  private address = 'https://localhost:5000';
   private paramList = '/v2/_catalog';
 
   constructor(private http: Http) { }
 
-  listRepo(): Observable<Repo> {
-    console.log('...Service listRepo() is called...');
+  listItems(): Observable<any> {
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    let options = new RequestOptions({ headers: headers });
     return this.http
-      .get(this.address + this.paramList)
+      .get((this.address + this.paramList), options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -27,9 +29,9 @@ export class MarketService {
   // param      {Response} res
   // returns    None
   private extractData(res: Response) {
-    console.log(res.toString());
+    // console.log(res.toString());
     let body = res.json();
-    console.log(res.json());
+    // console.log(res.json());
     return body;
   }
 

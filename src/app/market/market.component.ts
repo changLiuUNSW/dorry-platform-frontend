@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
-import { Item, Repo } from './market';
+import { Item } from './market';
 
 import { MOCK_ITEMS } from './mock-items';
 
@@ -13,23 +13,26 @@ import { MOCK_ITEMS } from './mock-items';
   ]
 })
 export class MarketComponent implements OnInit {
-  repo: Repo;
+  items: Item[];
   item: Item;
-  items = MOCK_ITEMS;
+  mock_items = MOCK_ITEMS;
   showDetail: boolean;
 
   constructor(private marketService: MarketService) { }
 
   ngOnInit() {
-    this.listRepo();
+    this.listItems();
     this.showDetail = false;
   }
 
-  private listRepo() {
-    this.marketService.listRepo()
+  private listItems() {
+    this.marketService.listItems()
       .subscribe(data => {
-        this.repo = data;
-        console.log('...Function listReop() is called...' + '\n' + this.repo);
+        for (var key in data) {
+          // console.log(key);
+          // console.log(data[key]);
+          this.items = data[key];
+        }
       });
   }
 
