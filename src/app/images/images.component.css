@@ -1,112 +1,143 @@
-.applist-container {
-  padding-left: 35px;
-  padding-top: 35px;
-  padding-bottom: 71px;
-  position: absolute;
-  overflow: auto;
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+
+/*************************************************************************************/
+
 .app-list {
+  margin: 34px 51px;
+}
+
+.app-container {
   display: inline-block;
-  /*overflow: auto;*/
+  width: 255px;
+  height: 141px;
+  background: rgba(0, 0, 0, 0.11);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.38);
+  margin: 16px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.app-container:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
+}
+
+.app-trash {
+  height: 14px;
+  width: 12px;
+  float: right;
+  margin: 10px 10px 0 0;
+  opacity: 0.41;
+}
+
+.app-trash:hover {
+  opacity: 1.0;
+}
+
+.app-trash:active {
+  opacity: 1.0;
 }
 
 .app-img {
-  cursor: pointer;
+  float: left;
+  padding: 35px 0 0 25px;
 }
 
-.app-details:hover {
-  filter: grayscale(30%);
+.app-icon {
+  height: 71px;
+  width: 71px;
+  border-radius: 16px;
 }
 
+.app-icon:hover {
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
 
-/*app part : app container;app img ;app name*/
-
-.app-container {
-  text-align: center;
-  padding: 35px 67px 0;
-  position: relative;
+.app-misc {
+  float: left;
+  padding: 35px 0 0 9px;
 }
 
 .app-name {
-  width: 90px;
-  color: #ffffff;
+  width: 117px;
   font-size: 14px;
   font-weight: bold;
-  padding: 6px 0;
+  color: #e9e9e9;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .app-name:hover {
-  text-decoration: underline;
+  color: #ffffff
 }
 
-
-/*.app-btn {
-  color: rgba(0, 0, 0, 0.40);
-  background: rgba(255, 255, 255, 0.21);
-  font-size: 9px;
-  font-weight: bold;
-  border-radius: 5px;
-  width: 58px;
-  margin: auto;
-  text-align: center;
-  line-height: 23px;
-  cursor: pointer;
+.app-size {
+  padding: 0 0 11px 0;
+  font-size: 10px;
+  color: #e7e7e7;
 }
-
-.app-btn:hover {
-  background: white;
-}*/
-
-
-/*-----------------------------------------*/
 
 .app-btn {
-  cursor: pointer;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 4px;
-  line-height: 15px;
-  width: 58px;
-  margin: auto;
+  margin: 30px 0 0 0;
+  font-size: 14px;
+  color: #7e5c59;
+  background: rgba(255, 255, 255, 0.41);
+  height: 21px;
+  width: 70px;
+  border-radius: 2px;
+  line-height: 21px;
   text-align: center;
-  border-color: #d0d0d0;
-  border-width: 1px;
-  border-style: solid;
-  color: #f0f0f0;
 }
 
 .app-btn:hover {
-  background: rgba(255, 255, 255, 0.59);
-  opacity: 0.59;
-  color: #000000;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background: #679d2c;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .app-btn:active {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background: #4b7819;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 
-/*-----------------------------------------*/
-
-.app-img:hover .app-removebtn {
-  visibility: visible;
-}
-
-.app-removebtn {
-  visibility: hidden;
-  z-index: 3;
-  position: relative;
-  height: 0;
-  left: 43px;
-  top: -8px;
-  cursor: pointer;
-}
+/**************************************************************/
 
 .notification-success {
   opacity: 0.8;
@@ -235,19 +266,15 @@
 
 /* alert dialog css style */
 
-
-/*.alert-dialog {
+.alert-dialog {
   background: rgba(66, 65, 65, 0.9);
   z-index: 50;
-   blur filters
-  -webkit-filter: blur(27px);
+  /*-webkit-filter: blur(27px);
   -moz-filter: blur(27px);
   -o-filter: blur(27px);
   -ms-filter: blur(27px);
-  filter: blur(27px);
-}*/
-
-.alert-dialog {}
+  filter: blur(27px);*/
+}
 
 .alert-content {
   background: rgba(66, 65, 65, 0);

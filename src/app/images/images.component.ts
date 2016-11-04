@@ -41,7 +41,10 @@ export class ImagesComponent implements OnInit {
   // Get json object array from Docker Daemon
   getImageInfoes() {
     this.imagesService.getImageInfoes()
-      .then(data => this.imageInfoes = data)
+      .then(data => {
+        this.imageInfoes = data;
+        // console.log(this.imageInfoes);
+      })
       .then(data => this.initImages());
   }
 
@@ -58,7 +61,8 @@ export class ImagesComponent implements OnInit {
   createContainer(image: ImageInfo) {
     this.imagesService.inspectImage(image.Id)
       .then(data => {
-        this.imagesService.createContainer(data[Object.keys(data)[1]])
+        console.log(data[Object.keys(data)[0]]);
+        this.imagesService.createContainer(data[Object.keys(data)[0]])
           .subscribe(data => {
             this.startContainer(data[Object.keys(data)[0]])
           });

@@ -23,6 +23,7 @@ export class ContainersErrorComponent implements OnInit {
   notification: string;
   notState: boolean;
   isError: boolean;
+  notAll: boolean;
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
@@ -43,6 +44,14 @@ export class ContainersErrorComponent implements OnInit {
     }.bind(this), 3000);
   }
 
+  showNotAll(msg: string) {
+    this.notAll = true;
+    this.notification = msg;
+    setTimeout(function() {
+      this.notAll = false;
+    }.bind(this), 3000);
+  }
+
   getErrorContainers() {
     this.containerService.getErrorContainers()
       .then(data => this.containers = data)
@@ -57,12 +66,13 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => this.getErrorContainers(),
       (err: any) => this.errMsg(err.status))
       .then(data => {
-        if (!this.isError) {
-          this.showNot("Service removed");
-        }
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" removed");
       });
   }
 
@@ -89,15 +99,19 @@ export class ContainersErrorComponent implements OnInit {
       .then(data => this.containers = data)
       .then(data => {
         for (let container of this.containers) {
-          this.removeContainer(container["Id"]);
+          this.containerService.removeContainer(container["Id"])
+            .then(data => this.getErrorContainers(),
+            (err: any) => this.errMsg(err.status))
         }
       })
       .then(data => {
-        this.showNot(" removed");
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
-      });
+      })
+      .then(data =>
+        this.showNotAll("All containers are removed")
+      );
   }
 
   displayAlert(id: string) {
