@@ -87,12 +87,19 @@
   text-align: center;
   line-height: 0;
   padding: 0 4px;
+  border-radius: 2px;
 }
 
 .btn-alert:hover {
-  border-style: solid;
-  border-width: 2px;
-  border-color: #979797;
+  /*border-style: solid;
+  border-width: 2px;*/
+  background: rgba(249, 176, 56, 1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn-alert:active {
+  background: rgba(231, 145, 2, 1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn-yes {
