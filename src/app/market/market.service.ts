@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response, Request, RequestMethod, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Item } from './market';
+import { Constant } from '../constant';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class MarketService {
   // private address = 'https://DorryCloud:5000';
-  private address = 'https://localhost:5000';
+  private address = Constant.REGISTRYADDR;
   private paramList = '/v2/_catalog';
 
   constructor(private http: Http) { }
