@@ -73,12 +73,12 @@ export class ImagesService {
   }
 
   // Create a container
-  createContainer(name: string) {
+  createContainer(id: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(name);
-    console.log(MAGIC_BOXES[name]);
-    return this.http.post((this.address + this.create), MAGIC_BOXES[name], options)
+    console.log(id);
+    console.log(MAGIC_BOXES[id]);
+    return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
       .map(this.extractData)
       .catch(this.handleError);
   }

@@ -1,26 +1,29 @@
 <div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
 <div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
 
-<div class="applist-container">
-  <div class="app-list" *ngFor="let app of imageInfoes">
-    <div class="app-container">
-      <div class="app-img">
-        <div class="app-removebtn" (click)="getImageId(app.Id)" (click)="displayAlert()">
-          <img class="app-img" src="assets/icons/close.png"/>
-        </div>
-        <img class="app-details" (click)="openDetailInfo(app)" src={{app.url}} style="height:90px;width:90px;"/>
+<div class="app-list">
+  <div class="app-container" *ngFor="let app of imageInfoes">
+    <span>
+      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="getImageId(app.Id)" (click)="displayAlert()"/>
+    </span>
+
+    <span class="app-img">
+      <img class="app-icon" src={{app.url}}/>
+    </span>
+
+    <span class="app-misc cursor-default">
+      <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
+        {{ app.RepoTags[0] }}
       </div>
-      <!-- name of the app -->
-      <div class="app-name" (click)="openDetailInfo(app)">
-        {{app.RepoTags[0]}}
-      </div>
-      <!-- start app button part -->
-      <div class="app-btn" (click)="createContainer(app)" (click)="showMessage('Container created')">
+      <div class="app-btn cursor-pointer" (click)="createContainer(app)" (click)="showMessage('Container created')">
         Start New
       </div>
-    </div>
+    </span>
   </div>
 </div>
+
+<!-- Just a spinner -->
+<div class="spinner"></div>
 
 <!-- image detail info -->
 <div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>

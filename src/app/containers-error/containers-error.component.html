@@ -3,6 +3,9 @@
 
 <div *ngIf="notState && isError" class="notification-failure" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
 
+<!-- Remove All -->
+<div *ngIf="notAll" class="notification-success" role="alert">{{ notification }}</div>
+
 <div *ngIf="hasErrorService" class="service-list-container">
   <div class="error-service-header">
     <span class="service-header-left cursor-default">Oops! There Is Something Wrong</span>

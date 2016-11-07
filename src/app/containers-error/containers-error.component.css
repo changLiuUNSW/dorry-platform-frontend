@@ -51,12 +51,11 @@
 .alert-dialog {
   background: rgba(66, 65, 65, 0.9);
   z-index: 50;
-  /* blur filters */
-  -webkit-filter: blur(27px);
+  /*-webkit-filter: blur(27px);
   -moz-filter: blur(27px);
   -o-filter: blur(27px);
   -ms-filter: blur(27px);
-  filter: blur(27px);
+  filter: blur(27px);*/
 }
 
 .alert-content {
