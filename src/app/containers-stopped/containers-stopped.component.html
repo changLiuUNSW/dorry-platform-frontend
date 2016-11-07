@@ -19,23 +19,40 @@
       <span class="service-misc">
         <!-- Service name -->
         <div class="service-name" *ngIf="container.Names[0]">
-          {{container.Names[0] | slice:1}}
+          {{ container.Names[0] | slice:1 }}
         </div>
         <!-- Service uptime -->
         <div class="service-info" *ngIf="container.Status">
-          {{container.Status}}
+          {{ container.Status }}
         </div>
         <!-- Service port -->
         <div class="service-info" *ngIf="container.Ports[0] != undefined">
           Port:
-          {{container.Ports[0].PublicPort}}
+          {{ container.Ports[0].PublicPort }}
         </div>
         <!-- Restart Button -->
-        <div class="service-btn-restart service-btn" (click)="restartContainer(container)">
+        <div class="service-btn-restart service-btn" (click)="displayAlert()" (click)="getContainer(container)">
           Restart
         </div>
       </span>
     </div>
 
+  </div>
+</div>
+
+<!-- The alert dialog for restart one service -->
+<div class="alert-dialog-style alert-global" *ngIf="showAlert"></div>
+<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
+<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
+  <div class="alert-body cursor-default modal-body">
+    <span>
+      <img src="assets/alert.svg"/>
+      <span class="alert-message cursor-default">Do you want to restart service
+        {{ container.Names[0] | slice:1 }}?</span>
+    </span>
+  </div>
+  <div class="alert-footer modal-footer">
+    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="restartContainer(container)" (click)="hideAlert()">Yes</button>
+    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>
