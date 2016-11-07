@@ -1,7 +1,11 @@
 <!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">
+  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
+</div>
 
-<div *ngIf="notState && isError" class="notification-failure" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">
+  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
+</div>
 
 <div *ngIf="hasStoppedService" class="service-header stopped-service-header">
   Stopped Service
@@ -45,10 +49,10 @@
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
   <div class="alert-body cursor-default modal-body">
-    <span>
-      <img src="assets/alert.svg"/>
-      <span class="alert-message cursor-default">Do you want to restart service
-        {{ container.Names[0] | slice:1 }}?</span>
+    <span><img class="alert-excl" src="assets/alert.svg"/></span>
+    <span class="alert-message cursor-default">
+      Do you want to restart service
+      <span class="alert-name">{{ container.Names[0] | slice:1 }}</span>?
     </span>
   </div>
   <div class="alert-footer modal-footer">

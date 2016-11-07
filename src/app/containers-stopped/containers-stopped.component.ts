@@ -74,7 +74,6 @@ export class ContainersStoppedComponent implements OnInit {
   }
 
   getContainer(container: Container) {
-    console.log(container);
     this.container = container;
   }
 
