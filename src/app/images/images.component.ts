@@ -51,7 +51,7 @@ export class ImagesComponent implements OnInit {
   removeImage(id: string) {
     let message: string;
     this.imagesService.removeImage(id)
-      .then(msg => this.showMessage(msg))
+      .then(msg => this.showMessage())
       .then(msg => this.getImageInfoes());
     // console.log("remove Image : " + id);
   }
@@ -80,11 +80,9 @@ export class ImagesComponent implements OnInit {
   private alertMessage: string; // alert dialog message after removing image
   private messageState: boolean; // whether need to show the message
   private isError: boolean; // is message correctly
-  showMessage(msg: any) {
-    let msgType = typeof msg;
+  showMessage() {
     let message: string;
     if (msgType == "string") {
-      message = msg;
       this.isError = false;
     }
     else {
