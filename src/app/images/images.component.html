@@ -1,5 +1,5 @@
-<div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
-<div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
 
 <div class="app-list">
   <div class="app-container" *ngFor="let app of imageInfoes">
@@ -15,13 +15,14 @@
       <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
         {{ app.RepoTags[0] }}
       </div>
-      <div class="app-btn cursor-pointer" (click)="createContainer(app)" (click)="showMessage('Container created')">
+      <div class="app-btn cursor-pointer" (click)="createContainer(app)" (click)="showMessage()">
         Start New
       </div>
     </span>
 
     <!-- Just a spinner -->
-    <div class="sk-circle">
+    <div *ngIf="image && app.Id==image.Id" class="sk-base"></div>
+    <div *ngIf="image && app.Id==image.Id" class="sk-circle">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
       <div class="sk-circle3 sk-child"></div>
@@ -35,6 +36,7 @@
       <div class="sk-circle11 sk-child"></div>
       <div class="sk-circle12 sk-child"></div>
     </div>
+
   </div>
 </div>
 
@@ -88,7 +90,7 @@
     </span>
   </div>
   <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image.Id)" (click)="hideAlert()">Yes</button>
+    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>

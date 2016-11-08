@@ -12,12 +12,19 @@
   border-radius: 4px;
   position: relative;
 }
-/*.app-container:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
-}*/
+
 .app-container:hover {
-  -webkit-filter: brightness(50%);
-  filter: brightness(50%);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
+}
+
+.sk-base {
+  z-index: 999;
+  width: 255px;
+  height: 141px;
+  border-radius: 4px;
+  /*background: rgba(0, 0, 0, 0.49);*/
+  -webkit-filter: brightness(49%);
+  filter: brightness(49%);
   background: linear-gradient(rgba(0, 0, 0, 0.49), rgba(0, 0, 0, 0.49));
 }
 

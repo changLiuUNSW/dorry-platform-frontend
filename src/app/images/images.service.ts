@@ -40,10 +40,10 @@ export class ImagesService {
     return this.http.delete(this.address + this.remove.replace("{id}", id))
       .toPromise()
       .then(
-      this.getRemoveImageResMsg,
+      //this.getRemoveImageResMsg,
       this.extractData
       )
-      .catch(this.handleError);
+    //.catch(this.handleError);
   }
 
   //inspect image by image id
@@ -62,15 +62,15 @@ export class ImagesService {
   //404 - no such image
   //409 - conflict
   //500 - server error
-  getRemoveImageResMsg(res: Response) {
-    if (res.status) {
-      console.log(res.status);
-      return "Remove the app successfully";
-    }
-    else {
-      return res.json();
-    }
-  }
+  //   getRemoveImageResMsg(res: Response) {
+  //     if (res.status) {
+  //       console.log(res.status);
+  //       return "Remove the app successfully";
+  //     }
+  //     else {
+  //       return res.json();
+  //     }
+  // }
 
   // Create a container
   createContainer(id: string) {
