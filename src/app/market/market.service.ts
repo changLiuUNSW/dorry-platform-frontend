@@ -10,13 +10,14 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class MarketService {
   // private address = 'https://DorryCloud:5000';
-  private address = Constant.REGISTRYADDR;
+  private address = Constant.REGISTRYADDR
   private paramList = '/v2/_catalog';
 
   constructor(private http: Http) { }
 
   listItems(): Observable<any> {
-    let headers = new Headers({ 'Access-Control-Allow-Origin': '*' });
+    let headers = new Headers({ 'Access-Control-Allow-Credentials': 'true' });
+    headers.append('Authorization', ' Basic ZG9ycnk6YWJjMTIzXw==');
     let options = new RequestOptions({ headers: headers });
     return this.http
       .get((this.address + this.paramList), options)
