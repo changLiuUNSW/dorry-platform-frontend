@@ -82,14 +82,6 @@ export class ImagesComponent implements OnInit {
   private isError: boolean; // is message correctly
   showMessage() {
     let message: string;
-    if (msgType == "string") {
-      this.isError = false;
-    }
-    else {
-      message = "Failure";
-      this.isError = true;
-    }
-
     this.messageState = true;
     this.alertMessage = message;
     setTimeout(function() {

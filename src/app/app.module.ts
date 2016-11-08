@@ -15,6 +15,7 @@ import { ContainersRunningComponent } from './containers-running/containers-runn
 import { MarketComponent } from './market/market.component';
 import { MastheadComponent } from './masthead/masthead.component';
 import { FooterComponent } from './footer/footer.component';
+import { JQueryTestComponent } from './j-query-test/j-query-test.component';
 
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
@@ -33,7 +34,8 @@ import { routing } from './app.routing';
     ContainersRunningComponent,
     MarketComponent,
     MastheadComponent,
-    FooterComponent
+    FooterComponent,
+    JQueryTestComponent
   ],
   imports: [
     BrowserModule,
