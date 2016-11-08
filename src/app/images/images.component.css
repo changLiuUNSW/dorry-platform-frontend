@@ -12,14 +12,12 @@
   border-radius: 4px;
   position: relative;
 }
-
-
 /*.app-container:hover {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
 }*/
-
 .app-container:hover {
   filter: brightness(50%);
+  -webkit-filter: brightness(50%);
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
@@ -70,17 +68,17 @@
 }
 
 .app-name:hover {
-  color: #ffffff
+  color: #ffffff;
 }
 
 .app-size {
-  padding: 0 0 11px 0;
+  padding: 0 0 11px;
   font-size: 10px;
   color: #e7e7e7;
 }
 
 .app-btn {
-  margin: 30px 0 0 0;
+  margin: 30px 0 0;
   font-size: 14px;
   color: #7e5c59;
   background: rgba(255, 255, 255, 0.41);
@@ -102,10 +100,7 @@
   background: #4b7819;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
-
-
 /*****************************************************************************/
-
 .notification-success {
   opacity: 0.8;
   color: #ffffff;
@@ -143,10 +138,7 @@
   border: 0;
   font-size: 20px;
 }
-
-
 /* popup box - image details info box part */
-
 .image-details {
   margin: auto;
   position: fixed;
@@ -233,10 +225,7 @@
 .image-details {
   z-index: 50;
 }
-
-
 /*****************************************************************************/
-
 .sk-base {
   background: rgba(0, 0, 0, 0.7);
   height: 100px;
@@ -395,23 +384,27 @@
   -webkit-animation-delay: -0.1s;
   animation-delay: -0.1s;
 }
-
 @-webkit-keyframes sk-circleBounceDelay {
-  0%, 80%, 100% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
-
 @keyframes sk-circleBounceDelay {
-  0%, 80%, 100% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
