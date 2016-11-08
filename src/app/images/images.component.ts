@@ -11,12 +11,11 @@ import { trigger, state, style, transition, animate } from '@angular/core';
   styleUrls: ['./images.component.css', '../app.component.css'],
 })
 export class ImagesComponent implements OnInit {
-
+  image: ImageInfo;
   imageList: ImageUrl[];
   imageInfoes: ImageInfo[];
 
   showAlert: boolean;
-  imageId: string;
 
   constructor(private imagesService: ImagesService) { }
 
@@ -133,7 +132,7 @@ export class ImagesComponent implements OnInit {
     this.showAlert = false;
   }
 
-  getImageId(id: string) {
-    this.imageId = id;
+  getImage(image: ImageInfo) {
+    this.image = image;
   }
 }

@@ -17,6 +17,8 @@ export class ContainersRunningComponent implements OnInit {
   container: Container;
   hasRunningService: boolean;
 
+  showAlert: boolean;
+
   notification: string;
   notState: boolean;
   isError: boolean;
@@ -28,6 +30,7 @@ export class ContainersRunningComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRunningContainers();
+    this.showAlert = false;
   }
 
   showNot(msg: string) {
@@ -68,6 +71,18 @@ export class ContainersRunningComponent implements OnInit {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
       });
+  }
+
+  displayAlert(id: string) {
+    this.showAlert = true;
+  }
+
+  hideAlert(id: string) {
+    this.showAlert = false;
+  }
+
+  getContainer(container: Container) {
+    this.container = container;
   }
 
   //status code

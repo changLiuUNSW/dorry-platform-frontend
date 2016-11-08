@@ -1,7 +1,11 @@
 <!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">
+  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
+</div>
 
-<div *ngIf="notState && isError" class="notification-failure" role="alert">{{container.Names[0] | slice:1}}{{ notification }}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">
+  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
+</div>
 
 <!-- Remove All -->
 <div *ngIf="notAll" class="notification-success" role="alert">{{ notification }}</div>
@@ -28,16 +32,16 @@
       <span class="service-misc">
         <!-- Service name -->
         <div class="service-name" *ngIf="container.Names[0]">
-          {{container.Names[0] | slice:1}}
+          {{ container.Names[0] | slice:1 }}
         </div>
         <!-- Service uptime -->
         <div class="service-info" *ngIf="container.Status">
-          {{container.Status}}
+          {{ container.Status }}
         </div>
         <!-- Service port -->
         <div class="service-info" *ngIf="container.Ports[0] != undefined">
           Port:
-          {{container.Ports[0].PublicPort}}
+          {{ container.Ports[0].PublicPort }}
         </div>
         <!-- Remove Button -->
         <div class="service-btn-remove service-btn" (click)="displayAlert()" (click)="getContainer(container)">
@@ -49,13 +53,14 @@
 </div>
 
 <!-- The alert dialog for remove one service -->
-<div class="alert-global alert-dialog-style" *ngIf="showAlert"></div>
+<div class="alert-dialog-style alert-global" *ngIf="showAlert"></div>
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
   <div class="alert-body cursor-default modal-body">
-    <span>
-      <img src="assets/alert.svg"/>
-      <span class="alert-message cursor-default">Do you want to remove this service?</span>
+    <span><img class="alert-excl" src="assets/alert.svg"/></span>
+    <span class="alert-message cursor-default">
+      Do you want to remove service
+      <span class="alert-name">{{ container.Names[0] | slice:1 }}</span>?
     </span>
   </div>
   <div class="alert-footer modal-footer">
@@ -69,9 +74,9 @@
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlertAll"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlertAll">
   <div class="alert-body modal-body cursor-default">
-    <span>
-      <img src="assets/alert.svg"/>
-      <span class="alert-message">Do you want to remove all services?</span>
+    <span><img class="alert-excl" src="assets/alert.svg"/></span>
+    <span class="alert-message">
+      Do you want to remove all services?
     </span>
   </div>
   <div class="alert-footer modal-footer">

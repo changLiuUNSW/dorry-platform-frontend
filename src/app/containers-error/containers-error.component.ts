@@ -18,7 +18,6 @@ export class ContainersErrorComponent implements OnInit {
 
   showAlert: boolean;
   showAlertAll: boolean;
-  containerId: string;
 
   notification: string;
   notState: boolean;
@@ -133,7 +132,6 @@ export class ContainersErrorComponent implements OnInit {
   }
 
   getContainer(container: Container) {
-    console.log(container);
     this.container = container;
   }
 
