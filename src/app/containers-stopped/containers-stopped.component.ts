@@ -57,7 +57,7 @@ export class ContainersStoppedComponent implements OnInit {
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot(" restarted");
+          this.showNot(" has been restarted successfully");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);

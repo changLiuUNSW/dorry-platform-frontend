@@ -130,6 +130,7 @@ export class ImagesComponent implements OnInit {
 
   hideAlert(id: string) {
     this.showAlert = false;
+    this.image = null;
   }
 
   getImage(image: ImageInfo) {

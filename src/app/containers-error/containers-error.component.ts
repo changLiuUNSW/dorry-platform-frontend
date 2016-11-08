@@ -71,7 +71,7 @@ export class ContainersErrorComponent implements OnInit {
       })
       .then(data => {
         if (!this.isError)
-          this.showNot(" removed");
+          this.showNot(" has been removed successfully");
       });
   }
 
@@ -109,7 +109,7 @@ export class ContainersErrorComponent implements OnInit {
         }.bind(this), 300);
       })
       .then(data =>
-        this.showNotAll("All containers are removed")
+        this.showNotAll("All containers have been removed successfully")
       );
   }
 

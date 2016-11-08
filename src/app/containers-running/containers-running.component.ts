@@ -65,7 +65,7 @@ export class ContainersRunningComponent implements OnInit {
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot(" stopped");
+          this.showNot(" has been stopped successfully");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
