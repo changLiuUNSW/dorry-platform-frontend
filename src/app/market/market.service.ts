@@ -16,7 +16,7 @@ export class MarketService {
   constructor(private http: Http) { }
 
   listItems(): Observable<any> {
-    let headers = new Headers({ 'Access-Control-Allow-Credentials': 'true' });
+    let headers = new Headers();
     headers.append('Authorization', ' Basic ZG9ycnk6YWJjMTIzXw==');
     let options = new RequestOptions({ headers: headers });
     return this.http
