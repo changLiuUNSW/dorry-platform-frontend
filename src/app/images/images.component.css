@@ -13,8 +13,14 @@
   position: relative;
 }
 
-.app-container:hover {
+
+/*.app-container:hover {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.38);
+}*/
+
+.app-container:hover {
+  filter: brightness(50%);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 .app-trash {
