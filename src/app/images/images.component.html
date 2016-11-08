@@ -1,5 +1,5 @@
-<div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
-<div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
 
 <div class="app-list">
   <div class="app-container" *ngFor="let app of imageInfoes">
@@ -93,7 +93,7 @@
     </span>
   </div>
   <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image.Id)" (click)="hideAlert()">Yes</button>
+    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>

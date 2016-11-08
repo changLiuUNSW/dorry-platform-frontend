@@ -11,11 +11,16 @@ import { trigger, state, style, transition, animate } from '@angular/core';
   styleUrls: ['./images.component.css', '../app.component.css'],
 })
 export class ImagesComponent implements OnInit {
+  notiImage: ImageInfo;
   image: ImageInfo;
   imageList: ImageUrl[];
   imageInfoes: ImageInfo[];
 
   showAlert: boolean;
+
+  notification: string;
+  notState: boolean;
+  isError: boolean;
 
   constructor(private imagesService: ImagesService) { }
 
@@ -48,10 +53,20 @@ export class ImagesComponent implements OnInit {
   }
 
   // Remove image event when click remove button
-  removeImage(id: string) {
+  removeImage(image: ImageInfo) {
+    this.notiImage = image;
+    let id = image.Id;
     let message: string;
     this.imagesService.removeImage(id)
-      .then(msg => this.showMessage())
+      .then(data => {
+        if (!this.isError) {
+          this.showNot(" has been removed successfully");
+        }
+      },
+      err => {
+        this.errMsg(err.status);
+      }
+      )
       .then(msg => this.getImageInfoes());
     // console.log("remove Image : " + id);
   }
@@ -74,21 +89,33 @@ export class ImagesComponent implements OnInit {
       .subscribe(data => data);
   }
 
-  // show message after removing image
-  // success: Remove the app successfully
-  // error: Remove the app error
-  private alertMessage: string; // alert dialog message after removing image
-  private messageState: boolean; // whether need to show the message
-  private isError: boolean; // is message correctly
-  showMessage() {
-    let message: string;
-    this.messageState = true;
-    this.alertMessage = message;
-    setTimeout(function() {
-      this.messageState = false;
-    }.bind(this), 3000);
+  //status code
+  //200: success
+  //404: no such image
+  //409: conflict
+  //500: server error
+  private errMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 404) {
+      this.showNot(" ,No such Image");
+    }
+    else if (statusCode == 409) {
+      this.showNot(" has conflict");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
   }
 
+  //show notification
+  showNot(msg: string) {
+    this.notState = true;
+    this.notification = msg;
+    setTimeout(function() {
+      this.notState = false;
+      this.isError = false;
+    }.bind(this), 3000);
+  }
 
   //click image icon show image info
   private showInfoWindow: boolean; //whether need to show imageinfo popup window
