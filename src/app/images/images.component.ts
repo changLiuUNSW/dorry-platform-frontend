@@ -20,7 +20,7 @@ export class ImagesComponent implements OnInit {
 
   notification: string;
   notState: boolean;
-  isError: boolean;
+  isError: boolean = false;
 
   removeSpin: boolean;
   startSpin: boolean;
@@ -77,31 +77,34 @@ export class ImagesComponent implements OnInit {
 
   // Create a container
   createContainer(image: ImageInfo) {
+    this.notState = false;
     this.notiImage = image;
     this.imagesService.inspectImage(image.Id)
       .then(data => {
         // console.log(data[Object.keys(data)[0]]);
-        this.imagesService.createContainer(data[Object.keys(data)[0]])
-          .subscribe(data => {
-            this.startContainer(data[Object.keys(data)[0]])
-          },
-          err => this.createConErrMsg(err.status));
+        // this.imagesService.createContainer(data[Object.keys(data)[0]])
+        //   .subscribe(data => {
+        //     this.startContainer(data[Object.keys(data)[0]])
+        //   }
+        this.imagesService.createContainer(data[Object.keys(data)[0]]).then(data => {
+          this.startContainer(data[Object.keys(data)[0]])
+        }, err => this.createConErrMsg(err.status))
       })
       .then(data => {
         this.startSpin = false;
         this.image = null;
       })
-      .then(data => {
-        if (!this.isError)
-          this.showNot(" has started a new container");
-      });
   }
 
   // Start a container
   startContainer(id: string) {
     this.imagesService.startContainer(id)
-      .subscribe(data => data,
-      err => this.startConErrMsg(err.status));
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has started a new container");
+      }
+      , err => this.startConErrMsg(err.status));
+
   }
 
   //create container error message
@@ -112,6 +115,7 @@ export class ImagesComponent implements OnInit {
   // 409 – conflict
   // 500 – server error
   private createConErrMsg(statusCode: Number) {
+    console.log("create container errr message:" + statusCode);
     this.isError = true;
     if (statusCode == 400) {
       this.showNot(" has bad parameter");
@@ -136,6 +140,7 @@ export class ImagesComponent implements OnInit {
   // 404 – no such container
   // 500 – server error
   private startConErrMsg(statusCode: Number) {
+    console.log("start container errr message:" + statusCode);
     this.isError = true;
     if (statusCode == 304) {
       this.showNot(" start error,container has already started");

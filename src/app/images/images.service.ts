@@ -76,17 +76,22 @@ export class ImagesService {
   createContainer(id: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(id);
-    console.log(MAGIC_BOXES[id]);
     return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
-      .map(this.extractData);
+      .toPromise()
+      .then(this.extractData);
+    // return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
+    // .map(this.extractData);
     // .catch(this.handleError);
   }
 
   // Start a container
   startContainer(id: string) {
+    console.log("....start container");
     return this.http.post((this.address + this.start.replace('{id}', id)), {})
-      .map(this.extractData);
+      .toPromise()
+    // .then(this.extractData);
+    //return this.http.post((this.address + this.start.replace('{id}', id)), {})
+    //  .map(this.extractData);
     // .catch(this.handleError);
   }
 
