@@ -47,7 +47,20 @@
 </div>
 -->
 
-<div *ngIf="showDetail" class="modal-base"></div>
+<div class="alert-dialog-style alert-global" *ngIf="showDetail"></div>
+<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showDetail"></div>
+<div class="alert-content alert-dialog-style modal-content" *ngIf="showDetail">
+  <div class="alert-body cursor-default modal-body">
+    <span class="alert-message cursor-default">
+      ~!@#$%^&*()_+
+    </span>
+  </div>
+  <div class="alert-footer modal-footer">
+    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="toggleDetail()">Close</button>
+  </div>
+</div>
+
+<!-- <div *ngIf="showDetail" class="modal-base"></div>
 <div *ngIf="showDetail" class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -59,7 +72,7 @@
       </h4>
     </div>
     <div class="modal-body">
-      xxxxxx
+      ~!@#$%^&*()_+
     </div>
   </div>
-</div>
+</div> -->
