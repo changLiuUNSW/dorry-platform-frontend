@@ -147,7 +147,9 @@
   right: 0;
   top: 95px;
   margin: auto;
-  width: 559px;
+  /*width: 559px;*/
+  min-width: 559px;
+  max-width: 659px;
   height: auto;
   text-align: center;
   border-radius: 10px;
@@ -168,7 +170,8 @@
   right: 0;
   top: 95px;
   margin: auto;
-  width: 559px;
+  min-width: 559px;
+  max-width: 659px;
   height: auto;
   text-align: center;
   border-radius: 10px;
