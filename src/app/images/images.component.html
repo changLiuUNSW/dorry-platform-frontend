@@ -4,10 +4,11 @@
 <div class="app-list">
   <div class="app-container" *ngFor="let app of imageInfoes">
     <span>
-      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="getImage(app)" (click)="displayAlert()"/>
+      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="setSpinner(1)" (click)="getImage(app)" (click)="displayAlert()"/>
     </span>
 
     <span class="app-img">
+      <div class="app-icon-shadow"></div>
       <img class="app-icon" src={{app.url}}/>
     </span>
 
@@ -15,14 +16,38 @@
       <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
         {{ app.RepoTags[0] }}
       </div>
-      <div class="app-btn cursor-pointer" (click)="createContainer(app)" (click)="showMessage()">
-        Start New
+
+      <div *ngIf="!startSpin" class="app-btn cursor-pointer" (click)="setSpinner(2)" (click)="getImage(app)" (click)="createContainer(app)">
+        <span>Start New</span>
+      </div>
+
+      <!-- <div class="app-starting cursor-default"> -->
+      <div *ngIf="image && app.Id==image.Id && startSpin" class="app-starting cursor-default">
+        <span style="width: 10px; height: 10px">
+          <div class="sk-circle-start">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+        </span>
+        <span>
+          Starting
+        </span>
       </div>
     </span>
 
-    <!-- Just a spinner -->
-    <div *ngIf="image && app.Id==image.Id" class="sk-base"></div>
-    <div *ngIf="image && app.Id==image.Id" class="sk-circle">
+    <!-- Just a spinner for removing -->
+    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-base"></div>
+    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-circle">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
       <div class="sk-circle3 sk-child"></div>

@@ -22,12 +22,17 @@ export class ImagesComponent implements OnInit {
   notState: boolean;
   isError: boolean;
 
+  removeSpin: boolean;
+  startSpin: boolean;
+
   constructor(private imagesService: ImagesService) { }
 
   ngOnInit() {
     this.imageList = IMAGELIST;
     this.getImageInfoes();
     this.showAlert = false;
+    this.removeSpin = false;
+    this.startSpin = false;
   }
 
   // Bindding the ImageInfo and image url
@@ -65,22 +70,30 @@ export class ImagesComponent implements OnInit {
       },
       err => {
         this.errMsg(err.status);
-      }
-      )
+      })
       .then(msg => this.getImageInfoes());
     // console.log("remove Image : " + id);
   }
 
   // Create a container
   createContainer(image: ImageInfo) {
+    this.notiImage = image;
     this.imagesService.inspectImage(image.Id)
       .then(data => {
-        console.log(data[Object.keys(data)[0]]);
+        // console.log(data[Object.keys(data)[0]]);
         this.imagesService.createContainer(data[Object.keys(data)[0]])
           .subscribe(data => {
             this.startContainer(data[Object.keys(data)[0]])
           });
-      });
+      })
+      .then(data => {
+        this.startSpin = false;
+        this.image = null;
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has started a new container");
+      }, err => this.errMsg(err.status));
   }
 
   // Start a container
@@ -153,4 +166,22 @@ export class ImagesComponent implements OnInit {
   getImage(image: ImageInfo) {
     this.image = image;
   }
+
+  setSpinner(spin: number) {
+    if (spin == 1) {
+      this.removeSpin = true;
+      this.startSpin = false;
+    }
+    else if (spin == 2) {
+      this.removeSpin = false;
+      this.startSpin = true;
+    }
+    else {
+      this.removeSpin = false;
+      this.startSpin = false;
+    }
+    // console.log('start: ' + this.startSpin);
+    // console.log('remove: ' + this.removeSpin);
+  }
+
 }
