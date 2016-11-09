@@ -7,12 +7,12 @@
       <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="setSpinner(1)" (click)="getImage(app)" (click)="displayAlert()"/>
     </span>
 
-    <span class="app-img">
-      <div class="app-icon-shadow"></div>
+    <span class="app-img cursor-pointer" (click)="openDetailInfo(app)">
+      <div class=" app-icon-shadow"></div>
       <img class="app-icon" src={{app.url}}/>
     </span>
 
-    <span class="app-misc cursor-default">
+    <span class=" app-misc cursor-default">
       <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
         {{ app.RepoTags[0] }}
       </div>
@@ -66,7 +66,7 @@
 </div>
 
 <!-- Just a jQuery component -->
-<app-j-query-test></app-j-query-test>
+<!--<app-j-query-test></app-j-query-test>-->
 
 <!-- image detail info -->
 <div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>

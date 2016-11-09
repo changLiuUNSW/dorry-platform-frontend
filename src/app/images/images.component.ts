@@ -84,7 +84,8 @@ export class ImagesComponent implements OnInit {
         this.imagesService.createContainer(data[Object.keys(data)[0]])
           .subscribe(data => {
             this.startContainer(data[Object.keys(data)[0]])
-          });
+          },
+          err => this.createConErrMsg(err.status));
       })
       .then(data => {
         this.startSpin = false;
@@ -93,13 +94,58 @@ export class ImagesComponent implements OnInit {
       .then(data => {
         if (!this.isError)
           this.showNot(" has started a new container");
-      }, err => this.errMsg(err.status));
+      });
   }
 
   // Start a container
   startContainer(id: string) {
     this.imagesService.startContainer(id)
-      .subscribe(data => data);
+      .subscribe(data => data,
+      err => this.startConErrMsg(err.status));
+  }
+
+  //create container error message
+  // 201 – no error
+  // 400 – bad parameter
+  // 404 – no such container
+  // 406 – impossible to attach (container not running)
+  // 409 – conflict
+  // 500 – server error
+  private createConErrMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 400) {
+      this.showNot(" has bad parameter");
+    }
+    else if (statusCode == 404) {
+      this.showNot(" start error,no such container");
+    }
+    else if (statusCode == 406) {
+      this.showNot(" impossible to attach");
+    }
+    else if (statusCode == 409) {
+      this.showNot(" start error,has conflict");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
+  }
+
+  //start container error message
+  // 204 – no error
+  // 304 – container already started
+  // 404 – no such container
+  // 500 – server error
+  private startConErrMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 304) {
+      this.showNot(" start error,container has already started");
+    }
+    else if (statusCode == 404) {
+      this.showNot(" start error,no such container");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
   }
 
   //status code
