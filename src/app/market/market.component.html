@@ -1,6 +1,31 @@
 <div class="item-list">
   <div class="item-container" *ngFor="let item of items">
     <span class="item-img">
+      <img class="item-icon" src="assets/icons/default.svg" style="height:71px; width:71px" (click)="toggleDetail()"/>
+    </span>
+
+    <span class="item-misc cursor-default">
+      <div class="item-name cursor-pointer" (click)="toggleDetail()" (click)="getItem(item)">
+        {{ item }}
+      </div>
+      <div class="item-size">
+        1000 MB
+      </div>
+      <div class="item-install cursor-pointer">
+        Install
+      </div>
+    </span>
+    <div class="item-sash">
+      <img src="assets/sash.svg"/>
+    </div>
+  </div>
+</div>
+
+<!-- Mock items -->
+<!--
+<div class="item-list">
+  <div class="item-container" *ngFor="let item of mock_items">
+    <span class="item-img">
       <img class="" src={{item.Img}} style="height:71px; width:71px"/>
     </span>
 
@@ -20,6 +45,7 @@
     </div>
   </div>
 </div>
+-->
 
 <div *ngIf="showDetail" class="modal-base"></div>
 <div *ngIf="showDetail" class="modal-dialog" role="document">

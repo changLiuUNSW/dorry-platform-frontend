@@ -16,9 +16,11 @@ export class ContainersStoppedComponent implements OnInit {
   container: Container;
   hasStoppedService: boolean;
 
+  showAlert: boolean;
+
   notification: string;
   notState: boolean;//whether need to show the message
-  private isError: boolean;//is message correctly
+  isError: boolean;//is message correctly
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
@@ -26,6 +28,7 @@ export class ContainersStoppedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStoppedContainers();
+    this.showAlert = false;
   }
 
   showNot(msg: string) {
@@ -54,12 +57,24 @@ export class ContainersStoppedComponent implements OnInit {
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
-          this.showNot(" restarted");
+          this.showNot(" has been restarted successfully");
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 300);
       });
+  }
+
+  displayAlert(id: string) {
+    this.showAlert = true;
+  }
+
+  hideAlert(id: string) {
+    this.showAlert = false;
+  }
+
+  getContainer(container: Container) {
+    this.container = container;
   }
 
   //status code

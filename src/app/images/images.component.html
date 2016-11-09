@@ -1,39 +1,84 @@
-<div *ngIf="messageState && !isError" class="notification-success" role="alert">{{alertMessage}}</div>
-<div *ngIf="messageState && isError" class="notification-failure" role="alert">{{alertMessage}}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
 
-<div class="applist-container">
-  <div class="app-list" *ngFor="let app of imageInfoes">
-    <div class="app-container">
-      <div class="app-img">
-        <div class="app-removebtn" (click)="getImageId(app.Id)" (click)="displayAlert()">
-          <img class="app-img" src="assets/icons/close.png"/>
-        </div>
-        <img class="app-details" (click)="openDetailInfo(app)" src={{app.url}} style="height:90px;width:90px;"/>
+<div class="app-list">
+  <div class="app-container" *ngFor="let app of imageInfoes">
+    <span>
+      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="setSpinner(1)" (click)="getImage(app)" (click)="displayAlert()"/>
+    </span>
+
+    <span class="app-img cursor-pointer" (click)="openDetailInfo(app)">
+      <div class=" app-icon-shadow"></div>
+      <img class="app-icon" src={{app.url}}/>
+    </span>
+
+    <span class=" app-misc cursor-default">
+      <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
+        {{ app.RepoTags[0] }}
       </div>
-      <!-- name of the app -->
-      <div class="app-name" (click)="openDetailInfo(app)">
-        {{app.RepoTags[0]}}
+
+      <div *ngIf="!startSpin" class="app-btn cursor-pointer" (click)="setSpinner(2)" (click)="getImage(app)" (click)="createContainer(app)">
+        <span>Start New</span>
       </div>
-      <!-- start app button part -->
-      <div class="app-btn" (click)="createContainer(app)" (click)="showMessage('Container created')">
-        Start New
+
+      <!-- <div class="app-starting cursor-default"> -->
+      <div *ngIf="image && app.Id==image.Id && startSpin" class="app-starting cursor-default">
+        <span style="width: 10px; height: 10px">
+          <div class="sk-circle-start">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+        </span>
+        <span>
+          Starting
+        </span>
       </div>
+    </span>
+
+    <!-- Just a spinner for removing -->
+    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-base"></div>
+    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-circle">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
     </div>
+
   </div>
 </div>
+
+<!-- Just a jQuery component -->
+<!--<app-j-query-test></app-j-query-test>-->
 
 <!-- image detail info -->
 <div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>
 <div class="image-details cursor-default modal-dialog" *ngIf="showInfoWindow">
   <div class="image-details modal-content">
-    <!-- <button class="detail-close" type="button" data-dismiss="modal" aria-hidden="true" (click)="closeDetailInfo()">×</button> -->
     <div class="modal-body">
       <img class="detail-close" src="assets/detailclose.png" (click)="closeDetailInfo()"/>
       <div class="detail-header-container">
-        <img class="detail-image" src={{detailApp.url}} style="height:67px;width:67px;"/>
-        <div class="detail-app-name">
+        <span><img class="detail-image" src={{detailApp.url}} style="height:67px;width:67px;"/></span>
+        <span class="detail-app-name">
           {{detailApp.RepoTags[0]}}
-        </div>
+        </span>
       </div>
       <hr>
       <div class="detail-info-container">
@@ -66,13 +111,14 @@
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
 <div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
   <div class="alert-body modal-body cursor-default">
-    <span>
-      <img src="assets/alert.svg"/>
-      <span class="alert-message">Do you want to remove this app?</span>
+    <span><img class="alert-excl" src="assets/alert.svg"/></span>
+    <span class="alert-message">
+      Do you want to remove app
+      <span class="alert-name">{{ image.RepoTags[0] }}</span>?
     </span>
   </div>
   <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(imageId)" (click)="hideAlert()">Yes</button>
+    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>

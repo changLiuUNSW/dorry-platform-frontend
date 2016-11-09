@@ -17,9 +17,12 @@
 .service-img {
   cursor: pointer;
 }
+
+
 /*.service-img:hover {
   box-shadow: inset 0 0 14px rgba(255,255,255,0.5);
 }*/
+
 .service-shadow {
   position: absolute;
   top: 0;
@@ -98,7 +101,7 @@
 .notification-success {
   opacity: 0.8;
   color: #ffffff;
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 24px;
   position: fixed;
   z-index: 4;
@@ -111,7 +114,11 @@
   height: 100px;
   text-align: center;
   border-radius: 15px;
+<<<<<<< HEAD
   background: rgba(0,0,0,1);
+=======
+  background: rgba(0, 0, 0, 1);
+>>>>>>> develop
   border: 0;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 }
@@ -119,7 +126,7 @@
 .notification-failure {
   opacity: 0.8;
   color: #ffffff;
-  font-weight: bold;
+  /*font-weight: bold;*/
   position: fixed;
   font-size: 24px;
   z-index: 4;
@@ -132,13 +139,11 @@
   height: 100px;
   text-align: center;
   border-radius: 15px;
+<<<<<<< HEAD
   background: rgba(240, 152, 6 ,1);
+=======
+  background: rgba(240, 152, 6, 1);
+>>>>>>> develop
   border: 0;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-.alert-global {
-  height: 100vh;
-  width: 100vw;
-  z-index: 20;
 }

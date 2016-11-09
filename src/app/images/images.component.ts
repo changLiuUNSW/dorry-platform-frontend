@@ -11,12 +11,19 @@ import { trigger, state, style, transition, animate } from '@angular/core';
   styleUrls: ['./images.component.css', '../app.component.css'],
 })
 export class ImagesComponent implements OnInit {
-
+  notiImage: ImageInfo;
+  image: ImageInfo;
   imageList: ImageUrl[];
   imageInfoes: ImageInfo[];
 
   showAlert: boolean;
-  imageId: string;
+
+  notification: string;
+  notState: boolean;
+  isError: boolean;
+
+  removeSpin: boolean;
+  startSpin: boolean;
 
   constructor(private imagesService: ImagesService) { }
 
@@ -24,6 +31,8 @@ export class ImagesComponent implements OnInit {
     this.imageList = IMAGELIST;
     this.getImageInfoes();
     this.showAlert = false;
+    this.removeSpin = false;
+    this.startSpin = false;
   }
 
   // Bindding the ImageInfo and image url
@@ -41,61 +50,131 @@ export class ImagesComponent implements OnInit {
   // Get json object array from Docker Daemon
   getImageInfoes() {
     this.imagesService.getImageInfoes()
-      .then(data => this.imageInfoes = data)
+      .then(data => {
+        this.imageInfoes = data;
+        // console.log(this.imageInfoes);
+      })
       .then(data => this.initImages());
   }
 
   // Remove image event when click remove button
-  removeImage(id: string) {
+  removeImage(image: ImageInfo) {
+    this.notiImage = image;
+    let id = image.Id;
     let message: string;
     this.imagesService.removeImage(id)
-      .then(msg => this.showMessage(msg))
+      .then(data => {
+        if (!this.isError) {
+          this.showNot(" has been removed successfully");
+        }
+      },
+      err => {
+        this.errMsg(err.status);
+      })
       .then(msg => this.getImageInfoes());
     // console.log("remove Image : " + id);
   }
 
   // Create a container
   createContainer(image: ImageInfo) {
+    this.notiImage = image;
     this.imagesService.inspectImage(image.Id)
       .then(data => {
-        this.imagesService.createContainer(data[Object.keys(data)[1]])
+        // console.log(data[Object.keys(data)[0]]);
+        this.imagesService.createContainer(data[Object.keys(data)[0]])
           .subscribe(data => {
             this.startContainer(data[Object.keys(data)[0]])
-          });
+          },
+          err => this.createConErrMsg(err.status));
+      })
+      .then(data => {
+        this.startSpin = false;
+        this.image = null;
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has started a new container");
       });
   }
 
   // Start a container
   startContainer(id: string) {
     this.imagesService.startContainer(id)
-      .subscribe(data => data);
+      .subscribe(data => data,
+      err => this.startConErrMsg(err.status));
   }
 
-  // show message after removing image
-  // success: Remove the app successfully
-  // error: Remove the app error
-  private alertMessage: string; // alert dialog message after removing image
-  private messageState: boolean; // whether need to show the message
-  private isError: boolean; // is message correctly
-  showMessage(msg: any) {
-    let msgType = typeof msg;
-    let message: string;
-    if (msgType == "string") {
-      message = msg;
-      this.isError = false;
+  //create container error message
+  // 201 – no error
+  // 400 – bad parameter
+  // 404 – no such container
+  // 406 – impossible to attach (container not running)
+  // 409 – conflict
+  // 500 – server error
+  private createConErrMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 400) {
+      this.showNot(" has bad parameter");
     }
-    else {
-      message = "Failure";
-      this.isError = true;
+    else if (statusCode == 404) {
+      this.showNot(" start error,no such container");
     }
+    else if (statusCode == 406) {
+      this.showNot(" impossible to attach");
+    }
+    else if (statusCode == 409) {
+      this.showNot(" start error,has conflict");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
+  }
 
-    this.messageState = true;
-    this.alertMessage = message;
+  //start container error message
+  // 204 – no error
+  // 304 – container already started
+  // 404 – no such container
+  // 500 – server error
+  private startConErrMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 304) {
+      this.showNot(" start error,container has already started");
+    }
+    else if (statusCode == 404) {
+      this.showNot(" start error,no such container");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
+  }
+
+  //status code
+  //200: success
+  //404: no such image
+  //409: conflict
+  //500: server error
+  private errMsg(statusCode: Number) {
+    this.isError = true;
+    if (statusCode == 404) {
+      this.showNot(" ,No such Image");
+    }
+    else if (statusCode == 409) {
+      this.showNot(" has conflict");
+    }
+    else if (statusCode == 500) {
+      this.showNot(" has Server error");
+    }
+  }
+
+  //show notification
+  showNot(msg: string) {
+    this.notState = true;
+    this.notification = msg;
     setTimeout(function() {
-      this.messageState = false;
+      this.notState = false;
+      this.isError = false;
     }.bind(this), 3000);
   }
-
 
   //click image icon show image info
   private showInfoWindow: boolean; //whether need to show imageinfo popup window
@@ -127,9 +206,28 @@ export class ImagesComponent implements OnInit {
 
   hideAlert(id: string) {
     this.showAlert = false;
+    this.image = null;
   }
 
-  getImageId(id: string) {
-    this.imageId = id;
+  getImage(image: ImageInfo) {
+    this.image = image;
   }
+
+  setSpinner(spin: number) {
+    if (spin == 1) {
+      this.removeSpin = true;
+      this.startSpin = false;
+    }
+    else if (spin == 2) {
+      this.removeSpin = false;
+      this.startSpin = true;
+    }
+    else {
+      this.removeSpin = false;
+      this.startSpin = false;
+    }
+    // console.log('start: ' + this.startSpin);
+    // console.log('remove: ' + this.removeSpin);
+  }
+
 }

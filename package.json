@@ -19,6 +19,7 @@
     "@angular/core": "2.0.0",
     "@angular/forms": "2.0.0",
     "@angular/http": "2.0.0",
+    "@angular/material": "^2.0.0-alpha.9-3",
     "@angular/platform-browser": "2.0.0",
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
@@ -43,12 +44,11 @@
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-    "karma-coverage":"^1.1.1",
     "protractor": "4.0.5",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "2.0.2",
-    "karma-phantomjs-launcher":"^1.0.2",
-    "phantomjs":"^2.1.7"
+    "karma-phantomjs-launcher": "^1.0.2",
+    "phantomjs": "^2.1.7"
   }
 }

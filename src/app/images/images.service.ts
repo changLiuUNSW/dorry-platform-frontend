@@ -40,10 +40,10 @@ export class ImagesService {
     return this.http.delete(this.address + this.remove.replace("{id}", id))
       .toPromise()
       .then(
-      this.getRemoveImageResMsg,
+      //this.getRemoveImageResMsg,
       this.extractData
       )
-      .catch(this.handleError);
+    //.catch(this.handleError);
   }
 
   //inspect image by image id
@@ -62,23 +62,23 @@ export class ImagesService {
   //404 - no such image
   //409 - conflict
   //500 - server error
-  getRemoveImageResMsg(res: Response) {
-    if (res.status) {
-      console.log(res.status);
-      return "Remove the app successfully";
-    }
-    else {
-      return res.json();
-    }
-  }
+  //   getRemoveImageResMsg(res: Response) {
+  //     if (res.status) {
+  //       console.log(res.status);
+  //       return "Remove the app successfully";
+  //     }
+  //     else {
+  //       return res.json();
+  //     }
+  // }
 
   // Create a container
-  createContainer(name: string) {
+  createContainer(id: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log(name);
-    console.log(MAGIC_BOXES[name]);
-    return this.http.post((this.address + this.create), MAGIC_BOXES[name], options)
+    console.log(id);
+    console.log(MAGIC_BOXES[id]);
+    return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -102,7 +102,7 @@ export class ImagesService {
     // We'd also dig deeper into the error to get a better message
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(">>>>>>>>>>" + errMsg + "<<<<<<<<<<<"); // log to console instead
+    console.error(errMsg); // log to console instead
     return Promise.reject(errMsg);
   }
 }

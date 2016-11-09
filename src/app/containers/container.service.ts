@@ -130,7 +130,7 @@ export class ContainerService {
   getRestartStatus(res: Response) {
     if (res.status) {
       console.log(res.status);
-      return "Restatus Container successfully";
+      return "Restart Container successfully";
     }
     else {
       return res.json();
