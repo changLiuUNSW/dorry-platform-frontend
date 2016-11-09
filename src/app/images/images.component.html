@@ -1,5 +1,7 @@
-<div *ngIf="notState && !isError" class="notification-success" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
-<div *ngIf="notState && isError" class="notification-failure" role="alert">{{notiImage.RepoTags[0]}}{{notification}}</div>
+<div *ngIf="notState && !isError" class="notification-success" role="alert">
+  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
+<div *ngIf="notState && isError" class="notification-failure" role="alert">
+  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
 
 <div class="app-list">
   <div class="app-container" *ngFor="let app of imageInfoes">

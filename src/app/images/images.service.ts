@@ -79,15 +79,15 @@ export class ImagesService {
     console.log(id);
     console.log(MAGIC_BOXES[id]);
     return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(this.extractData);
+    // .catch(this.handleError);
   }
 
   // Start a container
   startContainer(id: string) {
     return this.http.post((this.address + this.start.replace('{id}', id)), {})
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(this.extractData);
+    // .catch(this.handleError);
   }
 
   private extractData(res: Response) {
