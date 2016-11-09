@@ -56,7 +56,7 @@
 }
 
 .item-install {
-  font-size: 14px;
+  font-size: 13px;
   color: #7e5c59;
   background: rgba(255, 255, 255, 0.41);
   height: 21px;
@@ -74,7 +74,7 @@
 
 .item-install:active {
   background: rgba(75, 120, 25, 1);
-  box-shadow: 1px 1px rgba(0,0,0,0.38);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.38);
 }
 
 .item-sash {
