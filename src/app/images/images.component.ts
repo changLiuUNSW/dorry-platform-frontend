@@ -86,6 +86,7 @@ export class ImagesComponent implements OnInit {
         //   .subscribe(data => {
         //     this.startContainer(data[Object.keys(data)[0]])
         //   }
+        console.log(data[Object.keys(data)[0]]);
         this.imagesService.createContainer(data[Object.keys(data)[0]]).then(data => {
           this.startContainer(data[Object.keys(data)[0]])
         }, err => this.createConErrMsg(err.status))

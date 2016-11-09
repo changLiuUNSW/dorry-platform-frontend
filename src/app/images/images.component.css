@@ -54,12 +54,9 @@
   width: 71px;
   border-radius: 16px;
 }
-
-
 /*.app-icon:hover {
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
 }*/
-
 .app-icon-shadow {
   z-index: 100;
   position: absolute;
@@ -134,10 +131,7 @@
   text-align: right;
   padding: 0 5px 0 0;
 }
-
-
 /*****************************************************************************/
-
 .noti-name {
   font-size: 28px;
   font-weight: bold;
@@ -178,17 +172,14 @@
   height: auto;
   text-align: center;
   border-radius: 10px;
-  background: rgba(240, 120, 6, 0.71);
+  background: rgba(240, 152, 6, 0.71);
   border: 0;
   font-size: 24px;
   padding: 34px 39px;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   font-weight: bold;
 }
-
-
 /* popup box - image details info box part */
-
 .image-details {
   margin: auto;
   position: fixed;
@@ -275,10 +266,7 @@
 .image-details {
   z-index: 50;
 }
-
-
 /*****************************************************************************/
-
 .sk-circle {
   margin: auto;
   top: 0;
@@ -430,32 +418,33 @@
   -webkit-animation-delay: -0.1s;
   animation-delay: -0.1s;
 }
-
 @-webkit-keyframes sk-circleBounceDelay {
-  0%, 100%, 80% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
-
 @keyframes sk-circleBounceDelay {
-  0%, 100%, 80% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
-
-
 /*****************************************************************************/
-
 .sk-circle-start {
   margin: 6px 5px 0 4px;
   width: 10px;

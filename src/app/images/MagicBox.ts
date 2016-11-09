@@ -18,7 +18,7 @@ export const MAGIC_BOXES = {
   },
 
   // DorryCloud:5000/rpi_samba_mini:1.0.0
-  "DorryCloud:5000/rpi_samba_mini:1.0.0": {
+  "sha256:b85cb2cf09349e6858d9f24fe045a73c0ccb7b29ed740510b8b96bab2993bd70": {
     "Tty": true,
     "Image": "DorryCloud:5000/rpi_samba_mini:1.0.0",
     "HostConfig": {
