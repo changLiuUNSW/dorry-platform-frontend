@@ -9,20 +9,39 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MarketService {
-  // private address = 'https://DorryCloud:5000';
   private address = Constant.REGISTRYADDR
   private paramList = '/v2/_catalog';
+  private tags = '/v2/{name}/tags/list';
+  private manifest = '/v2/{name}/manifests/{ref}';
+  private blob = '/v2/{name}/blobs/{digest}';
 
   constructor(private http: Http) { }
 
   listItems(): Observable<any> {
-    let headers = new Headers();
-    headers.append('Authorization', ' Basic ZG9ycnk6YWJjMTIzXw==');
-    let options = new RequestOptions({ headers: headers });
     return this.http
-      .get((this.address + this.paramList), options)
+      .get(this.address + this.paramList)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  getTags(name: string): Observable<any> {
+    return this.http
+      .get(this.address + this.tags.replace("{name}", name))
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  pullManifest(name: string, ref: string): Observable<any> {
+    return this.http
+      .get(this.address + this.manifest.replace("{name}", name).replace("{ref}", ref))
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  pullBlobs(name: string, digest: string): Observable<any> {
+    // console.log(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
+    return this.http
+      .get(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
   }
 
   // Function extractData() extracts the data from the http response, which is

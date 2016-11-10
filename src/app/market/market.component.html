@@ -15,37 +15,17 @@
         Install
       </div>
     </span>
-    <div class="item-sash">
-      <img src="assets/sash.svg"/>
+
+    <div style="top: 150px; left: 0; position: absolute">
+      <!-- <div class="btn btn-primary" (click)="getTags(item)">Tags</div> -->
+      <div class="btn btn-primary" (click)="pullManifest(item, 'latest')">Manifest</div>
+      <div class="btn btn-primary" (click)="pullBlobs(item, 'latest')">Blobs</div>
     </div>
+    <!-- <div class="item-sash">
+      <img src="assets/sash.svg"/>
+    </div> -->
   </div>
 </div>
-
-<!-- Mock items -->
-<!--
-<div class="item-list">
-  <div class="item-container" *ngFor="let item of mock_items">
-    <span class="item-img">
-      <img class="" src={{item.Img}} style="height:71px; width:71px"/>
-    </span>
-
-    <span class="item-misc cursor-default">
-      <div class="item-name cursor-pointer" (click)="toggleDetail()" (click)="getItem(item)">
-        {{ item.Name }}
-      </div>
-      <div class="item-size">
-        {{ item.Size }}
-      </div>
-      <div *ngIf="!item.Installed" class="item-install cursor-pointer">
-        Install
-      </div>
-    </span>
-    <div *ngIf="item.Installed" class="item-sash">
-      <img src="assets/sash.svg"/>
-    </div>
-  </div>
-</div>
--->
 
 <div class="alert-dialog-style alert-global" *ngIf="showDetail"></div>
 <div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showDetail"></div>
