@@ -30,19 +30,19 @@
   width: 71px;
   border-radius: 16px;
   height: 71px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
 }
 
 .item-icon:hover {
   cursor: pointer;
-  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 4px 3px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.2s;
   -webkit-transition: box-shadow 0.2s;
 }
 
 .item-icon:active {
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.1s;
   -webkit-transition: box-shadow 0.1s;
 }
@@ -93,13 +93,13 @@
   border-radius: 2px;
   line-height: 21px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
 }
 
 .item-install:hover {
   color: #ffffff;
   /*background: rgba(103, 157, 44, 1);*/
-  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 4px 3px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.2s;
   -webkit-transition: box-shadow 0.2s;
 }
@@ -107,7 +107,7 @@
 .item-install:active {
   /*background: rgba(75, 120, 25, 1);*/
   background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.1s;
   -webkit-transition: box-shadow 0.1s;
 }

@@ -29,10 +29,32 @@ export class MarketComponent implements OnInit {
     this.marketService.listItems()
       .subscribe(data => {
         for (var key in data) {
-          // console.log(key);
           // console.log(data[key]);
           this.items = data[key];
         }
+      });
+  }
+
+  private getTags(name: string) {
+    this.marketService.getTags(name)
+      .subscribe(data => console.log(data));
+  }
+
+  private pullManifest(name: string, ref: string) {
+    this.marketService.pullManifest(name, ref)
+      .subscribe(data => console.log(data));
+  }
+
+  private pullBlobs(name: string, ref: string) {
+    var digest;
+    this.marketService.pullManifest(name, ref)
+      .subscribe(data => {
+        for (var key in data['fsLayers']) {
+          console.log(data['fsLayers'][key]);
+        }
+        digest = data['fsLayers'][0]['blobSum'];
+        this.marketService.pullBlobs(name, digest)
+          .subscribe(data => data);
       });
   }
 
