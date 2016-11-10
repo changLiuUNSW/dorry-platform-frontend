@@ -8,7 +8,7 @@ import { Constant } from './constant';
 
 @Injectable()
 export class AppService {
-  private address: string = Constant.DAEMONADDR;
+  // private address: string = Constant.DAEMONADDR;
   private versionUrl: string = "/version";
 
   constructor(private http: Http) { }
@@ -18,7 +18,7 @@ export class AppService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.versionUrl
+        url: Constant.DAEMONADDR + this.versionUrl
       }))
       .toPromise()
       .then(this.extractData)

@@ -11,7 +11,7 @@ import { Constant } from '../constant';
 export class FooterComponent implements OnInit {
   private versionInfo;
   private apiVersion = "";
-  private uiVersion: string = Constant.BUILDVERSION;
+  private uiVersion: string;
 
   constructor(private appService: AppService) { }
 
@@ -22,6 +22,9 @@ export class FooterComponent implements OnInit {
   getVersionInfo() {
     this.appService.getVersion()
       .then(data => this.versionInfo = data)
-      .then(() => this.apiVersion = this.versionInfo.ApiVersion);
+      .then(() => {
+        this.apiVersion = this.versionInfo.ApiVersion
+        this.uiVersion = Constant.BUILDVERSION;
+      });
   }
 }

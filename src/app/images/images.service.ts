@@ -12,8 +12,6 @@ import { Constant } from '../constant';
 
 @Injectable()
 export class ImagesService {
-  private address = Constant.DAEMONADDR;
-
   //docker remote api part
   private list = '/images/json?all=0';//[GET]  list images
   private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
@@ -28,7 +26,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.list
+        url: Constant.DAEMONADDR + this.list
       }))
       .toPromise()
       .then(this.extractData)
@@ -37,7 +35,7 @@ export class ImagesService {
 
   //remove image by image id
   removeImage(id: string) {
-    return this.http.delete(this.address + this.remove.replace("{id}", id))
+    return this.http.delete(Constant.DAEMONADDR + this.remove.replace("{id}", id))
       .toPromise()
       .then(
       //this.getRemoveImageResMsg,
@@ -50,7 +48,7 @@ export class ImagesService {
   //get the json object after call the function
   //the create form : 2016-09-23T16:29:57.276868291Z
   inspectImage(id: string) {
-    return this.http.get(this.address + this.inspect.replace("{id}", id))
+    return this.http.get(Constant.DAEMONADDR + this.inspect.replace("{id}", id))
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
@@ -76,10 +74,10 @@ export class ImagesService {
   createContainer(id: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
+    return this.http.post((Constant.DAEMONADDR + this.create), MAGIC_BOXES[id], options)
       .toPromise()
       .then(this.extractData);
-    // return this.http.post((this.address + this.create), MAGIC_BOXES[id], options)
+    // return this.http.post((Constant.DAEMONADDR + this.create), MAGIC_BOXES[id], options)
     // .map(this.extractData);
     // .catch(this.handleError);
   }
@@ -87,10 +85,10 @@ export class ImagesService {
   // Start a container
   startContainer(id: string) {
     console.log("....start container");
-    return this.http.post((this.address + this.start.replace('{id}', id)), {})
+    return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
       .toPromise()
     // .then(this.extractData);
-    //return this.http.post((this.address + this.start.replace('{id}', id)), {})
+    //return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
     //  .map(this.extractData);
     // .catch(this.handleError);
   }
