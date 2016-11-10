@@ -7,14 +7,16 @@
   width: 255px;
   height: 141px;
   background: rgba(0, 0, 0, 0.11);
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   margin: 16px;
   border-radius: 4px;
   position: relative;
+  transition: box-shadow 0.5s;
+  -webkit-transition: box-shadow 0.5s;
 }
 
 .item-container:hover {
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   transition: box-shadow 1s;
   -webkit-transition: box-shadow 1s;
 }
@@ -28,22 +30,26 @@
   width: 71px;
   border-radius: 16px;
   height: 71px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .item-icon:hover {
   cursor: pointer;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s;
+  -webkit-transition: box-shadow 0.2s;
 }
 
 .item-icon:active {
   cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.1s;
+  -webkit-transition: box-shadow 0.1s;
 }
 
 .item-misc {
   float: left;
-  padding: 35px 0 0 9px;
+  margin: 35px 0 0 9px;
 }
 
 .item-name {
@@ -55,10 +61,21 @@
   font-size: 14px;
   font-weight: bold;
   color: #e9e9e9;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .item-name:hover {
   color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  transition: text-shadow 0.2s;
+  -webkit-transition: text-shadow 0.2s;
+}
+
+.item-name:active {
+  color: #ffffff;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  transition: text-shadow 0.1s;
+  -webkit-transition: text-shadow 0.1s;
 }
 
 .item-size {
@@ -76,19 +93,23 @@
   border-radius: 2px;
   line-height: 21px;
   text-align: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .item-install:hover {
   color: #ffffff;
   /*background: rgba(103, 157, 44, 1);*/
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s;
+  -webkit-transition: box-shadow 0.2s;
 }
 
 .item-install:active {
   /*background: rgba(75, 120, 25, 1);*/
-  background: rgba(80, 80, 80, 0.5);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.1s;
+  -webkit-transition: box-shadow 0.1s;
 }
 
 .item-sash {
