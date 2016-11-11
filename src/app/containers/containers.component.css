@@ -17,12 +17,9 @@
 .service-img {
   cursor: pointer;
 }
-
-
 /*.service-img:hover {
   box-shadow: inset 0 0 14px rgba(255,255,255,0.5);
 }*/
-
 .service-shadow {
   position: absolute;
   top: 0;

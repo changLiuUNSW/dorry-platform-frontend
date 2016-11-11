@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
@@ -17,6 +17,7 @@ import { MastheadComponent } from './masthead/masthead.component';
 import { FooterComponent } from './footer/footer.component';
 import { JQueryTestComponent } from './j-query-test/j-query-test.component';
 
+import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
 import { AppService } from './app.service';
@@ -45,6 +46,13 @@ import { routing } from './app.routing';
     routing
   ],
   providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (config: ConfigService) => () => config.load(),
+      deps: [ConfigService],
+      multi: true
+    },
     ImagesService,
     ContainerService,
     AppService,
@@ -53,4 +61,5 @@ import { routing } from './app.routing';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

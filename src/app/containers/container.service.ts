@@ -8,7 +8,6 @@ import { Constant } from '../constant';
 
 @Injectable()
 export class ContainerService {
-  private address = Constant.DAEMONADDR;
 
   private paramRunning = '/containers/json?filters={"status":["running"]}';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
@@ -29,7 +28,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.paramRunning
+        url: Constant.DAEMONADDR + this.paramRunning
       }))
       .toPromise()
       .then(this.extractData)
@@ -45,7 +44,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.paramStopped
+        url: Constant.DAEMONADDR + this.paramStopped
       }))
       .toPromise()
       .then(this.extractData)
@@ -61,7 +60,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.paramError
+        url: Constant.DAEMONADDR + this.paramError
       }))
       .toPromise()
       .then(this.extractData)
@@ -77,7 +76,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: this.address + this.paramAll
+        url: Constant.DAEMONADDR + this.paramAll
       }))
       .toPromise()
       .then(this.extractData)
@@ -93,7 +92,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Delete,
-        url: this.address + this.toBeRemoved.replace("{id}", id)
+        url: Constant.DAEMONADDR + this.toBeRemoved.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -107,7 +106,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.address + this.toBeStopped.replace("{id}", id)
+        url: Constant.DAEMONADDR + this.toBeStopped.replace("{id}", id)
       }))
       .toPromise();
   }
@@ -121,7 +120,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: this.address + this.toBeRestarted.replace("{id}", id)
+        url: Constant.DAEMONADDR + this.toBeRestarted.replace("{id}", id)
       }))
       .toPromise()
       .then(this.getRestartStatus);
