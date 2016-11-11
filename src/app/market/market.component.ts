@@ -46,15 +46,15 @@ export class MarketComponent implements OnInit {
   }
 
   private pullBlobs(name: string, ref: string) {
-    var digest;
     this.marketService.pullManifest(name, ref)
       .subscribe(data => {
         for (var key in data['fsLayers']) {
-          console.log(data['fsLayers'][key]);
+          var digest;
+          console.log(data['fsLayers'][key]['blobSum']);
+          digest = data['fsLayers'][key]['blobSum'];
+          this.marketService.pullBlobs(name, digest)
+            .subscribe(data => data);
         }
-        digest = data['fsLayers'][0]['blobSum'];
-        this.marketService.pullBlobs(name, digest)
-          .subscribe(data => data);
       });
   }
 
