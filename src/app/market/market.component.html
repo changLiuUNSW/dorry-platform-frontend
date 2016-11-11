@@ -17,9 +17,10 @@
     </span>
 
     <div style="top: 150px; left: 0; position: absolute">
-      <!-- <div class="btn btn-primary" (click)="getTags(item)">Tags</div> -->
-      <div class="btn btn-primary" (click)="pullManifest(item, 'latest')">Manifest</div>
-      <div class="btn btn-primary" (click)="pullBlobs(item, 'latest')">Blobs</div>
+      <div style="margin:5px" class="btn btn-primary" (click)="pullManifest(item, 'latest')">pullManifest</div>
+      <div style="margin:5px" class="btn btn-primary" (click)="pullBlobs(item, 'latest')">pullBlobs</div>
+      <div style="margin:5px" class="btn btn-danger" (click)="delManifest(item, 'latest')">delManifest</div>
+      <div style="margin:5px" class="btn btn-danger" (click)="delBlobs(item, 'latest')">delBlobs</div>
     </div>
     <!-- <div class="item-sash">
       <img src="assets/sash.svg"/>
