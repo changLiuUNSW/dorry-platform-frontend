@@ -58,6 +58,28 @@ export class MarketComponent implements OnInit {
       });
   }
 
+  /***************************************************************************/
+
+  private delManifest(name: string, ref: string) {
+    this.marketService.delManifest(name, ref)
+      .subscribe(data => console.log(data));
+  }
+
+  private delBlobs(name: string, ref: string) {
+    this.marketService.pullManifest(name, ref)
+      .subscribe(data => {
+        for (var key in data['fsLayers']) {
+          var digest;
+          console.log(data['fsLayers'][key]['blobSum']);
+          digest = data['fsLayers'][key]['blobSum'];
+          this.marketService.delBlobs(name, digest)
+            .subscribe(data => data);
+        }
+      });
+  }
+
+  /***************************************************************************/
+
   private getItem(item: Item) {
     this.item = item;
   }

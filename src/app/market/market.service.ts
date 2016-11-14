@@ -44,6 +44,22 @@ export class MarketService {
       .get(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
   }
 
+  /***************************************************************************/
+
+  delManifest(name: string, ref: string): Observable<any> {
+    return this.http
+      .delete(this.address + this.manifest.replace("{name}", name).replace("{ref}", ref))
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  delBlobs(name: string, digest: string): Observable<any> {
+    return this.http
+      .delete(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
+  }
+
+  /***************************************************************************/
+
   // Function extractData() extracts the data from the http response, which is
   // a json array, then return as an object.
   //
