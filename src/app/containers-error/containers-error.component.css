@@ -1,15 +1,46 @@
 .service-list-container {
-  margin: 0 68px 46px 67px;
-  padding: 21px 15px 0 16px;
+  margin-bottom: 46px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 9px;
+  padding-bottom: 17px;
+}
+
+.error-service-list {
+  display: inline-block;
+  margin: 17px 33px 18px 0;
+  width: 255px;
 }
 
 .error-service-header {
-  padding: 0 0 0 15px;
+  padding: 21px 21px 0 15px;
   color: #FFFFFF;
   font-size: 24px;
   font-weight: bold;
+}
+
+.error.service-img-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 26px;
+}
+
+.error-service-container {
+  height: 85px;
+  position: relative;
+}
+
+.error-service-img {
+  cursor: pointer;
+  padding: 10px 0 0 5px;
+}
+
+.error-service-misc {
+  display: inline-block;
+  padding-top: 10px;
+  margin-left: 9px;
+  position: absolute;
+  height: 100%;
+  width: 109px;
 }
 
 .service-header-right {
@@ -17,8 +48,7 @@
   color: #D0D0D0;
   font-weight: normal;
   font-size: 18px;
-  height: 24px;
-  line-height: 33px;
+  line-height: 24px;
   opacity: 0.7;
 }
 
@@ -37,10 +67,7 @@
 
 .icon-wrong {
   z-index: 2;
-  position: relative;
-  height: 0;
-  left: -8px;
-  top: -8px;
+  position: absolute;
 }
 
 .icon-service {

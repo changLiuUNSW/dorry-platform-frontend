@@ -11,7 +11,7 @@ export class ContainerService {
 
   private paramRunning = '/containers/json?filters={"status":["running"]}';
   private paramStopped = '/containers/json?filters={"status":["exited"]}';
-  private paramError = '/containers/json?filters={"status":["exited","dead","restarting","created"]}';
+  private paramError = '/containers/json?filters={"status":["dead","restarting","created"]}';
   private paramAll = '/containers/json?all=1';
   private toBeRemoved = '/containers/{id}?v=1?force=1';
   private toBeStopped = '/containers/{id}/stop?t=5';

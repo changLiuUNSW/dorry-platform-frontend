@@ -40,12 +40,25 @@
   display: inline-block;
 }
 
+.service-list-container {
+  margin-left: 69px;
+  margin-right: 69px;
+}
+
 .service-container {
-  padding: 35px 61px 35px 62px;
+  display: inline-block;
+  width: 255px;
+  height: 141px;
+  background: rgba(0, 0, 0, 0.11);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.38);
+  border-radius: 4px;
+  position: relative;
+  margin: 0 33px 20px 0;
 }
 
 .service-img {
   cursor: pointer;
+  margin: 33px 0 0 31px;
 }
 
 
@@ -74,16 +87,17 @@
 }
 
 .service-misc {
-  float: right;
-  margin-left: 9px;
-  position: relative;
-  height: 100%;
-  width: 57px;
+  display: inline-block;
+  position: absolute;
+  margin: 33px 0 0 9px;
+  width: 109px;
+  height: 75px;
 }
 
 .service-name {
   color: #FFFFFF;
   font-size: 14px;
+  line-height: 19px;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -92,9 +106,9 @@
 }
 
 .service-info {
-  color: #F4F4F4;
-  font-size: 10px;
-  width: 75px;
+  color: rgba(244, 244, 244, 0.79);
+  font-size: 9px;
+  line-height: 13px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -105,16 +119,14 @@
   cursor: pointer;
   font-size: 10px;
   font-weight: bold;
-  border-radius: 4px;
-  line-height: 15px;
-  width: 55px;
+  border-radius: 2px;
+  line-height: 14px;
+  width: 45px;
   text-align: center;
   position: absolute;
-  top: 54px;
-  border-color: #d0d0d0;
-  border-width: 1px;
-  border-style: solid;
-  color: #f0f0f0;
+  bottom: 0;
+  color: #7e5c59;
+  background: rgba(255, 255, 255, 1);
 }
 
 .service-btn:hover {

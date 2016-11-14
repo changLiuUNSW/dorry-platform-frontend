@@ -1,8 +1,6 @@
 .service-list-container {
-  margin: 20px 68px 46px 67px;
-  padding: 0 15px 0 16px;
-  background: rgba(0, 0, 0, 0.11);
-  border-radius: 9px;
+  margin-top: 20px;
+  margin-bottom: 26px;
 }
 
 .service-btn-restart {

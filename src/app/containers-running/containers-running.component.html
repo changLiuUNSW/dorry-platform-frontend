@@ -15,8 +15,8 @@
     <div *ngIf="container.Names[0] !== '/DORRY-WEB'" class="service-container running-service-container">
       <!-- Service icon -->
       <span class="service-img-container" [ngSwitch]="container.iconAssigned">
-        <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
-        <img class="service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:71px; width:71px"/>
+        <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:75px; width:75px"/>
+        <img class="service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
         <div class="service-shadow"></div>
       </span>
 
@@ -24,6 +24,10 @@
         <!-- Service name -->
         <div class="service-name" *ngIf="container.Names[0]">
           {{ container.Names[0] | slice:1 }}
+        </div>
+        <!-- App name -->
+        <div class="error service-info" *ngIf="container.Image">
+          {{ container.Image }}
         </div>
         <!-- Service uptime -->
         <div class="service-info" *ngIf="container.Status">
