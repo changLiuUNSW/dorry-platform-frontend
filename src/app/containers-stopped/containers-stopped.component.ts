@@ -51,9 +51,13 @@ export class ContainersStoppedComponent implements OnInit {
 
   restartContainer(container: Container) {
     this.container = container;
+    this.container.spinner = true;
     let id = container.Id;
     this.containerService.restartContainer(id)
-      .then(data => this.getStoppedContainers(),
+      .then(data => {
+        this.getStoppedContainers();
+        this.container.spinner = false;
+      },
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
@@ -61,7 +65,7 @@ export class ContainersStoppedComponent implements OnInit {
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
-        }.bind(this), 300);
+        }.bind(this), 100);
       });
   }
 

@@ -42,7 +42,6 @@ export class ContainersRunningComponent implements OnInit {
     }.bind(this), 3000);
   }
 
-
   getRunningContainers() {
     this.containerService.getRunningContainers()
       .then(data => this.containers = data)
@@ -58,10 +57,13 @@ export class ContainersRunningComponent implements OnInit {
 
   stopContainer(container: Container) {
     this.container = container;
+    this.container.spinner = true;
     let id = container.Id;
-
     this.containerService.stopContainer(id)
-      .then(data => this.getRunningContainers(),
+      .then(data => {
+        this.getRunningContainers();
+        this.container.spinner = false;
+      },
       (err: any) => this.errMsg(err.status))
       .then(data => {
         if (!this.isError) {
@@ -69,7 +71,7 @@ export class ContainersRunningComponent implements OnInit {
         }
         setTimeout(function() {
           this.reloadEvent.emit(true);
-        }.bind(this), 300);
+        }.bind(this), 100);
       });
   }
 
