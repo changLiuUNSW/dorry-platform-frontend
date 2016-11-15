@@ -24,6 +24,8 @@ export class ContainersErrorComponent implements OnInit {
   isError: boolean;
   notAll: boolean;
 
+  spinnerAll: boolean;
+
   @Output() reloadEvent = new EventEmitter<boolean>();
 
   constructor(private containerService: ContainerService) { }
@@ -98,13 +100,15 @@ export class ContainersErrorComponent implements OnInit {
   }
 
   removeAll() {
+    this.spinnerAll = true;
     this.containerService.getErrorContainers()
       .then(data => this.containers = data)
       .then(data => {
         for (let container of this.containers) {
           this.containerService.removeContainer(container["Id"])
             .then(data => this.getErrorContainers(),
-            (err: any) => this.errMsg(err.status))
+            (err: any) => this.errMsg(err.status));
+          this.spinnerAll = false;
         }
       })
       .then(data => {
