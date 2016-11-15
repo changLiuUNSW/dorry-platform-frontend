@@ -55,8 +55,8 @@
         </div>
       </span>
 
-      <div *ngIf="container && removeSpin && service.Id==container.Id" class="sk-base"></div>
-      <div *ngIf="container && removeSpin && service.Id==container.Id" class=" sk-circle">
+      <div *ngIf="container && service.spinner" class="sk-base"></div>
+      <div *ngIf="container && service.spinner" class="sk-circle">
         <div class="sk-circle1 sk-child"></div>
         <div class="sk-circle2 sk-child"></div>
         <div class="sk-circle3 sk-child"></div>
