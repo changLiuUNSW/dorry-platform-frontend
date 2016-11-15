@@ -40,6 +40,18 @@ export class MarketComponent implements OnInit {
       .subscribe(data => console.log(data));
   }
 
+  //intall image from private docker registry
+  //getTags  +  pullImage
+  private installImage(name: string) {
+    this.marketService.getTags(name)
+      .subscribe(data => {
+        console.log(data.name);
+        console.log(data.tags[0]);
+        this.marketService.pullImage(data.name, data.tags[0])
+          .subscribe(data => { });
+      })
+  }
+
   private pullManifest(name: string, ref: string) {
     this.marketService.pullManifest(name, ref)
       .subscribe(data => console.log(data));

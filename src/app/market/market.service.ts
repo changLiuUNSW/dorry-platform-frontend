@@ -9,11 +9,13 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MarketService {
-  private address = Constant.REGISTRYADDR
+  private address = Constant.REGISTRYADDR;
+  private host = Constant.REGISTRYHOST;
   private paramList = '/v2/_catalog';
   private tags = '/v2/{name}/tags/list';
   private manifest = '/v2/{name}/manifests/{ref}';
   private blob = '/v2/{name}/blobs/{digest}';
+  private pull = '/images/create?fromImage={registry_host}/{imagename}&tag={tag}';
 
   constructor(private http: Http) { }
 
@@ -29,6 +31,13 @@ export class MarketService {
       .get(this.address + this.tags.replace("{name}", name))
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  pullImage(name: string, tag: string): Observable<any> {
+    return this.http
+      .post(Constant.DAEMONADDR + this.pull.replace("{imagename}", name).replace("{tag}", tag).replace("{registry_host}", Constant.REGISTRYHOST), "")
+    //.map(this.extractData)
+    //.catch(this.handleError);
   }
 
   pullManifest(name: string, ref: string): Observable<any> {

@@ -10,10 +10,12 @@ export class Constant {
   public static DAEMONADDR: string = "";
   public static REGISTRYADDR: string = "";
   public static BUILDVERSION: string = "";
+  public static REGISTRYHOST: string = "";
 
   public static initConfig(configObject: ConfigObject) {
     this.DAEMONADDR = configObject.daemon_addr;
-    this.REGISTRYADDR = configObject.registry_addr;
+    this.REGISTRYADDR = configObject.registry_proto + "://" + configObject.registry_host;
     this.BUILDVERSION = configObject.build_version;
+    this.REGISTRYHOST = configObject.registry_host;
   }
 }
