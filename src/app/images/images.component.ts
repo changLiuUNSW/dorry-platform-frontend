@@ -15,6 +15,7 @@ export class ImagesComponent implements OnInit {
   image: ImageInfo;
   imageList: ImageUrl[];
   imageInfoes: ImageInfo[];
+  appName: string;//formated image name
 
   showAlert: boolean;
 

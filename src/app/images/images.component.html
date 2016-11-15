@@ -16,7 +16,10 @@
 
     <span class=" app-misc cursor-default">
       <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
-        {{ app.RepoTags[0] }}
+        {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
+        <!--
+        {{ app.formatedName }}
+      -->
       </div>
 
       <div *ngIf="!startSpin" class="app-btn cursor-pointer" (click)="setSpinner(2)" (click)="getImage(app)" (click)="createContainer(app)">
@@ -49,21 +52,22 @@
 
     <!-- Just a spinner for removing -->
     <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-base"></div>
-    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-circle">
-      <div class="sk-circle1 sk-child"></div>
-      <div class="sk-circle2 sk-child"></div>
-      <div class="sk-circle3 sk-child"></div>
-      <div class="sk-circle4 sk-child"></div>
-      <div class="sk-circle5 sk-child"></div>
-      <div class="sk-circle6 sk-child"></div>
-      <div class="sk-circle7 sk-child"></div>
-      <div class="sk-circle8 sk-child"></div>
-      <div class="sk-circle9 sk-child"></div>
-      <div class="sk-circle10 sk-child"></div>
-      <div class="sk-circle11 sk-child"></div>
-      <div class="sk-circle12 sk-child"></div>
+    <div *ngIf="image && app.Id==image.Id && removeSpin">
+      <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+      </div>
     </div>
-
   </div>
 </div>
 

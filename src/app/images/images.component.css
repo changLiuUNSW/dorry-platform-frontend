@@ -54,12 +54,9 @@
   width: 71px;
   border-radius: 16px;
 }
-
-
 /*.app-icon:hover {
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
 }*/
-
 .app-icon-shadow {
   z-index: 100;
   position: absolute;
@@ -134,10 +131,7 @@
   text-align: right;
   padding: 0 5px 0 0;
 }
-
-
 /*****************************************************************************/
-
 .noti-name {
   font-size: 28px;
   font-weight: bold;
@@ -188,10 +182,7 @@
   box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   font-weight: bold;
 }
-
-
 /* popup box - image details info box part */
-
 .image-details {
   margin: auto;
   position: fixed;
@@ -215,11 +206,10 @@
 }
 
 .detail-app-name {
-  line-height: 67px;
-  width: 280px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 303px;
+  height: 67px;
+  word-wrap: break-word;
+  word-break: break-all;
   font-weight: bold;
   color: #fff;
   font-size: 20px;
@@ -227,6 +217,7 @@
 }
 
 .detail-header-container {
+  vertical-align: middle;
   height: 67px;
   margin-top: 46px;
 }
@@ -278,10 +269,7 @@
 .image-details {
   z-index: 50;
 }
-
-
 /*****************************************************************************/
-
 .sk-circle {
   margin: auto;
   top: 0;
@@ -433,32 +421,33 @@
   -webkit-animation-delay: -0.1s;
   animation-delay: -0.1s;
 }
-
 @-webkit-keyframes sk-circleBounceDelay {
-  0%, 100%, 80% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
-
 @keyframes sk-circleBounceDelay {
-  0%, 100%, 80% {
+  0%,
+  100%,
+  80% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
   40% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
-
-
 /*****************************************************************************/
-
 .sk-circle-start {
   margin: 6px 5px 0 4px;
   width: 10px;
