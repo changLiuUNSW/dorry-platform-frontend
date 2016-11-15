@@ -50,6 +50,7 @@
 .item-misc {
   float: left;
   margin: 35px 0 0 9px;
+  position: relative;
 }
 
 .item-name {
@@ -110,6 +111,22 @@
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.1s;
   -webkit-transition: box-shadow 0.1s;
+  bottom: 0;
+}
+
+.item-installing {
+  z-index: 200;
+  font-size: 12px;
+  color: #ffffff;
+  background: rgba(189, 66, 66, 1);
+  height: 21px;
+  width: 70px;
+  border-radius: 2px;
+  line-height: 21px;
+  text-align: center;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
 }
 
 .item-sash {
@@ -117,6 +134,3 @@
   bottom: 0;
   position: absolute;
 }
-
-
-/******************************** App details ********************************/

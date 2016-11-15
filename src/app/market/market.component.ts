@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
 import { Item } from './market';
 
-import { MOCK_ITEMS } from './mock-items';
-
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
@@ -15,7 +13,6 @@ import { MOCK_ITEMS } from './mock-items';
 export class MarketComponent implements OnInit {
   items: Item[];
   item: Item;
-  mock_items = MOCK_ITEMS;
   showDetail: boolean;
 
   constructor(private marketService: MarketService) { }
@@ -43,14 +40,21 @@ export class MarketComponent implements OnInit {
   //intall image from private docker registry
   //getTags  +  pullImage
   private installImage(name: string) {
+    // this.item.installing = true;
+    console.log(this.item);
+
     this.marketService.getTags(name)
       .subscribe(data => {
         console.log(data.name);
         console.log(data.tags[0]);
         this.marketService.pullImage(data.name, data.tags[0])
-          .subscribe(data => { });
+          .subscribe(data => {
+            // this.item.installing = false;
+          });
       })
   }
+
+  /***************************************************************************/
 
   private pullManifest(name: string, ref: string) {
     this.marketService.pullManifest(name, ref)
@@ -69,8 +73,6 @@ export class MarketComponent implements OnInit {
         }
       });
   }
-
-  /***************************************************************************/
 
   private delManifest(name: string, ref: string) {
     this.marketService.delManifest(name, ref)

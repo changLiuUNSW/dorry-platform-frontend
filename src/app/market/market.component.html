@@ -11,9 +11,14 @@
       <div class="item-size">
         1000 MB
       </div>
-      <div class="item-install cursor-pointer" (click)="installImage(item)">
+      <div class="item-install cursor-pointer" (click)="installImage(item)" (click)="getItem(item)">
         Install
       </div>
+
+      <div *ngIf="item.installing" class="item-installing">
+        XXXXX
+      </div>
+
     </span>
     <!-- <div class="item-sash">
       <img src="assets/sash.svg"/>
@@ -33,20 +38,3 @@
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="toggleDetail()">Close</button>
   </div>
 </div>
-
-<!-- <div *ngIf="showDetail" class="modal-base"></div>
-<div *ngIf="showDetail" class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" aria-label="Close" (click)="toggleDetail()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h4 class="modal-title">
-        <strong>Details</strong>
-      </h4>
-    </div>
-    <div class="modal-body">
-      ~!@#$%^&*()_+
-    </div>
-  </div>
-</div> -->
