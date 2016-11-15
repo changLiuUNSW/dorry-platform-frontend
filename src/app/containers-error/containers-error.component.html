@@ -11,43 +11,66 @@
 <div *ngIf="notAll" class="notification-success" role="alert">{{ notification }}</div>
 
 <div *ngIf="hasErrorService" class="service-list-container">
-  <div class="error-service-header">
-    <span class="service-header-left cursor-default">Oops! There Is Something Wrong</span>
-    <span class="service-header-right cursor-pointer" (click)="displayAlertAll()">
-      <img src="assets/trash.svg" style="height: 20px; width: 19px; margin: 0 0 2px 0"/>
+  <div class="error error-service-header">
+    <span class="error service-header-left cursor-default">Oops! There Is Something Wrong</span>
+    <span class="error service-header-right cursor-pointer" (click)="displayAlertAll()">
+      <img src="assets/trash.svg" style="height: 18px; width: 16px; margin: 0 0 4px 0"/>
       <span>Remove All</span>
     </span>
   </div>
-  <div class="service-list" *ngFor="let container of containers">
-    <div class="service-container error-service-container">
-      <span class="service-img-container" [ngSwitch]="container.iconAssigned">
-        <div class="icon-wrong">
+  <div class="error-service-list" *ngFor="let service of containers">
+    <div class="error-service-container">
+      <span class="error service-img-container" [ngSwitch]="service.iconAssigned">
+        <div class="error icon-wrong">
           <img src="assets/wrong.svg"/>
         </div>
-        <img class="service-img" *ngSwitchCase="true" src={{container.iconUrl}} style="height:71px; width:71px"/>
-        <img class="service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:71px; width:71px"/>
-        <div class="service-shadow"></div>
+        <div class="error-service-img">
+          <img *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
+          <img *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
+          <div class="error service-shadow"></div>
+        </div>
       </span>
 
-      <span class="service-misc">
+      <span class="error-service-misc">
         <!-- Service name -->
-        <div class="service-name" *ngIf="container.Names[0]">
-          {{ container.Names[0] | slice:1 }}
+        <div class="error service-name" *ngIf="service.Names[0]">
+          {{ service.Names[0] | slice:1 }}
+        </div>
+        <!-- App name -->
+        <div class="error service-info" *ngIf="service.Image">
+          {{ service.Image }}
         </div>
         <!-- Service uptime -->
-        <div class="service-info" *ngIf="container.Status">
-          {{ container.Status }}
+        <div class="error service-info" *ngIf="service.Status">
+          {{ service.Status }}
         </div>
         <!-- Service port -->
-        <div class="service-info" *ngIf="container.Ports[0] != undefined">
+        <div class="error service-info" *ngIf="service.Ports[0] != undefined">
           Port:
-          {{ container.Ports[0].PublicPort }}
+          {{ service.Ports[0].PublicPort }}
         </div>
         <!-- Remove Button -->
-        <div class="service-btn-remove service-btn" (click)="displayAlert()" (click)="getContainer(container)">
+        <div class="error service-btn" (click)="displayAlert()" (click)="getContainer(service)">
           Remove
         </div>
       </span>
+
+      <div *ngIf="container && removeSpin && service.Id==container.Id" class="sk-base"></div>
+      <div *ngIf="container && removeSpin && service.Id==container.Id" class=" sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+      </div>
+
     </div>
   </div>
 </div>

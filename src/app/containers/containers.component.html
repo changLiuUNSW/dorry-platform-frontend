@@ -1,5 +1,5 @@
 <div [ngStyle]="{'margin-top':'40px'}">
-  <div id="refresh" class="btn" (click)="error.getErrorContainers()" (click)="stopped.getStoppedContainers()" (click)=" running.getRunningContainers()">Refresh</div>
+  <!-- <div id="refresh" class="btn" (click)="error.getErrorContainers()" (click)="stopped.getStoppedContainers()" (click)=" running.getRunningContainers()">Refresh</div> -->
 
   <app-containers-error #error (reloadEvent)="error.getErrorContainers()" (reloadEvent)="stopped.getStoppedContainers()" (reloadEvent)=" running.getRunningContainers()"></app-containers-error>
 

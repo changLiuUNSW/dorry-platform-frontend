@@ -1,15 +1,19 @@
 .service-list-container {
-  margin: 20px 68px 46px 67px;
-  padding: 0 15px 0 16px;
-  background: rgba(0, 0, 0, 0.11);
-  border-radius: 9px;
-}
-
-.service-btn-restart {
-  color: rgba(0, 0, 0, 0.40);
-  /*background: rgba(255, 255, 255, 0.41);*/
+  margin-top: 20px;
+  margin-bottom: 26px;
 }
 
 .service-img-stopped {
   filter: grayscale(100%);
+}
+
+.stopped.service-btn:hover {
+  background: #679d2c;
+  color: #ffffff;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.stopped.service-btn:active {
+  background: #4b7819;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }

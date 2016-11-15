@@ -1,6 +1,6 @@
 .sidenav {
   height: 100%;
-  width: 87px;
+  width: 85px;
   float: left;
   position: absolute;
   background-image: url("assets/navbarbg.png");
@@ -11,19 +11,19 @@
 }
 
 .navbtn a {
-  width: 87px;
+  width: 85px;
   display: block;
   transition: all 0.4s ease;
-  height: 72px;
+  height: 71px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
 }
 
 .dorry-btn {
-  width: 87px;
+  width: 85px;
   display: block;
-  height: 60px;
+  height: 71px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
@@ -40,36 +40,36 @@
   position: absolute;
   background: linear-gradient(135deg, #c78575, #373d85);
   float: left;
-  padding-left: 87px;
+  padding-left: 85px;
 }
 
 .content {
   position: relative;
   display: inline-block;
   overflow: auto;
-  top: 60px;
+  top: 71px;
   bottom: 40px;
   width: 100%;
   height: calc(100% - 100px);
 }
 
 .mathead {
-  height: 60px;
-  width: calc(100% - 87px);
+  height: 71px;
+  width: calc(100% - 85px);
   background: rgba(0, 0, 0, 0.16);
-  line-height: 60px;
+  line-height: 71px;
   font-size: 24px;
   font-weight: bold;
   color: white;
   text-align: right;
-  padding-right: 68px;
+  padding-right: 80px;
   position: fixed;
   top: 0;
 }
 
 .footer {
   height: 40px;
-  width: calc(100% - 87px);
+  width: calc(100% - 85px);
   line-height: 40px;
   font-size: 24px;
   font-weight: bold;

@@ -1,13 +1,15 @@
 .service-list-container {
-  margin: 20px 68px 46px 67px;
-  padding: 0 15px 0 16px;
-  background: rgba(0, 0, 0, 0.11);
-  border-radius: 9px;
+  margin-top: 20px;
+  margin-bottom: 55px;
 }
 
-.service-btn-stop {
-  color: rgba(192, 192, 192, 1);
-  border-color: #979797;
-  border-style: solid;
-  border-width: 1px;
+.running.service-btn:hover {
+  background: #fcbd47;
+  color: #ffffff;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.running.service-btn:active {
+  background: #e79102;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
