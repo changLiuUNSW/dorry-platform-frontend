@@ -82,9 +82,11 @@
       <img class="detail-close" src="assets/detailclose.png" (click)="closeDetailInfo()"/>
       <div class="detail-header-container">
         <span><img class="detail-image" src={{detailApp.url}} style="height:67px;width:67px;"/></span>
-        <span class="detail-app-name">
-          {{detailApp.RepoTags[0]}}
-        </span>
+        <div class="detail-app-name-container">
+          <span class="detail-app-name">
+            {{detailApp.RepoTags[0]}}
+          </span>
+        </div>
       </div>
       <hr>
       <div class="detail-info-container">
