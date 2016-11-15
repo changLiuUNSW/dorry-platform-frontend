@@ -95,7 +95,7 @@
 }
 
 .service-name {
-  color: #FFFFFF;
+  color: #ebebeb;
   font-size: 14px;
   line-height: 19px;
   font-weight: bold;
@@ -103,6 +103,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
+}
+
+.service-name:hover {
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .service-info {
@@ -129,16 +134,17 @@
   background: rgba(255, 255, 255, 1);
 }
 
-.service-btn:hover {
-  background: rgba(255, 255, 255, 0.59);
-  opacity: 0.59;
-  color: #000000;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+
+/*.service-btn:hover {
+  background: #e14f61;
+  color: #ffffff;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .service-btn:active {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-}
+  background: #c72f41;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}*/
 
 .notification-success {
   opacity: 0.8;

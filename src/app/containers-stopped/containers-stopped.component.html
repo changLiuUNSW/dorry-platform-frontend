@@ -11,31 +11,31 @@
   Stopped Service
 </div>
 <div *ngIf="hasStoppedService" class="service-list-container">
-  <div class="service-list" *ngFor="let container of containers">
-    <div class="service-container stopped-service-container">
+  <div class="stopped service-list" *ngFor="let service of containers">
+    <div class="stopped service-container stopped-service-container">
       <!-- Service icon -->
-      <span class="service-img-container" [ngSwitch]="container.iconAssigned">
-        <img class="service-img service-img-stopped" *ngSwitchCase="true" src={{container.iconUrl}} style="height:75px; width:75px"/>
-        <img class="service-img service-img-stopped" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-        <div class="service-shadow"></div>
+      <span class="stopped service-img-container" [ngSwitch]="service.iconAssigned">
+        <img class="stopped service-img service-img-stopped" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
+        <img class="stopped service-img service-img-stopped" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
+        <div class="stopped service-shadow"></div>
       </span>
 
-      <span class="service-misc">
+      <span class="stopped service-misc">
         <!-- Service name -->
-        <div class="service-name" *ngIf="container.Names[0]">
-          {{ container.Names[0] | slice:1 }}
+        <div class="stopped service-name" *ngIf="service.Names[0]">
+          {{ service.Names[0] | slice:1 }}
         </div>
         <!-- Service uptime -->
-        <div class="service-info" *ngIf="container.Status">
-          {{ container.Status }}
+        <div class="stopped service-info" *ngIf="service.Status">
+          {{ service.Status }}
         </div>
         <!-- Service port -->
-        <div class="service-info" *ngIf="container.Ports[0] != undefined">
+        <div class="stopped service-info" *ngIf="service.Ports[0] != undefined">
           Port:
-          {{ container.Ports[0].PublicPort }}
+          {{ service.Ports[0].PublicPort }}
         </div>
         <!-- Restart Button -->
-        <div class="service-btn-restart service-btn" (click)="displayAlert()" (click)="getContainer(container)">
+        <div class="stopped service-btn" (click)="displayAlert()" (click)="getContainer(service)">
           Restart
         </div>
       </span>
