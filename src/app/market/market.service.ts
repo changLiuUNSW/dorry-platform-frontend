@@ -11,11 +11,10 @@ import 'rxjs/add/operator/catch';
 export class MarketService {
   private address = Constant.REGISTRYADDR;
   private host = Constant.REGISTRYHOST;
+  private pull = '/images/create?fromImage={registry_host}/{imagename}&tag={tag}';
+
   private paramList = '/v2/_catalog';
   private tags = '/v2/{name}/tags/list';
-  private manifest = '/v2/{name}/manifests/{ref}';
-  private blob = '/v2/{name}/blobs/{digest}';
-  private pull = '/images/create?fromImage={registry_host}/{imagename}&tag={tag}';
 
   constructor(private http: Http) { }
 
@@ -26,48 +25,20 @@ export class MarketService {
       .catch(this.handleError);
   }
 
-  getTags(name: string): Observable<any> {
+  getTags(item: Item): Observable<any> {
     return this.http
-      .get(this.address + this.tags.replace("{name}", name))
+      .get(this.address + this.tags.replace("{name}", item.name))
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   pullImage(name: string, tag: string): Observable<any> {
+    console.log(name);
     return this.http
       .post(Constant.DAEMONADDR + this.pull.replace("{imagename}", name).replace("{tag}", tag).replace("{registry_host}", Constant.REGISTRYHOST), "")
     //.map(this.extractData)
     //.catch(this.handleError);
   }
-
-  pullManifest(name: string, ref: string): Observable<any> {
-    return this.http
-      .get(this.address + this.manifest.replace("{name}", name).replace("{ref}", ref))
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  pullBlobs(name: string, digest: string): Observable<any> {
-    // console.log(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
-    return this.http
-      .get(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
-  }
-
-  /***************************************************************************/
-
-  delManifest(name: string, ref: string): Observable<any> {
-    return this.http
-      .delete(this.address + this.manifest.replace("{name}", name).replace("{ref}", ref))
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  delBlobs(name: string, digest: string): Observable<any> {
-    return this.http
-      .delete(this.address + this.blob.replace("{name}", name).replace("{digest}", digest));
-  }
-
-  /***************************************************************************/
 
   // Function extractData() extracts the data from the http response, which is
   // a json array, then return as an object.
