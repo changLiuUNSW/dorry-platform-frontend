@@ -6,7 +6,7 @@
 <div class="app-list">
   <div class="app-container" *ngFor="let app of imageInfoes">
     <span>
-      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="setSpinner(1)" (click)="getImage(app)" (click)="displayAlert()"/>
+      <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="getImage(app)" (click)="displayAlert()"/>
     </span>
 
     <span class="app-img cursor-pointer" (click)="openDetailInfo(app)">
@@ -22,12 +22,12 @@
       -->
       </div>
 
-      <div *ngIf="!startSpin" class="app-btn cursor-pointer" (click)="setSpinner(2)" (click)="getImage(app)" (click)="createContainer(app)">
+      <div *ngIf="!app.starting" class="app-btn cursor-pointer" (click)="getImage(app)" (click)="createContainer(app)">
         <span>Start New</span>
       </div>
 
       <!-- <div class="app-starting cursor-default"> -->
-      <div *ngIf="image && app.Id==image.Id && startSpin" class="app-starting cursor-default">
+      <div *ngIf="image && app.Id==image.Id && app.starting" class="app-starting cursor-default">
         <span style="width: 10px; height: 10px">
           <div class="sk-circle-start">
             <div class="sk-circle1 sk-child"></div>

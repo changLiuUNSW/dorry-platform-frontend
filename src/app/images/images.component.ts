@@ -13,11 +13,11 @@ import { trigger, state, style, transition, animate } from '@angular/core';
 export class ImagesComponent implements OnInit {
   notiImage: ImageInfo;
   image: ImageInfo;
-  imageList: ImageUrl[];
-  imageInfoes: ImageInfo[];
+  imageList: ImageUrl[];//imageicon url
+  imageInfoes: ImageInfo[];//all image list
   appName: string;//formated image name
 
-  showAlert: boolean;
+  showAlert: boolean;//show alert tag
 
   notification: string;
   notState: boolean;
@@ -60,6 +60,7 @@ export class ImagesComponent implements OnInit {
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
+    this.removeSpin = true;
     this.notiImage = image;
     let id = image.Id;
     let message: string;
@@ -73,27 +74,23 @@ export class ImagesComponent implements OnInit {
         this.errMsg(err.status);
       })
       .then(msg => this.getImageInfoes());
-    // console.log("remove Image : " + id);
+    this.removeSpin = false;
   }
 
   // Create a container
   createContainer(image: ImageInfo) {
+    image.starting = true;
     this.notState = false;
     this.notiImage = image;
     this.imagesService.inspectImage(image.Id)
       .then(data => {
-        // console.log(data[Object.keys(data)[0]]);
-        // this.imagesService.createContainer(data[Object.keys(data)[0]])
-        //   .subscribe(data => {
-        //     this.startContainer(data[Object.keys(data)[0]])
-        //   }
         console.log(data[Object.keys(data)[0]]);
         this.imagesService.createContainer(data[Object.keys(data)[0]]).then(data => {
           this.startContainer(data[Object.keys(data)[0]])
         }, err => this.createConErrMsg(err.status))
       })
       .then(data => {
-        this.startSpin = false;
+        image.starting = false;
         this.image = null;
       })
   }
@@ -218,23 +215,6 @@ export class ImagesComponent implements OnInit {
 
   getImage(image: ImageInfo) {
     this.image = image;
-  }
-
-  setSpinner(spin: number) {
-    if (spin == 1) {
-      this.removeSpin = true;
-      this.startSpin = false;
-    }
-    else if (spin == 2) {
-      this.removeSpin = false;
-      this.startSpin = true;
-    }
-    else {
-      this.removeSpin = false;
-      this.startSpin = false;
-    }
-    // console.log('start: ' + this.startSpin);
-    // console.log('remove: ' + this.removeSpin);
   }
 
 }
