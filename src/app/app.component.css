@@ -5,10 +5,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
-
-
 /*********************************** Alert ***********************************/
-
 .alert-dialog-style {
   height: 237px;
   width: 500px;
@@ -43,7 +40,7 @@
   color: white;
   font-size: 18px;
   width: 420px;
-  margin: 44px 40px 0 40px;
+  margin: 44px 40px 0;
   padding: 0;
   position: absolute;
   display: table;
@@ -75,6 +72,9 @@
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
+  overflow: auto;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .btn-alert {

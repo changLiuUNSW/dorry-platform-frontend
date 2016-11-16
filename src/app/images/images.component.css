@@ -205,15 +205,21 @@
   float: left;
 }
 
-.detail-app-name {
-  width: 303px;
+.detail-app-name-container {
+  display: table;
   height: 67px;
+}
+
+.detail-app-name {
+  display: table-cell;
+  vertical-align: middle;
+  width: 303px;
+  /*height: 67px;*/
   word-wrap: break-word;
   word-break: break-all;
   font-weight: bold;
   color: #fff;
   font-size: 20px;
-  float: left;
 }
 
 .detail-header-container {

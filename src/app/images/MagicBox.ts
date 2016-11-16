@@ -20,7 +20,7 @@ export const MAGIC_BOXES = {
   // DorryCloud:5000/rpi_samba_mini:1.0.0
   "sha256:b85cb2cf09349e6858d9f24fe045a73c0ccb7b29ed740510b8b96bab2993bd70": {
     "Tty": true,
-    "Image": "DorryCloud:5000/rpi_samba_mini:1.0.0",
+    "Image": "dorryServer:5001/rpi_samba_mini:1.0.0",
     "HostConfig": {
       "Binds": [
         "/dorry_data/samba/share/:/data/",
@@ -32,9 +32,9 @@ export const MAGIC_BOXES = {
   },
 
   // DorryCloud:5000/rpi_data_manager:1.0.0
-  "DorryCloud:5000/rpi_data_manager:1.0.0": {
+  "sha256:8ad386ec89973f4e26c051e67823094c329208dd4005435e3d713b4379012cda": {
     "Tty": true,
-    "Image": "DorryCloud:5000/rpi_data_manager:1.0.0",
+    "Image": "dorryServer:5001/rpi_data_manager:1.0.0",
     "HostConfig": {
       "Binds": [
         "/etc/localtime:/etc/localtime",
