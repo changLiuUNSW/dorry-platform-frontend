@@ -51,8 +51,8 @@
     </span>
 
     <!-- Just a spinner for removing -->
-    <div *ngIf="image && app.Id==image.Id && removeSpin" class="sk-base"></div>
-    <div *ngIf="image && app.Id==image.Id && removeSpin">
+    <div *ngIf="app.removing" class="sk-base"></div>
+    <div *ngIf="app.removing">
       <div class="sk-circle">
         <div class="sk-circle1 sk-child"></div>
         <div class="sk-circle2 sk-child"></div>

@@ -23,17 +23,12 @@ export class ImagesComponent implements OnInit {
   notState: boolean;
   isError: boolean = false;
 
-  removeSpin: boolean;
-  startSpin: boolean;
-
   constructor(private imagesService: ImagesService) { }
 
   ngOnInit() {
     this.imageList = IMAGELIST;
     this.getImageInfoes();
     this.showAlert = false;
-    this.removeSpin = false;
-    this.startSpin = false;
   }
 
   // Bindding the ImageInfo and image url
@@ -60,7 +55,7 @@ export class ImagesComponent implements OnInit {
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
-    this.removeSpin = true;
+    image.removing = true;
     this.notiImage = image;
     let id = image.Id;
     let message: string;
@@ -73,8 +68,10 @@ export class ImagesComponent implements OnInit {
       err => {
         this.errMsg(err.status);
       })
-      .then(msg => this.getImageInfoes());
-    this.removeSpin = false;
+      .then(msg => {
+        image.removing = false;
+        this.getImageInfoes()
+      });
   }
 
   // Create a container
