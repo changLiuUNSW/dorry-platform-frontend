@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="63px" height="57px" viewBox="0 0 63 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Hi-Fi" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="the-hint-of-confirm-remove-app" transform="translate(-761.000000, -383.000000)">
+            <g id="Group-15">
+                <g id="Group-18" transform="translate(720.000000, 340.000000)">
+                    <g id="Group-19" transform="translate(41.000000, 43.000000)">
+                        <path d="M27.526809,4.59892541 C29.7211418,0.764849252 33.2745916,0.757394364 35.473191,4.59892541 L60.5336584,48.3861492 C62.7279911,52.2202254 60.93426,55.3283582 56.5111897,55.3283582 L6.48881034,55.3283582 C2.07292945,55.3283582 0.267742261,52.2276803 2.46634165,48.3861492 L27.526809,4.59892541 Z" id="Triangle-2" stroke="#DEDEDE" stroke-width="2"></path>
+                        <text id="!" font-family="Arial-BoldMT, Arial" font-size="40" font-weight="bold" fill="#DEDEDE">
+                            <tspan x="25" y="45">!</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
