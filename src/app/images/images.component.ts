@@ -113,20 +113,23 @@ export class ImagesComponent implements OnInit {
   private createConErrMsg(statusCode: Number) {
     console.log("create container errr message:" + statusCode);
     this.isError = true;
-    if (statusCode == 400) {
-      this.showNot(" has bad parameter");
-    }
-    else if (statusCode == 404) {
-      this.showNot(" start error,no such container");
-    }
-    else if (statusCode == 406) {
-      this.showNot(" impossible to attach");
-    }
-    else if (statusCode == 409) {
-      this.showNot(" start error,has conflict");
-    }
-    else if (statusCode == 500) {
-      this.showNot(" has Server error");
+    // if (statusCode == 400) {
+    //   this.showNot(" has bad parameter");
+    // }
+    // else if (statusCode == 404) {
+    //   this.showNot(" start error,no such container");
+    // }
+    // else if (statusCode == 406) {
+    //   this.showNot(" impossible to attach");
+    // }
+    // else if (statusCode == 409) {
+    //   this.showNot(" start error,has conflict");
+    // }
+    // else if (statusCode == 500) {
+    //   this.showNot(" has Server error");
+    // }
+    if (statusCode >= 400) {
+      this.showNot(" failed to start a service");
     }
   }
 
@@ -139,14 +142,17 @@ export class ImagesComponent implements OnInit {
     console.log("start container errr message:" + statusCode);
     this.isError = true;
     if (statusCode == 304) {
-      this.showNot(" start error,container has already started");
+      this.showNot(" started failed, a service had already been started");
     }
-    else if (statusCode == 404) {
-      this.showNot(" start error,no such container");
+    else if (statusCode >= 400) {
+      this.showNot(" failed to start a service");
     }
-    else if (statusCode == 500) {
-      this.showNot(" has Server error");
-    }
+    // else if (statusCode == 404) {
+    //   this.showNot(" start error,no such container");
+    // }
+    // else if (statusCode == 500) {
+    //   this.showNot(" has Server error");
+    // }
   }
 
   //status code
@@ -156,14 +162,17 @@ export class ImagesComponent implements OnInit {
   //500: server error
   private errMsg(statusCode: Number) {
     this.isError = true;
-    if (statusCode == 404) {
-      this.showNot(" ,No such Image");
-    }
-    else if (statusCode == 409) {
-      this.showNot(" has conflict");
-    }
-    else if (statusCode == 500) {
-      this.showNot(" has Server error");
+    // if (statusCode == 404) {
+    //   this.showNot(" ,No such Image");
+    // }
+    // else if (statusCode == 409) {
+    //   this.showNot(" has conflict");
+    // }
+    // else if (statusCode == 500) {
+    //   this.showNot(" has Server error");
+    // }
+    if (statusCode >= 400) {
+      this.showNot(" was removed unsuccessfully");
     }
   }
 
