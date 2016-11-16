@@ -11,14 +11,12 @@
       <div class="item-size">
         1000 MB
       </div>
-      <div class="item-install cursor-pointer" (click)="installImage(item)" (click)="getItem(item)">
+      <div *ngIf="!item.installing" class="item-install cursor-pointer" (click)="installImage(item)" (click)="getItem(item)">
         Install
       </div>
-
       <div *ngIf="item.installing" class="item-installing">
-        XXXXX
+        Installing
       </div>
-
     </span>
     <!-- <div class="item-sash">
       <img src="assets/sash.svg"/>

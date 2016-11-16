@@ -49,7 +49,6 @@ export class MarketComponent implements OnInit {
         // console.log(data);
         this.marketService.pullImage(data.name, data.tags[0])
           .subscribe(data => {
-            console.log('**************************');
             this.item.installing = false;
           });
       })
