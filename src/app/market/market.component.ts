@@ -43,13 +43,13 @@ export class MarketComponent implements OnInit {
   //getTags  +  pullImage
   private installImage(item: Item) {
     this.getItem(item);
-    this.item.installing = true;
+    item.installing = true;
     this.marketService.getTags(item)
       .subscribe(data => {
         // console.log(data);
         this.marketService.pullImage(data.name, data.tags[0])
           .subscribe(data => {
-            this.item.installing = false;
+            item.installing = false;
           });
       })
   }
