@@ -29,7 +29,7 @@
 /*****************************************************************************/
 
 .service-header {
-  margin-left: 97px;
+  margin-left: 67px;
   color: #FFFFFF;
   font-size: 24px;
   font-weight: bold;
@@ -41,24 +41,23 @@
 }
 
 .service-list-container {
-  margin-left: 69px;
-  margin-right: 69px;
+  margin: 8px 28px 28px 28px;
 }
 
 .service-container {
   display: inline-block;
-  width: 255px;
-  height: 141px;
+  width: 272px;
+  height: 151px;
   background: rgba(0, 0, 0, 0.11);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.38);
   border-radius: 4px;
   position: relative;
-  margin: 0 33px 20px 0;
+  margin: 12px 12px;
 }
 
 .service-img {
   cursor: pointer;
-  margin: 33px 0 0 31px;
+  margin: 38px 0 0 39px;
 }
 
 
