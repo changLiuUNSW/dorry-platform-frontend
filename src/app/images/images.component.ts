@@ -22,6 +22,7 @@ export class ImagesComponent implements OnInit {
   notification: string;
   notState: boolean;
   isError: boolean = false;
+  regExp = new RegExp(/DORRY-WEB/, 'i');
 
   constructor(private imagesService: ImagesService) { }
 
