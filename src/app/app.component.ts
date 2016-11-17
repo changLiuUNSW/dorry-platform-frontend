@@ -15,11 +15,7 @@ export class AppComponent {
   constructor(private configService: ConfigService) {
   }
 
-  // load() {
-  //   this.configService.getConfig().then(data => {
-  //     this.configObject = data;
-  //     Constant.initConfig(this.configObject);
-  //   });
-  //   //console.log(this.configObject.getBuildVersion());
-  // }
+  ngOnInit() {
+    window.open("https://dorryserver:5001");
+  }
 }
