@@ -4,8 +4,9 @@
 }
 
 header.service {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
+  line-height: 1em;
   color: #37474f;
   padding: 16px 16px 0;
 }
@@ -21,7 +22,7 @@ header.service {
 }
 
 .mdl-card__title-text {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .mdl-data-table {
@@ -34,4 +35,8 @@ header.service {
 
 .mdl-data-table__cell--non-numeric {
   font-weight: 500;
+}
+
+.mdl-card__menu {
+  color: #ffffff;
 }
