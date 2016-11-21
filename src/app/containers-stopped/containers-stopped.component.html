@@ -1,61 +1,38 @@
-<!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<div *ngIf="notState && isError" class="notification-failure" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<div *ngIf="hasStoppedService" class="service-header stopped-service-header">
-  Stopped Service
-</div>
-<div *ngIf="hasStoppedService" class="service-list-container">
-  <div class="stopped service-list" *ngFor="let service of containers">
-    <div class="stopped service-container">
-      <!-- Service icon -->
-      <span class="stopped service-img-container" [ngSwitch]="service.iconAssigned">
-        <img class="stopped service-img" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
-        <img class="stopped service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-        <div class="stopped service-shadow"></div>
-      </span>
-
-      <span class="stopped service-misc">
-        <!-- Service name -->
-        <div class="stopped service-name" *ngIf="service.Names[0]">
-          {{ service.Names[0] | slice:1 }}
-        </div>
-        <!-- Service uptime -->
-        <div class="stopped service-info" *ngIf="service.Status">
-          {{ service.Status }}
-        </div>
-        <!-- Service port -->
-        <div class="stopped service-info" *ngIf="service.Ports[0] != undefined">
-          Port:
-          {{ service.Ports[0].PublicPort }}
-        </div>
-        <!-- Restart Button -->
-        <div class="stopped service-btn" (click)="displayAlert()" (click)="getContainer(service)">
-          Restart
-        </div>
-      </span>
-
-      <div *ngIf="container && service.spinner" class="sk-base"></div>
-      <div *ngIf="container && service.spinner" class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
+<div class="mdl-container stopped" *ngIf="hasStoppedService">
+  <header class="service stopped">
+    Stopped Services
+  </header>
+  <div class="mdl-grid">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{ service.Names[0] | slice:1 }}</h2>
       </div>
 
+      <div class="mdl-card__supporting-text">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Application</td>
+              <td *ngIf="service.Image">{{ service.Image }}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Status</td>
+              <td *ngIf="service.Status">{{ service.Status }}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Port</td>
+              <td *ngIf="service.Ports[0] != undefined">{{ service.Ports[0].PublicPort }}</td>
+              <td *ngIf="service.Ports[0] == undefined">None</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button--fab" (click)="displayAlert()" (click)="getContainer(service)">
+          <i class="material-icons">T</i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

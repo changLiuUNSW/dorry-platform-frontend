@@ -1,93 +1,39 @@
-<!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<div *ngIf="notState && isError" class="notification-failure" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<!-- Remove All -->
-<div *ngIf="notAll" class="notification-success" role="alert">{{ notification }}</div>
-
-<div *ngIf="hasErrorService" class="error service-list-container">
-  <div class="error error-service-header">
-    <span class="error service-header-left cursor-default">Oops! There Is Something Wrong</span>
-    <span class="error service-header-right cursor-pointer" (click)="displayAlertAll()">
-      <img src="assets/trash.svg" style="height: 18px; width: 16px; margin: 0 0 4px 0"/>
-      <span>Remove All</span>
-    </span>
-  </div>
-  <div class="error-service-list" *ngFor="let service of containers">
-    <div class="error-service-container">
-      <span class="error service-img-container" [ngSwitch]="service.iconAssigned">
-        <div class="error icon-wrong">
-          <img src="assets/wrong.svg"/>
-        </div>
-        <div class="error-service-img">
-          <img *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
-          <img *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-          <div class="error service-shadow"></div>
-        </div>
-      </span>
-
-      <span class="error-service-misc">
-        <!-- Service name -->
-        <div class="error service-name" *ngIf="service.Names[0]">
-          {{ service.Names[0] | slice:1 }}
-        </div>
-        <!-- App name -->
-        <div class="error service-info" *ngIf="service.Image">
-          {{ service.Image }}
-        </div>
-        <!-- Service uptime -->
-        <div class="error service-info" *ngIf="service.Status">
-          {{ service.Status }}
-        </div>
-        <!-- Service port -->
-        <div class="error service-info" *ngIf="service.Ports[0] != undefined">
-          Port:
-          {{ service.Ports[0].PublicPort }}
-        </div>
-        <!-- Remove Button -->
-        <div class="error service-btn" (click)="displayAlert()" (click)="getContainer(service)">
-          Remove
-        </div>
-      </span>
-
-      <div *ngIf="container && service.spinner" class="sk-base"></div>
-      <div *ngIf="container && service.spinner" class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
+<div class="mdl-container error" *ngIf="hasErrorService">
+  <header class="service error">
+    Oops! There Is Something Wrong
+  </header>
+  <div class="mdl-grid">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{ service.Names[0] | slice:1 }}</h2>
       </div>
 
-    </div>
-  </div>
+      <div class="mdl-card__supporting-text">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Application</td>
+              <td *ngIf="service.Image">{{ service.Image }}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Status</td>
+              <td *ngIf="service.Status">{{ service.Status }}</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Port</td>
+              <td *ngIf="service.Ports[0] != undefined">{{ service.Ports[0].PublicPort }}</td>
+              <td *ngIf="service.Ports[0] == undefined">None</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <div *ngIf="spinnerAll" class="sk-base-all"></div>
-  <div *ngIf="spinnerAll" class="sk-circle-all">
-    <div class="sk-circle1 sk-child"></div>
-    <div class="sk-circle2 sk-child"></div>
-    <div class="sk-circle3 sk-child"></div>
-    <div class="sk-circle4 sk-child"></div>
-    <div class="sk-circle5 sk-child"></div>
-    <div class="sk-circle6 sk-child"></div>
-    <div class="sk-circle7 sk-child"></div>
-    <div class="sk-circle8 sk-child"></div>
-    <div class="sk-circle9 sk-child"></div>
-    <div class="sk-circle10 sk-child"></div>
-    <div class="sk-circle11 sk-child"></div>
-    <div class="sk-circle12 sk-child"></div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button--fab" (click)="displayAlert()" (click)="getContainer(service)">
+          <i class="material-icons">R</i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -105,21 +51,5 @@
   <div class="alert-footer modal-footer">
     <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeContainer(container.Id)" (click)="hideAlert()">Yes</button>
     <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
-  </div>
-</div>
-
-<!-- The alert dialog for remove all services -->
-<div class="alert-global alert-dialog-style" *ngIf="showAlertAll"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlertAll"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlertAll">
-  <div class="alert-body modal-body cursor-default">
-    <span><img class="alert-excl" src="assets/alert.svg"/></span>
-    <span class="alert-message">
-      Do you want to remove all error services?
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeAll()" (click)="hideAlertAll()">Yes</button>
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlertAll()">No</button>
   </div>
 </div>
