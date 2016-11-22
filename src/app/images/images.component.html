@@ -1,3 +1,64 @@
+<a href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close">X</a>
+
+    <h2>Modal Box</h2>
+
+    <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+    <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+  </div>
+</div>
+
+<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Toast</button>
+<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<script>
+  (function () {
+    'use strict';
+    window['counter'] = 0;
+    var snackbarContainer = document.querySelector('#demo-toast-example');
+    var showToastButton = document.querySelector('#demo-show-toast');
+    showToastButton.addEventListener('click', function () {
+      'use strict';
+      var data = {
+        message: 'Example Message # ' + ++counter
+      };
+      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    });
+  }());
+</script>
+
+<button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Snackbar</button>
+<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<script>
+  (function () {
+    'use strict';
+    var snackbarContainer = document.querySelector('#demo-snackbar-example');
+    var showSnackbarButton = document.querySelector('#demo-show-snackbar');
+    var handler = function (event) {
+      showSnackbarButton.style.backgroundColor = '';
+    };
+    showSnackbarButton.addEventListener('click', function () {
+      'use strict';
+      showSnackbarButton.style.backgroundColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+      var data = {
+        message: 'Button color changed.',
+        timeout: 2000,
+        actionHandler: handler,
+        actionText: 'Undo'
+      };
+      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+    });
+  }());
+</script>
+
 <div *ngIf="notState && !isError" class="notification-success" role="alert">
   <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
 <div *ngIf="notState && isError" class="notification-failure" role="alert">

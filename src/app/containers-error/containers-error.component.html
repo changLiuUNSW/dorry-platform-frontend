@@ -29,8 +29,9 @@
       </div>
 
       <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-button--fab" (click)="displayAlert()" (click)="getContainer(service)">
-          <i class="material-icons">R</i>
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
+                       mdl-button--fab" (click)="displayAlert()" (click)="getContainer(service)">
+          <img src="/assets/icons/ic_delete_white_24px.svg"/>
         </button>
       </div>
     </div>
@@ -38,18 +39,20 @@
 </div>
 
 <!-- The alert dialog for remove one service -->
-<div class="alert-dialog-style alert-global" *ngIf="showAlert"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body cursor-default modal-body">
-    <span><img class="alert-excl" src="assets/alert.svg"/></span>
-    <span class="alert-message cursor-default">
-      Do you want to remove service
-      <span class="alert-name">{{ container.Names[0] | slice:1 }}</span>?
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeContainer(container.Id)" (click)="hideAlert()">Yes</button>
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
+<div class="dialog-container" *ngIf="showAlert">
+  <div class="mdl-dialog">
+    <div class="mdl-dialog__title"><img src="/assets/icons/ic_warning_white_48px.svg"/></div>
+    <div class="mdl-dialog__content">
+      <span>
+        Do you want to remove service
+        <span>
+          <strong>{{ container.Names[0] | slice:1 }}</strong>
+        </span>?
+      </span>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" (click)="removeContainer(container.Id)" (click)="hideAlert()">Yes</button>
+      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
+    </div>
   </div>
 </div>

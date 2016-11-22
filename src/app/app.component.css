@@ -18,6 +18,64 @@
   background: #37474f;
 }
 
+.dialog-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mdl-dialog {
+  background: #ffffff;
+  height: 230px;
+  width: 680px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+}
+
+.mdl-dialog__title {
+  background: #37474f;
+  padding: 18px 24px;
+}
+
+.mdl-dialog__content {
+  padding: 32px 24px;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mdl-button {
+  font-size: 18px;
+}
+
 .page-content {
   padding: 64px;
+}
+
+.mdl-button.mdl-js-button.mdl-button--icon {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.mdl-button.mdl-js-button.mdl-button--icon img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }

@@ -1,6 +1,10 @@
 .mdl-container {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mdl-grid {
+  padding: 8px 24px 24px;
 }
 
 header.service {
@@ -8,7 +12,7 @@ header.service {
   font-weight: 500;
   line-height: 1em;
   color: #37474f;
-  padding: 16px 16px 0;
+  padding: 32px 32px 0;
 }
 
 .mdl-card {
