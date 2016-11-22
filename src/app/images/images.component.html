@@ -1,141 +1,59 @@
-<a href="#openModal">Open Modal</a>
-
-<div id="openModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Close" class="close">X</a>
-
-    <h2>Modal Box</h2>
-
-    <p>This is a sample modal box that can be created using the powers of CSS3.</p>
-    <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
-  </div>
-</div>
-
-<button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Toast</button>
-<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-  <div class="mdl-snackbar__text"></div>
-  <button class="mdl-snackbar__action" type="button"></button>
-</div>
-<script>
-  (function () {
-    'use strict';
-    window['counter'] = 0;
-    var snackbarContainer = document.querySelector('#demo-toast-example');
-    var showToastButton = document.querySelector('#demo-show-toast');
-    showToastButton.addEventListener('click', function () {
-      'use strict';
-      var data = {
-        message: 'Example Message # ' + ++counter
-      };
-      snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    });
-  }());
-</script>
-
-<button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="button">Show Snackbar</button>
-<div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-  <div class="mdl-snackbar__text"></div>
-  <button class="mdl-snackbar__action" type="button"></button>
-</div>
-<script>
-  (function () {
-    'use strict';
-    var snackbarContainer = document.querySelector('#demo-snackbar-example');
-    var showSnackbarButton = document.querySelector('#demo-show-snackbar');
-    var handler = function (event) {
-      showSnackbarButton.style.backgroundColor = '';
-    };
-    showSnackbarButton.addEventListener('click', function () {
-      'use strict';
-      showSnackbarButton.style.backgroundColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
-      var data = {
-        message: 'Button color changed.',
-        timeout: 2000,
-        actionHandler: handler,
-        actionText: 'Undo'
-      };
-      snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    });
-  }());
-</script>
-
-<div *ngIf="notState && !isError" class="notification-success" role="alert">
-  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
-<div *ngIf="notState && isError" class="notification-failure" role="alert">
-  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
-
-<div class="app-list">
-  <div *ngFor="let app of imageInfoes" style="display: inline-block">
-    <div class="app-container" *ngIf="!regExp.test(app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1])">
-      <span>
-        <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="getImage(app)" (click)="displayAlert()"/>
-      </span>
-
-      <span class="app-img cursor-pointer" (click)="openDetailInfo(app)">
-        <div class=" app-icon-shadow"></div>
-        <img class="app-icon" src={{app.url}}/>
-      </span>
-
-      <span class=" app-misc cursor-default">
-        <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col" *ngFor="let app of imageInfoes">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <!-- <div *ngIf="!regExp.test(app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1])"> -->
+      <div class="mdl-card__title">
+        <div class="mdl-card mdl-shadow--2dp">
+          <img src="/assets/icons/ic_cancel_white_24px.svg"/>
+        </div>
+        <div class="mdl-card__title-text">
           {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
-        </div>
-
-        <div *ngIf="!app.starting" class="app-btn cursor-pointer" (click)="getImage(app)" (click)="createContainer(app)">
-          <span>Start New</span>
-        </div>
-
-        <!-- <div class="app-starting cursor-default"> -->
-        <div *ngIf="app.starting" class="app-starting cursor-default">
-          <span style="width: 10px; height: 10px">
-            <div class="sk-circle-start">
-              <div class="sk-circle1 sk-child"></div>
-              <div class="sk-circle2 sk-child"></div>
-              <div class="sk-circle3 sk-child"></div>
-              <div class="sk-circle4 sk-child"></div>
-              <div class="sk-circle5 sk-child"></div>
-              <div class="sk-circle6 sk-child"></div>
-              <div class="sk-circle7 sk-child"></div>
-              <div class="sk-circle8 sk-child"></div>
-              <div class="sk-circle9 sk-child"></div>
-              <div class="sk-circle10 sk-child"></div>
-              <div class="sk-circle11 sk-child"></div>
-              <div class="sk-circle12 sk-child"></div>
-            </div>
-          </span>
-          <span>
-            Starting
-          </span>
-        </div>
-      </span>
-
-      <!-- Just a spinner for removing -->
-      <div *ngIf="app.removing" class="sk-base"></div>
-      <div *ngIf="app.removing">
-        <div class="sk-circle">
-          <div class="sk-circle1 sk-child"></div>
-          <div class="sk-circle2 sk-child"></div>
-          <div class="sk-circle3 sk-child"></div>
-          <div class="sk-circle4 sk-child"></div>
-          <div class="sk-circle5 sk-child"></div>
-          <div class="sk-circle6 sk-child"></div>
-          <div class="sk-circle7 sk-child"></div>
-          <div class="sk-circle8 sk-child"></div>
-          <div class="sk-circle9 sk-child"></div>
-          <div class="sk-circle10 sk-child"></div>
-          <div class="sk-circle11 sk-child"></div>
-          <div class="sk-circle12 sk-child"></div>
         </div>
       </div>
 
+      <div class="mdl-card__supporting-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+      </div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <button class="mdl-button mdl-js-button
+                       button-start" (click)="getImage(app)" (click)="createContainer(app)">
+          Start Service
+        </button>
+      </div>
+
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
+                       mdl-button--fab button-remove" (click)="getImage(app)" (click)="displayAlert()">
+          <img src="/assets/icons/ic_delete_white_24px.svg"/>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Just a jQuery component -->
-<!--<app-j-query-test></app-j-query-test>-->
+<!-- The alert dialog for remove one appliacation -->
+<div class="dialog-container" *ngIf="showAlert">
+  <div class="mdl-dialog">
+    <div class="mdl-dialog__title"><img src="/assets/icons/ic_warning_white_48px.svg"/></div>
+    <div class="mdl-dialog__content">
+      <span>
+        Do you want to remove application
+        <span>
+          <strong>{{ image.RepoTags[0] }}</strong>
+        </span>?
+      </span>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
+      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
+    </div>
+  </div>
+</div>
 
-<!-- image detail info -->
+<!-- *************************************************************************************** -->
 <div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>
 <div class="image-details cursor-default modal-dialog" *ngIf="showInfoWindow">
   <div class="image-details modal-content">
@@ -172,22 +90,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- The alert dialog for remove one appliacation -->
-<div class="alert-global alert-dialog-style" *ngIf="showAlert"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body modal-body cursor-default">
-    <span><img class="alert-excl" src="assets/alert.svg"/></span>
-    <span class="alert-message">
-      Do you want to remove app
-      <span class="alert-name">{{ image.RepoTags[0] }}</span>?
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
   </div>
 </div>

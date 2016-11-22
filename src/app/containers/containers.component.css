@@ -30,15 +30,18 @@ header.service {
 }
 
 .mdl-data-table {
-  width: inherit;
-}
-
-.mdl-card__supporting-text {
   width: 100%;
 }
 
 .mdl-data-table__cell--non-numeric {
   font-weight: 500;
+}
+
+.mdl-data-table tbody tr td {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mdl-card__menu {

@@ -4,9 +4,9 @@
 
 .mdl-card__title {
   color: #ffffff;
-  background: #26A69A;
+  background: #009688;
 }
 
-.mdl-card__supporting-text {
-  background: #80CBC4;
+.mdl-button.mdl-button--icon {
+  background: #00BFA5;
 }

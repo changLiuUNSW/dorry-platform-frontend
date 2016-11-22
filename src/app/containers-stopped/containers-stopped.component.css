@@ -1,12 +1,12 @@
 .mdl-container.stopped {
-  background: #E8EAF6;
+  background: #E1F5FE;
 }
 
 .mdl-card__title {
   color: #ffffff;
-  background: #7986CB;
+  background: #2196F3;
 }
 
-.mdl-card__supporting-text {
-  background: #C5CAE9;
+.mdl-button.mdl-button--icon {
+  background: #3F51B5;
 }

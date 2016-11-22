@@ -7,6 +7,8 @@
 
 .mdl-layout__drawer {
   background: #37474f;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+  border-right: 0;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
