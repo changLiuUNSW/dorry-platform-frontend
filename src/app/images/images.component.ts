@@ -22,6 +22,7 @@ export class ImagesComponent implements OnInit {
   notification: string;
   notState: boolean;
   isError: boolean = false;
+  regExp = new RegExp(/DORRY-WEB/, 'i');
 
   constructor(private imagesService: ImagesService) { }
 
@@ -105,7 +106,7 @@ export class ImagesComponent implements OnInit {
 
   //create container error message
   // 201 – no error
-  // 400 – bad parameter
+  // 400 – bad parameterwa3
   // 404 – no such container
   // 406 – impossible to attach (container not running)
   // 409 – conflict

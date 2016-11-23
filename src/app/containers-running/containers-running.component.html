@@ -10,14 +10,14 @@
 <div *ngIf="hasRunningService" class="service-header running-service-header">
   Running Service
 </div>
-<div *ngIf="hasRunningService" class="service-list-container">
+<div *ngIf="hasRunningService" class="running service-list-container">
   <div class="running service-list" *ngFor="let service of containers">
     <div *ngIf="service.Names[0] !== '/DORRY-WEB'" class="running service-container running-service-container">
       <!-- Service icon -->
       <span class="running service-img-container" [ngSwitch]="service.iconAssigned">
         <img class="running service-img" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
         <img class="running service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-        <!-- <div class="running service-shadow"></div> -->
+        <div class="running service-shadow"></div>
       </span>
 
       <span class="running service-misc">

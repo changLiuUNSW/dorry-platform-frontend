@@ -10,7 +10,7 @@
 <!-- Remove All -->
 <div *ngIf="notAll" class="notification-success" role="alert">{{ notification }}</div>
 
-<div *ngIf="hasErrorService" class="service-list-container">
+<div *ngIf="hasErrorService" class="error service-list-container">
   <div class="error error-service-header">
     <span class="error service-header-left cursor-default">Oops! There Is Something Wrong</span>
     <span class="error service-header-right cursor-pointer" (click)="displayAlertAll()">
@@ -27,7 +27,7 @@
         <div class="error-service-img">
           <img *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
           <img *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-          <!-- <div class="error service-shadow"></div> -->
+          <div class="error service-shadow"></div>
         </div>
       </span>
 

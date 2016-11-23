@@ -1,11 +1,13 @@
-p {
-  color: #9c9c9c;
-  font-size: 13px;
-  font-weight: normal;
-}
-
 span {
   color: #9c9c9c;
   font-weight: bold;
   font-size: 14px;
+}
+
+.footer {
+  color: #9c9c9c;
+  font-size: 13px;
+  font-weight: normal;
+  text-align: right;
+  padding-right: 68px;
 }
