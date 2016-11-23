@@ -29,8 +29,4 @@ export class ConfigService {
     return promise;
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-    return body;
-  }
 }

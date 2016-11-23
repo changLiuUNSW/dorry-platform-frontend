@@ -8,4 +8,11 @@ describe('Component: Masthead', () => {
     let component = new MastheadComponent();
     expect(component).toBeTruthy();
   });
+
+  it('should init successfully', () => {
+    let component = new MastheadComponent();
+    let spy = spyOn(component, 'ngOnInit').and.callThrough();
+    component.ngOnInit();
+    expect(component.ngOnInit).toHaveBeenCalled();
+  });
 });

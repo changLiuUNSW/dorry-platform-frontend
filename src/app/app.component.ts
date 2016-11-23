@@ -16,6 +16,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    window.open("https://dorryserver:5001");
+    window.open(Constant.REGISTRYADDR);
   }
 }
