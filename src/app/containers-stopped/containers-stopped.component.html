@@ -12,12 +12,12 @@
 </div>
 <div *ngIf="hasStoppedService" class="service-list-container">
   <div class="stopped service-list" *ngFor="let service of containers">
-    <div class="stopped service-container stopped-service-container">
+    <div class="stopped service-container">
       <!-- Service icon -->
       <span class="stopped service-img-container" [ngSwitch]="service.iconAssigned">
-        <img class="stopped service-img service-img-stopped" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
-        <img class="stopped service-img service-img-stopped" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-        <!-- <div class="stopped service-shadow"></div> -->
+        <img class="stopped service-img" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
+        <img class="stopped service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
+        <div class="stopped service-shadow"></div>
       </span>
 
       <span class="stopped service-misc">

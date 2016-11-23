@@ -1,5 +1,5 @@
-.service-list-container {
-  margin-bottom: 46px;
+.error.service-list-container {
+  margin: 40px;
   background: rgba(255, 255, 255, 0.21);
   border-radius: 9px;
   padding-bottom: 17px;
@@ -8,8 +8,8 @@
 
 .error-service-list {
   display: inline-block;
-  margin: 17px 33px 18px 0;
-  width: 255px;
+  margin: 17px 36px 18px 34px;
+  width: 224px;
 }
 
 .error-service-header {
@@ -22,7 +22,6 @@
 .error.service-img-container {
   display: inline-block;
   position: relative;
-  padding-left: 26px;
 }
 
 .error-service-container {
@@ -94,9 +93,8 @@
 .sk-base {
   position: absolute;
   top: 0;
-  left: 25px;
   z-index: 99;
-  width: 198px;
+  width: 224px;
   height: 85px;
   border-radius: 4px;
   -webkit-filter: brightness(49%);
