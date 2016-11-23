@@ -1,12 +1,8 @@
 .mdl-container.error {
-  background: #FCE4EC;
+  background: #FFF8E1;
 }
 
 .mdl-card__title {
   color: #ffffff;
-  background: #E57373;
-}
-
-.mdl-button.mdl-button--icon {
-  background: #D50000;
+  background: #FFA000;
 }

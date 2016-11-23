@@ -16,8 +16,8 @@ export class ContainersErrorComponent implements OnInit {
   container: Container;
   hasErrorService: boolean;
 
-  showAlert: boolean;
-  showAlertAll: boolean;
+  showAlert: number;
+  showAlertAll: number;
 
   notification: string;
   notState: boolean;
@@ -32,8 +32,8 @@ export class ContainersErrorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getErrorContainers();
-    this.showAlert = false;
-    this.showAlertAll = false;
+    this.showAlert = 0;
+    this.showAlertAll = 0;
   }
 
   showNot(msg: string) {
@@ -121,22 +121,22 @@ export class ContainersErrorComponent implements OnInit {
       );
   }
 
-  displayAlert(id: string) {
-    this.showAlert = true;
-    this.showAlertAll = false;
+  displayRemoveAlert(id: string) {
+    this.showAlert = 1;
+    this.showAlertAll = 1;
   }
 
   hideAlert(id: string) {
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   displayAlertAll() {
-    this.showAlertAll = true;
-    this.showAlert = false;
+    this.showAlertAll = 1;
+    this.showAlert = 0;
   }
 
   hideAlertAll() {
-    this.showAlertAll = false;
+    this.showAlertAll = 0;
   }
 
   getContainer(container: Container) {

@@ -1,12 +1,8 @@
 .mdl-container.running {
-  background: #E0F2F1;
+  background: #E8F5E9;
 }
 
 .mdl-card__title {
   color: #ffffff;
-  background: #009688;
-}
-
-.mdl-button.mdl-button--icon {
-  background: #00BFA5;
+  background: #4CAF50;
 }

@@ -17,7 +17,7 @@ export class ContainersRunningComponent implements OnInit {
   container: Container;
   hasRunningService: boolean;
 
-  showAlert: boolean;
+  showAlert: number;
 
   notification: string;
   notState: boolean;
@@ -30,7 +30,7 @@ export class ContainersRunningComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRunningContainers();
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   showNot(msg: string) {
@@ -75,12 +75,35 @@ export class ContainersRunningComponent implements OnInit {
       });
   }
 
-  displayAlert(id: string) {
-    this.showAlert = true;
+  removeContainer(id: string) {
+    this.container.spinner = true;
+    this.containerService.removeContainer(id)
+      .then(data => {
+        this.getRunningContainers();
+        this.container.spinner = false;
+      },
+      (err: any) => this.errMsg(err.status))
+      .then(data => {
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 100);
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has been removed successfully");
+      });
+  }
+
+  displayStopAlert(id: string) {
+    this.showAlert = 1;
+  }
+
+  displayRemoveAlert(id: string) {
+    this.showAlert = 2;
   }
 
   hideAlert(id: string) {
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   getContainer(container: Container) {
