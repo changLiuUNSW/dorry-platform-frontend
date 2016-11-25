@@ -88,16 +88,22 @@
   margin: auto;
 }
 
-.mdl-button.mdl-button--icon.button-remove {
-  background: rgba(229, 57, 53, 0.7);
+.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect {
+  color: #ffffff;
+  width: 110px;
+  padding: 0 10px;
 }
 
-.mdl-button.mdl-button--icon.button-stop {
-  background: rgba(253, 216, 53, 0.7);
+.button-remove {
+  background: rgba(229, 57, 53, 0.8);
 }
 
-.mdl-button.mdl-button--icon.button-restart {
-  background: rgba(63, 81, 181, 0.7);
+.button-stop {
+  background: rgba(253, 216, 53, 0.8);
+}
+
+.button-restart {
+  background: rgba(63, 81, 181, 0.8);
 }
 
 .message-empty {
