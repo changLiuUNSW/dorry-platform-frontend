@@ -12,7 +12,7 @@
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  color: #c2c2c2;
+  color: #f0f0f0;
   font-size: 16px;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .page-content {
-  padding: 64px 128px;
+  padding: 32px 120px;
 }
 
 .dialog-container {
@@ -39,7 +39,7 @@
 
 .mdl-dialog {
   background: #ffffff;
-  height: 230px;
+  height: 240px;
   width: 680px;
   position: fixed;
   top: 0;
@@ -61,6 +61,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.mdl-dialog__actions {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .mdl-button {
@@ -92,4 +98,9 @@
 
 .mdl-button.mdl-button--icon.button-restart {
   background: rgba(63, 81, 181, 0.7);
+}
+
+.message-empty {
+  font-size: 24px;
+  text-align: center;
 }

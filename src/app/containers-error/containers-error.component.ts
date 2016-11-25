@@ -14,7 +14,7 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersErrorComponent implements OnInit {
   containers: Container[];
   container: Container;
-  hasErrorService: boolean;
+  hasError: boolean;
 
   showAlert: number;
   showAlertAll: number;
@@ -57,8 +57,8 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.getErrorContainers()
       .then(data => this.containers = data)
       .then(data => {
-        this.hasErrorService = (this.containers.length !== 0);
-        // console.log("Error containers");
+        console.log(this.containers);
+        this.hasError = (this.containers.length !== 0);
       });
   }
 

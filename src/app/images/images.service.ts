@@ -84,12 +84,11 @@ export class ImagesService {
 
   // Start a container
   startContainer(id: string) {
-    console.log("....start container");
     return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
-      .toPromise()
+      .toPromise();
     // .then(this.extractData);
-    //return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
-    //  .map(this.extractData);
+    // return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
+    //   .map(this.extractData);
     // .catch(this.handleError);
   }
 

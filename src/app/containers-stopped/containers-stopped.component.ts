@@ -14,7 +14,7 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
   container: Container;
-  hasStoppedService: boolean;
+  hasStopped: boolean;
 
   showAlert: number;
 
@@ -44,8 +44,8 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.getStoppedContainers()
       .then(data => this.containers = data)
       .then(data => {
-        this.hasStoppedService = (this.containers.length !== 0);
-        // console.log("Stopped containers");
+        console.log(this.containers);
+        this.hasStopped = (this.containers.length !== 0);
       });
   }
 

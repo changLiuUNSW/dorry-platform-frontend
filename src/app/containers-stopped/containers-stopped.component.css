@@ -1,8 +1,15 @@
-.mdl-container.stopped {
-  background: #E1F5FE;
-}
-
+/*.mdl-container.stopped {
+  background: #B2DFDB;
+}*/
 .mdl-card__title {
   color: #ffffff;
-  background: #039BE5;
+  background: #009688;
+}
+
+.mdl-card__supporting-text.table {
+  background: #80CBC4;
+}
+
+.mdl-card__actions.mdl-card--border {
+  background: #4DB6AC;
 }

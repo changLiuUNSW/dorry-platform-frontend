@@ -15,7 +15,7 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
   container: Container;
-  hasRunningService: boolean;
+  hasRunning: boolean;
 
   showAlert: number;
 
@@ -46,11 +46,12 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .then(data => this.containers = data)
       .then(data => {
+        console.log(this.containers);
         if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
-          this.hasRunningService = ((this.containers.length - 1) !== 0);
+          this.hasRunning = ((this.containers.length - 1) !== 0);
         else
-          this.hasRunningService = (this.containers.length !== 0);
-        // console.log('hasRunningService: ' + this.hasRunningService + '\n'
+          this.hasRunning = (this.containers.length !== 0);
+        // console.log('hasRunning: ' + this.hasRunning + '\n'
         //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]]);
       });
   }
