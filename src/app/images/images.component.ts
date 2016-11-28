@@ -18,6 +18,7 @@ export class ImagesComponent implements OnInit {
   appName: string;//formated image name
 
   showAlert: boolean;//show alert tag
+  hasApp: boolean;
 
   notification: string;
   notState: boolean;
@@ -49,7 +50,8 @@ export class ImagesComponent implements OnInit {
     this.imagesService.getImageInfoes()
       .then(data => {
         this.imageInfoes = data;
-        // console.log(this.imageInfoes);
+        console.log(this.imageInfoes);
+        this.hasApp = (this.imageInfoes.length !== 0);
       })
       .then(data => this.initImages());
   }

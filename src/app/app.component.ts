@@ -3,7 +3,7 @@ import { ConfigService } from './config.service';
 import { ConfigObject } from './configObject';
 import { Constant } from './constant';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
+import { AppModule } from './app.module';
 
 @Component({
   selector: 'app-root',

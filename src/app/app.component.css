@@ -1,113 +1,112 @@
-.cursor-default {
-  cursor: default;
+.mdl-layout-title {
+  background: #ffffff;
+  color: #37474f;
+  font-size: 36px;
+  font-weight: 500;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.mdl-layout__drawer {
+  background: #37474f;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+  border-right: 0;
 }
-/*********************************** Alert ***********************************/
-.alert-dialog-style {
-  height: 237px;
-  width: 500px;
-  border-radius: 10px;
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  color: #f0f0f0;
+  font-size: 16px;
+}
+
+.mdl-layout__header {
+  background: #37474f;
+}
+
+.page-content {
+  padding: 32px 120px;
+}
+
+.dialog-container {
+  height: 100%;
+  width: 100%;
   position: fixed;
-  left: 0;
+  top: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mdl-dialog {
+  background: #ffffff;
+  height: 240px;
+  width: 680px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+}
+
+.mdl-dialog__title {
+  background: #37474f;
+  padding: 18px 24px;
+}
+
+.mdl-dialog__content {
+  padding: 32px 24px;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mdl-dialog__actions {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mdl-button {
+  font-size: 18px;
+}
+
+.mdl-button.mdl-js-button.mdl-button--icon {
   top: 0;
   bottom: 0;
   margin: auto;
 }
 
-.alert-global {
-  height: 100vh;
-  width: 100vw;
-  z-index: 40;
-  background: rgba(0, 0, 0, 0.16);
-}
-
-.alert-dialog {
-  background: rgba(76, 59, 75, 0.97);
-  z-index: 50;
-  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.5);
-}
-
-.alert-content {
-  background: rgba(76, 59, 75, 0.97);
-  z-index: 100;
-}
-
-.alert-body {
-  color: white;
-  font-size: 18px;
-  width: 420px;
-  margin: 44px 40px 0;
-  padding: 0;
+.mdl-button.mdl-js-button.mdl-button--icon img {
   position: absolute;
-  display: table;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
-.alert-footer {
-  border-top: 0;
-  margin: 4px;
-  position: absolute;
-  bottom: 23px;
-  right: 29px;
-  padding: 0;
-}
-
-.alert-excl {
-  height: 54px;
-  width: 61px;
-}
-
-.alert-message {
-  color: #e3e3e3;
-  font-size: 18px;
-  padding-left: 20px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.alert-name {
+.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect {
   color: #ffffff;
-  font-size: 20px;
-  font-weight: bold;
-  overflow: auto;
-  word-wrap: break-word;
-  word-break: break-all;
+  width: 110px;
+  padding: 0 10px;
 }
 
-.btn-alert {
-  height: 24px;
-  width: 74px;
-  font-size: 14px;
-  font-weight: 600;
+.button-remove {
+  background: rgba(229, 57, 53, 0.8);
+}
+
+.button-stop {
+  background: rgba(253, 216, 53, 0.8);
+}
+
+.button-restart {
+  background: rgba(63, 81, 181, 0.8);
+}
+
+.message-empty {
+  font-size: 24px;
   text-align: center;
-  line-height: 0;
-  padding: 0 4px;
-  border-radius: 2px;
-}
-
-.btn-alert:hover {
-  /*border-style: solid;
-  border-width: 2px;*/
-  background: rgba(249, 176, 56, 1);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-}
-
-.btn-alert:active {
-  background: rgba(231, 145, 2, 1);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-}
-
-.btn-yes {
-  background: rgba(203, 203, 203, 0.41);
-  color: rgba(0, 0, 0, 0.41);
-}
-
-.btn-no {
-  background: rgba(245, 166, 35, 1.0);
-  color: rgba(255, 255, 255, 1.0);
 }

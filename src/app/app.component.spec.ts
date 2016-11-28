@@ -1,8 +1,8 @@
-import {Http, ConnectionBackend, BaseRequestOptions, ResponseOptions, Response} from "@angular/http";
-import {MockBackend, MockConnection} from "@angular/http/testing";
-import {TestBed, tick, fakeAsync, inject} from "@angular/core/testing";
+import { Http, ConnectionBackend, BaseRequestOptions, ResponseOptions, Response } from "@angular/http";
+import { MockBackend, MockConnection } from "@angular/http/testing";
+import { TestBed, tick, fakeAsync, inject } from "@angular/core/testing";
 
-import {AppService} from "./app.service";
+import { AppService } from "./app.service";
 import { Constant } from './constant';
 import { AppComponent } from "./app.component";
 import { ConfigService } from "./config.service";

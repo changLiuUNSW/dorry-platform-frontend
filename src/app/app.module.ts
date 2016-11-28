@@ -6,7 +6,6 @@ import { MaterialModule } from '@angular/material';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ImagesComponent } from './images/images.component';
 import { ContainersComponent } from './containers/containers.component';
 import { ContainersErrorComponent } from './containers-error/containers-error.component';
@@ -27,7 +26,6 @@ import { routing } from './app.routing';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     ImagesComponent,
     ContainersComponent,
     ContainersErrorComponent,
