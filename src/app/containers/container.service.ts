@@ -141,7 +141,7 @@ export class ContainerService {
   //
   // param      {Response} res
   // returns    None
-  private extractData(res: Response) {
+  extractData(res: Response) {
     console.log("Response Status:" + res.status);
     // console.log(res.toString());
     let body = res.json();
@@ -154,7 +154,7 @@ export class ContainerService {
   //
   // param      {any} error
   // returns    None
-  private handleError(error: any) {
+  handleError(error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message
     let errMsg = (error.message) ? error.message :

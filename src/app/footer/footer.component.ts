@@ -27,4 +27,12 @@ export class FooterComponent implements OnInit {
         this.uiVersion = Constant.BUILDVERSION;
       });
   }
+
+  getApiVersion() {
+    return this.apiVersion;
+  }
+
+  getUiVersion() {
+    return this.uiVersion;
+  }
 }
