@@ -80,13 +80,14 @@ export class ContainerService {
   //
   // param      {string} id
   // returns    None
-  inspectContainer(id: string) {
+  inspectContainer(id: string): Observable<any> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: 'http://localhost:3000/api/containers/inspect/' + id
       }))
-      .toPromise();
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Function removeContainer() sends http DELETE request and asynchronously

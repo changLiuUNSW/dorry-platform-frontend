@@ -62,13 +62,6 @@ export class ContainersErrorComponent implements OnInit {
       });
   }
 
-  inspectContainer(id: string) {
-    this.containerService.inspectContainer(id)
-      .then(data => {
-        console.log(data['_body']);
-      });
-  }
-
   removeContainer(id: string) {
     this.container.spinner = true;
     this.containerService.removeContainer(id)

@@ -5,7 +5,9 @@
   <div class="mdl-grid">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
       <div class="mdl-card__title">
-        <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg" (click)="inspectContainer(service.Id)"/>
+        <a routerLink="/services/{{service.Id}}">
+          <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
+        </a>
         <div class="mdl-card__title-text">
           <div class="service-name">{{ service.Names[0] | slice:1 }}</div>
           <div class="service-status">{{ service.Status }}</div>
