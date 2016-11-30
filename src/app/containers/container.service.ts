@@ -9,14 +9,6 @@ import { Constant } from '../constant';
 @Injectable()
 export class ContainerService {
 
-  private paramRunning = '/containers/json?filters={"status":["running"]}';
-  private paramStopped = '/containers/json?filters={"status":["exited"]}';
-  private paramError = '/containers/json?filters={"status":["dead","restarting","created"]}';
-  private paramAll = '/containers/json?all=1';
-  private toBeRemoved = '/containers/{id}?v=1?force=1';
-  private toBeStopped = '/containers/{id}/stop?t=5';
-  private toBeRestarted = '/containers/{id}/restart?t=5';
-
   constructor(private http: Http) { }
 
   // Function getRunningContainers() sends http GET request and asynchronously
@@ -28,7 +20,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DAEMONADDR + this.paramRunning
+        url: 'http://localhost:3000/api/containers/running'
       }))
       .toPromise()
       .then(this.extractData)
@@ -44,7 +36,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DAEMONADDR + this.paramStopped
+        url: 'http://localhost:3000/api/containers/stopped'
       }))
       .toPromise()
       .then(this.extractData)
@@ -60,7 +52,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DAEMONADDR + this.paramError
+        url: 'http://localhost:3000/api/containers/error'
       }))
       .toPromise()
       .then(this.extractData)
@@ -76,11 +68,25 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DAEMONADDR + this.paramAll
+        url: 'http://localhost:3000/api/containers/all'
       }))
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
+  }
+
+  // Function inspectContainer() inspects the details of a container with
+  // the specified id.
+  //
+  // param      {string} id
+  // returns    None
+  inspectContainer(id: string) {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: 'http://localhost:3000/api/containers/inspect/' + id
+      }))
+      .toPromise();
   }
 
   // Function removeContainer() sends http DELETE request and asynchronously
@@ -91,8 +97,8 @@ export class ContainerService {
   removeContainer(id: string) {
     return this.http.request(
       new Request({
-        method: RequestMethod.Delete,
-        url: Constant.DAEMONADDR + this.toBeRemoved.replace("{id}", id)
+        method: RequestMethod.Get,
+        url: 'http://localhost:3000/api/containers/remove/' + id
       }))
       .toPromise();
   }
@@ -105,8 +111,8 @@ export class ContainerService {
   stopContainer(id: string) {
     return this.http.request(
       new Request({
-        method: RequestMethod.Post,
-        url: Constant.DAEMONADDR + this.toBeStopped.replace("{id}", id)
+        method: RequestMethod.Get,
+        url: 'http://localhost:3000/api/containers/stop/' + id
       }))
       .toPromise();
   }
@@ -119,8 +125,8 @@ export class ContainerService {
   restartContainer(id: string) {
     return this.http.request(
       new Request({
-        method: RequestMethod.Post,
-        url: Constant.DAEMONADDR + this.toBeRestarted.replace("{id}", id)
+        method: RequestMethod.Get,
+        url: 'http://localhost:3000/api/containers/restart/' + id
       }))
       .toPromise()
       .then(this.getRestartStatus);

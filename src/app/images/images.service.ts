@@ -12,8 +12,6 @@ import { Constant } from '../constant';
 
 @Injectable()
 export class ImagesService {
-  //docker remote api part
-  private list = '/images/json?all=0';//[GET]  list images
   private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
   private inspect = '/images/{id}/json';//[GET] inspect image;
   private create = '/containers/create';
@@ -26,7 +24,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DAEMONADDR + this.list
+        url: 'http://localhost:3000/api/images/all'
       }))
       .toPromise()
       .then(this.extractData)
@@ -35,7 +33,11 @@ export class ImagesService {
 
   //remove image by image id
   removeImage(id: string) {
-    return this.http.delete(Constant.DAEMONADDR + this.remove.replace("{id}", id))
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: 'http://localhost:3000/api/images/remove/' + id
+      }))
       .toPromise()
       .then(
       //this.getRemoveImageResMsg,
