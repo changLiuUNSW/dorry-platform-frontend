@@ -12,7 +12,7 @@
 }
 
 .mdl-layout-title {
-  background: #f8f8f8;
+  background: #f6f6f6;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
@@ -25,7 +25,7 @@
 }
 
 .mdl-layout__content {
-  background: #f8f8f8;
+  background: #f6f6f6;
 }
 
 .page-content {
@@ -96,9 +96,9 @@
   margin: auto;
 }
 
-.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect {
+.mdl-button.mdl-js-button.mdl-button--raised {
   color: #ffffff;
-  width: 110px;
+  width: 100px;
   padding: 0 10px;
 }
 
@@ -108,6 +108,10 @@
 
 .button-stop {
   background: #FBC02D;
+}
+
+.button-start {
+  background: #689F38;
 }
 
 .button-restart {
