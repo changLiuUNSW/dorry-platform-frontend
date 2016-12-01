@@ -5,6 +5,10 @@
   margin: 0 0 16px;
 }
 
+.button-back:hover {
+  background: #795548;
+}
+
 .mdl-card.mdl-shadow--2dp {
   width: 100%;
   padding: 16px;

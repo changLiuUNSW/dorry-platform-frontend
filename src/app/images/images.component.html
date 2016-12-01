@@ -13,39 +13,24 @@
       <div class="mdl-card__title">
         <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/>
         <div class="mdl-card__title-text">
-          <span>{{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}</span>
-        </div>
-        <div class="mdl-card__subtitle">
-          {{ (app.Size/1000000).toFixed(3) }}MB
+          <div class="app-name">
+            {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
+          </div>
+          <div class="app-size">
+            {{ (app.Size/1000000).toFixed(3) }}
+            MB
+          </div>
         </div>
       </div>
 
-      <!--<div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
-      </div>-->
-
-      <!--<div class="mdl-card__actions mdl-card--border">-->
       <div class="mdl-card__actions">
-        <button class="mdl-button mdl-js-button
-                       button-start-img" (click)="getImage(app)" (click)="createContainer(app)">
+        <button class="mdl-button mdl-js-button" (click)="getImage(app)" (click)="createContainer(app)">
           Start
         </button>
-        <button class="mdl-button mdl-js-button
-                       button-remove-img" (click)="getImage(app)" (click)="displayAlert()">
+        <button class="mdl-button mdl-js-button" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>
       </div>
-
-      <!--<div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
-                       mdl-button--fab button-remove" (click)="getImage(app)" (click)="displayAlert()">
-          <img src="/assets/icons/ic_delete_white_24px.svg"/>
-        </button>
-      </div>
-    </div>-->
     </div>
   </div>
 
@@ -57,7 +42,7 @@
         <span>
           Remove application
           <span>
-            <strong>{{ image.RepoTags[0] }}</strong>
+            <strong>{{ image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1] }}</strong>
           </span>?
         </span>
       </div>

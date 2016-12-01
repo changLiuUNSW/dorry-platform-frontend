@@ -44,8 +44,9 @@ header.service {
 
 .mdl-card__title-text {
   width: 100%;
-  padding: 0 24px 0 56px;
-  position: absolute;
+  /*padding: 0 24px 0 56px;*/
+  padding: 0 0 0 8px;
+  /*position: absolute;*/
   display: block;
   align-self: auto;
 }
@@ -60,7 +61,7 @@ header.service {
 }
 
 .service-status {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;

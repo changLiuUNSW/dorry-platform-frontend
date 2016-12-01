@@ -12,6 +12,7 @@
   color: #ffffff;
   background: #1E88E5;
   height: 140px;
+  display: block;
   position: relative;
 }
 
@@ -38,8 +39,9 @@
 }
 
 .mdl-card__title-text {
+  font-size: 22px;
   font-weight: 400;
-  position: absolute;
+  padding: 8px 0 0;
 }
 
 .mdl-card__supporting-text {
