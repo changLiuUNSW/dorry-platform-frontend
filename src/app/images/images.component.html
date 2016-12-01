@@ -24,10 +24,12 @@
       </div>
 
       <div class="mdl-card__actions">
-        <button class="mdl-button mdl-js-button" (click)="getImage(app)" (click)="createContainer(app)">
+        <button class="mdl-button mdl-js-button mdl-button--raised
+                       button-start" (click)="getImage(app)" (click)="createContainer(app)">
           Start
         </button>
-        <button class="mdl-button mdl-js-button" (click)="getImage(app)" (click)="displayAlert()">
+        <button class="mdl-button mdl-js-button mdl-button--raised
+                       button-remove" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>
       </div>

@@ -1,6 +1,10 @@
 .mdl-card__title {
   color: #ffffff;
-  background: #FF5722;
+  background: #FFB74D;
+}
+
+.mdl-card__title-text {
+  color: #000000;
 }
 
 .mdl-card__supporting-text.table {

@@ -10,7 +10,7 @@
 }
 
 .mdl-card__title {
-  background: #FFA726;
+  background: #29B6F6;
   position: relative;
 }
 
@@ -55,10 +55,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.5em;
-}
-
-.mdl-button.mdl-js-button {
-  color: #37474f;
 }
 
 .mdl-card__menu {
