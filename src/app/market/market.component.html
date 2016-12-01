@@ -1,52 +1,26 @@
-<div class="item-list">
-  <div class="item-container" *ngFor="let item of items">
-    <span class="item-img">
-      <img class="item-icon" src="assets/icons/default.svg" style="height:71px; width:71px" (click)="toggleDetail()"/>
-    </span>
-
-    <span class="item-misc cursor-default">
-      <div class="item-name cursor-pointer" (click)="toggleDetail()" (click)="getItem(item)">
-        {{ item.name }}
-      </div>
-      <div class="item-size">
-        1000 MB
-      </div>
-      <div *ngIf="!item.installing" class="item-install cursor-pointer" (click)="installImage(item)" (click)="getItem(item)">
-        Install
-      </div>
-      <div *ngIf="item.installing" class="item-installing">
-        <div class="sk-circle">
-          <div class="sk-circle1 sk-child"></div>
-          <div class="sk-circle2 sk-child"></div>
-          <div class="sk-circle3 sk-child"></div>
-          <div class="sk-circle4 sk-child"></div>
-          <div class="sk-circle5 sk-child"></div>
-          <div class="sk-circle6 sk-child"></div>
-          <div class="sk-circle7 sk-child"></div>
-          <div class="sk-circle8 sk-child"></div>
-          <div class="sk-circle9 sk-child"></div>
-          <div class="sk-circle10 sk-child"></div>
-          <div class="sk-circle11 sk-child"></div>
-          <div class="sk-circle12 sk-child"></div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col" *ngFor="let item of items">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <div class="mdl-card__title">
+        <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
+        <div class="mdl-card__title-text">
+          {{ item.name }}
         </div>
-        Installing
       </div>
-    </span>
-    <!-- <div class="item-sash">
-      <img src="assets/sash.svg"/>
-    </div> -->
-  </div>
-</div>
 
-<div class="alert-dialog-style alert-global" *ngIf="showDetail"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showDetail"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showDetail">
-  <div class="alert-body cursor-default modal-body">
-    <span class="alert-message cursor-default">
-      ~!@#$%^&*()_+
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="toggleDetail()">Close</button>
+      <div class="mdl-card__supporting-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+      </div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <button class="mdl-button mdl-js-button
+                       button-install" (click)="installImage(item)" (click)="getItem(item)">
+          Install
+        </button>
+      </div>
+    </div>
   </div>
 </div>

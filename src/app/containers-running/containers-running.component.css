@@ -1,15 +1,12 @@
-/*.mdl-container.running {
-  background: #BBDEFB;
-}*/
 .mdl-card__title {
   color: #ffffff;
   background: #2196F3;
 }
 
 .mdl-card__supporting-text.table {
-  background: #90CAF9;
+  /*background: #90CAF9;*/
 }
 
 .mdl-card__actions.mdl-card--border {
-  background: #82B1FF;
+  /*background: #82B1FF;*/
 }
