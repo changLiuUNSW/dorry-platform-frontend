@@ -1,0 +1,26 @@
+.button-back {
+  background: #8D6E63;
+  width: 48px;
+  min-height: 48px;
+  margin: 0 0 16px;
+}
+
+.mdl-card.mdl-shadow--2dp {
+  width: 100%;
+  padding: 16px;
+}
+
+img.mdl-card.mdl-shadow--2dp {
+  width: 120px;
+  min-height: 120px;
+  margin: 16px;
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .mdl-cell--2-col {
+  font-weight: 500;
+}

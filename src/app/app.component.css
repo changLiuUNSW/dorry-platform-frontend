@@ -11,6 +11,10 @@
   border-right: 0;
 }
 
+.mdl-layout-title {
+  background: #f8f8f8;
+}
+
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
   color: #f0f0f0;
   font-size: 16px;
@@ -20,8 +24,12 @@
   background: #37474f;
 }
 
+.mdl-layout__content {
+  background: #f8f8f8;
+}
+
 .page-content {
-  padding: 32px 120px;
+  padding: 32px 104px;
 }
 
 .dialog-container {
@@ -95,15 +103,15 @@
 }
 
 .button-remove {
-  background: rgba(229, 57, 53, 0.8);
+  background: #E53935;
 }
 
 .button-stop {
-  background: rgba(253, 216, 53, 0.8);
+  background: #FBC02D;
 }
 
 .button-restart {
-  background: rgba(63, 81, 181, 0.8);
+  background: #3F51B5;
 }
 
 .message-empty {
