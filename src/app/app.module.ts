@@ -23,6 +23,8 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
+import {PopoverModule} from 'ng2-popover';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { routing } from './app.routing';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    routing
+    routing,
+    PopoverModule
   ],
   providers: [
     ConfigService,

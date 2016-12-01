@@ -1,3 +1,15 @@
 * {
   font-family: Roboto, sans-serif !important;
 }
+
+.popover {
+  max-width: 400px;
+}
+
+.popover-content {
+  width: 346px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+}

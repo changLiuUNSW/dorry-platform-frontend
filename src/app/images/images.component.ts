@@ -4,6 +4,7 @@ import { ImagesService } from './images.service';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
 import { trigger, state, style, transition, animate } from '@angular/core';
+import {PopoverModule} from "ng2-popover";
 
 @Component({
   selector: 'app-images',
