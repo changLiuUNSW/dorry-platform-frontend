@@ -1,132 +1,56 @@
-<div *ngIf="notState && !isError" class="notification-success" role="alert">
-  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
-<div *ngIf="notState && isError" class="notification-failure" role="alert">
-  <span class="noti-name">{{notiImage.RepoTags[0]}}</span><br>{{notification}}</div>
+<div class="message-empty" *ngIf="hasApp!=undefined && !hasApp">
+  Your application list is empty.
+</div>
 
-<div class="app-list">
-  <div *ngFor="let app of imageInfoes" style="display: inline-block">
-    <div class="app-container" *ngIf="!regExp.test(app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1])">
-      <span>
-        <img class="app-trash cursor-pointer" src="assets/trash.svg" (click)="getImage(app)" (click)="displayAlert()"/>
-      </span>
-
-      <span class="app-img cursor-pointer" (click)="openDetailInfo(app)">
-        <div class=" app-icon-shadow"></div>
-        <img class="app-icon" src={{app.url}}/>
-      </span>
-
-      <span class=" app-misc cursor-default">
-        <div class="app-name cursor-pointer" (click)="openDetailInfo(app)">
-          {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col" *ngFor="let app of imageInfoes">
+    <popover-content #myPopover [animation]="true" placement="bottom" [closeOnMouseOutside]="true">
+      <strong>ID:&nbsp;&nbsp;</strong>{{ app.Id }}<br>
+      <strong >Repo:&nbsp;&nbsp;</strong>{{ app.RepoTags[0] }}
+    </popover-content>
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <!-- <div *ngIf="!regExp.test(app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1])"> -->
+      <div class="mdl-card__title">
+        <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/>
+        <div class="mdl-card__title-text">
+          <div class="app-name">
+            {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
+          </div>
+          <div class="app-size">
+            {{ (app.Size/1000000).toFixed(3) }}
+            MB
+          </div>
         </div>
+      </div>
 
-        <div *ngIf="!app.starting" class="app-btn cursor-pointer" (click)="getImage(app)" (click)="createContainer(app)">
-          <span>Start New</span>
-        </div>
+      <div class="mdl-card__actions">
+        <button class="mdl-button mdl-js-button mdl-button--raised
+                       button-start" (click)="getImage(app)" (click)="createContainer(app)">
+          Start
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised
+                       button-remove" (click)="getImage(app)" (click)="displayAlert()">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
 
-        <!-- <div class="app-starting cursor-default"> -->
-        <div *ngIf="app.starting" class="app-starting cursor-default">
-          <span style="width: 10px; height: 10px">
-            <div class="sk-circle-start">
-              <div class="sk-circle1 sk-child"></div>
-              <div class="sk-circle2 sk-child"></div>
-              <div class="sk-circle3 sk-child"></div>
-              <div class="sk-circle4 sk-child"></div>
-              <div class="sk-circle5 sk-child"></div>
-              <div class="sk-circle6 sk-child"></div>
-              <div class="sk-circle7 sk-child"></div>
-              <div class="sk-circle8 sk-child"></div>
-              <div class="sk-circle9 sk-child"></div>
-              <div class="sk-circle10 sk-child"></div>
-              <div class="sk-circle11 sk-child"></div>
-              <div class="sk-circle12 sk-child"></div>
-            </div>
-          </span>
+  <!-- The alert dialog for remove one appliacation -->
+  <div class="dialog-container" *ngIf="showAlert">
+    <div class="mdl-dialog">
+      <div class="mdl-dialog__title"><img src="/assets/icons/ic_warning_white_48px.svg"/></div>
+      <div class="mdl-dialog__content">
+        <span>
+          Remove application
           <span>
-            Starting
-          </span>
-        </div>
-      </span>
-
-      <!-- Just a spinner for removing -->
-      <div *ngIf="app.removing" class="sk-base"></div>
-      <div *ngIf="app.removing">
-        <div class="sk-circle">
-          <div class="sk-circle1 sk-child"></div>
-          <div class="sk-circle2 sk-child"></div>
-          <div class="sk-circle3 sk-child"></div>
-          <div class="sk-circle4 sk-child"></div>
-          <div class="sk-circle5 sk-child"></div>
-          <div class="sk-circle6 sk-child"></div>
-          <div class="sk-circle7 sk-child"></div>
-          <div class="sk-circle8 sk-child"></div>
-          <div class="sk-circle9 sk-child"></div>
-          <div class="sk-circle10 sk-child"></div>
-          <div class="sk-circle11 sk-child"></div>
-          <div class="sk-circle12 sk-child"></div>
-        </div>
+            <strong>{{ image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1] }}</strong>
+          </span>?
+        </span>
       </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Just a jQuery component -->
-<!--<app-j-query-test></app-j-query-test>-->
-
-<!-- image detail info -->
-<div class="alert-global alert-dialog-style" *ngIf="showInfoWindow"></div>
-<div class="image-details cursor-default modal-dialog" *ngIf="showInfoWindow">
-  <div class="image-details modal-content">
-    <div class="modal-body">
-      <img class="detail-close" src="assets/detailclose.png" (click)="closeDetailInfo()"/>
-      <div class="detail-header-container">
-        <span><img class="detail-image" src={{detailApp.url}} style="height:67px;width:67px;"/></span>
-        <div class="detail-app-name-container">
-          <span class="detail-app-name">
-            {{detailApp.RepoTags[0]}}
-          </span>
-        </div>
-      </div>
-      <hr>
-      <div class="detail-info-container">
-        <div class="detail-info-left">
-          <ul>
-            <div>Created Date:</div>
-            <div>ID:</div>
-            <div>Registory:</div>
-            <div>Size:</div>
-          </ul>
-        </div>
-        <div class="detail-info-right">
-          <ul>
-            <div>{{detailApp.createDate}}</div>
-            <div>{{detailApp.Id.split(":")[1].slice(0, 12)}}</div>
-            <div>{{detailApp.RepoTags[0]}}</div>
-            <div>
-              {{(detailApp.Size / 1000000).toFixed(3)}}
-              MB
-            </div>
-          </ul>
-        </div>
+      <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
+        <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
       </div>
     </div>
   </div>
-</div>
-
-<!-- The alert dialog for remove one appliacation -->
-<div class="alert-global alert-dialog-style" *ngIf="showAlert"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body modal-body cursor-default">
-    <span><img class="alert-excl" src="assets/alert.svg"/></span>
-    <span class="alert-message">
-      Do you want to remove app
-      <span class="alert-name">{{ image.RepoTags[0] }}</span>?
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
-  </div>
-</div>

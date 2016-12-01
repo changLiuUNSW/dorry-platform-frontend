@@ -1,82 +1,73 @@
-<!-- Notification -->
-<div *ngIf="notState && !isError" class="notification-success" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<div *ngIf="notState && isError" class="notification-failure" role="alert">
-  <strong>{{ container.Names[0] | slice:1 }}</strong>{{ notification }}
-</div>
-
-<div *ngIf="hasRunningService" class="service-header running-service-header">
-  Running Service
-</div>
-<div *ngIf="hasRunningService" class="running service-list-container">
-  <div class="running service-list" *ngFor="let service of containers">
-    <div *ngIf="service.Names[0] !== '/DORRY-WEB'" class="running service-container running-service-container">
-      <!-- Service icon -->
-      <span class="running service-img-container" [ngSwitch]="service.iconAssigned">
-        <img class="running service-img" *ngSwitchCase="true" src={{service.iconUrl}} style="height:75px; width:75px"/>
-        <img class="running service-img" *ngSwitchDefault src="assets/icons/default.svg" style="height:75px; width:75px"/>
-        <div class="running service-shadow"></div>
-      </span>
-
-      <span class="running service-misc">
-        <!-- Service name -->
-        <div class="running service-name" *ngIf="service.Names[0]">
-          {{ service.Names[0] | slice:1 }}
+<div class="mdl-container running" *ngIf="hasRunning">
+  <header class="service running">
+    Running Services
+  </header>
+  <div class="mdl-grid">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
+      <div class="mdl-card__title">
+        <a routerLink="/services/{{service.Id}}">
+          <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
+        </a>
+        <div class="mdl-card__title-text">
+          <div class="service-name">{{ service.Names[0] | slice:1 }}</div>
+          <div class="service-status">{{ service.Status }}</div>
         </div>
-        <!-- App name -->
-        <div class="running service-info" *ngIf="service.Image">
-          {{ service.Image }}
-        </div>
-        <!-- Service uptime -->
-        <div class="running service-info" *ngIf="service.Status">
-          {{ service.Status }}
-        </div>
-        <!-- Service port -->
-        <div class="running service-info" *ngIf="service.Ports[0] != undefined">
-          Port:
-          {{ service.Ports[0].PublicPort }}
-        </div>
-        <!-- Stop Button -->
-        <div class="running service-btn" (click)="displayAlert()" (click)="getContainer(service)">
-          Stop
-        </div>
-      </span>
-
-      <div *ngIf="container && service.spinner" class="sk-base"></div>
-      <div *ngIf="container && service.spinner" class=" sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
       </div>
 
+      <div class="mdl-card__supporting-text table">
+        <table class="mdl-data-table mdl-js-data-table">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Application</td>
+              <td *ngIf="service.Image">{{ service.Image }}</td>
+            </tr>
+
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">IP Address</td>
+              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress != ''">
+                {{ service.NetworkSettings.Networks.bridge.IPAddress }}
+              </td>
+              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress == ''">None</td>
+            </tr>
+
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Ports</td>
+              <td *ngIf="service.Ports[0] != undefined">{{ service.Ports[0].PublicPort }}</td>
+              <td *ngIf="service.Ports[0] == undefined">None</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <!-- <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
+                       mdl-button--fab button-stop" (click)="displayStopAlert()" (click)="getContainer(service)">
+          <img src="/assets/icons/ic_pause_white_24px.svg"/>
+        </button> -->
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
+                       button-stop" (click)="displayStopAlert()" (click)="getContainer(service)">
+          Stop
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- The alert dialog for stop one service -->
-<div class="alert-dialog-style alert-global" *ngIf="showAlert"></div>
-<div class="alert-dialog alert-dialog-style modal-dialog" *ngIf="showAlert"></div>
-<div class="alert-content alert-dialog-style modal-content" *ngIf="showAlert">
-  <div class="alert-body cursor-default modal-body">
-    <span><img class="alert-excl" src="assets/alert.svg"/></span>
-    <span class="alert-message cursor-default">
-      Do you want to stop service
-      <span class="alert-name">{{ container.Names[0] | slice:1 }}</span>?
-    </span>
-  </div>
-  <div class="alert-footer modal-footer">
-    <button type="button" class="btn btn-alert btn-yes" data-dismiss="modal" (click)="stopContainer(container)" (click)="hideAlert()">Yes</button>
-    <button type="button" class="btn btn-alert btn-no" data-dismiss="modal" (click)="hideAlert()">No</button>
+<div class="dialog-container" *ngIf="showAlert==1">
+  <div class="mdl-dialog">
+    <div class="mdl-dialog__title"><img src="/assets/icons/ic_warning_white_48px.svg"/></div>
+    <div class="mdl-dialog__content">
+      <span>
+        Stop service
+        <span>
+          <strong>{{ container.Names[0] | slice:1 }}</strong>
+        </span>?
+      </span>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" (click)="stopContainer(container)" (click)="hideAlert()">Yes</button>
+      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
+    </div>
   </div>
 </div>

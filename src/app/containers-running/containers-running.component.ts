@@ -15,9 +15,9 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersRunningComponent implements OnInit {
   containers: Container[];
   container: Container;
-  hasRunningService: boolean;
+  hasRunning: boolean;
 
-  showAlert: boolean;
+  showAlert: number;
 
   notification: string;
   notState: boolean;
@@ -30,7 +30,7 @@ export class ContainersRunningComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRunningContainers();
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   showNot(msg: string) {
@@ -46,11 +46,12 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .then(data => this.containers = data)
       .then(data => {
+        console.log(this.containers);
         if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
-          this.hasRunningService = ((this.containers.length - 1) !== 0);
+          this.hasRunning = ((this.containers.length - 1) !== 0);
         else
-          this.hasRunningService = (this.containers.length !== 0);
-        // console.log('hasRunningService: ' + this.hasRunningService + '\n'
+          this.hasRunning = (this.containers.length !== 0);
+        // console.log('hasRunning: ' + this.hasRunning + '\n'
         //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]]);
       });
   }
@@ -75,12 +76,35 @@ export class ContainersRunningComponent implements OnInit {
       });
   }
 
-  displayAlert(id: string) {
-    this.showAlert = true;
+  removeContainer(id: string) {
+    this.container.spinner = true;
+    this.containerService.removeContainer(id)
+      .then(data => {
+        this.getRunningContainers();
+        this.container.spinner = false;
+      },
+      (err: any) => this.errMsg(err.status))
+      .then(data => {
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 100);
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has been removed successfully");
+      });
+  }
+
+  displayStopAlert(id: string) {
+    this.showAlert = 1;
+  }
+
+  displayRemoveAlert(id: string) {
+    this.showAlert = 2;
   }
 
   hideAlert(id: string) {
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   getContainer(container: Container) {

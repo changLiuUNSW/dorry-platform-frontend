@@ -14,9 +14,9 @@ import { ContainerService } from '../containers/container.service';
 export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
   container: Container;
-  hasStoppedService: boolean;
+  hasStopped: boolean;
 
-  showAlert: boolean;
+  showAlert: number;
 
   notification: string;
   notState: boolean;//whether need to show the message
@@ -28,7 +28,7 @@ export class ContainersStoppedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStoppedContainers();
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   showNot(msg: string) {
@@ -44,8 +44,8 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.getStoppedContainers()
       .then(data => this.containers = data)
       .then(data => {
-        this.hasStoppedService = (this.containers.length !== 0);
-        // console.log("Stopped containers");
+        console.log(this.containers);
+        this.hasStopped = (this.containers.length !== 0);
       });
   }
 
@@ -69,12 +69,35 @@ export class ContainersStoppedComponent implements OnInit {
       });
   }
 
-  displayAlert(id: string) {
-    this.showAlert = true;
+  removeContainer(id: string) {
+    this.container.spinner = true;
+    this.containerService.removeContainer(id)
+      .then(data => {
+        this.getStoppedContainers();
+        this.container.spinner = false;
+      },
+      (err: any) => this.errMsg(err.status))
+      .then(data => {
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 100);
+      })
+      .then(data => {
+        if (!this.isError)
+          this.showNot(" has been removed successfully");
+      });
+  }
+
+  displayRestartAlert(id: string) {
+    this.showAlert = 1;
+  }
+
+  displayRemoveAlert(id: string) {
+    this.showAlert = 2;
   }
 
   hideAlert(id: string) {
-    this.showAlert = false;
+    this.showAlert = 0;
   }
 
   getContainer(container: Container) {

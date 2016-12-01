@@ -1,50 +1,12 @@
-.service-img-stopped {
-  filter: grayscale(100%);
-}
-
-.stopped.service-btn:hover {
-  background: #679d2c;
+.mdl-card__title {
   color: #ffffff;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  background: #009688;
 }
 
-.stopped.service-btn:active {
-  background: #4b7819;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+.mdl-card__supporting-text.table {
+  /*background: #80CBC4;*/
 }
 
-
-/*****************************************************************************/
-
-.sk-base {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 99;
-  width: 272px;
-  height: 151px;
-  border-radius: 4px;
-  -webkit-filter: brightness(49%);
-  filter: brightness(49%);
-  background: linear-gradient(rgba(0, 0, 0, 0.49), rgba(0, 0, 0, 0.49));
-}
-
-.sk-circle {
-  z-index: 100;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-}
-
-.sk-circle .sk-child {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+.mdl-card__actions.mdl-card--border {
+  /*background: #00BFA5;*/
 }

@@ -6,12 +6,12 @@ import { MaterialModule } from '@angular/material';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ImagesComponent } from './images/images.component';
 import { ContainersComponent } from './containers/containers.component';
 import { ContainersErrorComponent } from './containers-error/containers-error.component';
 import { ContainersStoppedComponent } from './containers-stopped/containers-stopped.component';
 import { ContainersRunningComponent } from './containers-running/containers-running.component';
+import { ContainerDetailsComponent } from './container-details/container-details.component';
 import { MarketComponent } from './market/market.component';
 import { MastheadComponent } from './masthead/masthead.component';
 import { FooterComponent } from './footer/footer.component';
@@ -24,10 +24,11 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
+import {PopoverModule} from 'ng2-popover';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     ImagesComponent,
     ContainersComponent,
     ContainersErrorComponent,
@@ -36,14 +37,16 @@ import { routing } from './app.routing';
     MarketComponent,
     MastheadComponent,
     FooterComponent,
-    JQueryTestComponent
+    JQueryTestComponent,
+    ContainerDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    routing
+    routing,
+    PopoverModule
   ],
   providers: [
     ConfigService,
