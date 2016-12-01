@@ -24,7 +24,11 @@
   </div>
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Ports</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ ports }}</span>
+    <span class="mdl-cell mdl-cell--10-col">
+      <span *ngFor="let port of ports">
+        {{ port }}
+      </span>
+    </span>
   </div>
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Created Date</span>
