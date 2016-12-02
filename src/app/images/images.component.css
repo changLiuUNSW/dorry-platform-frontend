@@ -10,7 +10,7 @@
 }
 
 .mdl-card__title {
-  background: #29B6F6;
+  background: #1E88E5;
   position: relative;
 }
 
@@ -31,6 +31,7 @@
 }
 
 .mdl-card__title-text {
+  color: #ffffff;
   width: 100%;
   /*padding: 0 24px 0 56px;*/
   padding: 0 0 0 8px;

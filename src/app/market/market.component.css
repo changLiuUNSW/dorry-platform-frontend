@@ -42,6 +42,10 @@
   font-size: 22px;
   font-weight: 400;
   padding: 8px 0 0;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mdl-card__supporting-text {
