@@ -78,33 +78,9 @@ export class ImagesComponent implements OnInit {
       });
   }
 
-  // Create a container
-  createContainer(image: ImageInfo) {
-    image.starting = true;
-    this.notState = false;
-    this.notiImage = image;
-    this.imagesService.inspectImage(image.Id)
-      .then(data => {
-        console.log(data[Object.keys(data)[0]]);
-        this.imagesService.createContainer(data[Object.keys(data)[0]]).then(data => {
-          this.startContainer(data[Object.keys(data)[0]])
-        }, err => this.createConErrMsg(err.status))
-      })
-      .then(data => {
-        image.starting = false;
-        this.image = null;
-      })
-  }
-
-  // Start a container
-  startContainer(id: string) {
-    this.imagesService.startContainer(id)
-      .then(data => {
-        if (!this.isError)
-          this.showNot(" has started a new container");
-      }
-      , err => this.startConErrMsg(err.status));
-
+  startImage(image: ImageInfo) {
+    this.imagesService.startImage(image.Id)
+      .then(data => { });
   }
 
   //create container error message
