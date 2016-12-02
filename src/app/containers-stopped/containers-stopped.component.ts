@@ -15,12 +15,7 @@ export class ContainersStoppedComponent implements OnInit {
   containers: Container[];
   container: Container;
   hasStopped: boolean;
-
   showAlert: number;
-
-  notification: string;
-  notState: boolean;//whether need to show the message
-  isError: boolean;//is message correctly
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
@@ -29,15 +24,6 @@ export class ContainersStoppedComponent implements OnInit {
   ngOnInit(): void {
     this.getStoppedContainers();
     this.showAlert = 0;
-  }
-
-  showNot(msg: string) {
-    this.notState = true;
-    this.notification = msg;
-    setTimeout(function() {
-      this.notState = false;
-      this.isError = false;
-    }.bind(this), 3000);
   }
 
   getStoppedContainers() {
@@ -57,12 +43,8 @@ export class ContainersStoppedComponent implements OnInit {
       .then(data => {
         this.getStoppedContainers();
         this.container.spinner = false;
-      },
-      (err: any) => this.errMsg(err.status))
+      })
       .then(data => {
-        if (!this.isError) {
-          this.showNot(" has been restarted successfully");
-        }
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);
@@ -75,16 +57,11 @@ export class ContainersStoppedComponent implements OnInit {
       .then(data => {
         this.getStoppedContainers();
         this.container.spinner = false;
-      },
-      (err: any) => this.errMsg(err.status))
+      })
       .then(data => {
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);
-      })
-      .then(data => {
-        if (!this.isError)
-          this.showNot(" has been removed successfully");
       });
   }
 
@@ -102,20 +79,6 @@ export class ContainersStoppedComponent implements OnInit {
 
   getContainer(container: Container) {
     this.container = container;
-  }
-
-  //status code
-  //204: success
-  //404: no such container
-  //500: server error
-  private errMsg(statusCode: Number) {
-    this.isError = true;
-    if (statusCode == 404) {
-      this.showNot(" ,No such container");
-    }
-    else if (statusCode == 500) {
-      this.showNot(" has Server error");
-    }
   }
 
 }

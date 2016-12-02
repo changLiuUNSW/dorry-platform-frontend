@@ -13,53 +13,35 @@ import { Item } from './market';
 export class MarketComponent implements OnInit {
   items: Item[];
   item: Item;
-  showDetail: boolean;
 
   constructor(private marketService: MarketService) { }
 
   ngOnInit() {
     this.items = [];
     this.listItems();
-    this.showDetail = false;
   }
 
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        var itemNames = data[Object.keys(data)[0]];
-        for (var i = 0; i < itemNames.length; i++) {
-          this.items.push(new Item(itemNames[i], false));
+        for (var i = 0; i < data.length; i++) {
+          this.items.push(data[Object.keys(data)[i]]);
+          console.log(data[Object.keys(data)[i]]);
         }
-        console.log(this.items);
       });
   }
 
-  private getTags(item: Item) {
-    this.marketService.getTags(item)
-      .subscribe(data => console.log(data));
-  }
-
-  //intall image from private docker registry
-  //getTags  +  pullImage
   private installImage(item: Item) {
     this.getItem(item);
     item.installing = true;
-    this.marketService.getTags(item)
+    this.marketService.pullImage(item.name, item.tags[0])
       .subscribe(data => {
-        // console.log(data);
-        this.marketService.pullImage(data.name, data.tags[0])
-          .subscribe(data => {
-            item.installing = false;
-          });
-      })
+        item.installing = false;
+      });
   }
 
   private getItem(item: Item) {
     this.item = item;
-  }
-
-  private toggleDetail() {
-    this.showDetail = !this.showDetail;
   }
 
 }

@@ -9,12 +9,6 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class MarketService {
-  private address = Constant.REGISTRYADDR;
-  private host = Constant.REGISTRYHOST;
-  private pull = '/images/create?fromImage={registry_host}/{imagename}&tag={tag}';
-
-  private paramList = '/v2/_catalog';
-  private tags = '/v2/{name}/tags/list';
 
   constructor(private http: Http) { }
 
@@ -23,33 +17,15 @@ export class MarketService {
 
   listItems(): Observable<any> {
     return this.http
-      .get(this.address + this.paramList)
-      .map(this.extractData)
-      .catch(this.handleError);
-    // return this.jsonp.get(this.address + this.paramList, options).
-    //     .map(this.extractData)
-    //   .catch(this.handleError);
-  }
-
-  getTags(item: Item): Observable<any> {
-    return this.http
-      .get(this.address + this.tags.replace("{name}", item.name))
+      .get('http://localhost:3000/api/registry/all')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   pullImage(name: string, tag: string): Observable<any> {
-    console.log(name);
-    var headers = new Headers();
-    headers.append("X-Registry-Auth", "eyAidXNlcm5hbWUiOiAiZG9ycnkiLCAicGFzc3dvcmQiOiAiYWJjMTIzXyIsICJlbWFpbCI6ICIiIH0=");
+    console.log(name, tag);
     return this.http
-      .post(Constant.DAEMONADDR + this.pull.replace("{imagename}", name).replace("{tag}", tag).replace("{registry_host}", Constant.REGISTRYHOST), "",
-      {
-        headers: headers
-      })
-    //.map(this.extractData)
-    //.catch(this.handleError);
-
+      .get('http://localhost:3000/api/registry/pull/' + name + '/' + tag);
   }
 
   // Function extractData() extracts the data from the http response, which is

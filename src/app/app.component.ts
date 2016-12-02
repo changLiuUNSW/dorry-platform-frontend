@@ -12,10 +12,8 @@ import { AppModule } from './app.module';
 })
 export class AppComponent {
 
-  constructor(private configService: ConfigService) {
-  }
+  constructor(private configService: ConfigService) { }
 
   ngOnInit() {
-    window.open(Constant.REGISTRYADDR);
   }
 }
