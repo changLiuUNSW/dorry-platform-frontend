@@ -35,16 +35,16 @@ export class ImagesComponent implements OnInit {
   }
 
   // Bindding the ImageInfo and image url
-  initImages() {
-    for (let imageInfo of this.imageInfoes) {
-      for (let imageUrl of this.imageList) {
-        if (imageInfo.RepoTags[0] == imageUrl.name)
-          imageInfo.url = imageUrl.name;
-        else
-          imageInfo.url = DEFAULTURL;
-      }
-    }
-  }
+  // initImages() {
+  //   for (let imageInfo of this.imageInfoes) {
+  //     for (let imageUrl of this.imageList) {
+  //       if (imageInfo.RepoTags[0] == imageUrl.name)
+  //         imageInfo.url = imageUrl.name;
+  //       else
+  //         imageInfo.url = DEFAULTURL;
+  //     }
+  //   }
+  // }
 
   // Get json object array from Docker Daemon
   getImageInfoes() {
@@ -54,8 +54,13 @@ export class ImagesComponent implements OnInit {
         console.log(this.imageInfoes);
         this.hasApp = (this.imageInfoes.length !== 0);
       })
-      .then(data => this.initImages());
+    //.then(data => this.initImages());
   }
+
+  // // Get json object array from Docker Daemon
+  // getImageInfoes() {
+  //   this.imagesService.getImageInfoes();
+  // }
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
@@ -78,33 +83,9 @@ export class ImagesComponent implements OnInit {
       });
   }
 
-  // Create a container
-  createContainer(image: ImageInfo) {
-    image.starting = true;
-    this.notState = false;
-    this.notiImage = image;
-    this.imagesService.inspectImage(image.Id)
-      .then(data => {
-        console.log(data[Object.keys(data)[0]]);
-        this.imagesService.createContainer(data[Object.keys(data)[0]]).then(data => {
-          this.startContainer(data[Object.keys(data)[0]])
-        }, err => this.createConErrMsg(err.status))
-      })
-      .then(data => {
-        image.starting = false;
-        this.image = null;
-      })
-  }
-
-  // Start a container
-  startContainer(id: string) {
-    this.imagesService.startContainer(id)
-      .then(data => {
-        if (!this.isError)
-          this.showNot(" has started a new container");
-      }
-      , err => this.startConErrMsg(err.status));
-
+  startImage(image: ImageInfo) {
+    this.imagesService.startImage(image.Id)
+      .then(data => { });
   }
 
   //create container error message

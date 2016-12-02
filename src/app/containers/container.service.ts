@@ -20,7 +20,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/running'
+        url: Constant.DORRYAPI + '/api/containers/running'
       }))
       .toPromise()
       .then(this.extractData)
@@ -36,7 +36,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/stopped'
+        url: Constant.DORRYAPI + '/api/containers/stopped'
       }))
       .toPromise()
       .then(this.extractData)
@@ -52,7 +52,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/error'
+        url: Constant.DORRYAPI + '/api/containers/error'
       }))
       .toPromise()
       .then(this.extractData)
@@ -68,7 +68,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/all'
+        url: Constant.DORRYAPI + '/api/containers/all'
       }))
       .toPromise()
       .then(this.extractData)
@@ -84,7 +84,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/inspect/' + id
+        url: Constant.DORRYAPI + '/api/containers/inspect/' + id
       }))
       .map(this.extractData)
       .catch(this.handleError);
@@ -99,7 +99,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/remove/' + id
+        url: Constant.DORRYAPI + '/api/containers/remove/' + id
       }))
       .toPromise();
   }
@@ -113,7 +113,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/stop/' + id
+        url: Constant.DORRYAPI + '/api/containers/stop/' + id
       }))
       .toPromise();
   }
@@ -127,7 +127,7 @@ export class ContainerService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/containers/restart/' + id
+        url: Constant.DORRYAPI + '/api/containers/restart/' + id
       }))
       .toPromise()
       .then(this.getRestartStatus);

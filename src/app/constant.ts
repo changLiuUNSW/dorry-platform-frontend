@@ -11,11 +11,13 @@ export class Constant {
   public static REGISTRYADDR: string = "";
   public static BUILDVERSION: string = "";
   public static REGISTRYHOST: string = "";
+  public static DORRYAPI: string = "";
 
   public static initConfig(configObject: ConfigObject) {
     this.DAEMONADDR = configObject.daemon_addr;
     this.REGISTRYADDR = configObject.registry_proto + "://" + configObject.registry_host;
     this.BUILDVERSION = configObject.build_version;
     this.REGISTRYHOST = configObject.registry_host;
+    this.DORRYAPI = configObject.dorry_api;
   }
 }

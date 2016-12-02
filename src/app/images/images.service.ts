@@ -24,7 +24,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/all'
+        url: Constant.DORRYAPI + '/api/images/all'
       }))
       .toPromise()
       .then(this.extractData)
@@ -36,14 +36,12 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/remove/' + id
+        url: Constant.DORRYAPI + '/api/images/remove/' + id
       }))
       .toPromise()
       .then(
-      //this.getRemoveImageResMsg,
       this.extractData
       )
-    //.catch(this.handleError);
   }
 
   //inspect image by image id
@@ -53,7 +51,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/inspect/' + id
+        url: Constant.DORRYAPI + '/api/images/inspect/' + id
       }))
       .toPromise()
       .then(
@@ -78,28 +76,13 @@ export class ImagesService {
     }
   }
 
-  // Create a container
-  createContainer(id: string) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post((Constant.DAEMONADDR + this.create), MAGIC_BOXES[id], options)
-      .toPromise()
-      .then(this.extractData);
-  }
-
-  // Start a container
-  startContainer(id: string) {
-    return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
-      .toPromise();
-  }
-
   //start an image
   //start image = create container + start container
   startImage(id: string) {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/start/' + id
+        url: Constant.DORRYAPI + '/api/images/start/' + id
       }))
       .toPromise()
       .then(
