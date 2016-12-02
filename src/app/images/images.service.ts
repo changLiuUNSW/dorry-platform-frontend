@@ -24,7 +24,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/all'
+        url: Constant.DORRYAPI + '/api/images/all'
       }))
       .toPromise()
       .then(this.extractData)
@@ -36,7 +36,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/remove/' + id
+        url: Constant.DORRYAPI + '/api/images/remove/' + id
       }))
       .toPromise()
       .then(
@@ -53,7 +53,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/inspect/' + id
+        url: Constant.DORRYAPI + '/api/images/inspect/' + id
       }))
       .toPromise()
       .then(
@@ -84,7 +84,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: 'http://localhost:3000/api/images/start/' + id
+        url: Constant.DORRYAPI + '/api/images/start/' + id
       }))
       .toPromise()
       .then(
