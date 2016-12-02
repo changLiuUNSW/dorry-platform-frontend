@@ -40,10 +40,8 @@ export class ImagesService {
       }))
       .toPromise()
       .then(
-      //this.getRemoveImageResMsg,
       this.extractData
       )
-    //.catch(this.handleError);
   }
 
   //inspect image by image id
