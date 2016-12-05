@@ -12,7 +12,7 @@ import { Item } from './market';
 })
 export class MarketComponent implements OnInit {
   items: Item[];
-  item: Item;
+  item: string;
 
   constructor(private marketService: MarketService) { }
 
@@ -24,23 +24,51 @@ export class MarketComponent implements OnInit {
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        for (var i = 0; i < data.length; i++) {
-          this.items.push(data[Object.keys(data)[i]]);
-          console.log(data[Object.keys(data)[i]]);
-        }
+        this.items = data[Object.keys(data)[0]];
+        console.log(this.items);
       });
   }
 
-  private installImage(item: Item) {
+  private getTags(item: string) {
+    this.marketService.getTags(item)
+      .subscribe(data => console.log(data));
+  }
+
+  private installImage(item: string) {
     this.getItem(item);
-    item.installing = true;
-    this.marketService.pullImage(item.name, item.tags[0])
+    this.marketService.getTags(item)
       .subscribe(data => {
-        item.installing = false;
-      });
+        this.marketService.pullImage(data.name, data.tags[0])
+          .subscribe();
+      })
   }
 
-  private getItem(item: Item) {
+  // private listItems() {
+  //   this.marketService.listItems()
+  //     .subscribe(data => {
+  //       var repositories = data[Object.keys(data)[0]];
+  //       for (var i = 0; i < repositories.length; i++) {
+  //         this.items.push(new Item(repositories[i], false));
+  //       }
+  //       console.log(this.items);
+  //     });
+  // }
+  //
+  // private getTags(item: Item) {
+  //   this.marketService.getTags(item)
+  //     .subscribe(data => console.log(data));
+  // }
+  //
+  // private installImage(item: Item) {
+  //   this.getItem(item);
+  //   this.marketService.getTags(item)
+  //     .subscribe(data => {
+  //       this.marketService.pullImage(data.name, data.tags[0])
+  //         .subscribe();
+  //     })
+  // }
+
+  private getItem(item: string) {
     this.item = item;
   }
 

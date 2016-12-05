@@ -17,7 +17,14 @@ export class MarketService {
 
   listItems(): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/registry/all')
+      .get('http://localhost:3000/api/registry/catalog')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getTags(item: string): Observable<any> {
+    return this.http
+      .get('http://localhost:3000/api/registry/tags/' + item)
       .map(this.extractData)
       .catch(this.handleError);
   }
