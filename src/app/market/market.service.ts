@@ -22,9 +22,9 @@ export class MarketService {
       .catch(this.handleError);
   }
 
-  getTags(item: string): Observable<any> {
+  getTags(item: Item): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/registry/tags/' + item)
+      .get('http://localhost:3000/api/registry/tags/' + item.name)
       .map(this.extractData)
       .catch(this.handleError);
   }
