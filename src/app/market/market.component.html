@@ -16,9 +16,12 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button class="mdl-button mdl-js-button
+        <button *ngIf="item.installed==false" class="mdl-button mdl-js-button
                        button-install" (click)="installImage(item)" (click)="getItem(item)">
           Install
+        </button>
+        <button *ngIf="item.installed==true" class="mdl-button mdl-js-button" disabled>
+          Installed
         </button>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
-import { Item } from './market';
 
 @Component({
   selector: 'app-market',
@@ -11,36 +10,38 @@ import { Item } from './market';
   ]
 })
 export class MarketComponent implements OnInit {
-  items: Item[];
-  item: Item;
+  item: any;
+  items = [];
 
   constructor(private marketService: MarketService) { }
 
   ngOnInit() {
-    this.items = [];
     this.listItems();
   }
 
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        for (var i = 0; i < data.length; i++) {
-          this.items.push(data[Object.keys(data)[i]]);
-          console.log(data[Object.keys(data)[i]]);
-        }
+        console.log(data);
+        this.items = data;
       });
   }
 
-  private installImage(item: Item) {
+  private getTags(item: any) {
+    this.marketService.getTags(item)
+      .subscribe(data => console.log(data));
+  }
+
+  private installImage(item: any) {
     this.getItem(item);
-    item.installing = true;
-    this.marketService.pullImage(item.name, item.tags[0])
+    this.marketService.getTags(item)
       .subscribe(data => {
-        item.installing = false;
-      });
+        this.marketService.pullImage(data.name, data.tags[0])
+          .subscribe(data => data);
+      })
   }
 
-  private getItem(item: Item) {
+  private getItem(item: any) {
     this.item = item;
   }
 
