@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response, Request, RequestMethod, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Item } from './market';
 import { Constant } from '../constant';
 
 import 'rxjs/add/operator/map';
@@ -17,12 +16,12 @@ export class MarketService {
 
   listItems(): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/registry/catalog')
+      .get('http://localhost:3000/api/registry/all')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  getTags(item: Item): Observable<any> {
+  getTags(item: any): Observable<any> {
     return this.http
       .get('http://localhost:3000/api/registry/tags/' + item.name)
       .map(this.extractData)
