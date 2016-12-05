@@ -24,7 +24,9 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
-import {PopoverModule} from 'ng2-popover';
+//third-part plugin
+import { PopoverModule } from 'ng2-popover';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {PopoverModule} from 'ng2-popover';
     HttpModule,
     MaterialModule.forRoot(),
     routing,
-    PopoverModule
+    PopoverModule,
+    ToastModule
   ],
   providers: [
     ConfigService,
