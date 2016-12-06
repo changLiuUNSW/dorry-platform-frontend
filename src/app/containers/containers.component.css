@@ -1,5 +1,5 @@
 .mdl-container {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 header.service {
@@ -7,7 +7,7 @@ header.service {
   font-weight: 500;
   line-height: 1em;
   color: #37474f;
-  padding: 16px 16px 0;
+  padding: 0 16px;
 }
 
 .mdl-card__title {
@@ -41,8 +41,8 @@ header.service {
 }
 
 .service-name {
-  font-size: 22px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -50,6 +50,7 @@ header.service {
 }
 
 .service-status {
+  color: #666;
   font-size: 13px;
   font-weight: 400;
   overflow: hidden;
@@ -59,19 +60,27 @@ header.service {
 }
 
 .mdl-card__supporting-text.table {
+  background: #f7f7f7;
   width: 100%;
   margin: 0;
-  padding: 4px;
-  border-top: 1px solid rgba(0,0,0,.1);
+  padding: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mdl-data-table {
+  background: #f7f7f7;
   width: 100%;
+  border: 0;
 }
 
 .mdl-data-table__cell--non-numeric {
   font-weight: 500;
   width: 40%;
+}
+
+.mdl-data-table tbody tr {
+  color: #444444;
+  height: 38px;
 }
 
 .mdl-data-table tbody tr:hover {
@@ -83,8 +92,13 @@ header.service {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border: 0;
+  height: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .mdl-card__actions.mdl-card--border {
   padding: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

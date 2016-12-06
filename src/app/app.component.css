@@ -12,13 +12,13 @@
   border-right: 0;
 }
 
-.mdl-layout__drawer .mdl-navigation{
+.mdl-layout__drawer .mdl-navigation {
   padding-top: 0;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
   color: #f0f0f0;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
@@ -130,8 +130,8 @@
 
 .mdl-button.mdl-js-button.mdl-button--raised {
   /*color: #ffffff;*/
-  width: 94px;
-  padding: 0 10px;
+  width: 90px;
+  padding: 0;
 }
 
 .button-remove {

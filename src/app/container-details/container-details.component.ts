@@ -18,7 +18,7 @@ export class ContainerDetailsComponent implements OnInit {
   cmd: any;
   entrypoint: any;
   binds: any;
-  env: any;
+  envs: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +39,7 @@ export class ContainerDetailsComponent implements OnInit {
             this.created = data.Created;
             this.cmd = data.Config.Cmd;
             this.entrypoint = data.Config.Entrypoint;
-            this.env = data.Config.Env;
+            this.envs = data.Config.Env;
             this.binds = data.HostConfig.Binds;
 
             for (var port in data.NetworkSettings.Ports) {

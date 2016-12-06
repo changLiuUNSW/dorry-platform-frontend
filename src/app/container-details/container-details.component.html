@@ -10,48 +10,75 @@
     <span class="mdl-cell mdl-cell--2-col">Name</span>
     <span class="mdl-cell mdl-cell--10-col">{{ name | slice:1 }}</span>
   </div>
+  <hr>
+
   <!-- <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">ID</span>
     <span class="mdl-cell mdl-cell--10-col">{{ id }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Image</span>
     <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
-  </div> -->
+  </div>
+  <hr> -->
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Status</span>
     <span class="mdl-cell mdl-cell--10-col">{{ status | uppercase }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">IP Address</span>
     <span class="mdl-cell mdl-cell--10-col">{{ ip }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Ports</span>
     <span class="mdl-cell mdl-cell--10-col">
       <span *ngFor="let port of ports">
         {{ port }}
+        <br>
       </span>
     </span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Created Date</span>
     <span class="mdl-cell mdl-cell--10-col">{{ created }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Entrypoint</span>
     <span class="mdl-cell mdl-cell--10-col">{{ entrypoint }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Cmd</span>
     <span class="mdl-cell mdl-cell--10-col">{{ cmd }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Binds</span>
     <span class="mdl-cell mdl-cell--10-col">{{ binds }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Enviroments</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ env }}</span>
+    <span class="mdl-cell mdl-cell--10-col">
+      <span *ngFor="let env of envs">
+        {{ env }}
+        <br>
+      </span>
+    </span>
   </div>
+
 </div>
