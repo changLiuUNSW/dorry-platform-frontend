@@ -1,8 +1,9 @@
 .mdl-layout-title {
-  background: #ffffff;
-  color: #37474f;
-  font-size: 36px;
+  background: #37474f;
+  color: #ffffff;
+  font-size: 28px;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .mdl-layout__drawer {
@@ -11,21 +12,35 @@
   border-right: 0;
 }
 
-.mdl-layout-title {
-  background: #f6f6f6;
+.mdl-layout__drawer .mdl-navigation{
+  padding-top: 0;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
   color: #f0f0f0;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover,
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active {
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .mdl-layout__header {
-  background: #37474f;
+  background: #fafafa;
 }
 
 .mdl-layout__content {
-  background: #f6f6f6;
+  background: #eeeeee;
 }
 
 .page-content {
@@ -59,8 +74,14 @@
 }
 
 .mdl-dialog__title {
+  color: #ffffff;
   background: #37474f;
-  padding: 18px 24px;
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  text-transform: uppercase;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .mdl-dialog__content {
@@ -108,25 +129,29 @@
 }
 
 .mdl-button.mdl-js-button.mdl-button--raised {
-  color: #ffffff;
+  /*color: #ffffff;*/
   width: 94px;
   padding: 0 10px;
 }
 
 .button-remove {
-  background: #E53935;
+  color: #ffffff;
+  background: #ef5350;
 }
 
 .button-stop {
-  background: #FBC02D;
+  color: #212121;
+  background: #fafafa;
 }
 
 .button-start {
-  background: #689F38;
+  color: #ffffff;
+  background: #66bb6a;
 }
 
 .button-restart {
-  background: #3F51B5;
+  color: #ffffff;
+  background: #66bb6a;
 }
 
 .message-empty {
