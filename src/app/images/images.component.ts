@@ -56,9 +56,9 @@ export class ImagesComponent implements OnInit {
       .then(
       data => {
         if (data.statusCode)
-          this.toastr.error("Failed to remove image.", 'Oops!', { toastLife: 3000 });
+          this.toastr.error('Failed to remove app', 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success("Have removed image.", "Success!", { toastLife: 3000 });
+          this.toastr.success('App removed', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
         image.removing = false;
@@ -72,9 +72,9 @@ export class ImagesComponent implements OnInit {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
-          this.toastr.error("Failed to start image.", 'Oops!', { toastLife: 3000 });
+          this.toastr.error('Failed to start service', 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success("Have started image.", "Success!", { toastLife: 3000 });
+          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
       });
   }
 

@@ -49,23 +49,9 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.stopContainer(id)
       .then(data => {
         if (data.json().statusCode)
-          this.toastr.error("Failed to stop service.", 'Oops!', { toastLife: 3000 });
+          this.toastr.error('Failed to stop service', 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success("Have stopped service.", "Success!", { toastLife: 3000 });
-        this.getRunningContainers();
-        this.container.spinner = false;
-      })
-      .then(data => {
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
-      });
-  }
-
-  removeContainer(id: string) {
-    this.container.spinner = true;
-    this.containerService.removeContainer(id)
-      .then(data => {
+          this.toastr.success('Service stopped', 'SUCCESS', { toastLife: 3000 });
         this.getRunningContainers();
         this.container.spinner = false;
       })

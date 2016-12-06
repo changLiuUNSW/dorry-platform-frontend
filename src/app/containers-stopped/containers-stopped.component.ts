@@ -44,9 +44,9 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.restartContainer(id)
       .then(data => {
         if (data.statusCode)
-          this.toastr.error("Failed to restart service.", 'Oops!', { toastLife: 3000 });
+          this.toastr.error('Failed to restart service', 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success("Have restarted service.", "Success!", { toastLife: 3000 });
+          this.toastr.success('Service restarted', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = false;
       })
@@ -62,9 +62,9 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.removeContainer(id)
       .then(data => {
         if (data.json().statusCode)
-          this.toastr.error("Failed to remove service.", 'Oops!', { toastLife: 3000 });
+          this.toastr.error('Failed to remove service', 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success("Have removed service.", "Success!", { toastLife: 3000 });
+          this.toastr.success('Service removed', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = false;
       })
