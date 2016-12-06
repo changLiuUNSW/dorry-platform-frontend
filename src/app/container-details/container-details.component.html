@@ -5,22 +5,26 @@
 </a>
 
 <div class="mdl-card mdl-shadow--2dp">
-  <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
+  <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/> -->
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Name</span>
     <span class="mdl-cell mdl-cell--10-col">{{ name | slice:1 }}</span>
   </div>
-  <div class="row mdl-grid">
+  <!-- <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">ID</span>
     <span class="mdl-cell mdl-cell--10-col">{{ id }}</span>
   </div>
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Image</span>
     <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
-  </div>
+  </div> -->
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Status</span>
     <span class="mdl-cell mdl-cell--10-col">{{ status | uppercase }}</span>
+  </div>
+  <div class="row mdl-grid">
+    <span class="mdl-cell mdl-cell--2-col">IP Address</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ ip }}</span>
   </div>
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Ports</span>
@@ -35,11 +39,11 @@
     <span class="mdl-cell mdl-cell--10-col">{{ created }}</span>
   </div>
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">ENTRYPOINT</span>
+    <span class="mdl-cell mdl-cell--2-col">Entrypoint</span>
     <span class="mdl-cell mdl-cell--10-col">{{ entrypoint }}</span>
   </div>
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">CMD</span>
+    <span class="mdl-cell mdl-cell--2-col">Cmd</span>
     <span class="mdl-cell mdl-cell--10-col">{{ cmd }}</span>
   </div>
   <div class="row mdl-grid">
