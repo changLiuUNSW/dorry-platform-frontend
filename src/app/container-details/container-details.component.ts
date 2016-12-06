@@ -12,6 +12,7 @@ export class ContainerDetailsComponent implements OnInit {
   id: any;
   image: any;
   status: any;
+  ip: any;
   ports = [];
   created: any;
   cmd: any;
@@ -34,6 +35,7 @@ export class ContainerDetailsComponent implements OnInit {
             this.id = data.Id;
             this.image = data.Image;
             this.status = data.State.Status;
+            this.ip = data.NetworkSettings.IPAddress;
             this.created = data.Created;
             this.cmd = data.Config.Cmd;
             this.entrypoint = data.Config.Entrypoint;

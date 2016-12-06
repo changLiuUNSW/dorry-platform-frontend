@@ -1,7 +1,7 @@
 .mdl-layout-title {
   background: #37474f;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -21,15 +21,15 @@
   font-size: 14px;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover,
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
   background: rgba(0, 0, 0, 0.2);
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active {
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active,
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
   background: rgba(0, 0, 0, 0.2);
   color: #ffffff;
   text-decoration: none;
