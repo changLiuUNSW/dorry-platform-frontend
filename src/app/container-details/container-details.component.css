@@ -10,7 +10,7 @@
 
 .mdl-card.mdl-shadow--2dp {
   width: 100%;
-  padding: 16px;
+  padding: 32px 160px;
 }
 /*img.mdl-card.mdl-shadow--2dp {
   width: 120px;
@@ -24,4 +24,14 @@
 
 .row .mdl-cell--2-col {
   font-weight: 500;
+}
+
+.mdl-cell.mdl-cell--10-col {
+  overflow: auto;
+}
+
+hr {
+  margin: 0 16px;
+  padding: 0;
+  border-top: 2px solid #ccc;
 }
