@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-containers-error',
   templateUrl: './containers-error.component.html',
@@ -19,7 +21,7 @@ export class ContainersErrorComponent implements OnInit {
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService) { }
+  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getErrorContainers();
@@ -39,6 +41,10 @@ export class ContainersErrorComponent implements OnInit {
     this.container.spinner = true;
     this.containerService.removeContainer(id)
       .then(data => {
+        if (data.json().statusCode)
+          this.toastr.error("Failed to remove service.", 'Oops!', { toastLife: 3000 });
+        else
+          this.toastr.success("Have removed service.", "Success!", { toastLife: 3000 });
         this.getErrorContainers();
         this.container.spinner = false;
       })

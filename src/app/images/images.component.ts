@@ -87,10 +87,6 @@ export class ImagesComponent implements OnInit {
     return datetime;
   }
 
-  closeDetailInfo() {
-    this.showInfoWindow = false;
-  }
-
   displayAlert(id: string) {
     this.showAlert = true;
   }

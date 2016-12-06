@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-containers-stopped',
   templateUrl: './containers-stopped.component.html',
@@ -19,7 +21,7 @@ export class ContainersStoppedComponent implements OnInit {
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService) { }
+  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getStoppedContainers();
@@ -41,6 +43,10 @@ export class ContainersStoppedComponent implements OnInit {
     let id = container.Id;
     this.containerService.restartContainer(id)
       .then(data => {
+        if (data.statusCode)
+          this.toastr.error("Failed to restart service.", 'Oops!', { toastLife: 3000 });
+        else
+          this.toastr.success("Have restarted service.", "Success!", { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = false;
       })
@@ -55,6 +61,10 @@ export class ContainersStoppedComponent implements OnInit {
     this.container.spinner = true;
     this.containerService.removeContainer(id)
       .then(data => {
+        if (data.json().statusCode)
+          this.toastr.error("Failed to remove service.", 'Oops!', { toastLife: 3000 });
+        else
+          this.toastr.success("Have removed service.", "Success!", { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = false;
       })
