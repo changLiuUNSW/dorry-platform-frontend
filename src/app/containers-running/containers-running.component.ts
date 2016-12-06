@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
 
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-containers-running',
   templateUrl: './containers-running.component.html',
@@ -19,7 +21,7 @@ export class ContainersRunningComponent implements OnInit {
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService) { }
+  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getRunningContainers();
@@ -46,6 +48,10 @@ export class ContainersRunningComponent implements OnInit {
     let id = container.Id;
     this.containerService.stopContainer(id)
       .then(data => {
+        if (data.json().statusCode)
+          this.toastr.error("Failed to stop service.", 'Oops!', { toastLife: 3000 });
+        else
+          this.toastr.success("Have stopped service.", "Success!", { toastLife: 3000 });
         this.getRunningContainers();
         this.container.spinner = false;
       })
