@@ -9,13 +9,13 @@
   transition: 0.4s;
 }*/
 .mdl-card__title {
-  background: #1E88E5;
+  background: #fff;
   position: relative;
 }
 
 .mdl-card__title .mdl-card {
   min-height: 0;
-  width: 120px;
+  width: 100px;
   cursor: pointer;
 }
 
@@ -30,13 +30,16 @@
 }
 
 .mdl-card__title-text {
-  color: #ffffff;
+  color: #000;
   width: 100%;
-  /*padding: 0 24px 0 56px;*/
   padding: 0 0 0 8px;
-  /*position: absolute;*/
   display: block;
   align-self: baseline;
+}
+
+.mdl-card__actions {
+  border-width: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
 }
 
 .app-name {
@@ -66,6 +69,7 @@ popover-content {
   position: relative;
   top: 10px;
   max-width: 300px !important;
+  color: #fff;
 }
 
 .popover {

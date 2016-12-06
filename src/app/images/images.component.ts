@@ -87,6 +87,15 @@ export class ImagesComponent implements OnInit {
     return datetime;
   }
 
+  displayAlert(id: string) {
+    this.showAlert = true;
+  }
+
+  hideAlert(id: string) {
+    this.showAlert = false;
+    this.image = null;
+  }
+
   getImage(image: ImageInfo) {
     this.image = image;
   }

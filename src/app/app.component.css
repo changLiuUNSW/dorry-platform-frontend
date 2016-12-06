@@ -12,7 +12,7 @@
   border-right: 0;
 }
 
-.mdl-layout__drawer .mdl-navigation{
+.mdl-layout__drawer .mdl-navigation {
   padding-top: 0;
 }
 
@@ -134,9 +134,14 @@
   padding: 0 10px;
 }
 
+.button-install {
+  color: #ffffff;
+  background: #56b881;
+}
+
 .button-remove {
   color: #ffffff;
-  background: #ef5350;
+  background: #e55e5e;
 }
 
 .button-stop {
@@ -146,12 +151,12 @@
 
 .button-start {
   color: #ffffff;
-  background: #66bb6a;
+  background: #56b881;
 }
 
 .button-restart {
   color: #ffffff;
-  background: #66bb6a;
+  background: #56b881;
 }
 
 .message-empty {
