@@ -1,34 +1,25 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-            mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-          <img src="/assets/icons/ic_search_white_24px.svg"/>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
-        </div>
-      </div>
-    </div>
-  </header>
+<mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
+  <mdl-layout-header>
+    <mdl-layout-header-row>
+      <mdl-layout-spacer></mdl-layout-spacer>
 
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Dorry</span>
+    </mdl-layout-header-row>
+  </mdl-layout-header>
+
+  <mdl-layout-drawer>
+    <mdl-layout-title>Dorry</mdl-layout-title>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" routerLink="/services" routerLinkActive="active">Services</a>
       <a class="mdl-navigation__link" routerLink="/apps" routerLinkActive="active">Applications</a>
       <a class="mdl-navigation__link" routerLink="/market" routerLinkActive="active">Market</a>
     </nav>
     <app-footer></app-footer>
-  </div>
+  </mdl-layout-drawer>
 
-  <main class="mdl-layout__content">
+  <mdl-layout-content>
     <div class="page-content">
       <router-outlet></router-outlet>
     </div>
-  </main>
+  </mdl-layout-content>
 
-</div>
+</mdl-layout>

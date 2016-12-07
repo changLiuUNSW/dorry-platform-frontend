@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DEFAULTURL, IMAGELIST, ImageUrl } from './mock-images';
 import { ImagesService } from './images.service';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
@@ -15,11 +14,8 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
 })
 
 export class ImagesComponent implements OnInit {
-  notiImage: ImageInfo;
   image: ImageInfo;
-  imageList: ImageUrl[];//imageicon url
   imageInfoes: ImageInfo[];//all image list
-  appName: string;//formated image name
 
   showAlert: boolean;//show alert tag
   hasApp: boolean;
@@ -31,7 +27,6 @@ export class ImagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imageList = IMAGELIST;
     this.getImageInfoes();
     this.showAlert = false;
   }
@@ -48,8 +43,7 @@ export class ImagesComponent implements OnInit {
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
-    image.removing = true;
-    this.notiImage = image;
+    image.spinner = true;
     let id = image.Id;
     let message: string;
     this.imagesService.removeImage(id)
@@ -61,12 +55,13 @@ export class ImagesComponent implements OnInit {
           this.toastr.success('App removed', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
-        image.removing = false;
+        image.spinner = false;
         this.getImageInfoes()
       });
   }
 
   startImage(image: ImageInfo) {
+    image.spinner = true;
     this.imagesService.startImage(image.Id)
       .then(data => {
         console.log("start image : ");
@@ -75,6 +70,10 @@ export class ImagesComponent implements OnInit {
           this.toastr.error('Failed to start service', 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+      })
+      .then(msg => {
+        image.spinner = false;
+        this.getImageInfoes()
       });
   }
 

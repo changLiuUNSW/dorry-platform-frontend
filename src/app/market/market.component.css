@@ -65,3 +65,7 @@
 .mdl-card__menu {
   color: #ffffff;
 }
+
+div > button {
+  width: 100px;
+}
