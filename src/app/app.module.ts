@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
+import { MdlModule } from 'angular2-mdl';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -46,7 +47,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    // MaterialModule.forRoot(),
+    MdlModule,
     routing,
     PopoverModule,
     ToastModule

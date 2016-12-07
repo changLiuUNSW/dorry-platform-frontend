@@ -46,7 +46,7 @@ export class ContainersErrorComponent implements OnInit {
         else
           this.toastr.success('Service removed', 'SUCCESS', { toastLife: 3000 });
         this.getErrorContainers();
-        this.container.spinner = false;
+        // this.container.spinner = false;
       })
       .then(data => {
         setTimeout(function() {
@@ -65,6 +65,7 @@ export class ContainersErrorComponent implements OnInit {
 
   getContainer(container: Container) {
     this.container = container;
+    this.container.spinner = true;
   }
 
 }

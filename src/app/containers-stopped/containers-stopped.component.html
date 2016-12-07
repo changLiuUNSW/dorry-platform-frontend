@@ -40,20 +40,10 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <!-- <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
-                       mdl-button--fab button-restart" (click)="displayRestartAlert()" (click)="getContainer(service)">
-          <img src="/assets/icons/ic_play_arrow_white_24px.svg"/>
-        </button>
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect
-                       mdl-button--fab button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
-          <img src="/assets/icons/ic_delete_white_24px.svg"/>
-        </button> -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
-                       button-restart" (click)="displayRestartAlert()" (click)="getContainer(service)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="button-restart" (click)="displayRestartAlert()" (click)="getContainer(service)">
           Restart
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
-                       button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
           Remove
         </button>
       </div>
