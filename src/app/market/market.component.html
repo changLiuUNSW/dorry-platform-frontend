@@ -18,9 +18,10 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button *ngIf="item.installed==false" class="mdl-button mdl-js-button
-                       button-install" (click)="installImage(item)" (click)="getItem(item)">
-          Install
+        <button *ngIf="item.installed==false" class="mdl-button mdl-js-button mdl-button--raised
+                       button-install" (click)="installImage(item)" (click)="getItem(item)"></button>
+        <button *ngIf="item.installing" class="mdl-button mdl-js-button" disabled>
+          <mdl-spinner [active]="true"></mdl-spinner>
         </button>
         <button *ngIf="item.installed==true" class="mdl-button mdl-js-button" disabled>
           Installed

@@ -27,6 +27,7 @@ import { routing } from './app.routing';
 //third-part plugin
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { MdlModule } from 'angular2-mdl';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     MaterialModule.forRoot(),
     routing,
     PopoverModule,
-    ToastModule
+    ToastModule,
+    MdlModule
   ],
   providers: [
     ConfigService,

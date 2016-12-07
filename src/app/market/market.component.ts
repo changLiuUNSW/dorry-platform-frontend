@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
 
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
@@ -13,7 +15,7 @@ export class MarketComponent implements OnInit {
   item: any;
   items = [];
 
-  constructor(private marketService: MarketService) { }
+  constructor(private marketService: MarketService, public toastr: ToastsManager) { }
 
   ngOnInit() {
     this.listItems();
@@ -34,10 +36,17 @@ export class MarketComponent implements OnInit {
 
   private installImage(item: any) {
     this.getItem(item);
+    item.installing = true;
     this.marketService.getTags(item)
       .subscribe(data => {
         this.marketService.pullImage(data.name, data.tags[0])
-          .subscribe(data => data);
+          .subscribe(data => {
+            if (data.statusCode)
+              this.toastr.error('Fail installing', 'ERROR', { toastLife: 3000 });
+            else
+              this.toastr.success('Installed', 'SUCCESS', { toastLife: 3000 });
+            item.installing = false;
+          });
       })
   }
 

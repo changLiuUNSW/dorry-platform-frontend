@@ -17,24 +17,28 @@
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  color: #f0f0f0;
+  color: #b0bec5;
   font-size: 15px;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active,
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active {
+  color: #fff;
+  background: #517891;
+  text-decoration: none;
+}
+/*.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active,
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
   background: rgba(0, 0, 0, 0.2);
   color: #ffffff;
   text-decoration: none;
-}
-
+}*/
 .mdl-layout__header {
   background: #fafafa;
 }
