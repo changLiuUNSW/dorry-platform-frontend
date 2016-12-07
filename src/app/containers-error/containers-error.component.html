@@ -4,6 +4,9 @@
   </header>
   <div class="mdl-grid">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
+      <div class="spinner-container" *ngIf="service.spinner">
+        <mdl-spinner single-color [active]="service.spinner"></mdl-spinner>
+      </div>
       <div class="mdl-card__title">
         <a routerLink="/services/{{service.Id}}">
           <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
@@ -45,8 +48,7 @@
                        mdl-button--fab button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
           <img src="/assets/icons/ic_delete_white_24px.svg"/>
         </button> -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
-                       button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
           Remove
         </button>
       </div>
@@ -57,10 +59,10 @@
 <!-- The alert dialog for remove one service -->
 <div class="dialog-container" *ngIf="showAlert==1">
   <div class="mdl-dialog">
-    <div class="mdl-dialog__title"><img src="/assets/icons/ic_warning_white_48px.svg"/></div>
+    <div class="mdl-dialog__title">Remove Service</div>
     <div class="mdl-dialog__content">
       <span>
-        Remove service
+        Do you want to remove service
         <span>
           <strong>{{ container.Names[0] | slice:1 }}</strong>
         </span>?

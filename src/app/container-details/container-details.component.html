@@ -1,49 +1,84 @@
 <a routerLink="/services">
-  <button class="mdl-button mdl-js-button mdl-button--raised button-back">
+  <button mdl-button mdl-button-type="raised" class="button-back">
     <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
   </button>
 </a>
 
 <div class="mdl-card mdl-shadow--2dp">
-  <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
+  <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/> -->
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Name</span>
     <span class="mdl-cell mdl-cell--10-col">{{ name | slice:1 }}</span>
   </div>
-  <div class="row mdl-grid">
+  <hr>
+
+  <!-- <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">ID</span>
     <span class="mdl-cell mdl-cell--10-col">{{ id }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Image</span>
     <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
   </div>
+  <hr> -->
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Status</span>
     <span class="mdl-cell mdl-cell--10-col">{{ status | uppercase }}</span>
   </div>
+  <hr>
+
+  <div class="row mdl-grid">
+    <span class="mdl-cell mdl-cell--2-col">IP Address</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ ip }}</span>
+  </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Ports</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ ports }}</span>
+    <span class="mdl-cell mdl-cell--10-col">
+      <span *ngFor="let port of ports">
+        {{ port }}
+        <br>
+      </span>
+    </span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Created Date</span>
     <span class="mdl-cell mdl-cell--10-col">{{ created }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">ENTRYPOINT</span>
+    <span class="mdl-cell mdl-cell--2-col">Entrypoint</span>
     <span class="mdl-cell mdl-cell--10-col">{{ entrypoint }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">CMD</span>
+    <span class="mdl-cell mdl-cell--2-col">Cmd</span>
     <span class="mdl-cell mdl-cell--10-col">{{ cmd }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Binds</span>
     <span class="mdl-cell mdl-cell--10-col">{{ binds }}</span>
   </div>
+  <hr>
+
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Enviroments</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ env }}</span>
+    <span class="mdl-cell mdl-cell--10-col">
+      <span *ngFor="let env of envs">
+        {{ env }}
+        <br>
+      </span>
+    </span>
   </div>
+
 </div>

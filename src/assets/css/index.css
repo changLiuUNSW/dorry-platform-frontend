@@ -3,7 +3,14 @@
 }
 
 .popover {
+  background-color: #737373;
   max-width: 400px;
+  border-radius: 0;
+}
+
+.popover.bottom > .arrow {
+  border-bottom-color: rgba(255, 255, 255, 0);
+  display: none;
 }
 
 .popover-content {

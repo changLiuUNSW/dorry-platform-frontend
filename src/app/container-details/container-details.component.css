@@ -1,29 +1,37 @@
 .button-back {
-  background: #8D6E63;
+  background: #607c8c;
   font-size: 0;
   margin: 0 0 16px;
 }
 
 .button-back:hover {
-  background: #795548;
+  background: #4a6777;
 }
 
 .mdl-card.mdl-shadow--2dp {
   width: 100%;
-  padding: 16px;
+  padding: 32px 160px;
 }
-
-img.mdl-card.mdl-shadow--2dp {
+/*img.mdl-card.mdl-shadow--2dp {
   width: 120px;
   min-height: 120px;
   margin: 16px;
   padding: 0;
-}
-
+}*/
 .row {
   margin: 0;
 }
 
 .row .mdl-cell--2-col {
   font-weight: 500;
+}
+
+.mdl-cell.mdl-cell--10-col {
+  overflow: auto;
+}
+
+hr {
+  margin: 0 16px;
+  padding: 0;
+  border-top: 2px solid #ccc;
 }

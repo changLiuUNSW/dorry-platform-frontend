@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
-import { Item } from './market';
+
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Component({
   selector: 'app-market',
@@ -11,55 +12,47 @@ import { Item } from './market';
   ]
 })
 export class MarketComponent implements OnInit {
-  items: Item[];
-  item: Item;
-  showDetail: boolean;
+  item: any;
+  items = [];
 
-  constructor(private marketService: MarketService) { }
+  constructor(private marketService: MarketService, public toastr: ToastsManager) { }
 
   ngOnInit() {
-    this.items = [];
     this.listItems();
-    this.showDetail = false;
   }
 
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        var itemNames = data[Object.keys(data)[0]];
-        for (var i = 0; i < itemNames.length; i++) {
-          this.items.push(new Item(itemNames[i], false));
-        }
-        console.log(this.items);
+        console.log(data);
+        this.items = data;
       });
   }
 
-  private getTags(item: Item) {
+  private getTags(item: any) {
     this.marketService.getTags(item)
       .subscribe(data => console.log(data));
   }
 
-  //intall image from private docker registry
-  //getTags  +  pullImage
-  private installImage(item: Item) {
+  private installImage(item: any) {
     this.getItem(item);
     item.installing = true;
     this.marketService.getTags(item)
       .subscribe(data => {
-        // console.log(data);
         this.marketService.pullImage(data.name, data.tags[0])
           .subscribe(data => {
+            if (data.statusCode)
+              this.toastr.error('Fail installing', 'ERROR', { toastLife: 3000 });
+            else
+              this.toastr.success('Installed', 'SUCCESS', { toastLife: 3000 });
             item.installing = false;
+            this.listItems();
           });
       })
   }
 
-  private getItem(item: Item) {
+  private getItem(item: any) {
     this.item = item;
-  }
-
-  private toggleDetail() {
-    this.showDetail = !this.showDetail;
   }
 
 }

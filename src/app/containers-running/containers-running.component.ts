@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Response } from '@angular/http';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
+
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Component({
   selector: 'app-containers-running',
@@ -16,30 +17,15 @@ export class ContainersRunningComponent implements OnInit {
   containers: Container[];
   container: Container;
   hasRunning: boolean;
-
   showAlert: number;
-
-  notification: string;
-  notState: boolean;
-  isError: boolean;
-  res: Response;
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService) { }
+  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getRunningContainers();
     this.showAlert = 0;
-  }
-
-  showNot(msg: string) {
-    this.notState = true;
-    this.notification = msg;
-    setTimeout(function() {
-      this.notState = false;
-      this.isError = false;
-    }.bind(this), 3000);
   }
 
   getRunningContainers() {
@@ -62,36 +48,17 @@ export class ContainersRunningComponent implements OnInit {
     let id = container.Id;
     this.containerService.stopContainer(id)
       .then(data => {
+        if (data.json().statusCode)
+          this.toastr.error('Failed to stop service', 'ERROR', { toastLife: 3000 });
+        else
+          this.toastr.success('Service stopped', 'SUCCESS', { toastLife: 3000 });
         this.getRunningContainers();
         this.container.spinner = false;
-      },
-      (err: any) => this.errMsg(err.status))
-      .then(data => {
-        if (!this.isError) {
-          this.showNot(" has been stopped successfully");
-        }
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
-      });
-  }
-
-  removeContainer(id: string) {
-    this.container.spinner = true;
-    this.containerService.removeContainer(id)
-      .then(data => {
-        this.getRunningContainers();
-        this.container.spinner = false;
-      },
-      (err: any) => this.errMsg(err.status))
-      .then(data => {
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
       })
       .then(data => {
-        if (!this.isError)
-          this.showNot(" has been removed successfully");
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 100);
       });
   }
 
@@ -109,24 +76,6 @@ export class ContainersRunningComponent implements OnInit {
 
   getContainer(container: Container) {
     this.container = container;
-  }
-
-  //status code
-  //204: success
-  //304: container already stopped
-  //404: no such container
-  //500: server error
-  private errMsg(statusCode: Number) {
-    this.isError = true;
-    if (statusCode == 404) {
-      this.showNot(" ,No such container");
-    }
-    else if (statusCode == 304) {
-      this.showNot(" already stopped");
-    }
-    else if (statusCode == 500) {
-      this.showNot(" has Server error");
-    }
   }
 
 }

@@ -1,8 +1,9 @@
 .mdl-layout-title {
-  background: #ffffff;
-  color: #37474f;
-  font-size: 36px;
+  background: #37474f;
+  color: #ffffff;
+  font-size: 32px;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .mdl-layout__drawer {
@@ -11,21 +12,39 @@
   border-right: 0;
 }
 
-.mdl-layout-title {
-  background: #f6f6f6;
+.mdl-layout__drawer .mdl-navigation {
+  padding-top: 0;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  color: #f0f0f0;
-  font-size: 16px;
+  color: #b0bec5;
+  font-size: 15px;
 }
 
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+  background: rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active {
+  color: #fff;
+  background: #517891;
+  text-decoration: none;
+}
+/*.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active,
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+}*/
 .mdl-layout__header {
-  background: #37474f;
+  background: #fafafa;
 }
 
 .mdl-layout__content {
-  background: #f6f6f6;
+  background: #eeeeee;
 }
 
 .page-content {
@@ -59,8 +78,14 @@
 }
 
 .mdl-dialog__title {
+  color: #ffffff;
   background: #37474f;
-  padding: 18px 24px;
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  text-transform: uppercase;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .mdl-dialog__content {
@@ -75,10 +100,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-}
-
-.mdl-button {
-  font-size: 18px;
 }
 
 .mdl-button.mdl-js-button.mdl-button--icon {
@@ -96,26 +117,72 @@
   margin: auto;
 }
 
-.mdl-button.mdl-js-button.mdl-button--raised {
+.mdl-card.mdl-shadow--2dp.mdl-cell {
+  min-height: 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+.mdl-card.mdl-shadow--2dp.mdl-cell:hover {
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+}
+
+.mdl-button {
+  /*color: #ffffff;*/
+  font-size: 16px;
+  width: 86px;
+  padding: 0;
+}
+
+.button-install {
   color: #ffffff;
-  width: 100px;
-  padding: 0 10px;
+  background: #56b881;
 }
 
 .button-remove {
-  background: #E53935;
+  color: #ffffff;
+  background: #e55e5e;
 }
 
 .button-stop {
-  background: #FBC02D;
+  color: #212121;
+  background: #fafafa;
 }
 
 .button-start {
-  background: #689F38;
+  color: #ffffff;
+  background: #56b881;
 }
 
 .button-restart {
-  background: #3F51B5;
+  color: #ffffff;
+  background: #56b881;
+}
+
+.spinner-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+mdl-spinner {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 50;
 }
 
 .message-empty {

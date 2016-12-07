@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -24,7 +24,10 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
-import {PopoverModule} from 'ng2-popover';
+//third-part plugin
+import { PopoverModule } from 'ng2-popover';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { MdlModule } from 'angular2-mdl';
 
 @NgModule({
   declarations: [
@@ -44,9 +47,12 @@ import {PopoverModule} from 'ng2-popover';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    // MaterialModule.forRoot(),
+    MdlModule,
     routing,
-    PopoverModule
+    PopoverModule,
+    ToastModule,
+    MdlModule
   ],
   providers: [
     ConfigService,

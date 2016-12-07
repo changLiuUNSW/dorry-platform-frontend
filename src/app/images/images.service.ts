@@ -40,10 +40,8 @@ export class ImagesService {
       }))
       .toPromise()
       .then(
-      //this.getRemoveImageResMsg,
       this.extractData
       )
-    //.catch(this.handleError);
   }
 
   //inspect image by image id
@@ -76,21 +74,6 @@ export class ImagesService {
     else {
       return res.json();
     }
-  }
-
-  // Create a container
-  createContainer(id: string) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post((Constant.DAEMONADDR + this.create), MAGIC_BOXES[id], options)
-      .toPromise()
-      .then(this.extractData);
-  }
-
-  // Start a container
-  startContainer(id: string) {
-    return this.http.post((Constant.DAEMONADDR + this.start.replace('{id}', id)), {})
-      .toPromise();
   }
 
   //start an image

@@ -1,3 +1,10 @@
-.mdl-mini-footer {
-  padding: 12px;
+.footer ul li {
+  list-style-type: none;
+  color: #f0f0f0;
+  font-size: 12px;
+}
+
+footer {
+  bottom: 8px;
+  position: absolute;
 }

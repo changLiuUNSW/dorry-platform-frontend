@@ -9,9 +9,13 @@
       <strong >Repo:&nbsp;&nbsp;</strong>{{ app.RepoTags[0] }}
     </popover-content>
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <div class="spinner-container" *ngIf="app.spinner">
+        <mdl-spinner single-color [active]="app.spinner"></mdl-spinner>
+      </div>
       <!-- <div *ngIf="!regExp.test(app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1])"> -->
       <div class="mdl-card__title">
         <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/>
+        <!-- <img class="card-img" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/> -->
         <div class="mdl-card__title-text">
           <div class="app-name">
             {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
@@ -24,12 +28,10 @@
       </div>
 
       <div class="mdl-card__actions">
-        <button class="mdl-button mdl-js-button mdl-button--raised
-                       button-start" (click)="getImage(app)" (click)="createContainer(app)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="startImage(app)">
           Start
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised
-                       button-remove" (click)="getImage(app)" (click)="displayAlert()">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>
       </div>

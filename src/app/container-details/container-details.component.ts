@@ -8,16 +8,17 @@ import { ContainerService } from '../containers/container.service';
   styleUrls: ['./container-details.component.css']
 })
 export class ContainerDetailsComponent implements OnInit {
-  name: string;
-  id: string;
-  image: string;
-  status: string;
-  ports: string;
-  created: string;
-  cmd: string;
-  entrypoint: string;
-  binds: string;
-  env: string;
+  name: any;
+  id: any;
+  image: any;
+  status: any;
+  ip: any;
+  ports = [];
+  created: any;
+  cmd: any;
+  entrypoint: any;
+  binds: any;
+  envs: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,17 +31,20 @@ export class ContainerDetailsComponent implements OnInit {
       .subscribe(id => {
         this.containerService.inspectContainer(id)
           .subscribe(data => {
-            console.log(data);
             this.name = data.Name;
             this.id = data.Id;
             this.image = data.Image;
             this.status = data.State.Status;
+            this.ip = data.NetworkSettings.IPAddress;
             this.created = data.Created;
             this.cmd = data.Config.Cmd;
             this.entrypoint = data.Config.Entrypoint;
-            this.env = data.Config.Env;
-            this.ports = data.NetworkSettings.Ports;
+            this.envs = data.Config.Env;
             this.binds = data.HostConfig.Binds;
+
+            for (var port in data.NetworkSettings.Ports) {
+              this.ports.push(port);
+            }
           })
       })
   }

@@ -27,7 +27,6 @@ export const MAGIC_BOXES = {
         "/dorry_data/samba/backup/:/home/backup/"
       ],
       "PortBindings": { "445/tcp": [{ "HostPort": "445" }] },
-      // "RestartPolicy": { "Name": "always", "MaximumRetryCount": 0 },
     }
   },
 
@@ -41,7 +40,6 @@ export const MAGIC_BOXES = {
         "/dorry_data/samba/share/:/data/",
         "/dorry_data/samba/backup/:/home/backup/"
       ],
-      // "RestartPolicy": { "Name": "always", "MaximumRetryCount": 0 },
     }
   },
 
