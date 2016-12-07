@@ -65,3 +65,14 @@
 .mdl-card__menu {
   color: #ffffff;
 }
+
+button.mdl-button {
+  height: 36px;
+}
+
+.market-spinner {
+  width: 94px;
+  padding: 4px;
+  height: 36px;
+  background: #f7f7f7;
+}

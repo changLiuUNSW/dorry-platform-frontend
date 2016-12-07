@@ -18,14 +18,21 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button *ngIf="item.installed==false" class="mdl-button mdl-js-button mdl-button--raised
-                       button-install" (click)="installImage(item)" (click)="getItem(item)"></button>
-        <button *ngIf="item.installing" class="mdl-button mdl-js-button" disabled>
-          <mdl-spinner [active]="true"></mdl-spinner>
+        <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.installed==false && !item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
+          Install
         </button>
-        <button *ngIf="item.installed==true" class="mdl-button mdl-js-button" disabled>
+        <button mdl-button mdl-ripple disabled *ngIf="item.installed==true && !item.installing" disabled>
           Installed
         </button>
+        <button class="market-spinner" mdl-button mdl-js-button *ngIf="item.installing" disabled>
+          <mdl-spinner [active]="true"></mdl-spinner>
+        </button>
+        <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="!item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
+          Install
+        </button>
+        <button class="market-spiner" mdl-button mdl-js-button *ngIf="item.installing" disabled>
+          <mdl-spinner [active]="true"></mdl-spinner>
+        </button> -->
       </div>
     </div>
   </div>

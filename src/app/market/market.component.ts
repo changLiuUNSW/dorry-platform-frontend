@@ -46,6 +46,7 @@ export class MarketComponent implements OnInit {
             else
               this.toastr.success('Installed', 'SUCCESS', { toastLife: 3000 });
             item.installing = false;
+            this.listItems();
           });
       })
   }
