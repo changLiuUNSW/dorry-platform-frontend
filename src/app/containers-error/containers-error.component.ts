@@ -65,7 +65,6 @@ export class ContainersErrorComponent implements OnInit {
 
   getContainer(container: Container) {
     this.container = container;
-    this.container.spinner = true;
   }
 
 }

@@ -70,9 +70,11 @@ button.mdl-button {
   height: 36px;
 }
 
-.market-spinner {
-  width: 94px;
-  padding: 4px;
-  height: 36px;
-  background: #f7f7f7;
+button > mdl-spinner {
+  height: 30px;
+  width: 30px;
+}
+
+div > button {
+  width: 100px;
 }

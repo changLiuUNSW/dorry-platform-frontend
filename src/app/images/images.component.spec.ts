@@ -4,8 +4,6 @@ import {MockBackend} from "@angular/http/testing";
 import {TestBed, tick, fakeAsync, inject} from "@angular/core/testing";
 import { ImagesComponent} from './images.component';
 import { ImagesService } from './images.service';
-import { ImageUrl } from './mock-images';
-
 
 describe('Component: Images', () => {
   beforeEach(() => {

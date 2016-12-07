@@ -4,6 +4,9 @@
   </header>
   <div class="mdl-grid">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
+      <div class="spinner-container" *ngIf="service.spinner">
+        <mdl-spinner single-color [active]="service.spinner"></mdl-spinner>
+      </div>
       <div class="mdl-card__title">
         <a routerLink="/services/{{service.Id}}">
           <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>
@@ -40,10 +43,10 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="button-restart" (click)="displayRestartAlert()" (click)="getContainer(service)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-restart" (click)="displayRestartAlert()" (click)="getContainer(service)">
           Restart
         </button>
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="displayRemoveAlert()" (click)="getContainer(service)">
           Remove
         </button>
       </div>
@@ -65,7 +68,7 @@
     </div>
     <div class="mdl-dialog__actions">
       <button type="button" class="mdl-button" (click)="restartContainer(container)" (click)="hideAlert()">Yes</button>
-      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
+      <button type="button" class=" mdl-button close" (click)="hideAlert()">No</button>
     </div>
   </div>
 </div>

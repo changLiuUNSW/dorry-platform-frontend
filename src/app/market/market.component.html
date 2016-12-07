@@ -24,7 +24,7 @@
         <button mdl-button mdl-ripple disabled *ngIf="item.installed==true && !item.installing" disabled>
           Installed
         </button>
-        <button class="market-spinner" mdl-button mdl-js-button *ngIf="item.installing" disabled>
+        <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
           <mdl-spinner [active]="true"></mdl-spinner>
         </button>
         <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="!item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
