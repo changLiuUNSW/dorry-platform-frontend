@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-// import { MaterialModule } from '@angular/material';
 import { MdlModule } from 'angular2-mdl';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy} from '@angular/common';
 
@@ -28,7 +27,6 @@ import { routing } from './app.routing';
 //third-part plugin
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { MdlModule } from 'angular2-mdl';
 
 @NgModule({
   declarations: [
@@ -48,12 +46,10 @@ import { MdlModule } from 'angular2-mdl';
     BrowserModule,
     FormsModule,
     HttpModule,
-    // MaterialModule.forRoot(),
     MdlModule,
     routing,
     PopoverModule,
-    ToastModule,
-    MdlModule
+    ToastModule
   ],
   providers: [
     ConfigService,
