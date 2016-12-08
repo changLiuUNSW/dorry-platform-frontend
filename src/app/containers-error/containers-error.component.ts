@@ -42,9 +42,9 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.removeContainer(id)
       .then(data => {
         if (data.json().statusCode)
-          this.toastr.error('Failed to remove service', 'ERROR', { toastLife: 3000 });
+          this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success('Service removed', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
         this.getErrorContainers();
         // this.container.spinner = false;
       })

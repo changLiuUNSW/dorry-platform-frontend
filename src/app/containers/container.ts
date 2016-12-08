@@ -4,6 +4,6 @@ export class Container {
   // The state of spinner
   spinner: boolean;
   Id: string;
-
+  Names: any;
   constructor() { }
 }

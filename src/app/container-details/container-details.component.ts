@@ -31,13 +31,14 @@ export class ContainerDetailsComponent implements OnInit {
       .subscribe(id => {
         this.containerService.inspectContainer(id)
           .subscribe(data => {
+
             this.name = data.Name;
             this.id = data.Id;
             this.image = data.Image;
             this.status = data.State.Status;
-            this.ip = data.NetworkSettings.IPAddress;
-            this.created = data.Created;
-            this.cmd = data.Config.Cmd;
+            this.ip = data.NetworkSettings.IPAddress == "" ? "none" : data.NetworkSettings.IPAddress;
+            this.created = data.Created.split(".")[0].replace("T", " ");
+            this.cmd = data.Config.Cmd == null ? "none" : data.Config.Cmd;
             this.entrypoint = data.Config.Entrypoint;
             this.envs = data.Config.Env;
             this.binds = data.HostConfig.Binds;
