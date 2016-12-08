@@ -49,12 +49,15 @@ export class ImagesComponent implements OnInit {
     this.imagesService.removeImage(id)
       .then(
       data => {
+        console.log('///////////////');
+        console.log(data);
         if (data.statusCode)
-          this.toastr.error('Failed to remove app', 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.image.RepoTags[0] + ' has ' + data.reason, 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success('App removed', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
+        console.log("/////////setspinner false");
         image.spinner = false;
         this.getImageInfoes()
       });
@@ -67,7 +70,7 @@ export class ImagesComponent implements OnInit {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
-          this.toastr.error('Failed to start service', 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.image.RepoTags[0] + ' has ' + data.reason, 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
       })
@@ -92,7 +95,7 @@ export class ImagesComponent implements OnInit {
 
   hideAlert(id: string) {
     this.showAlert = false;
-    this.image = null;
+    //this.image = null;
   }
 
   getImage(image: ImageInfo) {
