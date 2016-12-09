@@ -1,4 +1,4 @@
-# DorryWeb
+# Dorry Web
 
 [![Gitter chat](https://badges.gitter.im/MatchboxDorry/dorry-web.png)](https://gitter.im/dorry-web/Lobby)
 [![Build Status](https://travis-ci.org/MatchboxDorry/dorry-web.svg?branch=develop)](https://travis-ci.org/MatchboxDorry/dorry-web)
