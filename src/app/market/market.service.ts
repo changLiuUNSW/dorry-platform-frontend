@@ -16,14 +16,14 @@ export class MarketService {
 
   listItems(): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/registry/all')
+      .get(Constant.DORRYAPI + '/api/registry/all')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getTags(item: any): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/registry/tags/' + item.name)
+      .get(Constant.DORRYAPI + '/api/registry/tags/' + item.name)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -31,7 +31,7 @@ export class MarketService {
   pullImage(name: string, tag: string): Observable<any> {
     console.log(name, tag);
     return this.http
-      .get('http://localhost:3000/api/registry/pull/' + name + '/' + tag);
+      .get(Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag);
   }
 
   // Function extractData() extracts the data from the http response, which is
