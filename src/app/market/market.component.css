@@ -73,6 +73,9 @@ button.mdl-button {
 button > mdl-spinner {
   height: 30px;
   width: 30px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 div > button {

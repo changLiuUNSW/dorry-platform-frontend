@@ -75,3 +75,11 @@ popover-content {
 .popover {
   width: 300px;
 }
+
+.mdl-card .spinner-container mdl-spinner {
+  top: 28%;
+}
+
+.mdl-card .spinner-container span {
+  bottom: 28%;
+}
