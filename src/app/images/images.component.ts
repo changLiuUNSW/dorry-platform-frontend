@@ -52,15 +52,23 @@ export class ImagesComponent implements OnInit {
         console.log('///////////////');
         console.log(data);
         if (data.statusCode)
-          this.toastr.error(this.image.RepoTags[0] + ' has ' + data.reason, 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
-        console.log("/////////setspinner false");
         image.spinner = false;
         this.getImageInfoes()
       });
+  }
+
+  private removeImageStatus(status: number) {
+    if (status == 409)
+      return " has a service , please remove it first."
+    else if (status == 500)
+      return " has server error."
+    else
+      return " has err."
   }
 
   startImage(image: ImageInfo) {
@@ -70,7 +78,7 @@ export class ImagesComponent implements OnInit {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
-          this.toastr.error(this.image.RepoTags[0] + ' has ' + data.reason, 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
       })
@@ -78,6 +86,16 @@ export class ImagesComponent implements OnInit {
         image.spinner = false;
         this.getImageInfoes()
       });
+  }
+
+  private startImageMessage(message) {
+    try {
+      let str;
+      str = message.match(/(\(.*?\))/)[1];
+      return message.replace(str, '');
+    } catch (e) {
+      return message;
+    }
   }
 
   //format the create time of image
