@@ -4,7 +4,7 @@ export class ImageInfo {
   Id: string;
   createDate: string;
 
-  spinner: boolean;
+  spinner: number;
 
   constructor(url: string, RepoTags: Object[], Id: string, createDate: string) {
     this.url = url;

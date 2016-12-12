@@ -47,6 +47,41 @@
   background: #517891;
   text-decoration: none;
 }
+
+.nav_icon {
+  float: left;
+  width: 25px;
+  height: 25px;
+  background-size: 100% 100%;
+}
+
+#ic_service {
+  background: url('/assets/icons/ic_service_grey.svg');
+}
+
+#ic_app {
+  background: url('/assets/icons/ic_app_grey.svg');
+}
+
+#ic_market {
+  background: url('/assets/icons/ic_market_grey.svg');
+}
+
+.mdl-navigation__link.active #ic_service {
+  background: url('/assets/icons/ic_service_white.svg');
+}
+
+.mdl-navigation__link.active #ic_app {
+  background: url('/assets/icons/ic_app_white.svg');
+}
+
+.mdl-navigation__link.active #ic_market {
+  background: url('/assets/icons/ic_market_white.svg');
+}
+
+.mdl-navigation__link span {
+  padding-left: 8px;
+}
 /*.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:active,
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:focus {
   background: rgba(0, 0, 0, 0.2);
@@ -133,6 +168,8 @@
 }
 /* ------ icon no shadow border 4px ------ */
 .mdl-card__title img {
+  width: 50px;
+  height: 50px;
   border-radius: 4px;
   box-shadow: none;
 }
@@ -215,16 +252,16 @@
   left: 0;
   margin: auto;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
 
 mdl-spinner {
   height: 40px;
   width: 40px;
   position: absolute;
-  top: 0;
+  top: 34%;
   right: 0;
-  bottom: 0;
   left: 0;
   margin: auto;
   z-index: 50;
@@ -238,7 +275,7 @@ mdl-spinner {
   text-align: center;
   position: absolute;
   right: 0;
-  bottom: 30%;
+  bottom: 34%;
   left: 0;
   margin: auto;
   z-index: 50;

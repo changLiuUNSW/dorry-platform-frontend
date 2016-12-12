@@ -20,3 +20,7 @@
   -o-text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.mdl-spinner__layer {
+  border-color: white !important;
+}

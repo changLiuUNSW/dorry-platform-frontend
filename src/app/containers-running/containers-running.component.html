@@ -6,7 +6,7 @@
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
       <div class="spinner-container" *ngIf="service.spinner==1">
         <mdl-spinner single-color [active]="service.spinner==1"></mdl-spinner>
-        <span>Stopping</span>
+        <span>Stopping...</span>
       </div>
 
       <div class="mdl-card__title">

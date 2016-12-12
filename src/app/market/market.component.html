@@ -1,8 +1,14 @@
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--3-col" *ngFor="let item of items">
+
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <div class="spinner-container" *ngIf="item.installing">
+        <mdl-spinner single-color="white" [active]="true"></mdl-spinner>
+        <span>Installing...</span>
+      </div>
       <div class="mdl-card__title">
-        <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/>
+        <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/> -->
+        <img src="/assets/icons/ic_default_color.svg"/>
         <div class="mdl-card__title-text">
           <div class="app-name">
             {{ item.name }}
@@ -24,9 +30,9 @@
         <button mdl-button mdl-ripple disabled *ngIf="item.installed==true && !item.installing" disabled>
           Installed
         </button>
-        <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
+        <!-- <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
           <mdl-spinner [active]="true"></mdl-spinner>
-        </button>
+        </button> -->
         <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="!item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
           Install
         </button>
