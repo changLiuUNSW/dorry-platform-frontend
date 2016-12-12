@@ -4,9 +4,16 @@
   </header>
   <div class="mdl-grid">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of containers">
-      <div class="spinner-container" *ngIf="service.spinner">
-        <mdl-spinner single-color [active]="service.spinner"></mdl-spinner>
+      <div class="spinner-container" *ngIf="service.spinner==1">
+        <mdl-spinner single-color [active]="service.spinner==1"></mdl-spinner>
+        <span>Restarting</span>
       </div>
+
+      <div class="spinner-container" *ngIf="service.spinner==2">
+        <mdl-spinner single-color [active]="service.spinner==2"></mdl-spinner>
+        <span>Removing</span>
+      </div>
+
       <div class="mdl-card__title">
         <a routerLink="/services/{{service.Id}}">
           <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/>

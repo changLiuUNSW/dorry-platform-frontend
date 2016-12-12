@@ -154,9 +154,17 @@
   background: #56b881;
 }
 
+.button-install:hover {
+  background: #81c784;
+}
+
 .button-remove {
   color: #ffffff;
   background: #e55e5e;
+}
+
+.button-remove:hover {
+  background: #e57373;
 }
 
 .button-stop {
@@ -164,14 +172,26 @@
   background: #fafafa;
 }
 
+.button-stop:hover {
+  background: #fcfcfc;
+}
+
 .button-start {
   color: #ffffff;
   background: #56b881;
 }
 
+.button-start:hover {
+  background: #81c784;
+}
+
 .button-restart {
   color: #ffffff;
   background: #56b881;
+}
+
+.button-restart:hover {
+  background: #81c784;
 }
 
 .spinner-container {
@@ -194,6 +214,20 @@ mdl-spinner {
   top: 0;
   right: 0;
   bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 50;
+}
+
+.spinner-container span {
+  font-size: 20px;
+  height: 1em;
+  line-height: 1em;
+  width: 100px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: 30%;
   left: 0;
   margin: auto;
   z-index: 50;

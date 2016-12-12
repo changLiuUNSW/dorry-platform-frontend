@@ -38,15 +38,32 @@ export class ContainersErrorComponent implements OnInit {
   }
 
   removeContainer(id: string) {
-    this.container.spinner = true;
+    this.container.spinner = 1;
     this.containerService.removeContainer(id)
       .then(data => {
         if (data.json().statusCode)
           this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
-        this.getErrorContainers();
-        // this.container.spinner = false;
+        // this.container.spinner = 0;
+      })
+      .then(data => {
+        setTimeout(function() {
+          this.reloadEvent.emit(true);
+        }.bind(this), 100);
+      });
+  }
+
+  removeErrorContainers() {
+    // this.container.spinner = 2;
+    this.containerService.removeErrorContainers()
+      .then(data => {
+        // if (data.json().statusCode)
+        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
+        // else
+        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
+        // this.container.spinner = 0;
+        console.log('Removing all error containers...')
       })
       .then(data => {
         setTimeout(function() {
@@ -57,6 +74,10 @@ export class ContainersErrorComponent implements OnInit {
 
   displayRemoveAlert(id: string) {
     this.showAlert = 1;
+  }
+
+  displayRemoveErrorAlert() {
+    this.showAlert = 2;
   }
 
   hideAlert(id: string) {

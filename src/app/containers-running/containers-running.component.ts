@@ -44,7 +44,7 @@ export class ContainersRunningComponent implements OnInit {
 
   stopContainer(container: Container) {
     this.container = container;
-    this.container.spinner = true;
+    this.container.spinner = 1;
     let id = container.Id;
     this.containerService.stopContainer(id)
       .then(data => {
@@ -53,7 +53,7 @@ export class ContainersRunningComponent implements OnInit {
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' stopped', 'SUCCESS', { toastLife: 3000 });
         this.getRunningContainers();
-        this.container.spinner = false;
+        this.container.spinner = 0;
       })
       .then(data => {
         setTimeout(function() {
