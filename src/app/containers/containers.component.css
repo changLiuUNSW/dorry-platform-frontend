@@ -59,6 +59,10 @@ header.service {
   line-height: 1.5em;
 }
 
+.service-status-icon {
+  margin: 0 8px 0 0;
+}
+
 .mdl-card__supporting-text.table {
   background: #f7f7f7;
   width: 100%;
@@ -101,4 +105,10 @@ header.service {
 .mdl-card__actions.mdl-card--border {
   padding: 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+hr {
+  margin: 8px 16px;
+  padding: 0;
+  border: 1px solid #c2c2c2;
 }

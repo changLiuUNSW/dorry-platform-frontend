@@ -39,7 +39,7 @@ export class ContainersStoppedComponent implements OnInit {
 
   restartContainer(container: Container) {
     this.container = container;
-    this.container.spinner = true;
+    this.container.spinner = 1;
     let id = container.Id;
     this.containerService.restartContainer(id)
       .then(data => {
@@ -48,7 +48,7 @@ export class ContainersStoppedComponent implements OnInit {
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' restarted', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
-        this.container.spinner = false;
+        this.container.spinner = 0;
       })
       .then(data => {
         setTimeout(function() {
@@ -58,7 +58,7 @@ export class ContainersStoppedComponent implements OnInit {
   }
 
   removeContainer(id: string) {
-    this.container.spinner = true;
+    this.container.spinner = 2;
     this.containerService.removeContainer(id)
       .then(data => {
         if (data.json().statusCode)
@@ -66,7 +66,7 @@ export class ContainersStoppedComponent implements OnInit {
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
-        this.container.spinner = false;
+        this.container.spinner = 0;
       })
       .then(data => {
         setTimeout(function() {

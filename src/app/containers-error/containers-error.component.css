@@ -13,3 +13,19 @@
 .mdl-card__actions.mdl-card--border {
   /*background: #FF8A65;*/
 }
+
+.mdl-button.button-remove-all {
+  color: #ffffff;
+  background: #e55e5e;
+  width: 140px;
+  margin-left: 30px;
+}
+
+.mdl-button.button-remove-all:hover {
+  background: #e57373;
+}
+
+.mdl-button.button-remove-all img {
+  height: 20px;
+  margin-bottom: 2px;
+}

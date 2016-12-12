@@ -19,9 +19,12 @@
         <!-- <img class="card-img" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/> -->
         <div class="mdl-card__title-text">
           <div class="app-name">
-            {{ app.RepoTags[0].split("/")[app.RepoTags[0].split("/").length-1] }}
+            {{ app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1].split(':')[0] }}
           </div>
-          <div class="app-size">
+          <div class="app-misc">
+            {{ app.RepoTags[0].split(':')[app.RepoTags[0].split(':').length-1] }}
+          </div>
+          <div class="app-misc">
             {{ (app.Size/1000000).toFixed(3) }}
             MB
           </div>
