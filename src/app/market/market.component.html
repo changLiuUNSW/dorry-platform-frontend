@@ -26,10 +26,10 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.installed==false && !item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.installed==false" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
           Install
         </button>
-        <button mdl-button mdl-ripple disabled *ngIf="item.installed==true && !item.installing" disabled>
+        <button mdl-button mdl-ripple disabled *ngIf="item.installed==true" disabled>
           Installed
         </button>
         <!-- <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
