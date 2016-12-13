@@ -36,7 +36,7 @@
 
 .mdl-card__title-text {
   color: #000;
-  width: 100%;
+  /*width: 100%;*/
   padding: 0 0 0 8px;
   display: block;
   align-self: baseline;
@@ -73,6 +73,9 @@ button.mdl-button {
 button > mdl-spinner {
   height: 30px;
   width: 30px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 div > button {

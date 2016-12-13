@@ -104,6 +104,20 @@ export class ContainerService {
       .toPromise();
   }
 
+  // Function removeErrorContainers() sends http DELETE request and asynchronously
+  // remove all error containers.
+  //
+  // param      {string} id
+  // returns    None
+  removeErrorContainers() {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.DORRYAPI + '/api/containers/error/remove'
+      }))
+      .toPromise();
+  }
+
   // Function stopContainer() sends http POST request and asynchronously
   // stop the container with specified id.
   //

@@ -41,12 +41,14 @@ export class MarketComponent implements OnInit {
       .subscribe(data => {
         this.marketService.pullImage(data.name, data.tags[0])
           .subscribe(data => {
-            if (data.statusCode)
-              this.toastr.error('Fail installing', 'ERROR', { toastLife: 3000 });
-            else
-              this.toastr.success('Installed', 'SUCCESS', { toastLife: 3000 });
+            if (data.statusCode) {
+              this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 3000 });
+            }
+            else {
+              this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 3000 });
+            }
             item.installing = false;
-            this.listItems();
+            item.installed = true;
           });
       })
   }

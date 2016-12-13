@@ -2,16 +2,24 @@
   <mdl-layout-header>
     <mdl-layout-header-row>
       <mdl-layout-spacer></mdl-layout-spacer>
-
     </mdl-layout-header-row>
   </mdl-layout-header>
 
   <mdl-layout-drawer>
     <mdl-layout-title>Dorry</mdl-layout-title>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" routerLink="/services" routerLinkActive="active">Services</a>
-      <a class="mdl-navigation__link" routerLink="/apps" routerLinkActive="active">Applications</a>
-      <a class="mdl-navigation__link" routerLink="/market" routerLinkActive="active">Market</a>
+      <a class="mdl-navigation__link" routerLink="/services" routerLinkActive="active">
+        <div class="nav_icon" id="ic_service"></div>
+        <span>Services</span>
+      </a>
+      <a class="mdl-navigation__link" routerLink="/apps" routerLinkActive="active">
+        <div class="nav_icon" id="ic_app"></div>
+        <span>Applications</span>
+      </a>
+      <a class="mdl-navigation__link" routerLink="/market" routerLinkActive="active">
+        <div class="nav_icon" id="ic_market"></div>
+        <span>Market</span>
+      </a>
     </nav>
     <app-footer></app-footer>
   </mdl-layout-drawer>
