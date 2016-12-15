@@ -30,8 +30,8 @@ export class ContainersErrorComponent implements OnInit {
 
   getErrorContainers() {
     this.containerService.getErrorContainers()
-      .then(data => this.containers = data)
-      .then(data => {
+      .subscribe(data => {
+        this.containers = data;
         console.log(this.containers);
         this.hasError = (this.containers.length !== 0);
       });
@@ -40,14 +40,11 @@ export class ContainersErrorComponent implements OnInit {
   removeContainer(id: string) {
     this.container.spinner = 1;
     this.containerService.removeContainer(id)
-      .then(data => {
+      .subscribe(data => {
         if (data.json().statusCode)
           this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
-        // this.container.spinner = 0;
-      })
-      .then(data => {
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);
@@ -57,7 +54,7 @@ export class ContainersErrorComponent implements OnInit {
   removeErrorContainers() {
     // this.container.spinner = 2;
     this.containerService.removeErrorContainers()
-      .then(data => {
+      .subscribe(data => {
         // if (data.json().statusCode)
         //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
         // else
@@ -68,8 +65,6 @@ export class ContainersErrorComponent implements OnInit {
         //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
         // this.container.spinner = 0;
         console.log('Removing all error containers...')
-      })
-      .then(data => {
         this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 3000 });
         setTimeout(function() {
           this.reloadEvent.emit(true);

@@ -34,7 +34,7 @@ export class ImagesComponent implements OnInit {
   // Get json object array from Docker Daemon
   getImageInfoes() {
     this.imagesService.getImageInfoes()
-      .then(data => {
+      .subscribe(data => {
         this.imageInfoes = data;
         console.log(this.imageInfoes);
         this.hasApp = (this.imageInfoes.length !== 0);
@@ -47,7 +47,7 @@ export class ImagesComponent implements OnInit {
     let id = image.Id;
     let message: string;
     this.imagesService.removeImage(id)
-      .then(
+      .subscribe(
       data => {
         console.log('///////////////');
         console.log(data);
@@ -55,8 +55,6 @@ export class ImagesComponent implements OnInit {
           this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
-      })
-      .then(msg => {
         image.state = 0;
         this.getImageInfoes()
       });
@@ -74,15 +72,13 @@ export class ImagesComponent implements OnInit {
   startImage(image: ImageInfo) {
     image.state = 2;
     this.imagesService.startImage(image.Id)
-      .then(data => {
+      .subscribe(data => {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
           this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
-      })
-      .then(msg => {
         image.state = 0;
         this.getImageInfoes()
       });
