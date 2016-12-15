@@ -43,7 +43,7 @@ export class ImagesComponent implements OnInit {
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
-    image.spinner = 1;
+    image.state = 1;
     let id = image.Id;
     let message: string;
     this.imagesService.removeImage(id)
@@ -57,7 +57,7 @@ export class ImagesComponent implements OnInit {
           this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
-        image.spinner = 0;
+        image.state = 0;
         this.getImageInfoes()
       });
   }
@@ -72,7 +72,7 @@ export class ImagesComponent implements OnInit {
   }
 
   startImage(image: ImageInfo) {
-    image.spinner = 2;
+    image.state = 2;
     this.imagesService.startImage(image.Id)
       .then(data => {
         console.log("start image : ");
@@ -83,7 +83,7 @@ export class ImagesComponent implements OnInit {
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
       })
       .then(msg => {
-        image.spinner = 0;
+        image.state = 0;
         this.getImageInfoes()
       });
   }

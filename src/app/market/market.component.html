@@ -2,7 +2,7 @@
   <div class="mdl-cell mdl-cell--3-col" *ngFor="let item of items">
 
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-      <div class="spinner-container" *ngIf="item.installing">
+      <div class="spinner-container" *ngIf="item.state==2">
         <mdl-spinner single-color="white" [active]="true"></mdl-spinner>
         <span>Installing...</span>
       </div>
@@ -26,10 +26,10 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.installed==false" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
+        <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.state==0 || item.state==2" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
           Install
         </button>
-        <button mdl-button mdl-ripple disabled *ngIf="item.installed==true" disabled>
+        <button mdl-button mdl-ripple disabled *ngIf="item.state==1" disabled>
           Installed
         </button>
         <!-- <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
