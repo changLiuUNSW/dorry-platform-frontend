@@ -10,12 +10,12 @@
     </popover-content>
 
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-      <div class="spinner-container" *ngIf="app.spinner==2">
-        <mdl-spinner single-color [active]="app.spinner==2"></mdl-spinner>
+      <div class="spinner-container" *ngIf="app.state==2">
+        <mdl-spinner single-color [active]="app.state==2"></mdl-spinner>
         <span>Starting</span>
       </div>
-      <div class="spinner-container" *ngIf="app.spinner==1">
-        <mdl-spinner single-color [active]="app.spinner==1"></mdl-spinner>
+      <div class="spinner-container" *ngIf="app.state==1">
+        <mdl-spinner single-color [active]="app.state==1"></mdl-spinner>
         <span>Removing</span>
       </div>
 

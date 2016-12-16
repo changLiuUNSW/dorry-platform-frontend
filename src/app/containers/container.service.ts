@@ -15,15 +15,14 @@ export class ContainerService {
   // obtains running containers.
   //
   // param      None
-  // returns    Promise<Container[]>
-  getRunningContainers(): Promise<Container[]> {
+  // returns    Observable<Container[]>
+  getRunningContainers(): Observable<Container[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/running'
       }))
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -31,15 +30,14 @@ export class ContainerService {
   // obtains stopped containers.
   //
   // param      None
-  // returns    Promise<Container[]>
-  getStoppedContainers(): Promise<Container[]> {
+  // returns    Observable<Container[]>
+  getStoppedContainers(): Observable<Container[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/stopped'
       }))
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -47,15 +45,14 @@ export class ContainerService {
   // obtains error containers.
   //
   // param      None
-  // returns    Promise<Container[]>
-  getErrorContainers(): Promise<Container[]> {
+  // returns    Observable<Container[]>
+  getErrorContainers(): Observable<Container[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/error'
       }))
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -63,15 +60,14 @@ export class ContainerService {
   // obtains all containers.
   //
   // param      None
-  // returns    Promise<Container[]>
-  getAllContainers(): Promise<Container[]> {
+  // returns    Observable<Container[]>
+  getAllContainers(): Observable<Container[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/all'
       }))
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -100,8 +96,7 @@ export class ContainerService {
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/remove/' + id
-      }))
-      .toPromise();
+      }));
   }
 
   // Function removeErrorContainers() sends http DELETE request and asynchronously
@@ -114,8 +109,7 @@ export class ContainerService {
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/error/remove'
-      }))
-      .toPromise();
+      }));
   }
 
   // Function stopContainer() sends http POST request and asynchronously
@@ -128,8 +122,7 @@ export class ContainerService {
       new Request({
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/stop/' + id
-      }))
-      .toPromise();
+      }));
   }
 
   // Function restartContainer() sends http POST request and asynchronously
@@ -143,8 +136,9 @@ export class ContainerService {
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/containers/restart/' + id
       }))
-      .toPromise()
-      .then(this.getRestartStatus);
+      .map(this.extractData);
+      // .toPromise()
+      // .then(this.getRestartStatus);
   }
 
   getRestartStatus(res: Response) {
