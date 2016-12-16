@@ -49,8 +49,6 @@ export class ImagesComponent implements OnInit {
     this.imagesService.removeImage(id)
       .then(
       data => {
-        console.log('///////////////');
-        console.log(data);
         if (data.statusCode)
           this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
         else
