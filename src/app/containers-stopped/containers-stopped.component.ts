@@ -30,8 +30,8 @@ export class ContainersStoppedComponent implements OnInit {
 
   getStoppedContainers() {
     this.containerService.getStoppedContainers()
-      .then(data => this.containers = data)
-      .then(data => {
+      .subscribe(data => {
+        this.containers = data;
         console.log(this.containers);
         this.hasStopped = (this.containers.length !== 0);
       });
@@ -42,15 +42,13 @@ export class ContainersStoppedComponent implements OnInit {
     this.container.spinner = 1;
     let id = container.Id;
     this.containerService.restartContainer(id)
-      .then(data => {
+      .subscribe(data => {
         if (data.statusCode)
           this.toastr.error('Failed to restart service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' restarted', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = 0;
-      })
-      .then(data => {
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);
@@ -60,15 +58,13 @@ export class ContainersStoppedComponent implements OnInit {
   removeContainer(id: string) {
     this.container.spinner = 2;
     this.containerService.removeContainer(id)
-      .then(data => {
+      .subscribe(data => {
         if (data.json().statusCode)
           this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = 0;
-      })
-      .then(data => {
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);

@@ -26,8 +26,7 @@ export class ImagesService {
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/images/all'
       }))
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -38,10 +37,7 @@ export class ImagesService {
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/images/remove/' + id
       }))
-      .toPromise()
-      .then(
-      this.extractData
-      )
+      .map(this.extractData)
   }
 
   //inspect image by image id
@@ -53,11 +49,7 @@ export class ImagesService {
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/images/inspect/' + id
       }))
-      .toPromise()
-      .then(
-      //this.getRemoveImageResMsg,
-      this.extractData
-      )
+      .map(this.extractData)
   }
 
   // get remove image response code
@@ -84,10 +76,7 @@ export class ImagesService {
         method: RequestMethod.Get,
         url: Constant.DORRYAPI + '/api/images/start/' + id
       }))
-      .toPromise()
-      .then(
-      this.extractData
-      )
+      .map(this.extractData)
   }
 
   private extractData(res: Response) {

@@ -30,15 +30,13 @@ export class ContainersRunningComponent implements OnInit {
 
   getRunningContainers() {
     this.containerService.getRunningContainers()
-      .then(data => this.containers = data)
-      .then(data => {
+      .subscribe(data => {
+        this.containers = data;
         console.log(this.containers);
         if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
           this.hasRunning = ((this.containers.length - 1) !== 0);
         else
           this.hasRunning = (this.containers.length !== 0);
-        // console.log('hasRunning: ' + this.hasRunning + '\n'
-        //   + 'Container: ' + this.containers[Object.keys(this.containers)[0]]);
       });
   }
 
@@ -47,15 +45,13 @@ export class ContainersRunningComponent implements OnInit {
     this.container.spinner = 1;
     let id = container.Id;
     this.containerService.stopContainer(id)
-      .then(data => {
+      .subscribe(data => {
         if (data.json().statusCode)
           this.toastr.error('Failed to stop service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' stopped', 'SUCCESS', { toastLife: 3000 });
         this.getRunningContainers();
         this.container.spinner = 0;
-      })
-      .then(data => {
         setTimeout(function() {
           this.reloadEvent.emit(true);
         }.bind(this), 100);

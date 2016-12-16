@@ -36,7 +36,7 @@ export class MarketComponent implements OnInit {
 
   private installImage(item: any) {
     this.getItem(item);
-    item.installing = true;
+    item.state = 2;
     this.marketService.getTags(item)
       .subscribe(data => {
         this.marketService.pullImage(data.name, data.tags[0])
@@ -47,8 +47,7 @@ export class MarketComponent implements OnInit {
             else {
               this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 3000 });
             }
-            item.installing = false;
-            item.installed = true;
+            item.state = 1;
           });
       })
   }
