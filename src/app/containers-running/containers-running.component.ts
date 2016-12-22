@@ -19,6 +19,7 @@ export class ContainersRunningComponent implements OnInit {
   hasRunning: boolean;
   showAlert: number;
 
+
   @Output() reloadEvent = new EventEmitter<boolean>();
 
   constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
