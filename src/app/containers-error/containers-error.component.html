@@ -38,10 +38,10 @@
 
             <tr>
               <td class="mdl-data-table__cell--non-numeric">IP Address</td>
-              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress != ''">
-                {{ service.NetworkSettings.Networks.bridge.IPAddress }}
+              <td *ngIf="service.NetworkSettings.Networks[service.HostConfig.NetworkMode].IPAddress != ''">
+                {{ service.NetworkSettings.Networks[service.HostConfig.NetworkMode].IPAddress }}
               </td>
-              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress == ''">None</td>
+              <td *ngIf="service.NetworkSettings.Networks[service.HostConfig.NetworkMode].IPAddress == ''">None</td>
             </tr>
 
             <tr>
