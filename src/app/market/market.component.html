@@ -9,7 +9,7 @@
       <div class="mdl-card__title">
         <a>
           <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/> -->
-          <img src="/assets/icons/ic_default_color.svg"/>
+          <img src="{{item.pic_url}}"/>
         </a>
         <div class="mdl-card__title-text">
           <div class="app-name">
@@ -19,10 +19,7 @@
       </div>
 
       <div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+        {{ item.description }}
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
