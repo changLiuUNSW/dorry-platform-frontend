@@ -32,7 +32,9 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.getErrorContainers()
       .subscribe(data => {
         this.containers = data;
-        console.log(this.containers);
+        for (let item of this.containers) {
+          item.bridge = item['HostConfig']['NetworkMode'] == 'default' ? 'bridge' : item['HostConfig']['NetworkMode']
+        }
         this.hasError = (this.containers.length !== 0);
       });
   }

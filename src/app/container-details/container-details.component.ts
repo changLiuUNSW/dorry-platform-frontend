@@ -20,6 +20,8 @@ export class ContainerDetailsComponent implements OnInit {
   binds: any;
   envs: any;
 
+  bridge: any;
+
   constructor(
     private route: ActivatedRoute,
     private containerService: ContainerService
@@ -31,11 +33,12 @@ export class ContainerDetailsComponent implements OnInit {
       .subscribe(id => {
         this.containerService.inspectContainer(id)
           .subscribe(data => {
+            this.bridge = data.HostConfig.NetworkMode == 'default' ? 'bridge' : data.HostConfig.NetworkMode
             this.name = data.Name;
             this.id = data.Id;
             this.image = data.Image;
             this.status = data.State.Status;
-            this.ip = data.NetworkSettings.Networks[data.HostConfig.NetworkMode].IPAddress == "" ? "None" : data.NetworkSettings.Networks[data.HostConfig.NetworkMode].IPAddress;
+            this.ip = data.NetworkSettings.Networks[this.bridge].IPAddress == "" ? "None" : data.NetworkSettings.Networks[this.bridge].IPAddress;
             this.created = data.Created.split(".")[0].replace("T", " ");
             this.cmd = data.Config.Cmd == null ? "None" : data.Config.Cmd;
             this.entrypoint = data.Config.Entrypoint == null ? "None" : data.Config.Entrypoint;
