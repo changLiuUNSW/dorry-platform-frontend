@@ -32,6 +32,9 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .subscribe(data => {
         this.containers = data;
+        for (let item of this.containers) {
+          item.bridge = item['HostConfig']['NetworkMode'] == 'default' ? 'bridge' : item['HostConfig']['NetworkMode']
+        }
         if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
           this.hasRunning = ((this.containers.length - 1) !== 0);
         else

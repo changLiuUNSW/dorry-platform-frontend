@@ -5,5 +5,6 @@ export class Container {
   spinner: number;
   Id: string;
   Names: any;
+  bridge: string;
   constructor() { }
 }
