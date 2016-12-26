@@ -3,6 +3,7 @@ import { ImagesService } from './images.service';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
 import { trigger, state, style, transition, animate } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { PopoverModule } from "ng2-popover";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
@@ -15,20 +16,38 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 export class ImagesComponent implements OnInit {
   image: ImageInfo;
-  imageInfoes: ImageInfo[];//all image list
+  imageInfoes: ImageInfo[];
 
-  showAlert: boolean;//show alert tag
+  showAlert: boolean;
+  showForm: boolean;
   hasApp: boolean;
 
   regExp = new RegExp(/DORRY-WEB/, 'i');
 
-  constructor(private imagesService: ImagesService, public toastr: ToastsManager) {
+  // Config form
+  form: FormGroup;
+  Name = new FormControl();
+  Cmd = new FormControl();
+  Entrypoint = new FormControl();
+  Binds = new FormControl();
+  PortBindings = new FormControl();
+  Tty = new FormControl();
 
+  constructor(private imagesService: ImagesService, public toastr: ToastsManager, private fb: FormBuilder) {
+    this.form = fb.group({
+      'Name': this.Name,
+      'Cmd': this.Cmd,
+      'Entrypoint': this.Entrypoint,
+      'Binds': this.Binds,
+      'PortBindings': this.PortBindings,
+      'Tty': this.Tty
+    });
   }
 
   ngOnInit() {
     this.getImageInfoes();
     this.showAlert = false;
+    this.showForm = false;
   }
 
   // Get json object array from Docker Daemon
@@ -64,7 +83,7 @@ export class ImagesComponent implements OnInit {
     else if (status == 500)
       return " has server error."
     else
-      return " has err."
+      return " has error."
   }
 
   startImage(image: ImageInfo) {
@@ -78,7 +97,20 @@ export class ImagesComponent implements OnInit {
         else
           this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
-        this.getImageInfoes()
+        this.getImageInfoes();
+      });
+  }
+
+  // Start a container with config
+  startWithConfig(image: ImageInfo) {
+    this.imagesService.startWithConfig(this.configFactory())
+      .subscribe(data => {
+        // if (data.statusCode)
+        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        // else
+        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+        image.state = 0;
+        this.getImageInfoes();
       });
   }
 
@@ -107,11 +139,30 @@ export class ImagesComponent implements OnInit {
 
   hideAlert(id: string) {
     this.showAlert = false;
-    //this.image = null;
+  }
+
+  displayForm() {
+    this.showForm = true;
+  }
+
+  hideForm(id: string) {
+    this.showForm = false;
   }
 
   getImage(image: ImageInfo) {
     this.image = image;
+  }
+
+  configFactory() {
+    return {
+      "Image": this.image.RepoTags[0],
+      "Tty": this.form._value.Tty == "true",
+      "Cmd": [this.form._value.Cmd],
+      // "HostConfig": {
+      //   "Binds": this.form._value.Binds,
+      //   "PortBindings": this.form._value.PortBindings,
+      // }
+    }
   }
 
 }

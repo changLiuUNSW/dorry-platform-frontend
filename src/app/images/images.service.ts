@@ -79,6 +79,17 @@ export class ImagesService {
       .map(this.extractData)
   }
 
+  startWithConfig(config: Object) {
+    console.log(config);
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: Constant.DORRYAPI + '/api/images/startwithconfig',
+        body: config
+      }))
+      .map(this.extractData)
+  }
+
   private extractData(res: Response) {
     // console.log(res.toString())
     let body = res.json();
