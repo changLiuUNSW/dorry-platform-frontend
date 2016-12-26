@@ -32,7 +32,6 @@ export class ContainersRunningComponent implements OnInit {
     this.containerService.getRunningContainers()
       .subscribe(data => {
         this.containers = data;
-        console.log(this.containers);
         if (data[Object.keys(data)[0]] && data[Object.keys(data)[0]].Names[0] == '/DORRY-WEB')
           this.hasRunning = ((this.containers.length - 1) !== 0);
         else

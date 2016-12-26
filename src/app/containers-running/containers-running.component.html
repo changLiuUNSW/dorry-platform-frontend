@@ -27,14 +27,6 @@
               <td *ngIf="service.Image">{{ service.Image }}</td>
             </tr>
 
-            <!-- <tr>
-              <td class="mdl-data-table__cell--non-numeric">IP Address</td>
-              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress != ''">
-                {{ service.NetworkSettings.Networks.bridge.IPAddress }}
-              </td>
-              <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress == ''">None</td>
-            </tr> -->
-
             <tr>
               <td class="mdl-data-table__cell--non-numeric">Ports</td>
               <td *ngIf="service.Ports.length != 0">
