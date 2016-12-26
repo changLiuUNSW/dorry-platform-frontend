@@ -12,7 +12,7 @@
   </div>
   <hr>
 
-  <!-- <div class="row mdl-grid">
+  <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">ID</span>
     <span class="mdl-cell mdl-cell--10-col">{{ id }}</span>
   </div>
@@ -22,7 +22,7 @@
     <span class="mdl-cell mdl-cell--2-col">Image</span>
     <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
   </div>
-  <hr> -->
+  <hr>
 
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Status</span>
@@ -39,13 +39,15 @@
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Ports</span>
     <span class="mdl-cell mdl-cell--10-col">
-      <span *ngIf="ports.length==0">
+      <span *ngIf="ports.length!=0">
         <span *ngFor="let port of ports">
           {{ port }}
           <br>
         </span>
       </span>
-      None
+      <span *ngIf="ports.length==0">
+        None
+      </span>
     </span>
   </div>
   <hr>

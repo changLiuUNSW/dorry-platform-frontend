@@ -27,18 +27,27 @@
               <td *ngIf="service.Image">{{ service.Image }}</td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <td class="mdl-data-table__cell--non-numeric">IP Address</td>
               <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress != ''">
                 {{ service.NetworkSettings.Networks.bridge.IPAddress }}
               </td>
               <td *ngIf="service.NetworkSettings.Networks.bridge.IPAddress == ''">None</td>
-            </tr>
+            </tr> -->
 
             <tr>
               <td class="mdl-data-table__cell--non-numeric">Ports</td>
-              <td *ngIf="service.Ports[0] != undefined">{{ service.Ports[0].PublicPort }}</td>
-              <td *ngIf="service.Ports[0] == undefined">None</td>
+              <td *ngIf="service.Ports.length != 0">
+                <span *ngFor="let port of service.Ports">
+                  <span *ngIf="(port.PublicPort != undefined) && (port.PrivatePort != undefined)">
+                    {{port.PublicPort}}->{{port.PrivatePort}}/{{port.Type}}
+                  </span>
+                  <span *ngIf="(port.PublicPort == undefined) && (port.PrivatePort != undefined)">
+                    {{port.PrivatePort}}/{{port.Type}}
+                  </span>
+                </span>
+              </td>
+              <td *ngIf="service.Ports.length == 0">None</td>
             </tr>
           </tbody>
         </table>
