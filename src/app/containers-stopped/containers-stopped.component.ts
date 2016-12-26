@@ -32,6 +32,9 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.getStoppedContainers()
       .subscribe(data => {
         this.containers = data;
+        for (let item of this.containers) {
+          item.bridge = item['HostConfig']['NetworkMode'] == 'default' ? 'bridge' : item['HostConfig']['NetworkMode']
+        }
         console.log(this.containers);
         this.hasStopped = (this.containers.length !== 0);
       });
