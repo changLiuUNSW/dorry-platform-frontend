@@ -64,6 +64,13 @@ export class StartingFormComponent implements OnInit {
       });
   }
 
+  saveConfig() {
+    this.imagesService.saveConfig(this.configFactory())
+      .subscribe(data => {
+        console.log(data);
+      })
+  }
+
   configFactory() {
     return {
       "Image": this.image.RepoTags[0],
