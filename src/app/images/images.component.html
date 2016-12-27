@@ -44,9 +44,14 @@
         <!-- <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="startImage(app)">
           Start
         </button> -->
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="displayForm()">
+        <!-- <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="displayForm()">
           Start
-        </button>
+        </button> -->
+        <a routerLink="/apps/{{app.Id}}">
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start">
+            Start
+          </button>
+        </a>
         <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>

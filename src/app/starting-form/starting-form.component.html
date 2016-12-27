@@ -1,0 +1,28 @@
+<a routerLink="/apps">
+  <button mdl-button mdl-button-type="raised" class="button-back">
+    <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
+  </button>
+</a>
+
+<form [formGroup]="form">
+  <p>
+    <mdl-textfield label="Name" type="text" formControlName="Name"></mdl-textfield>
+  </p>
+  <p>
+    <mdl-textfield label="Cmd" type="text" formControlName="Cmd"></mdl-textfield>
+  </p>
+  <p>
+    <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint"></mdl-textfield>
+  </p>
+  <p>
+    <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
+  </p>
+  <p>
+    <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
+  </p>
+  <p>
+    <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield>
+  </p>
+</form>
+
+<button type="button" class="mdl-button" (click)="startWithConfig(image)" [disabled]="!form.valid">Start</button>

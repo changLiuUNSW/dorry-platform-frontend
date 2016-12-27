@@ -27,6 +27,7 @@ import { routing } from './app.routing';
 //third-part plugin
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { StartingFormComponent } from './starting-form/starting-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
     MastheadComponent,
     FooterComponent,
     JQueryTestComponent,
-    ContainerDetailsComponent
+    ContainerDetailsComponent,
+    StartingFormComponent
   ],
   imports: [
     BrowserModule,
