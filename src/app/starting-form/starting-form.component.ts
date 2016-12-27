@@ -7,7 +7,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 @Component({
   selector: 'app-starting-form',
   templateUrl: './starting-form.component.html',
-  styleUrls: ['./starting-form.component.css']
+  styleUrls: [
+    './starting-form.component.css',
+    '../app.component.css'
+  ]
 })
 export class StartingFormComponent implements OnInit {
 

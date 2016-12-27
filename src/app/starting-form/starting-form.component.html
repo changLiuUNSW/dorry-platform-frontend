@@ -4,25 +4,30 @@
   </button>
 </a>
 
-<form [formGroup]="form">
-  <p>
-    <mdl-textfield label="Name" type="text" formControlName="Name"></mdl-textfield>
-  </p>
-  <p>
-    <mdl-textfield label="Cmd" type="text" formControlName="Cmd"></mdl-textfield>
-  </p>
-  <p>
-    <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint"></mdl-textfield>
-  </p>
-  <p>
-    <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
-  </p>
-  <p>
-    <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
-  </p>
-  <p>
-    <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield>
-  </p>
-</form>
+<div class="mdl-card mdl-shadow--2dp">
+  <form [formGroup]="form" class="mdl-grid">
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="Name" type="text" formControlName="Name"></mdl-textfield>
+    </span>
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="Cmd" type="text" formControlName="Cmd"></mdl-textfield>
+    </span>
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint"></mdl-textfield>
+    </span>
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
+    </span>
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
+    </span>
+    <span class="mdl-cell mdl-cell--6-col">
+      <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield>
+    </span>
+  </form>
 
-<button type="button" class="mdl-button" (click)="startWithConfig(image)" [disabled]="!form.valid">Start</button>
+  <div>
+    <button type="button" class="mdl-button" (click)="startWithConfig(image)" [disabled]="!form.valid">Start</button>
+    <button type="button" class="mdl-button">Save</button>
+  </div>
+</div>
