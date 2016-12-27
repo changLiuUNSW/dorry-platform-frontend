@@ -158,10 +158,10 @@ export class ImagesComponent implements OnInit {
       "Image": this.image.RepoTags[0],
       "Tty": this.form._value.Tty == "true",
       "Cmd": [this.form._value.Cmd],
-      // "HostConfig": {
-      //   "Binds": this.form._value.Binds,
-      //   "PortBindings": this.form._value.PortBindings,
-      // }
+      "HostConfig": {
+        "Binds": this.form._value.Binds,
+        "PortBindings": this.form._value.PortBindings,
+      }
     }
   }
 
