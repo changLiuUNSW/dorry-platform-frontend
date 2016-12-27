@@ -90,13 +90,16 @@ export class ImagesService {
       .map(this.extractData)
   }
 
-  saveConfig(config: Object) {
-    console.log(config);
+  saveConfig(config: Object, id: string) {
+    console.log(config, id);
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
         url: Constant.DORRYAPI + '/api/images/saveconfig',
-        body: config
+        body: {
+          'config': config,
+          'id': id
+        }
       }))
       .map(this.extractData)
   }

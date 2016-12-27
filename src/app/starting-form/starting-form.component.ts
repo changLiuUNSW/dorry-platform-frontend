@@ -65,7 +65,7 @@ export class StartingFormComponent implements OnInit {
   }
 
   saveConfig() {
-    this.imagesService.saveConfig(this.configFactory())
+    this.imagesService.saveConfig(this.configFactory(), this.image.Id)
       .subscribe(data => {
         console.log(data);
       })
