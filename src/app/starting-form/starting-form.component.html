@@ -5,6 +5,13 @@
 </a>
 
 <div class="mdl-card mdl-shadow--2dp">
+  <div *ngIf="defaultConfig!=null">
+    {{defaultConfig}}
+  </div>
+  <div *ngIf="defaultConfig==null">
+    Holy Fuck
+  </div>
+
   <form [formGroup]="form" class="mdl-grid">
     <span class="mdl-cell mdl-cell--6-col">
       <mdl-textfield label="Name" type="text" formControlName="Name"></mdl-textfield>
@@ -27,7 +34,7 @@
   </form>
 
   <div>
-    <button type="button" class="mdl-button" (click)="startWithConfig(image)" [disabled]="!form.valid">Start</button>
-    <button type="button" class="mdl-button" (click)="saveConfig()">Save</button>
+    <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="startWithConfig(image)" [disabled]="!form.valid">Start</button>
+    <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="saveConfig()">Save</button>
   </div>
 </div>
