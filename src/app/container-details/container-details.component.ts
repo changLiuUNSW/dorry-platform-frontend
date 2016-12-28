@@ -5,10 +5,7 @@ import { ContainerService } from '../containers/container.service';
 @Component({
   selector: 'app-container-details',
   templateUrl: './container-details.component.html',
-  styleUrls: [
-    './container-details.component.css',
-    '../app.component.css'
-  ]
+  styleUrls: ['./container-details.component.css']
 })
 export class ContainerDetailsComponent implements OnInit {
   name: any;
