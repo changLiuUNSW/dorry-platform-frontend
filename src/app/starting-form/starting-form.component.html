@@ -33,6 +33,14 @@
           <span class="mdl-cell mdl-cell--4-col">Tty</span>
           <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Tty}}</span>
         </div>
+        <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
+        </div>
+        <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
+        </div>
       </div>
 
       <div *ngIf="defaultConf==null" class="row mdl-grid">
@@ -49,7 +57,7 @@
         <span class="mdl-cell mdl-cell--4-col">Image</span>
         <span class="mdl-cell mdl-cell--8-col">{{profileConf.Image}}</span>
       </div>
-      <div *ngIf="profileConf.Cmd!=null" class="row mdl-grid">
+      <div *ngIf="profileConf.Cmd[0]!=null" class="row mdl-grid">
         <span class="mdl-cell mdl-cell--4-col">Cmd</span>
         <span class="mdl-cell mdl-cell--8-col">{{profileConf.Cmd}}</span>
       </div>
@@ -67,6 +75,14 @@
         <span class="mdl-cell mdl-cell--4-col">Tty</span>
         <span class="mdl-cell mdl-cell--8-col">{{profileConf.Tty}}</span>
       </div>
+      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+        <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
+      </div>
+      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+        <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
+      </div>
     </div>
 
     <div *ngIf="profileConf==null" class="row mdl-grid">
@@ -76,7 +92,7 @@
     <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button" (click)="startWithConfig(profileConf)" [disabled]="!profileConf">Start</button>
   </mdl-tab-panel>
 
-  <mdl-tab-panel mdl-tab-panel-title="Add New Profile">
+  <mdl-tab-panel mdl-tab-panel-title="Edit Profile">
     <div class="mdl-card mdl-shadow--2dp">
       <form [formGroup]="form" class="mdl-grid">
         <span class="mdl-cell mdl-cell--6-col">
@@ -92,10 +108,27 @@
           <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
+          <mdl-textfield label="ExposedPorts" type="text" formControlName="ExposedPorts"></mdl-textfield>
+        </span>
+        <span class="mdl-cell mdl-cell--6-col">
           <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
-          <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield>
+          <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield> -->
+          <h4>Tty: </h4>
+          <mdl-radio formControlName="Tty" value="true" mdl-ripple>true</mdl-radio>
+          <mdl-radio formControlName="Tty" value="false" mdl-ripple>false</mdl-radio>
+        </span>
+        <span class="mdl-cell mdl-cell--6-col">
+          <h4>NetworkMode: </h4>
+          <mdl-radio formControlName="NetworkMode" value="bridge" mdl-ripple>bridge</mdl-radio>
+          <mdl-radio formControlName="NetworkMode" value="host" mdl-ripple>host</mdl-radio>
+          <mdl-radio formControlName="NetworkMode" value="none" mdl-ripple>none</mdl-radio>
+        </span>
+        <span class="mdl-cell mdl-cell--6-col">
+          <h4>Privileged: </h4>
+          <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
+          <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
         </span>
       </form>
 

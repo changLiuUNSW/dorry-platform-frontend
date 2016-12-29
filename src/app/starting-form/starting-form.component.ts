@@ -20,12 +20,15 @@ export class StartingFormComponent implements OnInit {
 
   // Config form
   form: FormGroup;
-  Name = new FormControl();
-  Cmd = new FormControl();
-  Entrypoint = new FormControl();
-  Binds = new FormControl();
+  Name = new FormControl('');
+  Cmd = new FormControl('');
+  Entrypoint = new FormControl('');
+  Binds = new FormControl('');
+  ExposedPorts = new FormControl();
   PortBindings = new FormControl();
-  Tty = new FormControl();
+  Tty = new FormControl('true');
+  NetworkMode = new FormControl('bridge');
+  Privileged = new FormControl('false');
 
   constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder) {
     this.form = fb.group({
@@ -33,8 +36,11 @@ export class StartingFormComponent implements OnInit {
       'Cmd': this.Cmd,
       'Entrypoint': this.Entrypoint,
       'Binds': this.Binds,
+      'ExposedPorts': this.ExposedPorts,
       'PortBindings': this.PortBindings,
-      'Tty': this.Tty
+      'Tty': this.Tty,
+      'NetworkMode': this.NetworkMode,
+      'Privileged': this.Privileged
     });
   }
 
@@ -83,16 +89,18 @@ export class StartingFormComponent implements OnInit {
   }
 
   configFactory() {
+    console.log(this.form._value);
     return {
       "name": this.form._value.Name,
       "Image": this.image.RepoTags[0],
       "Tty": this.form._value.Tty == "true",
-      "Cmd": [this.form._value.Cmd],
+      "Cmd": this.form._value.Cmd.split(","),
+      "ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
       "HostConfig": {
-        "Binds": this.form._value.Binds,
-        "PortBindings": this.form._value.PortBindings,
-        "Privileged": "",
-        "NetworkMode": "",
+        "Binds": (this.form._value.Binds).split(","),
+        "PortBindings": JSON.parse(this.form._value.PortBindings),
+        "Privileged": this.form._value.Privileged == "true",
+        "NetworkMode": this.form._value.NetworkMode,
       }
     }
   }
