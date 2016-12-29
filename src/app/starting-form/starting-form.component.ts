@@ -20,10 +20,10 @@ export class StartingFormComponent implements OnInit {
 
   // Config form
   form: FormGroup;
-  Name = new FormControl('');
-  Cmd = new FormControl('');
-  Entrypoint = new FormControl('');
-  Binds = new FormControl('');
+  Name = new FormControl();
+  Cmd = new FormControl();
+  Entrypoint = new FormControl();
+  Binds = new FormControl();
   ExposedPorts = new FormControl();
   PortBindings = new FormControl();
   Tty = new FormControl('true');
@@ -90,14 +90,15 @@ export class StartingFormComponent implements OnInit {
 
   configFactory() {
     console.log(this.form._value);
+    console.log(this.image);
     return {
       "name": this.form._value.Name,
       "Image": this.image.RepoTags[0],
       "Tty": this.form._value.Tty == "true",
-      "Cmd": this.form._value.Cmd.split(","),
+      "Cmd": (this.form._value.Cmd == null || this.form._value.Cmd == "") ? null : this.form._value.Cmd.split(","),
       "ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
       "HostConfig": {
-        "Binds": (this.form._value.Binds).split(","),
+        "Binds": (this.form._value.Binds == null || this.form._value.Binds == "") ? null : (this.form._value.Binds).split(","),
         "PortBindings": JSON.parse(this.form._value.PortBindings),
         "Privileged": this.form._value.Privileged == "true",
         "NetworkMode": this.form._value.NetworkMode,
