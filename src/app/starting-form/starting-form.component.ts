@@ -15,7 +15,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class StartingFormComponent implements OnInit {
 
   image: Object;
-  defaultConfig: Object;
+  defaultConf: Object;
+  profileConf: Object;
 
   // Config form
   form: FormGroup;
@@ -61,13 +62,14 @@ export class StartingFormComponent implements OnInit {
     this.imagesService.getData(this.image.Id)
       .subscribe(data => {
         console.log(data);
-        this.defaultConfig = data.default_conf;
+        this.defaultConf = data.default_conf;
+        this.profileConf = data.profile;
       });
   }
 
   // Start a container with config
-  startWithConfig(image: Object) {
-    this.imagesService.startWithConfig(this.configFactory())
+  startWithConfig(config: Object) {
+    this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
         console.log(data);
       });

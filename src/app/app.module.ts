@@ -24,7 +24,7 @@ import { AppService } from './app.service';
 import { MarketService } from './market/market.service'
 import { routing } from './app.routing';
 
-//third-part plugin
+// Third party
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { StartingFormComponent } from './starting-form/starting-form.component';
