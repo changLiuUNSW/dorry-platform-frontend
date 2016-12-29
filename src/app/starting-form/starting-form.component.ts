@@ -82,12 +82,15 @@ export class StartingFormComponent implements OnInit {
 
   configFactory() {
     return {
+      "name": this.form._value.Name,
       "Image": this.image.RepoTags[0],
       "Tty": this.form._value.Tty == "true",
       "Cmd": [this.form._value.Cmd],
       "HostConfig": {
         "Binds": this.form._value.Binds,
         "PortBindings": this.form._value.PortBindings,
+        "Privileged": "",
+        "NetworkMode": "",
       }
     }
   }
