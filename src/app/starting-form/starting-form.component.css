@@ -8,5 +8,21 @@ a button.button-back {
 }
 
 .mdl-button {
-  margin-right: 4px;
+  margin-left: 16px;
+}
+
+mdl-tabs {
+  font-size: 16px;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .mdl-cell--4-col {
+  font-weight: 500;
+}
+
+.mdl-cell.mdl-cell--8-col {
+  overflow: auto;
 }
