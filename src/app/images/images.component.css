@@ -86,3 +86,19 @@ popover-content {
 .mdl-card .spinner-container span {
   bottom: 28%;
 }
+
+.mdl-dialog.config-form {
+  height: 580px;
+}
+
+.mdl-dialog.config-form p {
+  height: 46px;
+}
+
+.mdl-dialog.config-form .mdl-dialog__content {
+  padding: 12px 36px;
+}
+
+.mdl-dialog.config-form .mdl-textfield {
+  width: 100%;
+}

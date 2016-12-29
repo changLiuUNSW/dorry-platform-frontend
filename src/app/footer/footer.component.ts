@@ -16,7 +16,8 @@ export class FooterComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.getVersionInfo();
+    //this.getVersionInfo();
+    this.uiVersion = Constant.BUILDVERSION;
   }
 
   getVersionInfo() {

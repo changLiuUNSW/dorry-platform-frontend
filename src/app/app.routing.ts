@@ -5,6 +5,7 @@ import { ContainersComponent } from './containers/containers.component';
 import { ImagesComponent } from './images/images.component';
 import { MarketComponent } from './market/market.component';
 import { ContainerDetailsComponent } from './container-details/container-details.component';
+import { StartingFormComponent } from './starting-form/starting-form.component'
 
 const appRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
   {
     path: 'apps',
     component: ImagesComponent
+  },
+  {
+    path: 'apps/:id',
+    component: StartingFormComponent
   },
   {
     path: 'market',

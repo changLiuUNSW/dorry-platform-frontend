@@ -28,10 +28,15 @@ export class MarketService {
       .catch(this.handleError);
   }
 
-  pullImage(name: string, tag: string): Observable<any> {
-    console.log(name, tag);
-    return this.http
-      .get(Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag);
+  pullImage(name: string, tag: string, image: Object): Observable<any> {
+    console.log(name, tag, image);
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag,
+        body: image
+      }))
+      .map(this.extractData)
   }
 
   // Function extractData() extracts the data from the http response, which is

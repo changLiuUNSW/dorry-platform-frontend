@@ -41,33 +41,79 @@
       </div>
 
       <div class="mdl-card__actions">
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="startImage(app)">
+        <!-- <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="startImage(app)">
           Start
-        </button>
+        </button> -->
+        <!-- <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="displayForm()">
+          Start
+        </button> -->
+        <a routerLink="/apps/{{app.Id}}">
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start">
+            Start
+          </button>
+        </a>
         <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- The alert dialog for remove one appliacation -->
-  <div class="dialog-container" *ngIf="showAlert">
-    <div class="mdl-dialog">
-      <div class="mdl-dialog__title">
-        Remove Application
-      </div>
-      <div class="mdl-dialog__content">
+<!-- The alert dialog for remove one appliacation -->
+<div class="dialog-container" *ngIf="showAlert">
+  <div class="mdl-dialog">
+    <div class="mdl-dialog__title">
+      Remove Application
+    </div>
+    <div class="mdl-dialog__content">
+      <span>
+        Do you want to remove application
         <span>
-          Do you want to remove application
-          <span>
-            <strong>{{ image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1] }}</strong>
-          </span>?
-        </span>
-      </div>
-      <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
-        <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
-      </div>
+          <strong>{{ image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1] }}</strong>
+        </span>?
+      </span>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" (click)="removeImage(image)" (click)="hideAlert()">Yes</button>
+      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
     </div>
   </div>
+</div>
+
+<div class="dialog-container" *ngIf="showForm">
+  <div class="mdl-dialog config-form">
+    <div class="mdl-dialog__title">
+      Start Service
+    </div>
+    <div class="mdl-dialog__content">
+
+      <form [formGroup]="form">
+        <p>
+          <mdl-textfield label="Name" type="text" formControlName="Name"></mdl-textfield>
+        </p>
+        <p>
+          <mdl-textfield label="Cmd" type="text" formControlName="Cmd"></mdl-textfield>
+        </p>
+        <p>
+          <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint"></mdl-textfield>
+        </p>
+        <p>
+          <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
+        </p>
+        <p>
+          <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
+        </p>
+        <p>
+          <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield>
+        </p>
+      </form>
+
+    </div>
+    <div class="mdl-dialog__actions">
+      <!-- <button type="button" class="mdl-button" (click)="hideForm()">Start</button> -->
+      <button type="button" class="mdl-button" (click)="startWithConfig(image)" (click)="hideForm()" [disabled]="!form.valid">Start</button>
+      <button type="button" class="mdl-button close" (click)="hideForm()">Cancel</button>
+    </div>
+  </div>
+</div>

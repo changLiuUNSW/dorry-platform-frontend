@@ -242,6 +242,21 @@
   background: #81c784;
 }
 
+.button-back {
+  background: #607c8c;
+  font-size: 0;
+  margin: 0 0 16px;
+}
+
+.button-back:hover {
+  background: #4a6777;
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
 .spinner-container {
   height: 100%;
   width: 100%;

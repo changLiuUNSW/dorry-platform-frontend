@@ -1,0 +1,28 @@
+a button.button-back {
+  width: 64px;
+}
+
+.mdl-card.mdl-shadow--2dp {
+  width: 100%;
+  padding: 32px 160px;
+}
+
+.mdl-button {
+  margin-left: 16px;
+}
+
+mdl-tabs {
+  font-size: 16px;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .mdl-cell--4-col {
+  font-weight: 500;
+}
+
+.mdl-cell.mdl-cell--8-col {
+  overflow: auto;
+}

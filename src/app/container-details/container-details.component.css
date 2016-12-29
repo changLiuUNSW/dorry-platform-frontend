@@ -1,11 +1,5 @@
-.button-back {
-  background: #607c8c;
-  font-size: 0;
-  margin: 0 0 16px;
-}
-
-.button-back:hover {
-  background: #4a6777;
+a button.button-back {
+  width: 64px;
 }
 
 .mdl-card.mdl-shadow--2dp {

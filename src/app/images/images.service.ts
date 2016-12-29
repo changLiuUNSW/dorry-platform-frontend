@@ -79,6 +79,40 @@ export class ImagesService {
       .map(this.extractData)
   }
 
+  getData(id: string) {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.DORRYAPI + '/api/images/db/' + id,
+      }))
+      .map(this.extractData)
+  }
+
+  startWithConfig(config: Object) {
+    console.log(config);
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: Constant.DORRYAPI + '/api/images/db/startwithconfig',
+        body: config
+      }))
+      .map(this.extractData)
+  }
+
+  saveConfig(profile: Object, image_id: string) {
+    console.log(profile, image_id);
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: Constant.DORRYAPI + '/api/images/db/saveconfig',
+        body: {
+          'profile': profile,
+          'image_id': image_id
+        }
+      }))
+      .map(this.extractData)
+  }
+
   private extractData(res: Response) {
     // console.log(res.toString())
     let body = res.json();

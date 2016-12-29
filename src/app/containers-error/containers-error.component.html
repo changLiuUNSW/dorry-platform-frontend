@@ -36,22 +36,17 @@
               <td *ngIf="service.Image == undefined">None</td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <td class="mdl-data-table__cell--non-numeric">IP Address</td>
 
               <td *ngIf="service.NetworkSettings.Networks[service.bridge].IPAddress
               || service.NetworkSettings.Networks[service.bridge].IPAddress != ''">
                 {{ service.NetworkSettings.Networks[service.bridge].IPAddress }}
               </td>
-              <td *ngIf="service.NetworkSettings.Networks[service.bridge].IPAddress == ''">None</td>
 
-            </tr>
+              <td *ngIf="service.NetworkSettings.Networks[service.HostConfig.NetworkMode].IPAddress == ''">None</td>
+            </tr> -->
 
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Ports</td>
-              <td *ngIf="service.Ports[0] != undefined">{{ service.Ports[0].PublicPort }}</td>
-              <td *ngIf="service.Ports[0] == undefined">None</td>
-            </tr>
           </tbody>
         </table>
       </div>
