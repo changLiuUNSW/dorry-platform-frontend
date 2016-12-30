@@ -28,18 +28,18 @@
             <span class="mdl-cell mdl-cell--4-col">Binds</span>
             <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Binds}}</span>
           </div>
+          <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
+          </div>
+          <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
+          </div>
         </div>
         <div *ngIf="defaultConf.Tty!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Tty</span>
           <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Tty}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
         </div>
       </div>
 
@@ -70,18 +70,18 @@
           <span class="mdl-cell mdl-cell--4-col">Binds</span>
           <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Binds}}</span>
         </div>
+        <div *ngIf="profileConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
+        </div>
+        <div *ngIf="profileConf.HostConfig.Privileged!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
+        </div>
       </div>
       <div *ngIf="profileConf.Tty!=null" class="row mdl-grid">
         <span class="mdl-cell mdl-cell--4-col">Tty</span>
         <span class="mdl-cell mdl-cell--8-col">{{profileConf.Tty}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
       </div>
     </div>
 
