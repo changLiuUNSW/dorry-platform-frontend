@@ -28,18 +28,18 @@
             <span class="mdl-cell mdl-cell--4-col">Binds</span>
             <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Binds}}</span>
           </div>
+          <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
+          </div>
+          <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
+          </div>
         </div>
         <div *ngIf="defaultConf.Tty!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Tty</span>
           <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Tty}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
         </div>
       </div>
 
@@ -70,18 +70,18 @@
           <span class="mdl-cell mdl-cell--4-col">Binds</span>
           <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Binds}}</span>
         </div>
+        <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
+        </div>
+        <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
+        </div>
       </div>
       <div *ngIf="profileConf.Tty!=null" class="row mdl-grid">
         <span class="mdl-cell mdl-cell--4-col">Tty</span>
         <span class="mdl-cell mdl-cell--8-col">{{profileConf.Tty}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
       </div>
     </div>
 
@@ -115,18 +115,21 @@
         </span>
         <span class="mdl-cell mdl-cell--6-col">
           <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield> -->
-          <h4>Tty: </h4>
+          <h4>Tty:
+          </h4>
           <mdl-radio formControlName="Tty" value="true" mdl-ripple>true</mdl-radio>
           <mdl-radio formControlName="Tty" value="false" mdl-ripple>false</mdl-radio>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
-          <h4>NetworkMode: </h4>
+          <h4>NetworkMode:
+          </h4>
           <mdl-radio formControlName="NetworkMode" value="bridge" mdl-ripple>bridge</mdl-radio>
           <mdl-radio formControlName="NetworkMode" value="host" mdl-ripple>host</mdl-radio>
           <mdl-radio formControlName="NetworkMode" value="none" mdl-ripple>none</mdl-radio>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
-          <h4>Privileged: </h4>
+          <h4>Privileged:
+          </h4>
           <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
           <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
         </span>
