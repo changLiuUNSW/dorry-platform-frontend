@@ -19,7 +19,9 @@ export class StartingFormComponent implements OnInit {
   portBindsKeyArray: string[];
   exposedBinds: Object;
   defaultConf: Object;
+  defautltPortKeyArray: string[];
   profileConf: Object;
+  profilePortKeyArray: string[];
 
   // Config form
   form: FormGroup;
@@ -100,7 +102,14 @@ export class StartingFormComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.defaultConf = data.default_conf;
+        console.log(data.default_conf);
         this.profileConf = data.profile;
+        console.log(this.profileConf);
+        if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
+          this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
+        if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {
+          this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
+        }
       });
   }
 

@@ -64,7 +64,13 @@
       <div *ngIf="profileConf.HostConfig!=null">
         <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
-          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.PortBindings | json}}</span>
+          <span class="mdl-cell mdl-cell--8-col">
+            <span *ngFor="let key of profilePortKeyArray">
+              <li>
+                {{key}} => {{ profileConf.HostConfig.PortBindings[key][0]["HostPort"] }}
+              </li>
+            </span>
+          </span>
         </div>
         <div *ngIf="profileConf.HostConfig.Binds!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Binds</span>
