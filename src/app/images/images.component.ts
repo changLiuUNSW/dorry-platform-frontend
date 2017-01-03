@@ -22,7 +22,7 @@ export class ImagesComponent implements OnInit {
   showForm: boolean;
   hasApp: boolean;
 
-  regExp = new RegExp(/DORRY-WEB/, 'i');
+  dorry = new RegExp(/dorry/, 'i');
 
   // Config form
   form: FormGroup;

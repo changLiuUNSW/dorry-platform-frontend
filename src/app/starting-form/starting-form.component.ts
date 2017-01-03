@@ -121,7 +121,6 @@ export class StartingFormComponent implements OnInit {
 
   configFactory() {
     console.log(this.form._value);
-    console.log(this.image);
     return {
       "name": this.form._value.Name,
       "Image": this.image.RepoTags[0],

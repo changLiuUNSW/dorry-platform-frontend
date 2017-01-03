@@ -64,7 +64,7 @@
       <div *ngIf="profileConf.HostConfig!=null">
         <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
-          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.PortBindings}}</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.PortBindings | json}}</span>
         </div>
         <div *ngIf="profileConf.HostConfig.Binds!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Binds</span>
@@ -135,18 +135,21 @@
         </span>
         <span class="mdl-cell mdl-cell--6-col">
           <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield> -->
-          <h4>Tty: </h4>
+          <h4>Tty:
+          </h4>
           <mdl-radio formControlName="Tty" value="true" mdl-ripple>true</mdl-radio>
           <mdl-radio formControlName="Tty" value="false" mdl-ripple>false</mdl-radio>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
-          <h4>NetworkMode: </h4>
+          <h4>NetworkMode:
+          </h4>
           <mdl-radio formControlName="NetworkMode" value="bridge" mdl-ripple>bridge</mdl-radio>
           <mdl-radio formControlName="NetworkMode" value="host" mdl-ripple>host</mdl-radio>
           <mdl-radio formControlName="NetworkMode" value="none" mdl-ripple>none</mdl-radio>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
-          <h4>Privileged: </h4>
+          <h4>Privileged:
+          </h4>
           <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
           <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
         </span>
