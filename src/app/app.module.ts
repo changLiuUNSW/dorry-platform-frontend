@@ -21,7 +21,8 @@ import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
 import { AppService } from './app.service';
-import { MarketService } from './market/market.service'
+import { MarketService } from './market/market.service';
+import { LoginService } from './login/login.service';
 import { routing } from './app.routing';
 
 // Third party
@@ -68,6 +69,7 @@ import { LoginComponent } from './login/login.component';
     ContainerService,
     AppService,
     MarketService,
+    LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
