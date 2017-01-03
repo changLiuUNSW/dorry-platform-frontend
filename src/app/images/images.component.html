@@ -5,8 +5,8 @@
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--3-col" *ngFor="let app of imageInfoes">
     <popover-content #myPopover [animation]="true" placement="bottom" [closeOnMouseOutside]="true">
-      <strong>ID:&nbsp;&nbsp;</strong>{{ app.Id }}<br>
-      <strong >Repo:&nbsp;&nbsp;</strong>{{ app.RepoTags[0] }}
+      <strong>ID:&nbsp;&nbsp;</strong>{{app.Id}}<br>
+      <strong >Repo:&nbsp;&nbsp;</strong>{{app.RepoTags[0]}}
     </popover-content>
 
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
@@ -28,13 +28,45 @@
         <!-- <img class="card-img" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/> -->
         <div class="mdl-card__title-text">
           <div class="app-name">
-            {{ app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1].split(':')[0] }}
+            {{app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1].split(':')[0]}}
+          </div>
+          <div *ngIf="app.RepoTags[0].split('/').length==1">
+            <div class="app-misc">
+              <strong>Registry:</strong>
+              Docker
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              Docker
+            </div>
+          </div>
+          <div *ngIf="app.RepoTags[0].split('/').length==2">
+            <div class="app-misc">
+              <strong>Registry:</strong>
+              {{app.RepoTags[0].split('/')[0]}}
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              Dorry
+            </div>
+          </div>
+          <div *ngIf="app.RepoTags[0].split('/').length==3">
+            <div class="app-misc">
+              <strong>Registry:</strong>
+              {{app.RepoTags[0].split('/')[0]}}
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              {{app.RepoTags[0].split('/')[1]}}
+            </div>
           </div>
           <div class="app-misc">
-            {{ app.RepoTags[0].split(':')[app.RepoTags[0].split(':').length-1] }}
+            <strong>Tag:</strong>
+            {{app.RepoTags[0].split(':')[app.RepoTags[0].split(':').length-1]}}
           </div>
           <div class="app-misc">
-            {{ (app.Size/1000000).toFixed(3) }}
+            <strong>Size:</strong>
+            {{(app.Size/1000000).toFixed(3)}}
             MB
           </div>
         </div>
@@ -47,7 +79,7 @@
         <!-- <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="getImage(app)" (click)="displayForm()">
           Start
         </button> -->
-        <a routerLink="/apps/{{app.Id}}">
+        <a routerLink="/apps/{{app.ID}}">
           <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start">
             Start
           </button>
@@ -70,7 +102,7 @@
       <span>
         Do you want to remove application
         <span>
-          <strong>{{ image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1] }}</strong>
+          <strong>{{image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1]}}</strong>
         </span>?
       </span>
     </div>
