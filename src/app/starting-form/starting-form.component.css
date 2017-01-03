@@ -26,3 +26,7 @@ mdl-tabs {
 .mdl-cell.mdl-cell--8-col {
   overflow: auto;
 }
+
+.remove-icon:hover {
+  cursor: pointer;
+}
