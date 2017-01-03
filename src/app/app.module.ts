@@ -28,6 +28,7 @@ import { routing } from './app.routing';
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { StartingFormComponent } from './starting-form/starting-form.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { StartingFormComponent } from './starting-form/starting-form.component';
     FooterComponent,
     JQueryTestComponent,
     ContainerDetailsComponent,
-    StartingFormComponent
+    StartingFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

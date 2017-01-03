@@ -5,7 +5,8 @@ import { ContainersComponent } from './containers/containers.component';
 import { ImagesComponent } from './images/images.component';
 import { MarketComponent } from './market/market.component';
 import { ContainerDetailsComponent } from './container-details/container-details.component';
-import { StartingFormComponent } from './starting-form/starting-form.component'
+import { StartingFormComponent } from './starting-form/starting-form.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: 'market',
     component: MarketComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

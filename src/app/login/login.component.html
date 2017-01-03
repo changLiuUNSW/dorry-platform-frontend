@@ -1,0 +1,15 @@
+<div class="login-logo">
+  <img src="/assets/icons/logo.svg">
+</div>
+
+<div class="login-header">
+  Login with your account
+</div>
+
+<mdl-card mdl-shadow="2">
+  <form [formGroup]="form">
+    <mdl-textfield label="Username" name="Username" type="text" formControlName="Username" floating-label pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" error-msg="Please provide a correct username!"></mdl-textfield>
+    <mdl-textfield label="Password" name="Password" type="text" formControlName="Password" floating-label></mdl-textfield>
+    <button mdl-button (click)="onSubmit()" [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">Submit</button>
+  </form>
+</mdl-card>
