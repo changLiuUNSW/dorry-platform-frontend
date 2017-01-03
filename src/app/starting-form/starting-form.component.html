@@ -64,17 +64,17 @@
       <div *ngIf="profileConf.HostConfig!=null">
         <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
-          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.PortBindings}}</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.PortBindings | json}}</span>
         </div>
         <div *ngIf="profileConf.HostConfig.Binds!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Binds</span>
           <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Binds}}</span>
         </div>
-        <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+        <div *ngIf="profileConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
           <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
         </div>
-        <div *ngIf="profileConf.HostConfig!=null" class="row mdl-grid">
+        <div *ngIf="profileConf.HostConfig.Privileged!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Privileged</span>
           <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
         </div>
@@ -107,11 +107,31 @@
         <span class="mdl-cell mdl-cell--6-col">
           <mdl-textfield label="Binds" type="text" formControlName="Binds"></mdl-textfield>
         </span>
-        <span class="mdl-cell mdl-cell--6-col">
+        <!-- <span class="mdl-cell mdl-cell--6-col">
           <mdl-textfield label="ExposedPorts" type="text" formControlName="ExposedPorts"></mdl-textfield>
-        </span>
+        </span> -->
         <span class="mdl-cell mdl-cell--6-col">
-          <mdl-textfield label="PortBindings" type="text" formControlName="PortBindings"></mdl-textfield>
+          <h4>PortsBindings: </h4>
+          <span class="mdl-grid">
+            <span class="mdl-cell mdl-cell--3-col">
+              <mdl-textfield pattern="[0-9]+" label="Container Port" type="text" formControlName="ContainerPort"></mdl-textfield>
+            </span>
+            <span style="line-height:80px;">:</span>
+            <span class="mdl-cell mdl-cell--3-col">
+              <mdl-textfield pattern="[0-9]+" label="Host Port" type="text" formControlName="HostPort"></mdl-textfield>
+            </span>
+            <span class="mdl-cell mdl-cell--3-col">
+              <button style="margin-top:10px;" mdl-button mdl-button-type="raised" class="mdl-button" [disabled]="!HostPort.valid || !ContainerPort.valid" (click)="addPortBinding()">
+                add
+              </button>
+            </span>
+          </span>
+          <span *ngFor="let key of portBindsKeyArray">
+            <ul>
+              <img class="remove-icon" src="assets/icons/ic_remove_circle_red_24px.svg" (click)=removePortBinding(key)>
+              {{key}} => {{ portBinds[key][0]["HostPort"] }}
+            </ul>
+          </span>
         </span>
         <span class="mdl-cell mdl-cell--6-col">
           <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty"></mdl-textfield> -->

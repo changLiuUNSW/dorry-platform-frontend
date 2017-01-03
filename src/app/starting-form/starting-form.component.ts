@@ -15,6 +15,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class StartingFormComponent implements OnInit {
 
   image: Object;
+  portBinds: Object;
+  portBindsKeyArray: string[];
+  exposedBinds: Object;
   defaultConf: Object;
   profileConf: Object;
 
@@ -29,8 +32,12 @@ export class StartingFormComponent implements OnInit {
   Tty = new FormControl('true');
   NetworkMode = new FormControl('bridge');
   Privileged = new FormControl('false');
+  HostPort = new FormControl();
+  ContainerPort = new FormControl();
 
   constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder) {
+    this.portBinds = {};
+    this.exposedBinds = {};
     this.form = fb.group({
       'Name': this.Name,
       'Cmd': this.Cmd,
@@ -40,7 +47,9 @@ export class StartingFormComponent implements OnInit {
       'PortBindings': this.PortBindings,
       'Tty': this.Tty,
       'NetworkMode': this.NetworkMode,
-      'Privileged': this.Privileged
+      'Privileged': this.Privileged,
+      'HostPort': this.HostPort,
+      'ContainerPort': this.ContainerPort
     });
   }
 
@@ -55,6 +64,28 @@ export class StartingFormComponent implements OnInit {
             // console.log(this.image);
           });
       });
+  }
+
+  addPortBinding() {
+    if ((this.form._value.HostPort == null || this.form._value.HostPort == "") &&
+      (this.form._value.ContainerPort == null || this.form._value.ContainerPort == ""))
+      return;
+    this.portBinds[this.form._value.ContainerPort + "/tcp"] = [{ "HostPort": this.form._value.HostPort }];
+    this.exposedBinds[this.form._value.ContainerPort + "/tcp"] = {};
+    this.portBindsKeyArray = Object.keys(this.portBinds);
+    console.log(JSON.stringify(this.portBinds));
+    console.log(JSON.stringify(this.exposedBinds));
+  }
+
+  removePortBinding(key: string) {
+    if ((this.form._value.HostPort == null || this.form._value.HostPort == "") &&
+      (this.form._value.ContainerPort == null || this.form._value.ContainerPort == ""))
+      return;
+    delete this.portBinds[key];
+    delete this.exposedBinds[key];
+    this.portBindsKeyArray = Object.keys(this.portBinds);
+    console.log(JSON.stringify(this.portBinds));
+    console.log(JSON.stringify(this.exposedBinds));
   }
 
   startImage(image: Object) {
@@ -95,10 +126,12 @@ export class StartingFormComponent implements OnInit {
       "Image": this.image.RepoTags[0],
       "Tty": this.form._value.Tty == "true",
       "Cmd": (this.form._value.Cmd == null || this.form._value.Cmd == "") ? null : this.form._value.Cmd.split(","),
-      "ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
+      //"ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
+      "ExposedPorts": this.exposedBinds,
       "HostConfig": {
         "Binds": (this.form._value.Binds == null || this.form._value.Binds == "") ? null : (this.form._value.Binds).split(","),
-        "PortBindings": JSON.parse(this.form._value.PortBindings),
+        //"PortBindings": JSON.parse(this.form._value.PortBindings),
+        "PortBindings": this.portBinds,
         "Privileged": this.form._value.Privileged == "true",
         "NetworkMode": this.form._value.NetworkMode,
       }
