@@ -28,14 +28,20 @@
             </tr>
 
             <tr>
-              <td class="mdl-data-table__cell--non-numeric">Ports</td>
+              <td class="mdl-data-table__cell--non-numeric">Public Ports</td>
               <td *ngIf="service.Ports.length != 0">
                 <span *ngFor="let port of service.Ports">
-                  <span *ngIf="(port.PublicPort != undefined) && (port.PrivatePort != undefined)">
+                  <!-- <span *ngIf="(port.PublicPort != undefined) && (port.PrivatePort != undefined)">
                     {{port.PublicPort}}->{{port.PrivatePort}}/{{port.Type}}
                   </span>
                   <span *ngIf="(port.PublicPort == undefined) && (port.PrivatePort != undefined)">
                     {{port.PrivatePort}}/{{port.Type}}
+                  </span> -->
+                  <span *ngIf="port.PublicPort != undefined">
+                    {{port.PublicPort}}
+                  </span>
+                  <span *ngIf="port.PublicPort == undefined">
+                    None
                   </span>
                 </span>
               </td>

@@ -50,8 +50,11 @@ export class ContainerDetailsComponent implements OnInit {
             this.binds = data.HostConfig.Binds;
 
             for (var port in data.NetworkSettings.Ports) {
-              if (data.NetworkSettings.Ports.hasOwnProperty(port)) {
-                console.log(port);
+              if (data.NetworkSettings.Ports[port] != null) {
+                port = data.NetworkSettings.Ports[port][0].HostPort + '->' + port;
+                this.ports.push(port);
+              }
+              else {
                 this.ports.push(port);
               }
             }
