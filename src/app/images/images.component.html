@@ -40,7 +40,7 @@
               Docker
             </div>
           </div>
-          <div *ngIf="app.RepoTags[0].split('/').length==2">
+          <div *ngIf="app.RepoTags[0].split('/').length==2 && dorry.test(app.RepoTags[0].split('/')[0])">
             <div class="app-misc">
               <strong>Registry:</strong>
               {{app.RepoTags[0].split('/')[0]}}
@@ -48,6 +48,16 @@
             <div class="app-misc">
               <strong>Author:</strong>
               Dorry
+            </div>
+          </div>
+          <div *ngIf="app.RepoTags[0].split('/').length==2 && !dorry.test(app.RepoTags[0].split('/')[0])">
+            <div class="app-misc">
+              <strong>Registry:</strong>
+              Docker
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              {{app.RepoTags[0].split('/')[0]}}
             </div>
           </div>
           <div *ngIf="app.RepoTags[0].split('/').length==3">
