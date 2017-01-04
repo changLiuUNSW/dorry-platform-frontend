@@ -19,7 +19,7 @@ export class LoginService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/login',
+        url: Constant.DORRYAPI + '/api/users/login',
         body: {
           'username': username,
           'password': password

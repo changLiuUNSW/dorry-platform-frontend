@@ -15,6 +15,10 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'services',
     component: ContainersComponent
   },
@@ -33,10 +37,6 @@ const appRoutes: Routes = [
   {
     path: 'market',
     component: MarketComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   }
 ];
 
