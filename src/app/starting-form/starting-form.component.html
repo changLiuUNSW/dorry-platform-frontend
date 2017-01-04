@@ -22,7 +22,13 @@
         <div *ngIf="defaultConf.HostConfig!=null">
           <div *ngIf="defaultConf.HostConfig.PortBindings!=null" class="row mdl-grid">
             <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
-            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.PortBindings}}</span>
+            <span class="mdl-cell mdl-cell--8-col">
+              <span *ngFor="let key of defaultPortKeyArray">
+                <li>
+                  {{key}} => {{ defaultConf.HostConfig.PortBindings[key][0]["HostPort"] }}
+                </li>
+              </span>
+            </span>
           </div>
           <div *ngIf="defaultConf.HostConfig.Binds!=null" class="row mdl-grid">
             <span class="mdl-cell mdl-cell--4-col">Binds</span>

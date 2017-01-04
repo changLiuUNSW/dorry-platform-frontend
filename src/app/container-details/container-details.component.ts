@@ -67,7 +67,13 @@ export class ContainerDetailsComponent implements OnInit {
             this.ip = data.NetworkSettings.Networks[this.bridge].IPAddress == "" ? "None" : data.NetworkSettings.Networks[this.bridge].IPAddress;
             this.created = data.Created.split(".")[0].replace("T", " ");
             this.cmd = data.Config.Cmd == null ? "None" : data.Config.Cmd;
+            if (data.Config.Cmd != null && data.Config.Cmd.length > 0 && data.Config.Cmd[0].trim() == "") {
+              this.cmd = "None";
+            }
             this.entrypoint = data.Config.Entrypoint == null ? "None" : data.Config.Entrypoint;
+            if (data.Config.Entrypoint != null && data.Config.Entrypoint.length > 0 && data.Config.Entrypoint[0].trim() == "") {
+              this.entrypoint = "None";
+            }
             this.envs = data.Config.Env;
             this.binds = data.HostConfig.Binds;
 

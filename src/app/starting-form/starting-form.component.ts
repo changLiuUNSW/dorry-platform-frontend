@@ -4,6 +4,9 @@ import { ImagesService } from '../images/images.service';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { PopoverModule } from "ng2-popover";
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-starting-form',
   templateUrl: './starting-form.component.html',
@@ -37,7 +40,7 @@ export class StartingFormComponent implements OnInit {
   HostPort = new FormControl();
   ContainerPort = new FormControl();
 
-  constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder, public toastr: ToastsManager) {
     this.portBinds = {};
     this.exposedBinds = {};
     this.form = fb.group({
@@ -118,7 +121,21 @@ export class StartingFormComponent implements OnInit {
     this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
         console.log(data);
+        if (data.statusCode)
+          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        else
+          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
       });
+  }
+
+  private startImageMessage(message) {
+    try {
+      let str;
+      str = message.match(/(\(.*?\))/)[1];
+      return message.replace(str, '');
+    } catch (e) {
+      return message;
+    }
   }
 
   saveConfig() {

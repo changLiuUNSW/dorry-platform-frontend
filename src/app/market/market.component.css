@@ -81,3 +81,12 @@ button > mdl-spinner {
 div > button {
   width: 100px;
 }
+
+.app-tag {
+  font-size: 13px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.5em;
+}

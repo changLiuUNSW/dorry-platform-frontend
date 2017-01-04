@@ -26,12 +26,20 @@ export class MarketComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.items = data;
+        //-----------------
+        console.log(this.items);
+        for (var item of this.items) {
+          this.getTags(item);
+        }
       });
   }
 
   private getTags(item: any) {
     this.marketService.getTags(item)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        console.log(data);
+        item.tag = data.tags[0];
+      });
   }
 
   private installImage(item: any) {

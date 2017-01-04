@@ -86,9 +86,14 @@
     <span class="mdl-cell mdl-cell--2-col">Binds</span>
     <span class="mdl-cell mdl-cell--10-col">
       <span *ngIf="binds">
-        <span *ngFor="let bind of binds">
-          {{ bind }}
-          <br>
+        <span *ngIf="binds.length!=0">
+          <span *ngFor="let bind of binds">
+            {{ bind }}
+            <br>
+          </span>
+        </span>
+        <span *ngIf="binds.length==0">
+          None
         </span>
       </span>
       <span *ngIf="!binds">
