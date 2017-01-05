@@ -21,4 +21,8 @@ export class AppComponent {
   ngOnInit() {
     window.open(Constant.REGISTRYADDR);
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }

@@ -25,6 +25,8 @@ import { MarketService } from './market/market.service';
 import { LoginService } from './login/login.service';
 import { routing } from './app.routing';
 
+import { AuthGuard } from './authguard/auth.guard';
+
 // Third party
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
@@ -58,6 +60,7 @@ import { LoginComponent } from './login/login.component';
     ToastModule
   ],
   providers: [
+    AuthGuard,
     ConfigService,
     {
       provide: APP_INITIALIZER,

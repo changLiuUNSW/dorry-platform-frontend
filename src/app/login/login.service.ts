@@ -19,13 +19,13 @@ export class LoginService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/users/login',
+        url: Constant.DORRYAPI + '/users/login',
         body: {
           'username': username,
           'password': password
         }
-      }))
-      .map(this.extractData);
+      }));
+    //.map(this.extractData);
   }
 
   // Function extractData() extracts the data from the http response, which is

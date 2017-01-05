@@ -7,6 +7,7 @@ import { MarketComponent } from './market/market.component';
 import { ContainerDetailsComponent } from './container-details/container-details.component';
 import { StartingFormComponent } from './starting-form/starting-form.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './authguard/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'services',
-    component: ContainersComponent
+    component: ContainersComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'services/:id',
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'apps',
-    component: ImagesComponent
+    component: ImagesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'apps/:id',
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'market',
-    component: MarketComponent
+    component: MarketComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
