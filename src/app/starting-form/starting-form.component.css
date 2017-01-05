@@ -8,11 +8,15 @@ a button.button-back {
 }
 
 .mdl-button {
-  margin-left: 16px;
+  margin: 16px 0 16px 16px;
 }
 
 mdl-tabs {
   font-size: 16px;
+}
+
+mdl-textfield {
+  padding: 26px 0;
 }
 
 .row {
@@ -25,4 +29,8 @@ mdl-tabs {
 
 .mdl-cell.mdl-cell--8-col {
   overflow: auto;
+}
+
+.remove-icon:hover {
+  cursor: pointer;
 }

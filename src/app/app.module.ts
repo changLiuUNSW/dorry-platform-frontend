@@ -21,13 +21,17 @@ import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
 import { AppService } from './app.service';
-import { MarketService } from './market/market.service'
+import { MarketService } from './market/market.service';
+import { LoginService } from './login/login.service';
 import { routing } from './app.routing';
+
+import { AuthGuard } from './authguard/auth.guard';
 
 // Third party
 import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { StartingFormComponent } from './starting-form/starting-form.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,8 @@ import { StartingFormComponent } from './starting-form/starting-form.component';
     FooterComponent,
     JQueryTestComponent,
     ContainerDetailsComponent,
-    StartingFormComponent
+    StartingFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { StartingFormComponent } from './starting-form/starting-form.component';
     ToastModule
   ],
   providers: [
+    AuthGuard,
     ConfigService,
     {
       provide: APP_INITIALIZER,
@@ -66,6 +72,7 @@ import { StartingFormComponent } from './starting-form/starting-form.component';
     ContainerService,
     AppService,
     MarketService,
+    LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

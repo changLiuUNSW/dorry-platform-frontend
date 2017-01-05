@@ -23,19 +23,27 @@
         <table class="mdl-data-table mdl-js-data-table">
           <tbody>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric">Application</td>
-              <td *ngIf="service.Image">{{ service.Image }}</td>
+              <td class="mdl-data-table__cell--non-numeric">App Name</td>
+              <td *ngIf="service.Image">
+                {{service.Image.split('/')[service.Image.split('/').length-1].split(':')[0]}}
+              </td>
             </tr>
 
             <tr>
-              <td class="mdl-data-table__cell--non-numeric">Ports</td>
+              <td class="mdl-data-table__cell--non-numeric">Public Ports</td>
               <td *ngIf="service.Ports.length != 0">
                 <span *ngFor="let port of service.Ports">
-                  <span *ngIf="(port.PublicPort != undefined) && (port.PrivatePort != undefined)">
+                  <!-- <span *ngIf="(port.PublicPort != undefined) && (port.PrivatePort != undefined)">
                     {{port.PublicPort}}->{{port.PrivatePort}}/{{port.Type}}
                   </span>
                   <span *ngIf="(port.PublicPort == undefined) && (port.PrivatePort != undefined)">
                     {{port.PrivatePort}}/{{port.Type}}
+                  </span> -->
+                  <span *ngIf="port.PublicPort != undefined">
+                    {{port.PublicPort}}
+                  </span>
+                  <span *ngIf="port.PublicPort == undefined">
+                    None
                   </span>
                 </span>
               </td>

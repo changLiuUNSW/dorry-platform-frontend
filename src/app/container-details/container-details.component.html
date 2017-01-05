@@ -19,8 +19,20 @@
   <hr>
 
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Image</span>
+    <span class="mdl-cell mdl-cell--2-col">Application</span>
     <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
+  </div>
+  <hr>
+
+  <div class="row mdl-grid">
+    <span class="mdl-cell mdl-cell--2-col">App Registry</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ registry }}</span>
+  </div>
+  <hr>
+
+  <div class="row mdl-grid">
+    <span class="mdl-cell mdl-cell--2-col">App Author</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ author }}</span>
   </div>
   <hr>
 
@@ -73,13 +85,18 @@
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Binds</span>
     <span class="mdl-cell mdl-cell--10-col">
-      <span *ngIf="binds!=null">
-        <span *ngFor="let bind of binds">
-          {{ bind }}
-          <br>
+      <span *ngIf="binds">
+        <span *ngIf="binds.length!=0">
+          <span *ngFor="let bind of binds">
+            {{ bind }}
+            <br>
+          </span>
+        </span>
+        <span *ngIf="binds.length==0">
+          None
         </span>
       </span>
-      <span *ngIf="binds==null">
+      <span *ngIf="!binds">
         None
       </span>
     </span>

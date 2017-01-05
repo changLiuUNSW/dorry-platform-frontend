@@ -300,3 +300,11 @@ mdl-spinner {
   font-size: 20px;
   text-align: center;
 }
+
+.logout-button {
+  padding-left: 8px;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+}
