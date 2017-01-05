@@ -19,11 +19,20 @@ export class LoginService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/users/login',
+        url: Constant.DORRYAPI + '/users/login',
         body: {
           'username': username,
           'password': password
         }
+      }))
+      .map(this.extractData);
+  }
+
+  checkSession() {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.DORRYAPI + '/users/session'
       }))
       .map(this.extractData);
   }

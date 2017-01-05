@@ -30,4 +30,11 @@ export class LoginComponent implements OnInit {
       })
   }
 
+  checkSession() {
+    this.loginService.checkSession()
+      .subscribe(data => {
+        console.log(data);
+      })
+  }
+
 }
