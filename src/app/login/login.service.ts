@@ -28,6 +28,15 @@ export class LoginService {
     //.map(this.extractData);
   }
 
+  checkSession() {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.DORRYAPI + '/users/session'
+      }))
+      .map(this.extractData);
+  }
+
   // Function extractData() extracts the data from the http response, which is
   // a json array, then return as an object.
   //
