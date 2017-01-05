@@ -9,7 +9,7 @@
 <mdl-card mdl-shadow="2">
   <form [formGroup]="form">
     <mdl-textfield label="Username" name="Username" type="text" formControlName="Username" floating-label></mdl-textfield>
-    <mdl-textfield label="Password" name="Password" type="text" formControlName="Password" floating-label></mdl-textfield>
+    <mdl-textfield label="Password" name="Password" type="password" formControlName="Password" floating-label></mdl-textfield>
     <button mdl-button (click)="login()" [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">
       Log In
     </button>
