@@ -31,10 +31,11 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         if (data.status == 200) {
-          localStorage.setItem('currentUser', JSON.stringify({ name: this.form._value.Username });
+          localStorage.setItem('currentUser', JSON.stringify({ name: this.form._value.Username }));
           this.ar.queryParams.subscribe(
             data => {
               var returnUrl = data['returnUrl'];
+              console.log(returnUrl);
               this.router.navigate([returnUrl]);
             }
           );
