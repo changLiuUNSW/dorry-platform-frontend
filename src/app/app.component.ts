@@ -6,6 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app.module';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 })
 export class AppComponent {
 
-  constructor(private configService: ConfigService, public toastr: ToastsManager, vRef: ViewContainerRef) {
+  constructor(private configService: ConfigService, public toastr: ToastsManager, vRef: ViewContainerRef, private router: Router) {
     this.toastr.setRootViewContainerRef(vRef);
   }
 
@@ -24,5 +25,6 @@ export class AppComponent {
 
   logout() {
     localStorage.clear();
+    this.router.navigate(['/login'], { queryParams: { returnUrl: "" } });
   }
 }
