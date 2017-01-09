@@ -4,23 +4,25 @@
   </button>
 </a>
 
-<div class="mdl-card mdl-shadow--2dp">
+<div *ngIf="container!=null" class="mdl-card mdl-shadow--2dp">
   <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/> -->
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Name</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ name | slice:1 }}</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ container.Name | slice:1 }}</span>
   </div>
   <hr>
 
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">ID</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ id }}</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ container.Id }}</span>
   </div>
   <hr>
 
   <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Application</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ image }}</span>
+    <span class="mdl-cell mdl-cell--2-col">App Name</span>
+    <span class="mdl-cell mdl-cell--10-col">
+      {{ container.Config.Image.split('/')[container.Config.Image.split('/').length - 1].split(':')[0] }}
+    </span>
   </div>
   <hr>
 
@@ -38,7 +40,7 @@
 
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Status</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ status | uppercase }}</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ container.State.Status | uppercase }}</span>
   </div>
   <hr>
 
@@ -66,7 +68,7 @@
 
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Created Date</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ created }}</span>
+    <span class="mdl-cell mdl-cell--10-col">{{ container.Created.split(".")[0].replace("T", " ") }}</span>
   </div>
   <hr>
 
@@ -87,7 +89,7 @@
     <span class="mdl-cell mdl-cell--10-col">
       <span *ngIf="binds">
         <span *ngIf="binds.length!=0">
-          <span *ngFor="let bind of binds">
+          <span *ngFor="let bind of container.HostConfig.Binds">
             {{ bind }}
             <br>
           </span>
@@ -106,7 +108,7 @@
   <div class="row mdl-grid">
     <span class="mdl-cell mdl-cell--2-col">Enviroments</span>
     <span class="mdl-cell mdl-cell--10-col">
-      <span *ngFor="let env of envs">
+      <span *ngFor="let env of container.Config.Env">
         {{ env }}
         <br>
       </span>

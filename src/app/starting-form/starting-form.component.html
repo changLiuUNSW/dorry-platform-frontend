@@ -4,180 +4,220 @@
   </button>
 </a>
 
-<mdl-tabs mdl-ripple mdl-tab-active-index="0">
-  <mdl-tab-panel>
-    <mdl-tab-panel-title>
-      <span>Default</span>
-    </mdl-tab-panel-title>
-    <mdl-tab-panel-content>
-      <div *ngIf="defaultConf!=null">
-        <div *ngIf="defaultConf.Image!=null" class="row mdl-grid">
+<div>
+  <div class="header">
+    App Details
+  </div>
+  <div class="details" *ngIf="image!=null">
+    <div class="app-misc">
+      <strong>Name:</strong>
+      {{image.RepoTags[0].split('/')[image.RepoTags[0].split('/').length-1].split(':')[0]}}
+    </div>
+    <div class="app-misc">
+      <strong>Version:</strong>
+      {{image.RepoTags[0].split(':')[image.RepoTags[0].split(':').length-1]}}
+    </div>
+    <div class="app-misc">
+      <strong>Size:</strong>
+      {{(image.Size/1000000).toFixed(3)}}
+      MB
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div class="header">
+    Service Starting Configuration
+  </div>
+  <mdl-tabs class="config" mdl-ripple mdl-tab-active-index="0">
+    <mdl-tab-panel>
+      <mdl-tab-panel-title>
+        <span>Default</span>
+      </mdl-tab-panel-title>
+      <mdl-tab-panel-content>
+        <div *ngIf="defaultConf!=null">
+          <div *ngIf="defaultConf.Image!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Image</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Image}}</span>
+          </div>
+          <div *ngIf="defaultConf.Cmd!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Cmd</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Cmd}}</span>
+          </div>
+          <div *ngIf="defaultConf.HostConfig!=null">
+            <div *ngIf="defaultConf.HostConfig.PortBindings!=null" class="row mdl-grid">
+              <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
+              <span class="mdl-cell mdl-cell--8-col">
+                <span *ngFor="let key of defaultPortKeyArray">
+                  <span>
+                    {{key}}->{{ defaultConf.HostConfig.PortBindings[key][0]["HostPort"] }}
+                    <br>
+                  </span>
+                </span>
+              </span>
+            </div>
+            <div *ngIf="defaultConf.HostConfig.Binds!=null" class="row mdl-grid">
+              <span class="mdl-cell mdl-cell--4-col">Binds</span>
+              <span class="mdl-cell mdl-cell--8-col">
+                <span *ngFor="let bind of defaultConf.HostConfig.Binds">
+                  <span>
+                    {{bind}}
+                    <br>
+                  </span>
+                </span>
+              </span>
+            </div>
+            <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+              <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+              <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
+            </div>
+            <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
+              <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+              <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
+            </div>
+          </div>
+          <div *ngIf="defaultConf.Tty!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Tty</span>
+            <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Tty}}</span>
+          </div>
+        </div>
+
+        <div *ngIf="defaultConf==null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">Default Not Found</span>
+        </div>
+
+        <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button" (click)="startWithConfig(defaultConf)" [disabled]="!defaultConf">Start</button>
+      </mdl-tab-panel-content>
+    </mdl-tab-panel>
+
+    <mdl-tab-panel mdl-tab-panel-title="Profile">
+      <div *ngIf="profileConf!=null">
+        <div *ngIf="profileConf.Image!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Image</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Image}}</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.Image}}</span>
         </div>
-        <div *ngIf="defaultConf.Cmd!=null" class="row mdl-grid">
+        <div *ngIf="profileConf.Cmd!=null" class="row mdl-grid">
           <span class="mdl-cell mdl-cell--4-col">Cmd</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Cmd}}</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.Cmd}}</span>
         </div>
-        <div *ngIf="defaultConf.HostConfig!=null">
-          <div *ngIf="defaultConf.HostConfig.PortBindings!=null" class="row mdl-grid">
+        <div *ngIf="profileConf.HostConfig!=null">
+          <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
             <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
             <span class="mdl-cell mdl-cell--8-col">
               <span *ngFor="let key of defaultPortKeyArray">
-              <li>
+                <span>
+                  {{key}}->{{ profileConf.HostConfig.PortBindings[key][0]["HostPort"] }}
+                  <br>
+                </span>
+              </span>
+            </span>
+          </div>
+          <div *ngIf="profileConf.HostConfig.Binds!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Binds</span>
+            <span class="mdl-cell mdl-cell--8-col">
+              <span *ngFor="let bind of profileConf.HostConfig.Binds">
+                <span>
+                  {{bind}}
+                  <br>
+                </span>
+              </span>
+            </span>
+          </div>
+          <div *ngIf="profileConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
+            <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
+          </div>
+          <div *ngIf="profileConf.HostConfig.Privileged!=null" class="row mdl-grid">
+            <span class="mdl-cell mdl-cell--4-col">Privileged</span>
+            <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
+          </div>
+        </div>
+        <div *ngIf="profileConf.Tty!=null" class="row mdl-grid">
+          <span class="mdl-cell mdl-cell--4-col">Tty</span>
+          <span class="mdl-cell mdl-cell--8-col">{{profileConf.Tty}}</span>
+        </div>
+      </div>
+
+      <div *ngIf="profileConf==null" class="row mdl-grid">
+        <span class="mdl-cell mdl-cell--4-col">Profile Not Found</span>
+      </div>
+
+      <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button" (click)="startWithConfig(profileConf)" [disabled]="!profileConf">Start</button>
+    </mdl-tab-panel>
+
+    <mdl-tab-panel mdl-tab-panel-title="Edit Profile">
+      <div class="mdl-card mdl-shadow--2dp">
+        <form [formGroup]="form" class="mdl-grid">
+          <span class="mdl-cell mdl-cell--6-col">
+            <mdl-textfield label="Name" type="text" formControlName="Name" floating-label></mdl-textfield>
+          </span>
+          <span class="mdl-cell mdl-cell--6-col">
+            <mdl-textfield label="Cmd" type="text" formControlName="Cmd" floating-label></mdl-textfield>
+          </span>
+          <span class="mdl-cell mdl-cell--6-col">
+            <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint" floating-label></mdl-textfield>
+          </span>
+          <span class="mdl-cell mdl-cell--6-col">
+            <mdl-textfield label="Binds" type="text" formControlName="Binds" floating-label></mdl-textfield>
+          </span>
+          <!-- <span class="mdl-cell mdl-cell--6-col">
+            <mdl-textfield label="ExposedPorts" type="text" formControlName="ExposedPorts" floating-label></mdl-textfield>
+          </span> -->
+          <span class="mdl-cell mdl-cell--6-col">
+            <h4>PortsBindings:
+            </h4>
+            <span class="mdl-grid">
+              <span class="mdl-cell mdl-cell--3-col">
+                <mdl-textfield pattern="[0-9]+" label="Container Port" type="text" formControlName="ContainerPort" floating-label></mdl-textfield>
+              </span>
+              <span style="line-height:80px;">:</span>
+              <span class="mdl-cell mdl-cell--3-col">
+                <mdl-textfield pattern="[0-9]+" label="Host Port" type="text" formControlName="HostPort" floating-label></mdl-textfield>
+              </span>
+              <span class="mdl-cell mdl-cell--3-col">
+                <button style="margin-top:10px;" mdl-button mdl-button-type="raised" class="mdl-button" [disabled]="!HostPort.valid || !ContainerPort.valid" (click)="addPortBinding()">
+                  add
+                </button>
+              </span>
+            </span>
+            <span *ngFor="let key of portBindsKeyArray">
+              <ul>
+                <img class="remove-icon" src="assets/icons/ic_remove_circle_red_24px.svg" (click)=removePortBinding(key)>
                 {{key}}
                 ->
-                {{ defaultConf.HostConfig.PortBindings[key][0]["HostPort"] }}
-              </li>
+                {{ portBinds[key][0]["HostPort"] }}
+              </ul>
             </span>
           </span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.Binds!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">Binds</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Binds}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.NetworkMode}}</span>
-        </div>
-        <div *ngIf="defaultConf.HostConfig.Privileged!=null" class="row mdl-grid">
-          <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-          <span class="mdl-cell mdl-cell--8-col">{{defaultConf.HostConfig.Privileged}}</span>
-        </div>
-      </div>
-      <div *ngIf="defaultConf.Tty!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">Tty</span>
-        <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Tty}}</span>
-      </div>
-    </div>
-
-    <div *ngIf="defaultConf==null" class="row mdl-grid">
-      <span class="mdl-cell mdl-cell--4-col">Default Not Found</span>
-    </div>
-
-    <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button" (click)="startWithConfig(defaultConf)" [disabled]="!defaultConf">Start</button>
-  </mdl-tab-panel-content>
-</mdl-tab-panel>
-
-<mdl-tab-panel mdl-tab-panel-title="Profile">
-  <div *ngIf="profileConf!=null">
-    <div *ngIf="profileConf.Image!=null" class="row mdl-grid">
-      <span class="mdl-cell mdl-cell--4-col">Image</span>
-      <span class="mdl-cell mdl-cell--8-col">{{profileConf.Image}}</span>
-    </div>
-    <div *ngIf="profileConf.Cmd!=null" class="row mdl-grid">
-      <span class="mdl-cell mdl-cell--4-col">Cmd</span>
-      <span class="mdl-cell mdl-cell--8-col">{{profileConf.Cmd}}</span>
-    </div>
-    <div *ngIf="profileConf.HostConfig!=null">
-      <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
-        <span class="mdl-cell mdl-cell--8-col">
-          <span *ngFor="let key of profilePortKeyArray">
-            <li>
-              {{key}}
-              ->
-              {{ profileConf.HostConfig.PortBindings[key][0]["HostPort"] }}
-            </li>
+          <span class="mdl-cell mdl-cell--6-col">
+            <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty" floating-label></mdl-textfield> -->
+            <h4>Tty:
+            </h4>
+            <mdl-radio formControlName="Tty" value="true" mdl-ripple>true</mdl-radio>
+            <mdl-radio formControlName="Tty" value="false" mdl-ripple>false</mdl-radio>
           </span>
-        </span>
-      </div>
-      <div *ngIf="profileConf.HostConfig.Binds!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">Binds</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Binds}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig.NetworkMode!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">NetworkMode</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.NetworkMode}}</span>
-      </div>
-      <div *ngIf="profileConf.HostConfig.Privileged!=null" class="row mdl-grid">
-        <span class="mdl-cell mdl-cell--4-col">Privileged</span>
-        <span class="mdl-cell mdl-cell--8-col">{{profileConf.HostConfig.Privileged}}</span>
-      </div>
-    </div>
-    <div *ngIf="profileConf.Tty!=null" class="row mdl-grid">
-      <span class="mdl-cell mdl-cell--4-col">Tty</span>
-      <span class="mdl-cell mdl-cell--8-col">{{profileConf.Tty}}</span>
-    </div>
-  </div>
-
-  <div *ngIf="profileConf==null" class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--4-col">Profile Not Found</span>
-  </div>
-
-  <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button" (click)="startWithConfig(profileConf)" [disabled]="!profileConf">Start</button>
-</mdl-tab-panel>
-
-<mdl-tab-panel mdl-tab-panel-title="Edit Profile">
-  <div class="mdl-card mdl-shadow--2dp">
-    <form [formGroup]="form" class="mdl-grid">
-      <span class="mdl-cell mdl-cell--6-col">
-        <mdl-textfield label="Name" type="text" formControlName="Name" floating-label></mdl-textfield>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <mdl-textfield label="Cmd" type="text" formControlName="Cmd" floating-label></mdl-textfield>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <mdl-textfield label="Entrypoint" type="text" formControlName="Entrypoint" floating-label></mdl-textfield>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <mdl-textfield label="Binds" type="text" formControlName="Binds" floating-label></mdl-textfield>
-      </span>
-      <!-- <span class="mdl-cell mdl-cell--6-col">
-          <mdl-textfield label="ExposedPorts" type="text" formControlName="ExposedPorts" floating-label></mdl-textfield>
-        </span> -->
-      <span class="mdl-cell mdl-cell--6-col">
-        <h4>PortsBindings:
-        </h4>
-        <span class="mdl-grid">
-          <span class="mdl-cell mdl-cell--3-col">
-            <mdl-textfield pattern="[0-9]+" label="Container Port" type="text" formControlName="ContainerPort" floating-label></mdl-textfield>
+          <span class="mdl-cell mdl-cell--6-col">
+            <h4>NetworkMode:
+            </h4>
+            <mdl-radio formControlName="NetworkMode" value="bridge" mdl-ripple>bridge</mdl-radio>
+            <mdl-radio formControlName="NetworkMode" value="host" mdl-ripple>host</mdl-radio>
+            <mdl-radio formControlName="NetworkMode" value="none" mdl-ripple>none</mdl-radio>
           </span>
-          <span style="line-height:80px;">:</span>
-          <span class="mdl-cell mdl-cell--3-col">
-            <mdl-textfield pattern="[0-9]+" label="Host Port" type="text" formControlName="HostPort" floating-label></mdl-textfield>
+          <span class="mdl-cell mdl-cell--6-col">
+            <h4>Privileged:
+            </h4>
+            <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
+            <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
           </span>
-          <span class="mdl-cell mdl-cell--3-col">
-            <button style="margin-top:10px;" mdl-button mdl-button-type="raised" class="mdl-button" [disabled]="!HostPort.valid || !ContainerPort.valid" (click)="addPortBinding()">
-              add
-            </button>
-          </span>
-        </span>
-        <span *ngFor="let key of portBindsKeyArray">
-          <ul>
-            <img class="remove-icon" src="assets/icons/ic_remove_circle_red_24px.svg" (click)=removePortBinding(key)>
-            {{key}}
-            ->
-            {{ portBinds[key][0]["HostPort"] }}
-          </ul>
-        </span>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <!-- <mdl-textfield label="Tty" type="text" formControlName="Tty" floating-label></mdl-textfield> -->
-        <h4>Tty:
-        </h4>
-        <mdl-radio formControlName="Tty" value="true" mdl-ripple>true</mdl-radio>
-        <mdl-radio formControlName="Tty" value="false" mdl-ripple>false</mdl-radio>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <h4>NetworkMode:
-        </h4>
-        <mdl-radio formControlName="NetworkMode" value="bridge" mdl-ripple>bridge</mdl-radio>
-        <mdl-radio formControlName="NetworkMode" value="host" mdl-ripple>host</mdl-radio>
-        <mdl-radio formControlName="NetworkMode" value="none" mdl-ripple>none</mdl-radio>
-      </span>
-      <span class="mdl-cell mdl-cell--6-col">
-        <h4>Privileged:
-        </h4>
-        <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
-        <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
-      </span>
-    </form>
+        </form>
 
-    <div>
-      <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="startWithConfig(null)">Start</button>
-      <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="saveConfig()">Save</button>
-    </div>
-  </div>
-</mdl-tab-panel>
-</mdl-tabs>
+        <div>
+          <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="startWithConfig(null)">Start</button>
+          <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="saveConfig()">Save</button>
+        </div>
+      </div>
+    </mdl-tab-panel>
+  </mdl-tabs>
+</div>

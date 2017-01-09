@@ -16,7 +16,6 @@
 
       <div class="mdl-card__title">
         <a routerLink="/services/{{service.Id}}">
-          <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_grey.svg"/> -->
           <img src="/assets/icons/ic_default_grey.svg"/>
         </a>
         <div class="mdl-card__title-text">
@@ -29,8 +28,10 @@
         <table class="mdl-data-table mdl-js-data-table">
           <tbody>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric">Application</td>
-              <td *ngIf="service.Image">{{ service.Image }}</td>
+              <td class="mdl-data-table__cell--non-numeric">App Name</td>
+              <td *ngIf="service.Image">
+                {{service.Image.split('/')[service.Image.split('/').length-1].split(':')[0]}}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -61,8 +62,8 @@
       </span>
     </div>
     <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button" (click)="restartContainer(container)" (click)="hideAlert()">Yes</button>
-      <button type="button" class=" mdl-button close" (click)="hideAlert()">No</button>
+      <button type="button" class="mdl-button button-restart" (click)="restartContainer(container)" (click)="hideAlert()">Restart</button>
+      <button type="button" class="mdl-button button-cancel" (click)="hideAlert()">Cancel</button>
     </div>
   </div>
 </div>
@@ -80,8 +81,8 @@
       </span>
     </div>
     <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button" (click)="removeContainer(container.Id)" (click)="hideAlert()">Yes</button>
-      <button type="button" class="mdl-button close" (click)="hideAlert()">No</button>
+      <button type="button" class="mdl-button button-remove" (click)="removeContainer(container.Id)" (click)="hideAlert()">Remove</button>
+      <button type="button" class="mdl-button button-cancel" (click)="hideAlert()">Cancel</button>
     </div>
   </div>
 </div>

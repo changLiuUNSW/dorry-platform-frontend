@@ -199,53 +199,63 @@
 
 .button-install {
   color: #ffffff;
-  background: #56b881;
+  background: #81c784;
 }
 
 .button-install:hover {
-  background: #81c784;
+  background: #56b881;
 }
 
 .button-remove {
   color: #ffffff;
-  background: #e55e5e;
+  background: #E57373;
 }
 
 .button-remove:hover {
-  background: #e57373;
+  background: #E53935;
 }
 
 .button-stop {
-  color: #212121;
-  background: #fafafa;
+  color: #ffffff;
+  background: #B9B9B9;
 }
 
 .button-stop:hover {
-  background: #fcfcfc;
+  background: #9E9E9E;
 }
 
 .button-start {
   color: #ffffff;
-  background: #56b881;
+  background: #81c784;
 }
 
 .button-start:hover {
-  background: #81c784;
+  background: #56b881;
 }
 
 .button-restart {
   color: #ffffff;
-  background: #56b881;
+  background: #81c784;
 }
 
 .button-restart:hover {
-  background: #81c784;
+  background: #56b881;
+}
+
+.button-cancel {
+  color: #78909C;
+  background: #CFD8DC;
+}
+
+.button-cancel:hover {
+  color: #ffffff;
+  background: #B0BEC5;
 }
 
 .button-back {
   background: #607c8c;
   font-size: 0;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
 }
 
 .button-back:hover {

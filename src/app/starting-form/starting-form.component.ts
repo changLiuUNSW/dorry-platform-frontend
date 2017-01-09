@@ -66,7 +66,7 @@ export class StartingFormComponent implements OnInit {
           .subscribe(data => {
             this.image = data;
             this.getData();
-            // console.log(this.image);
+            console.log(this.image);
           });
       });
   }
@@ -78,8 +78,8 @@ export class StartingFormComponent implements OnInit {
     this.portBinds[this.form._value.ContainerPort + "/tcp"] = [{ "HostPort": this.form._value.HostPort }];
     this.exposedBinds[this.form._value.ContainerPort + "/tcp"] = {};
     this.portBindsKeyArray = Object.keys(this.portBinds);
-    console.log(JSON.stringify(this.portBinds));
-    console.log(JSON.stringify(this.exposedBinds));
+    // console.log(JSON.stringify(this.portBinds));
+    // console.log(JSON.stringify(this.exposedBinds));
   }
 
   removePortBinding(key: string) {
@@ -89,8 +89,8 @@ export class StartingFormComponent implements OnInit {
     delete this.portBinds[key];
     delete this.exposedBinds[key];
     this.portBindsKeyArray = Object.keys(this.portBinds);
-    console.log(JSON.stringify(this.portBinds));
-    console.log(JSON.stringify(this.exposedBinds));
+    // console.log(JSON.stringify(this.portBinds));
+    // console.log(JSON.stringify(this.exposedBinds));
   }
 
   startImage(image: Object) {
@@ -105,9 +105,9 @@ export class StartingFormComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.defaultConf = data.default_conf;
-        console.log(data.default_conf);
+        // console.log(data.default_conf);
         this.profileConf = data.profile;
-        console.log(this.profileConf);
+        // console.log(this.profileConf);
         if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
         if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {

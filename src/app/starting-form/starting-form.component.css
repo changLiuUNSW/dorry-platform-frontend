@@ -34,3 +34,19 @@ mdl-textfield {
 .remove-icon:hover {
   cursor: pointer;
 }
+
+.header {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.config,
+.details {
+  padding: 8px;
+}
+
+hr {
+  margin: 24px 0;
+  padding: 0;
+  border: 1px solid #c2c2c2;
+}
