@@ -122,13 +122,13 @@ export class StartingFormComponent implements OnInit {
     console.log(image)
     this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
-        var message: string;
-        message = data.json.message;
-        if (!data.json.message) {
-          message = data.json;
-        }
-        if (data.statusCode)
+        if (data.statusCode) {
+          var message: string;
+          message = data.json.message;
+          if (!data.json.message)
+            message = data.json;
           this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 3000 });
+        }
         else
           this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
       });

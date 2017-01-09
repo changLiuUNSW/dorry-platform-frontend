@@ -1,118 +1,127 @@
-<a routerLink="/services">
-  <button mdl-button mdl-button-type="raised" class="button-back">
-    <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
-  </button>
-</a>
-
-<div *ngIf="container!=null" class="mdl-card mdl-shadow--2dp">
-  <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/> -->
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Name</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ container.Name | slice:1 }}</span>
-  </div>
-  <hr>
-
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">ID</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ container.Id }}</span>
-  </div>
-  <hr>
-
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">App Name</span>
-    <span class="mdl-cell mdl-cell--10-col">
-      {{ container.Config.Image.split('/')[container.Config.Image.split('/').length - 1].split(':')[0] }}
+<mdl-layout-header class="sub-header">
+  <mdl-layout-header-row>
+    <a routerLink="/services">
+      <button mdl-button mdl-button-type="raised" class="button-back">
+        <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
+      </button>
+    </a>
+    <span *ngIf="container!=null">
+      {{ container.Name | slice:1 }}
     </span>
-  </div>
-  <hr>
+  </mdl-layout-header-row>
+</mdl-layout-header>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">App Registry</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ registry }}</span>
-  </div>
-  <hr>
+<div class="content-container">
+  <div *ngIf="container!=null" class="mdl-card mdl-shadow--2dp">
+    <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_insert_photo_black_48px.svg"/> -->
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Service Name</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ container.Name | slice:1 }}</span>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">App Author</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ author }}</span>
-  </div>
-  <hr>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">ID</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ container.Id }}</span>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Status</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ container.State.Status | uppercase }}</span>
-  </div>
-  <hr>
-
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">IP Address</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ ip }}</span>
-  </div>
-  <hr>
-
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Ports</span>
-    <span class="mdl-cell mdl-cell--10-col">
-      <span *ngIf="ports.length!=0">
-        <span *ngFor="let port of ports">
-          {{ port }}
-          <br>
-        </span>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">App Name</span>
+      <span class="mdl-cell mdl-cell--10-col">
+        {{ container.Config.Image.split('/')[container.Config.Image.split('/').length - 1].split(':')[0] }}
       </span>
-      <span *ngIf="ports.length==0">
-        None
-      </span>
-    </span>
-  </div>
-  <hr>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Created Date</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ container.Created.split(".")[0].replace("T", " ") }}</span>
-  </div>
-  <hr>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">App Registry</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ registry }}</span>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Entrypoint</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ entrypoint }}</span>
-  </div>
-  <hr>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">App Author</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ author }}</span>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Cmd</span>
-    <span class="mdl-cell mdl-cell--10-col">{{ cmd }}</span>
-  </div>
-  <hr>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Status</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ container.State.Status | uppercase }}</span>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Binds</span>
-    <span class="mdl-cell mdl-cell--10-col">
-      <span *ngIf="binds">
-        <span *ngIf="binds.length!=0">
-          <span *ngFor="let bind of container.HostConfig.Binds">
-            {{ bind }}
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">IP Address</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ ip }}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Ports</span>
+      <span class="mdl-cell mdl-cell--10-col">
+        <span *ngIf="ports.length!=0">
+          <span *ngFor="let port of ports">
+            {{ port }}
             <br>
           </span>
         </span>
-        <span *ngIf="binds.length==0">
+        <span *ngIf="ports.length==0">
           None
         </span>
       </span>
-      <span *ngIf="!binds">
-        None
-      </span>
-    </span>
-  </div>
-  <hr>
+    </div>
+    <hr>
 
-  <div class="row mdl-grid">
-    <span class="mdl-cell mdl-cell--2-col">Enviroments</span>
-    <span class="mdl-cell mdl-cell--10-col">
-      <span *ngFor="let env of container.Config.Env">
-        {{ env }}
-        <br>
-      </span>
-    </span>
-  </div>
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Created Date</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ container.Created.split(".")[0].replace("T", " ") }}</span>
+    </div>
+    <hr>
 
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Entrypoint</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ entrypoint }}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Cmd</span>
+      <span class="mdl-cell mdl-cell--10-col">{{ cmd }}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Binds</span>
+      <span class="mdl-cell mdl-cell--10-col">
+        <span *ngIf="binds">
+          <span *ngIf="binds.length!=0">
+            <span *ngFor="let bind of container.HostConfig.Binds">
+              {{ bind }}
+              <br>
+            </span>
+          </span>
+          <span *ngIf="binds.length==0">
+            None
+          </span>
+        </span>
+        <span *ngIf="!binds">
+          None
+        </span>
+      </span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--2-col">Enviroments</span>
+      <span class="mdl-cell mdl-cell--10-col">
+        <span *ngFor="let env of container.Config.Env">
+          {{ env }}
+          <br>
+        </span>
+      </span>
+    </div>
+
+  </div>
 </div>

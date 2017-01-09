@@ -15,8 +15,10 @@
 .mdl-layout-title {
   background: #37474f;
   color: #ffffff;
-  font-size: 32px;
+  padding-left: 32px;
+  font-size: 28px;
   font-weight: 500;
+  font-family: 'Roboto Mono', monospace !important;
   text-transform: uppercase;
 }
 
@@ -26,13 +28,32 @@
   border-right: 0;
 }
 
+mdl-layout-header.sub-header {
+  /*height: 56px;
+  min-height: 56px;*/
+  background: #ffffff;
+}
+
+mdl-layout-header.sub-header mdl-layout-header-row span {
+  color: #000000;
+  padding-left: 24px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+mdl-layout-header.sub-header mdl-layout-header-row {
+  padding: 0 40px;
+  /*height: inherit;*/
+}
+
 .mdl-layout__drawer .mdl-navigation {
   padding-top: 0;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
   color: #b0bec5;
-  font-size: 15px;
+  font-size: 16px;
+  padding-left: 32px;
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
@@ -95,9 +116,11 @@
 .mdl-layout__content {
   background: #eeeeee;
 }
-
-.page-content {
+/*.page-content {
   padding: 32px 104px;
+}*/
+.content-container {
+  padding: 24px 80px;
 }
 
 .dialog-container {
@@ -255,7 +278,7 @@
 .button-back {
   background: #607c8c;
   font-size: 0;
-  margin: 0 0 24px;
+  margin: auto 0;
 }
 
 .button-back:hover {
