@@ -1,20 +1,22 @@
-<div class="login-logo">
-  <img src="/assets/icons/logo.svg">
-</div>
+<div class="container">
+  <div class="login-logo">
+    <img src="/assets/icons/logo.svg">
+  </div>
 
-<div class="login-header">
-  Login with your account
-</div>
+  <div class="login-header">
+    Login with your account
+  </div>
 
-<mdl-card mdl-shadow="2">
-  <form [formGroup]="form">
-    <mdl-textfield label="Username" name="Username" type="text" formControlName="Username" floating-label></mdl-textfield>
-    <mdl-textfield label="Password" name="Password" type="password" formControlName="Password" floating-label></mdl-textfield>
-    <button mdl-button (click)="login()" [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">
-      Log In
-    </button>
-  </form>
-</mdl-card>
-<div class="login-help">
-  Need help? Contact us via 110.
+  <mdl-card mdl-shadow="2">
+    <form [formGroup]="form">
+      <mdl-textfield label="Username" name="Username" type="text" formControlName="Username" floating-label></mdl-textfield>
+      <mdl-textfield label="Password" name="Password" type="password" formControlName="Password" floating-label></mdl-textfield>
+      <button mdl-button (click)="login()" [disabled]="!form.valid" mdl-button-type="raised" mdl-ripple mdl-colored="primary">
+        Log In
+      </button>
+    </form>
+  </mdl-card>
+  <div class="login-help">
+    Need help? Contact us via 110.
+  </div>
 </div>

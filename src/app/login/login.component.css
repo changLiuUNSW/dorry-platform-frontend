@@ -1,3 +1,7 @@
+.container {
+  padding: 48px;
+}
+
 .login-header,
 .login-help,
 .login-logo,
