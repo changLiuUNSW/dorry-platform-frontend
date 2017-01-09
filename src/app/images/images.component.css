@@ -101,8 +101,9 @@ popover-content {
   height: 46px;
 }
 
-.mdl-dialog.config-form .mdl-dialog__content {
+.mdl-dialog .mdl-dialog__content {
   padding: 12px 36px;
+  white-space: initial;
 }
 
 .mdl-dialog.config-form .mdl-textfield {

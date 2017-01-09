@@ -4,6 +4,8 @@ import { LoginService } from './login.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   Password = new FormControl();
 
   constructor(private loginService: LoginService, private fb: FormBuilder, private ar: ActivatedRoute,
-    private router: Router) {
+    private router: Router, public toastr: ToastsManager) {
 
     this.form = fb.group({
       'Username': this.Username,
@@ -29,7 +31,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.form._value.Username, this.form._value.Password)
       .subscribe(data => {
-        console.log(data);
         if (data.status == 200) {
           localStorage.setItem('currentUser', JSON.stringify({ name: this.form._value.Username }));
           this.ar.queryParams.subscribe(
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
             }
           );
         }
-      })
+      },
+      err => this.toastr.error("Incorrect username or password.", 'ERROR', { toastLife: 3000 }));
   }
 
   checkSession() {
