@@ -61,9 +61,7 @@ export class ContainersErrorComponent implements OnInit {
           this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
         else
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
+        this.reloadEvent.emit(true);
       });
   }
 
@@ -80,12 +78,11 @@ export class ContainersErrorComponent implements OnInit {
         // else
         //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
         // this.container.spinner = 0;
-        console.log(data);
+
+        // console.log(data);
         if (data) {
           this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 3000 });
-          setTimeout(function() {
-            this.reloadEvent.emit(true);
-          }.bind(this), 300);
+          this.reloadEvent.emit(true);
         }
       });
   }
