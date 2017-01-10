@@ -122,10 +122,13 @@
       </div>
       <div class="mdl-dialog__content">
         <span>
+          Do you want to remove
           <span>
             <strong>{{image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1]}}</strong>
-          </span>
-          may not be removed since its services are running. Do you want to remove it ?
+          </span>?
+          <br>
+          <strong>Warning:</strong>
+          The application may not be removed since its services are running.
         </span>
       </div>
       <div class="mdl-dialog__actions">

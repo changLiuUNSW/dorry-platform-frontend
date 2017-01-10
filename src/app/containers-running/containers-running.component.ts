@@ -65,9 +65,7 @@ export class ContainersRunningComponent implements OnInit {
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' stopped', 'SUCCESS', { toastLife: 3000 });
         this.getRunningContainers();
         this.container.spinner = 0;
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
+        this.reloadEvent.emit(true);
       });
   }
 

@@ -65,9 +65,7 @@ export class ContainersStoppedComponent implements OnInit {
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' restarted', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = 0;
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
+        this.reloadEvent.emit(true);
       });
   }
 
@@ -81,9 +79,7 @@ export class ContainersStoppedComponent implements OnInit {
           this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
         this.getStoppedContainers();
         this.container.spinner = 0;
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
+        this.reloadEvent.emit(true);
       });
   }
 
