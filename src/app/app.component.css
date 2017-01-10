@@ -52,7 +52,7 @@ mdl-layout-header.sub-header mdl-layout-header-row {
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
   color: #b0bec5;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 32px;
 }
 
@@ -191,15 +191,17 @@ mdl-layout-header.sub-header mdl-layout-header-row {
 }
 /* ------ icon no shadow border 4px ------ */
 .mdl-card__title a img {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
+  /*border: 2px #000000 solid;*/
   border-radius: 4px;
   box-shadow: none;
 }
 
 .mdl-card__title a img:hover {
+  border: 2px #000000 solid;
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
-  transition: 0.4s;
+  /*transition: 0.2s;*/
 }
 /* ------------------------------------- */
 .mdl-card.mdl-shadow--2dp.mdl-cell {

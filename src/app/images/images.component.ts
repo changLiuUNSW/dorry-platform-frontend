@@ -55,17 +55,16 @@ export class ImagesComponent implements OnInit {
     this.imagesService.getImageInfoes()
       .subscribe(data => {
         this.imageInfoes = data;
+        this.hasApp = (this.imageInfoes.length !== 0);
 
-        // Counting the images, asynchronously
-        var j = 0;
+        // Get the picture url from database
         for (var i = 0; i < this.imageInfoes.length; i++) {
           this.imagesService.getData(this.imageInfoes[i].Id)
             .subscribe(appData => {
-              if (appData) {
-                // console.log(j, this.imageInfoes[j]);
-                this.imageInfoes[j]['pic_url'] = appData.pic_url;
-                j++;
-                this.hasApp = (this.imageInfoes.length !== 0);
+              for (var j = 0; j < this.imageInfoes.length; j++) {
+                if (appData.image_id == this.imageInfoes[j].Id) {
+                  this.imageInfoes[j]['pic_url'] = appData.pic_url;
+                }
               }
             });
         }

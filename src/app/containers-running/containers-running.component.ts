@@ -39,16 +39,16 @@ export class ContainersRunningComponent implements OnInit {
         else
           this.hasRunning = (this.containers.length !== 0);
 
-        // Counting the containers, asynchronously
-        var j = 0;
+        // Get the picture url from database
         for (var i = 0; i < this.containers.length; i++) {
-          this.imageService.getData(this.containers[i]['ImageID']).subscribe(appData => {
-            if (appData) {
-              // console.log(appData);
-              this.containers[j]['pic_url'] = appData.pic_url;
-              j++;
-            }
-          });
+          this.imageService.getData(this.containers[i]['ImageID'])
+            .subscribe(appData => {
+              for (var j = 0; j < this.containers.length; j++) {
+                if (appData.image_id == this.containers[j]['ImageID']) {
+                  this.containers[j]['pic_url'] = appData.pic_url;
+                }
+              }
+            });
         }
       });
   }

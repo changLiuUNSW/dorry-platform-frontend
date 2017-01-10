@@ -1,8 +1,7 @@
 * {
   font-family: Roboto, sans-serif !important;
 }
-
-.popover {
+/*.popover {
   background-color: #737373;
   max-width: 400px;
   border-radius: 0;
@@ -19,8 +18,7 @@
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   overflow: hidden;
-}
-
+}*/
 .mdl-spinner__layer {
   border-color: white !important;
 }
