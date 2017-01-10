@@ -7,6 +7,14 @@ a button.button-back {
   padding: 32px 160px;
 }
 
+.content-container div img {
+  height: 104px;
+  width: 104px;
+  border: 2px solid;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
 .app-misc.mdl-grid {
   padding: 0;
 }

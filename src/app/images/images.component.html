@@ -22,7 +22,8 @@
 
         <div class="mdl-card__title">
           <a routerLink="/apps/{{app.Id}}">
-            <img src="/assets/icons/ic_default_color.svg"/>
+            <img *ngIf="app.pic_url" src="{{app.pic_url}}"/>
+            <img *ngIf="!app.pic_url" src="/assets/icons/ic_default_color.svg"/>
           </a>
           <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg" [popover]="myPopover" [popoverOnHover]="true"/>
         <a>

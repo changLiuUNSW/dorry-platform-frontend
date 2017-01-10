@@ -13,6 +13,9 @@
 
 <div class="content-container">
   <div>
+    <img *ngIf="pic_url" src="{{pic_url}}">
+    <img *ngIf="!pic_url" src="/assets/icons/ic_default_color.svg">
+
     <div class="header">
       App Details
     </div>
@@ -51,7 +54,7 @@
           <strong>Description</strong>
         </span>
         <span class="mdl-cell mdl-cell--10-col">
-          None
+          {{desc}}
         </span>
       </div>
 

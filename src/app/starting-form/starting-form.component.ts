@@ -18,6 +18,10 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
 export class StartingFormComponent implements OnInit {
 
   image: Object;
+
+  desc: string;
+  pic_url: string;
+
   portBinds: Object;
   portBindsKeyArray: string[];
   exposedBinds: Object;
@@ -104,15 +108,16 @@ export class StartingFormComponent implements OnInit {
     this.imagesService.getData(this.image.Id)
       .subscribe(data => {
         console.log(data);
+        this.desc = data.description;
+        this.pic_url = data.pic_url;
         this.defaultConf = data.default_conf;
         // console.log(data.default_conf);
         this.profileConf = data.profile;
         // console.log(this.profileConf);
-        if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
+        if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
-        if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {
+        if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
           this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
-        }
       });
   }
 
