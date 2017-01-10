@@ -26,7 +26,7 @@
           <strong>App Name</strong>
         </span>
         <span class="mdl-cell mdl-cell--10-col">
-          {{image.RepoTags[0].split('/')[image.RepoTags[0].split('/').length-1].split(':')[0]}}
+          {{image.RepoTags[0].split('/').slice(-1)[0].split(':')[0]}}
         </span>
       </div>
 
@@ -36,6 +36,15 @@
         </span>
         <span class="mdl-cell mdl-cell--10-col">
           {{image.RepoTags[0].split(':')[image.RepoTags[0].split(':').length-1]}}
+        </span>
+      </div>
+
+      <div class="app-misc mdl-grid">
+        <span class="mdl-cell mdl-cell--2-col">
+          <strong>ID</strong>
+        </span>
+        <span class="mdl-cell mdl-cell--10-col">
+          {{image.Id.split(':').slice(-1)[0]}}
         </span>
       </div>
 
