@@ -11,7 +11,8 @@
 
       <div class="mdl-card__title">
         <a routerLink="/services/{{service.Id}}">
-          <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/>
+          <img *ngIf="service.pic_url" class="mdl-card mdl-shadow--2dp" src="{{service.pic_url}}">
+          <img *ngIf="!service.pic_url" class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default.svg"/>
         </a>
         <div class="mdl-card__title-text">
           <div class="service-name">{{ service.Names[0] | slice:1 }}</div>

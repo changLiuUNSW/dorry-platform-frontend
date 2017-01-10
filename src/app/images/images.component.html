@@ -23,11 +23,11 @@
         <div class="mdl-card__title">
           <a routerLink="/apps/{{app.Id}}">
             <img *ngIf="app.pic_url" src="{{app.pic_url}}"/>
-            <img *ngIf="!app.pic_url" src="/assets/icons/ic_default_color.svg"/>
+            <img *ngIf="!app.pic_url" src="/assets/icons/ic_default.svg"/>
           </a>
-          <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg" [popover]="myPopover" [popoverOnHover]="true"/>
+          <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default.svg" [popover]="myPopover" [popoverOnHover]="true"/>
         <a>
-          <img src="/assets/icons/ic_default_color.svg" [popover]="myPopover" [popoverOnHover]="true"/>
+          <img src="/assets/icons/ic_default.svg" [popover]="myPopover" [popoverOnHover]="true"/>
         </a>
         <img class="card-img" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/> -->
           <div class="mdl-card__title-text">
@@ -114,23 +114,23 @@
     </div>
   </div>
 
-<!-- The alert dialog for remove one appliacation -->
-<div class="dialog-container" *ngIf="showAlert">
-  <div class="mdl-dialog">
-    <div class="mdl-dialog__title">
-      Remove Application
-    </div>
-    <div class="mdl-dialog__content">
-      <span>
+  <!-- The alert dialog for remove one appliacation -->
+  <div class="dialog-container" *ngIf="showAlert">
+    <div class="mdl-dialog">
+      <div class="mdl-dialog__title">
+        Remove Application
+      </div>
+      <div class="mdl-dialog__content">
         <span>
-          <strong>{{image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1]}}</strong>
+          <span>
+            <strong>{{image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1]}}</strong>
+          </span>
+          may not be removed since its services are running. Do you want to remove it ?
         </span>
-        may not be removed since its services are running. Do you want to remove it ?
-      </span>
-    </div>
-    <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button button-remove" (click)="removeImage(image)" (click)="hideAlert()">Remove</button>
-      <button type="button" class="mdl-button button-cancel" (click)="hideAlert()">Cancel</button>
+      </div>
+      <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button button-remove" (click)="removeImage(image)" (click)="hideAlert()">Remove</button>
+        <button type="button" class="mdl-button button-cancel" (click)="hideAlert()">Cancel</button>
+      </div>
     </div>
   </div>
-</div>

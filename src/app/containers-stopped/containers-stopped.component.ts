@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
+import { ImagesService } from '../images/images.service';
 
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
@@ -21,7 +22,7 @@ export class ContainersStoppedComponent implements OnInit {
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
+  constructor(private containerService: ContainerService, private imageService: ImagesService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getStoppedContainers();
@@ -32,11 +33,23 @@ export class ContainersStoppedComponent implements OnInit {
     this.containerService.getStoppedContainers()
       .subscribe(data => {
         this.containers = data;
+        // console.log(this.containers);
         for (let item of this.containers) {
           item.bridge = item['HostConfig']['NetworkMode'] == 'default' ? 'bridge' : item['HostConfig']['NetworkMode']
         }
-        console.log(this.containers);
         this.hasStopped = (this.containers.length !== 0);
+
+        // Counting the containers, asynchronously
+        var j = 0;
+        for (var i = 0; i < this.containers.length; i++) {
+          this.imageService.getData(this.containers[i]['ImageID']).subscribe(appData => {
+            if (appData) {
+              // console.log(appData);
+              this.containers[j]['pic_url'] = appData.pic_url;
+              j++;
+            }
+          });
+        }
       });
   }
 
