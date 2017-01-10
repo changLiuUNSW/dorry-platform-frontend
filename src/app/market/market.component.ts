@@ -24,9 +24,7 @@ export class MarketComponent implements OnInit {
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        console.log(data);
         this.items = data;
-        //-----------------
         console.log(this.items);
         for (var item of this.items) {
           this.getTags(item);
@@ -37,7 +35,7 @@ export class MarketComponent implements OnInit {
   private getTags(item: any) {
     this.marketService.getTags(item)
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         item.tag = data.tags[0];
       });
   }

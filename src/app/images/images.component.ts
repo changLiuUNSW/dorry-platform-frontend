@@ -55,8 +55,19 @@ export class ImagesComponent implements OnInit {
     this.imagesService.getImageInfoes()
       .subscribe(data => {
         this.imageInfoes = data;
-        console.log(this.imageInfoes);
         this.hasApp = (this.imageInfoes.length !== 0);
+
+        // Get the picture url from database
+        for (var i = 0; i < this.imageInfoes.length; i++) {
+          this.imagesService.getData(this.imageInfoes[i].Id)
+            .subscribe(appData => {
+              for (var j = 0; j < this.imageInfoes.length; j++) {
+                if (appData.image_id == this.imageInfoes[j].Id) {
+                  this.imageInfoes[j]['pic_url'] = appData.pic_url;
+                }
+              }
+            });
+        }
       })
   }
 
