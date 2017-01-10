@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesService } from '../images/images.service';
+import { ImageInfo } from '../images/imageInfo';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -122,14 +123,19 @@ export class StartingFormComponent implements OnInit {
   }
 
   // Start a container with config
-  startWithConfig(config: Object) {
+  startWithConfig(config: Object, image: ImageInfo) {
+    console.log(image)
     this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
-        console.log(data);
-        if (data.statusCode)
-          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        if (data.statusCode) {
+          var message: string;
+          message = data.json.message;
+          if (!data.json.message)
+            message = data.json;
+          this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 3000 });
+        }
         else
-          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
       });
   }
 

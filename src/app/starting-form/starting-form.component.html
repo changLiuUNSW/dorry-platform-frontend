@@ -124,7 +124,7 @@
             <span class="mdl-cell mdl-cell--4-col">Default Not Found</span>
           </div>
 
-          <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button" (click)="startWithConfig(defaultConf)" [disabled]="!defaultConf">Start</button>
+          <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button" (click)="startWithConfig(defaultConf,image)" [disabled]="!defaultConf">Start</button>
         </mdl-tab-panel-content>
       </mdl-tab-panel>
 
@@ -180,7 +180,7 @@
           <span class="mdl-cell mdl-cell--4-col">Profile Not Found</span>
         </div>
 
-        <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button" (click)="startWithConfig(profileConf)" [disabled]="!profileConf">Start</button>
+        <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button" (click)="startWithConfig(profileConf,image)" [disabled]="!profileConf">Start</button>
       </mdl-tab-panel>
 
       <mdl-tab-panel mdl-tab-panel-title="Edit My Profile">
@@ -250,7 +250,7 @@
           </form>
 
           <div>
-            <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="startWithConfig(null)">Start</button>
+            <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="startWithConfig(null,image)">Start</button>
             <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="saveConfig()">Save</button>
           </div>
         </div>

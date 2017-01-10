@@ -104,7 +104,7 @@ export class ImagesComponent implements OnInit {
         if (data.statusCode)
           this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes();
       });
