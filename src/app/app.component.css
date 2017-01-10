@@ -344,3 +344,9 @@ mdl-spinner {
 .logout-button:hover {
   cursor: pointer;
 }
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
