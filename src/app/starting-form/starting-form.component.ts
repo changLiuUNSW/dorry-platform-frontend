@@ -27,7 +27,7 @@ export class StartingFormComponent implements OnInit {
   portBindsKeyArray: string[];
   exposedBinds: Object;
   defaultConf: Object;
-  defautltPortKeyArray: string[];
+  defaultPortKeyArray: string[];
   profileConf: Object;
   profilePortKeyArray: string[];
 
@@ -115,10 +115,16 @@ export class StartingFormComponent implements OnInit {
         // console.log(data.default_conf);
         this.profileConf = data.profile;
         // console.log(this.profileConf);
-        if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
+        // if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
+        //   this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
+        // if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
+        //   this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
+        // console.log(this.profilePortKeyArray);
+        if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
-        if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
+        if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {
           this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
+        }
       });
   }
 

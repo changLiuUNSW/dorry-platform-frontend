@@ -43,6 +43,13 @@ mdl-textfield {
   overflow: auto;
 }
 
+span ul img.remove-icon {
+  height: initial;
+  width: initial;
+  border: 0;
+  margin: 0;
+}
+
 .remove-icon:hover {
   cursor: pointer;
 }

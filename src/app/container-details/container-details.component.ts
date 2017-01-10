@@ -66,6 +66,11 @@ export class ContainerDetailsComponent implements OnInit {
               this.entrypoint = "None";
             }
 
+            this.envs = data.Config.Env == null ? ["None"] : data.Config.Env;
+            if (data.Config.Env != null && data.Config.Env.length > 0 && data.Config.Env[0].trim() == "") {
+              this.envs = ["None"];
+            }
+
             for (var port in data.NetworkSettings.Ports) {
               if (data.NetworkSettings.Ports[port] != null) {
                 port = data.NetworkSettings.Ports[port][0].HostPort + '->' + port;
