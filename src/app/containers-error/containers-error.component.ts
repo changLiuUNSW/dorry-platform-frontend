@@ -58,9 +58,9 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.removeContainer(id)
       .subscribe(data => {
         if (data.json().statusCode)
-          this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
+          this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 5000 });
         else
-          this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 5000 });
         this.reloadEvent.emit(true);
       });
   }
@@ -70,18 +70,18 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.removeErrorContainers()
       .subscribe(data => {
         // if (data.json().statusCode)
-        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
+        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 5000 });
         // else
-        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
+        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 5000 });
         // if (data.json().statusCode)
-        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
+        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 5000 });
         // else
-        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
+        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 5000 });
         // this.container.spinner = 0;
 
         // console.log(data);
         if (data) {
-          this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 5000 });
           this.reloadEvent.emit(true);
         }
       });
