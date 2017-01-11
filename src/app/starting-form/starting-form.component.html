@@ -95,7 +95,7 @@
               <span class="mdl-cell mdl-cell--8-col">{{defaultConf.Cmd}}</span>
             </div>
             <div *ngIf="defaultConf.HostConfig!=null">
-              <div *ngIf="defaultConf.HostConfig.PortBindings!=null" class="row mdl-grid">
+              <div *ngIf="defaultConf.HostConfig.PortBindings!=null && defaultPortKeyArray.length!=0" class="row mdl-grid">
                 <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
                 <span class="mdl-cell mdl-cell--8-col">
                   <span *ngFor="let key of defaultPortKeyArray">
@@ -151,7 +151,7 @@
             <span class="mdl-cell mdl-cell--8-col">{{profileConf.Cmd}}</span>
           </div>
           <div *ngIf="profileConf.HostConfig!=null">
-            <div *ngIf="profileConf.HostConfig.PortBindings!=null" class="row mdl-grid">
+            <div *ngIf="profileConf.HostConfig.PortBindings!=null && profilePortKeyArray.length!=0" class="row mdl-grid">
               <span class="mdl-cell mdl-cell--4-col">PortBindings</span>
               <span class="mdl-cell mdl-cell--8-col">
                 <span *ngFor="let key of profilePortKeyArray">
