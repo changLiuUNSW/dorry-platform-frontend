@@ -11,15 +11,11 @@ import { ContainerService } from '../containers/container.service';
   ]
 })
 export class ContainerDetailsComponent implements OnInit {
-  name: any;
-  id: any;
-  image: any;
+  container: Object;
   registry: any;
   author: any;
-  status: any;
   ip: any;
   ports = [];
-  created: any;
   cmd: any;
   entrypoint: any;
   binds: any;
@@ -40,11 +36,9 @@ export class ContainerDetailsComponent implements OnInit {
         this.containerService.inspectContainer(id)
           .subscribe(data => {
             this.bridge = data.HostConfig.NetworkMode == 'default' ? 'bridge' : data.HostConfig.NetworkMode
-            console.log(data);
-            this.name = data.Name;
-            this.id = data.Id;
+            this.container = data;
+            console.log(this.container);
 
-            this.image = data.Config.Image.split('/')[data.Config.Image.split('/').length - 1].split(':')[0];
             if (data.Config.Image.split('/').length == 1) {
               this.registry = 'Docker';
               this.author = 'Docker';
@@ -62,10 +56,7 @@ export class ContainerDetailsComponent implements OnInit {
               this.author = data.Config.Image.split('/')[1];
             }
 
-
-            this.status = data.State.Status;
             this.ip = data.NetworkSettings.Networks[this.bridge].IPAddress == "" ? "None" : data.NetworkSettings.Networks[this.bridge].IPAddress;
-            this.created = data.Created.split(".")[0].replace("T", " ");
             this.cmd = data.Config.Cmd == null ? "None" : data.Config.Cmd;
             if (data.Config.Cmd != null && data.Config.Cmd.length > 0 && data.Config.Cmd[0].trim() == "") {
               this.cmd = "None";
@@ -74,8 +65,11 @@ export class ContainerDetailsComponent implements OnInit {
             if (data.Config.Entrypoint != null && data.Config.Entrypoint.length > 0 && data.Config.Entrypoint[0].trim() == "") {
               this.entrypoint = "None";
             }
-            this.envs = data.Config.Env;
-            this.binds = data.HostConfig.Binds;
+
+            this.envs = data.Config.Env == null ? ["None"] : data.Config.Env;
+            if (data.Config.Env != null && data.Config.Env.length > 0 && data.Config.Env[0].trim() == "") {
+              this.envs = ["None"];
+            }
 
             for (var port in data.NetworkSettings.Ports) {
               if (data.NetworkSettings.Ports[port] != null) {

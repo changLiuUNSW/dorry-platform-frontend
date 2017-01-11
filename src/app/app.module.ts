@@ -23,6 +23,7 @@ import { ContainerService } from './containers/container.service';
 import { AppService } from './app.service';
 import { MarketService } from './market/market.service';
 import { LoginService } from './login/login.service';
+import { LoginDataService } from './login/logindata.service';
 import { routing } from './app.routing';
 
 import { AuthGuard } from './authguard/auth.guard';
@@ -60,6 +61,7 @@ import { LoginComponent } from './login/login.component';
     ToastModule
   ],
   providers: [
+    LoginDataService,
     AuthGuard,
     ConfigService,
     {

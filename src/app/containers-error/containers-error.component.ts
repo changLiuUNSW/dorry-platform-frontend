@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Container } from '../containers/container';
 import { ContainerService } from '../containers/container.service';
+import { ImagesService } from '../images/images.service';
 
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
@@ -21,7 +22,7 @@ export class ContainersErrorComponent implements OnInit {
 
   @Output() reloadEvent = new EventEmitter<boolean>();
 
-  constructor(private containerService: ContainerService, public toastr: ToastsManager) { }
+  constructor(private containerService: ContainerService, private imageService: ImagesService, public toastr: ToastsManager) { }
 
   ngOnInit(): void {
     this.getErrorContainers();
@@ -32,10 +33,23 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.getErrorContainers()
       .subscribe(data => {
         this.containers = data;
+        // console.log(this.containers);
         for (let item of this.containers) {
           item.bridge = item['HostConfig']['NetworkMode'] == 'default' ? 'bridge' : item['HostConfig']['NetworkMode']
         }
         this.hasError = (this.containers.length !== 0);
+
+        // Get the picture url from database
+        for (var i = 0; i < this.containers.length; i++) {
+          this.imageService.getData(this.containers[i]['ImageID'])
+            .subscribe(appData => {
+              for (var j = 0; j < this.containers.length; j++) {
+                if (appData.image_id == this.containers[j]['ImageID']) {
+                  this.containers[j]['pic_url'] = appData.pic_url;
+                }
+              }
+            });
+        }
       });
   }
 
@@ -44,12 +58,10 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.removeContainer(id)
       .subscribe(data => {
         if (data.json().statusCode)
-          this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 3000 });
+          this.toastr.error('Failed to remove service ' + this.container.Names[0].split("/")[1], 'ERROR', { toastLife: 5000 });
         else
-          this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 3000 });
-        setTimeout(function() {
-          this.reloadEvent.emit(true);
-        }.bind(this), 100);
+          this.toastr.success('Service ' + this.container.Names[0].split("/")[1] + ' removed', 'SUCCESS', { toastLife: 5000 });
+        this.reloadEvent.emit(true);
       });
   }
 
@@ -58,19 +70,20 @@ export class ContainersErrorComponent implements OnInit {
     this.containerService.removeErrorContainers()
       .subscribe(data => {
         // if (data.json().statusCode)
-        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
+        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 5000 });
         // else
-        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
+        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 5000 });
         // if (data.json().statusCode)
-        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 3000 });
+        //   this.toastr.error('Failed to remove all services', 'ERROR', { toastLife: 5000 });
         // else
-        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 3000 });
+        //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 5000 });
         // this.container.spinner = 0;
-        console.log('Removing all error containers...')
-        this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 3000 });
-        setTimeout(function() {
+
+        // console.log(data);
+        if (data) {
+          this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 5000 });
           this.reloadEvent.emit(true);
-        }.bind(this), 100);
+        }
       });
   }
 

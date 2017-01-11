@@ -24,9 +24,7 @@ export class MarketComponent implements OnInit {
   private listItems() {
     this.marketService.listItems()
       .subscribe(data => {
-        console.log(data);
         this.items = data;
-        //-----------------
         console.log(this.items);
         for (var item of this.items) {
           this.getTags(item);
@@ -37,7 +35,7 @@ export class MarketComponent implements OnInit {
   private getTags(item: any) {
     this.marketService.getTags(item)
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
         item.tag = data.tags[0];
       });
   }
@@ -50,10 +48,10 @@ export class MarketComponent implements OnInit {
         this.marketService.pullImage(data.name, data.tags[0], item)
           .subscribe(data => {
             if (data.statusCode) {
-              this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 3000 });
+              this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 5000 });
             }
             else {
-              this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 3000 });
+              this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 5000 });
             }
             item.state = 1;
           });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesService } from '../images/images.service';
+import { ImageInfo } from '../images/imageInfo';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -18,11 +19,15 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
 export class StartingFormComponent implements OnInit {
 
   image: Object;
+
+  desc: string;
+  pic_url: string;
+
   portBinds: Object;
   portBindsKeyArray: string[];
   exposedBinds: Object;
   defaultConf: Object;
-  defautltPortKeyArray: string[];
+  defaultPortKeyArray: string[];
   profileConf: Object;
   profilePortKeyArray: string[];
 
@@ -66,7 +71,7 @@ export class StartingFormComponent implements OnInit {
           .subscribe(data => {
             this.image = data;
             this.getData();
-            // console.log(this.image);
+            console.log(this.image);
           });
       });
   }
@@ -78,8 +83,8 @@ export class StartingFormComponent implements OnInit {
     this.portBinds[this.form._value.ContainerPort + "/tcp"] = [{ "HostPort": this.form._value.HostPort }];
     this.exposedBinds[this.form._value.ContainerPort + "/tcp"] = {};
     this.portBindsKeyArray = Object.keys(this.portBinds);
-    console.log(JSON.stringify(this.portBinds));
-    console.log(JSON.stringify(this.exposedBinds));
+    // console.log(JSON.stringify(this.portBinds));
+    // console.log(JSON.stringify(this.exposedBinds));
   }
 
   removePortBinding(key: string) {
@@ -89,8 +94,8 @@ export class StartingFormComponent implements OnInit {
     delete this.portBinds[key];
     delete this.exposedBinds[key];
     this.portBindsKeyArray = Object.keys(this.portBinds);
-    console.log(JSON.stringify(this.portBinds));
-    console.log(JSON.stringify(this.exposedBinds));
+    // console.log(JSON.stringify(this.portBinds));
+    // console.log(JSON.stringify(this.exposedBinds));
   }
 
   startImage(image: Object) {
@@ -104,10 +109,17 @@ export class StartingFormComponent implements OnInit {
     this.imagesService.getData(this.image.Id)
       .subscribe(data => {
         console.log(data);
+        this.desc = data.description;
+        this.pic_url = data.pic_url;
         this.defaultConf = data.default_conf;
-        console.log(data.default_conf);
+        // console.log(data.default_conf);
         this.profileConf = data.profile;
-        console.log(this.profileConf);
+        // console.log(this.profileConf);
+        // if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
+        //   this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
+        // if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
+        //   this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
+        // console.log(this.profilePortKeyArray);
         if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
         if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {
@@ -117,14 +129,28 @@ export class StartingFormComponent implements OnInit {
   }
 
   // Start a container with config
-  startWithConfig(config: Object) {
+  startWithConfig(config: Object, image: ImageInfo) {
+    console.log(image)
     this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
-        console.log(data);
-        if (data.statusCode)
-          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        if (data.statusCode) {
+          var message: string;
+          message = data.json.message;
+          if (!data.json.message) {
+            message = data.json;
+          }
+
+          // Check if the error was raised by port
+          var regExp1 = new RegExp('port is already allocated');
+          if (regExp1.test(this.startImageMessage(message))) {
+            this.toastr.error('Failed to start ' + image.RepoTags[0] + '. Port is already allocated.', 'ERROR', { toastLife: 5000 });
+          }
+          else {
+            this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 5000 });
+          }
+        }
         else
-          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully.', 'SUCCESS', { toastLife: 5000 });
       });
   }
 

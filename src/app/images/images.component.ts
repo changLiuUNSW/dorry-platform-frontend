@@ -55,8 +55,19 @@ export class ImagesComponent implements OnInit {
     this.imagesService.getImageInfoes()
       .subscribe(data => {
         this.imageInfoes = data;
-        console.log(this.imageInfoes);
         this.hasApp = (this.imageInfoes.length !== 0);
+
+        // Get the picture url from database
+        for (var i = 0; i < this.imageInfoes.length; i++) {
+          this.imagesService.getData(this.imageInfoes[i].Id)
+            .subscribe(appData => {
+              for (var j = 0; j < this.imageInfoes.length; j++) {
+                if (appData.image_id == this.imageInfoes[j].Id) {
+                  this.imageInfoes[j]['pic_url'] = appData.pic_url;
+                }
+              }
+            });
+        }
       })
   }
 
@@ -69,9 +80,9 @@ export class ImagesComponent implements OnInit {
       .subscribe(
       data => {
         if (data.statusCode)
-          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 5000 });
         else
-          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 5000 });
         image.state = 0;
         this.getImageInfoes()
       });
@@ -93,9 +104,9 @@ export class ImagesComponent implements OnInit {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
-          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 5000 });
         else
-          this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 5000 });
         image.state = 0;
         this.getImageInfoes();
       });
@@ -106,9 +117,9 @@ export class ImagesComponent implements OnInit {
     this.imagesService.startWithConfig(this.configFactory())
       .subscribe(data => {
         // if (data.statusCode)
-        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 5000 });
         // else
-        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
+        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 5000 });
         image.state = 0;
         this.getImageInfoes();
       });
