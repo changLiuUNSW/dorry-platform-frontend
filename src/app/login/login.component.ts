@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           );
         }
       },
-      err => this.toastr.error("Incorrect username or password.", 'ERROR', { toastLife: 3000 }));
+      err => this.toastr.error("Incorrect username or password.", 'ERROR', { toastLife: 5000 }));
   }
 
   checkSession() {

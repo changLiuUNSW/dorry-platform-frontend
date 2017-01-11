@@ -136,12 +136,21 @@ export class StartingFormComponent implements OnInit {
         if (data.statusCode) {
           var message: string;
           message = data.json.message;
-          if (!data.json.message)
+          if (!data.json.message) {
             message = data.json;
-          this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 3000 });
+          }
+
+          // Check if the error was raised by port
+          var regExp1 = new RegExp('port is already allocated');
+          if (regExp1.test(this.startImageMessage(message))) {
+            this.toastr.error('Failed to start ' + image.RepoTags[0] + '. Port is already allocated.', 'ERROR', { toastLife: 5000 });
+          }
+          else {
+            this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 5000 });
+          }
         }
         else
-          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully.', 'SUCCESS', { toastLife: 5000 });
       });
   }
 
