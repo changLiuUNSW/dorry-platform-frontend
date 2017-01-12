@@ -3,7 +3,7 @@
     <mdl-layout-header-row>
       <mdl-layout-spacer></mdl-layout-spacer>
       <span class="user-name" *ngIf="user">{{ user.name }}</span>
-      <a class="logout-button" (click)="logout()" routerLinkActive="active">
+      <a class="logout-button" *ngIf="user" (click)="logout()" routerLinkActive="active">
         Log Out
       </a>
     </mdl-layout-header-row>
