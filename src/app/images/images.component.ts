@@ -22,8 +22,6 @@ export class ImagesComponent implements OnInit {
   showForm: boolean;
   hasApp: boolean;
 
-  dorry = new RegExp(/dorry/, 'i');
-
   // Config form
   form: FormGroup;
   Name = new FormControl();
@@ -80,9 +78,9 @@ export class ImagesComponent implements OnInit {
       .subscribe(
       data => {
         if (data.statusCode)
-          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 5000 });
+          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 5000 });
+          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes()
       });
@@ -104,9 +102,9 @@ export class ImagesComponent implements OnInit {
         console.log("start image : ");
         console.log(data);
         if (data.statusCode)
-          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 5000 });
+          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 5000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes();
       });
@@ -117,9 +115,9 @@ export class ImagesComponent implements OnInit {
     this.imagesService.startWithConfig(this.configFactory())
       .subscribe(data => {
         // if (data.statusCode)
-        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 5000 });
+        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
         // else
-        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 5000 });
+        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes();
       });
