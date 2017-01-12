@@ -22,6 +22,8 @@ export class ImagesComponent implements OnInit {
   showForm: boolean;
   hasApp: boolean;
 
+  dorry = new RegExp(/dorry/, 'i');
+
   // Config form
   form: FormGroup;
   Name = new FormControl();
