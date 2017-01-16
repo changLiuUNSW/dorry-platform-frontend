@@ -46,6 +46,7 @@ export class StartingFormComponent implements OnInit {
   HostPort = new FormControl();
   ContainerPort = new FormControl();
   Environment = new FormControl();
+  Links = new FormControl();
 
   constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder, public toastr: ToastsManager) {
     this.portBinds = {};
@@ -63,6 +64,7 @@ export class StartingFormComponent implements OnInit {
       'HostPort': this.HostPort,
       'ContainerPort': this.ContainerPort,
       'Environment': this.Environment,
+      'Links': this.Links,
     });
   }
 
@@ -183,6 +185,7 @@ export class StartingFormComponent implements OnInit {
       "Tty": this.form._value.Tty == "true",
       "Cmd": (this.form._value.Cmd == null || this.form._value.Cmd == "") ? null : this.form._value.Cmd.split(","),
       //"ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
+      "Env": (this.form._value.Environment == null || this.form._value.Environment == "") ? null : this.form._value.Environment.split(","),
       "ExposedPorts": this.exposedBinds,
       "HostConfig": {
         "Binds": (this.form._value.Binds == null || this.form._value.Binds == "") ? null : (this.form._value.Binds).split(","),
@@ -190,7 +193,7 @@ export class StartingFormComponent implements OnInit {
         "PortBindings": this.portBinds,
         "Privileged": this.form._value.Privileged == "true",
         "NetworkMode": this.form._value.NetworkMode,
-        "Env": (this.form._value.Environment == null || this.form._value.Environment == "") ? null : this.form._value.Environment.split(","),
+        "Links": (this.form._value.Links == null || this.form._value.Links == "") ? null : (this.form._value.Links).split(","),
       }
     }
   }
