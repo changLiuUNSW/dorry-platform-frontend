@@ -44,6 +44,7 @@ export class StartingFormComponent implements OnInit {
   Privileged = new FormControl('false');
   HostPort = new FormControl();
   ContainerPort = new FormControl();
+  Environment = new FormControl();
 
   constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder, public toastr: ToastsManager) {
     this.portBinds = {};
@@ -59,7 +60,8 @@ export class StartingFormComponent implements OnInit {
       'NetworkMode': this.NetworkMode,
       'Privileged': this.Privileged,
       'HostPort': this.HostPort,
-      'ContainerPort': this.ContainerPort
+      'ContainerPort': this.ContainerPort,
+      'Environment': this.Environment,
     });
   }
 
@@ -186,6 +188,7 @@ export class StartingFormComponent implements OnInit {
         "PortBindings": this.portBinds,
         "Privileged": this.form._value.Privileged == "true",
         "NetworkMode": this.form._value.NetworkMode,
+        "Env": (this.form._value.Environment == null || this.form._value.Environment == "") ? null : this.form._value.Environment.split(","),
       }
     }
   }
