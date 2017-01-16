@@ -29,9 +29,9 @@
 }
 
 mdl-layout-header.sub-header {
-  /*height: 56px;
-  min-height: 56px;*/
   background: #ffffff;
+  border-bottom: 2px #ccc solid;
+  box-shadow: none;
 }
 
 mdl-layout-header.sub-header mdl-layout-header-row span {

@@ -55,7 +55,7 @@
           <div *ngIf="app.RepoTags[0].split('/').length==2 && dorry.test(app.RepoTags[0].split('/')[0])">
             <div class="app-misc">
               <strong>Registry:</strong>
-              Dorry
+              {{app.RepoTags[0].split('/')[0]}}
             </div>
             <div class="app-misc">
               <strong>Author:</strong>
@@ -72,17 +72,7 @@
               {{app.RepoTags[0].split('/')[0]}}
             </div>
           </div>
-          <div *ngIf="app.RepoTags[0].split('/').length==3 && dorry.test(app.RepoTags[0].split('/')[0])">
-            <div class="app-misc">
-              <strong>Registry:</strong>
-              Dorry
-            </div>
-            <div class="app-misc">
-              <strong>Author:</strong>
-              {{app.RepoTags[0].split('/')[1]}}
-            </div>
-          </div>
-          <div *ngIf="app.RepoTags[0].split('/').length==3 && !dorry.test(app.RepoTags[0].split('/')[0])">
+          <div *ngIf="app.RepoTags[0].split('/').length==3">
             <div class="app-misc">
               <strong>Registry:</strong>
               {{app.RepoTags[0].split('/')[0]}}
