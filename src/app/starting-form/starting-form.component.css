@@ -23,12 +23,25 @@ a button.button-back {
   margin: 16px 0 16px 16px;
 }
 
+.button-add:hover,
+.button-save:hover {
+  background: #7c9fb5;
+  color: #fcfcfc;
+}
+
 mdl-tabs {
   font-size: 16px;
 }
 
 mdl-textfield {
   padding: 26px 0;
+}
+
+.mdl-button mdl-spinner {
+  height: 24px;
+  width: 24px;
+  top: 0;
+  bottom: 0;
 }
 
 .row {
@@ -62,6 +75,10 @@ span ul img.remove-icon {
 .config,
 .details {
   padding: 8px 16px;
+}
+
+mdl-radio {
+  margin-right: 16px;
 }
 
 hr {

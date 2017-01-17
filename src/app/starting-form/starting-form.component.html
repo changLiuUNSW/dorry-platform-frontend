@@ -136,7 +136,10 @@
             <span class="mdl-cell mdl-cell--4-col">Default Not Found</span>
           </div>
 
-          <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button button-start" (click)="startWithConfig(defaultConf,image)" [disabled]="!defaultConf">Start</button>
+          <button mdl-button mdl-button-type="raised" *ngIf="defaultConf!=null" class="mdl-button button-start" (click)="startWithConfig(defaultConf,image)" [disabled]="!defaultConf">
+            <mdl-spinner single-color [active]="spinner==1"></mdl-spinner>
+            <span *ngIf="spinner==0">Start</span>
+          </button>
         </mdl-tab-panel-content>
       </mdl-tab-panel>
 
@@ -192,7 +195,10 @@
           <span class="mdl-cell mdl-cell--4-col">Profile Not Found</span>
         </div>
 
-        <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button button-start" (click)="startWithConfig(profileConf,image)" [disabled]="!profileConf">Start</button>
+        <button mdl-button mdl-button-type="raised" *ngIf="profileConf!=null" class="mdl-button button-start" (click)="startWithConfig(profileConf,image)" [disabled]="!profileConf">
+          <mdl-spinner single-color [active]="spinner==1"></mdl-spinner>
+          <span *ngIf="spinner==0">Start</span>
+        </button>
       </mdl-tab-panel>
 
       <mdl-tab-panel mdl-tab-panel-title="Edit My Profile">
@@ -225,7 +231,7 @@
                   <mdl-textfield pattern="[0-9]+" label="Host Port" type="text" formControlName="HostPort" floating-label></mdl-textfield>
                 </span>
                 <span class="mdl-cell mdl-cell--3-col">
-                  <button style="margin-top:10px;" mdl-button mdl-button-type="raised" class="mdl-button" [disabled]="!HostPort.valid || !ContainerPort.valid" (click)="addPortBinding()">
+                  <button style="margin-top:10px;" mdl-button mdl-button-type="raised" class="mdl-button button-add" [disabled]="!HostPort.valid || !ContainerPort.valid" (click)="addPortBinding()">
                     add
                   </button>
                 </span>
@@ -259,11 +265,20 @@
               <mdl-radio formControlName="Privileged" value="true" mdl-ripple>true</mdl-radio>
               <mdl-radio formControlName="Privileged" value="false" mdl-ripple>false</mdl-radio>
             </span>
+            <span class="mdl-cell mdl-cell--6-col">
+              <mdl-textfield label="Environment" type="text" formControlName="Environment" floating-label></mdl-textfield>
+            </span>
+            <span class="mdl-cell mdl-cell--6-col">
+              <mdl-textfield label="Links" type="text" formControlName="Links" floating-label></mdl-textfield>
+            </span>
           </form>
 
           <div>
-            <button mdl-button mdl-button-type="raised" class="mdl-button button-start" (click)="startWithConfig(null,image)">Start</button>
-            <button mdl-button mdl-button-type="raised" class="mdl-button" (click)="saveConfig()">Save</button>
+            <button mdl-button mdl-button-type="raised" class="mdl-button button-start" (click)="startWithConfig(null, image)">
+              <mdl-spinner single-color [active]="spinner==1"></mdl-spinner>
+              <span *ngIf="spinner==0">Start</span>
+            </button>
+            <button mdl-button mdl-button-type="raised" class="mdl-button button-save" (click)="saveConfig()">Save</button>
           </div>
         </div>
       </mdl-tab-panel>

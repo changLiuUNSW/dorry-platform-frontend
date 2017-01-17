@@ -19,6 +19,7 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
 export class StartingFormComponent implements OnInit {
 
   image: Object;
+  spinner: number;
 
   desc: string;
   pic_url: string;
@@ -44,6 +45,8 @@ export class StartingFormComponent implements OnInit {
   Privileged = new FormControl('false');
   HostPort = new FormControl();
   ContainerPort = new FormControl();
+  Environment = new FormControl();
+  Links = new FormControl();
 
   constructor(private route: ActivatedRoute, private imagesService: ImagesService, private fb: FormBuilder, public toastr: ToastsManager) {
     this.portBinds = {};
@@ -59,11 +62,15 @@ export class StartingFormComponent implements OnInit {
       'NetworkMode': this.NetworkMode,
       'Privileged': this.Privileged,
       'HostPort': this.HostPort,
-      'ContainerPort': this.ContainerPort
+      'ContainerPort': this.ContainerPort,
+      'Environment': this.Environment,
+      'Links': this.Links,
     });
   }
 
   ngOnInit() {
+    this.spinner = 0;
+    this.profilePortKeyArray = [];
     this.route.params
       .map(params => params['id'])
       .subscribe(id => {
@@ -99,8 +106,10 @@ export class StartingFormComponent implements OnInit {
   }
 
   startImage(image: Object) {
+    this.spinner = 1;
     this.imagesService.startImage(image.Id)
       .subscribe(data => {
+        this.spinner = 0;
         console.log(data);
       });
   }
@@ -115,24 +124,21 @@ export class StartingFormComponent implements OnInit {
         // console.log(data.default_conf);
         this.profileConf = data.profile;
         // console.log(this.profileConf);
-        // if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
-        //   this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
-        // if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
-        //   this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
-        // console.log(this.profilePortKeyArray);
-        if (this.defaultConf != undefined && this.defaultConf.HostConfig.PortBindings != null)
+        if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
-        if (this.profileConf != undefined && this.profileConf.HostConfig.PortBindings != null) {
+        if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
           this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
-        }
+        // console.log(this.profilePortKeyArray);
       });
   }
 
   // Start a container with config
   startWithConfig(config: Object, image: ImageInfo) {
-    console.log(image)
+    console.log(image);
+    this.spinner = 1;
     this.imagesService.startWithConfig((config == null ? this.configFactory() : config))
       .subscribe(data => {
+        this.spinner = 0;
         if (data.statusCode) {
           var message: string;
           message = data.json.message;
@@ -143,14 +149,14 @@ export class StartingFormComponent implements OnInit {
           // Check if the error was raised by port
           var regExp1 = new RegExp('port is already allocated');
           if (regExp1.test(this.startImageMessage(message))) {
-            this.toastr.error('Failed to start ' + image.RepoTags[0] + '. Port is already allocated.', 'ERROR', { toastLife: 5000 });
+            this.toastr.error('Port is already allocated', 'ERROR', { toastLife: 5000 });
           }
           else {
             this.toastr.error(this.startImageMessage(message), 'ERROR', { toastLife: 5000 });
           }
         }
         else
-          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully.', 'SUCCESS', { toastLife: 5000 });
+          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 5000 });
       });
   }
 
@@ -179,6 +185,7 @@ export class StartingFormComponent implements OnInit {
       "Tty": this.form._value.Tty == "true",
       "Cmd": (this.form._value.Cmd == null || this.form._value.Cmd == "") ? null : this.form._value.Cmd.split(","),
       //"ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
+      "Env": (this.form._value.Environment == null || this.form._value.Environment == "") ? null : this.form._value.Environment.split(","),
       "ExposedPorts": this.exposedBinds,
       "HostConfig": {
         "Binds": (this.form._value.Binds == null || this.form._value.Binds == "") ? null : (this.form._value.Binds).split(","),
@@ -186,6 +193,7 @@ export class StartingFormComponent implements OnInit {
         "PortBindings": this.portBinds,
         "Privileged": this.form._value.Privileged == "true",
         "NetworkMode": this.form._value.NetworkMode,
+        "Links": (this.form._value.Links == null || this.form._value.Links == "") ? null : (this.form._value.Links).split(","),
       }
     }
   }
