@@ -80,19 +80,19 @@ export class StartingFormComponent implements OnInit {
   }
 
   addPortBinding() {
-    if ((this.form._value.HostPort == null || this.form._value.HostPort == "") &&
-      (this.form._value.ContainerPort == null || this.form._value.ContainerPort == ""))
+    if ((this.form['_value'].HostPort == null || this.form['_value'].HostPort == "") &&
+      (this.form['_value'].ContainerPort == null || this.form['_value'].ContainerPort == ""))
       return;
-    this.portBinds[this.form._value.ContainerPort + "/tcp"] = [{ "HostPort": this.form._value.HostPort }];
-    this.exposedBinds[this.form._value.ContainerPort + "/tcp"] = {};
+    this.portBinds[this.form['_value'].ContainerPort + "/tcp"] = [{ "HostPort": this.form['_value'].HostPort }];
+    this.exposedBinds[this.form['_value'].ContainerPort + "/tcp"] = {};
     this.portBindsKeyArray = Object.keys(this.portBinds);
     // console.log(JSON.stringify(this.portBinds));
     // console.log(JSON.stringify(this.exposedBinds));
   }
 
   removePortBinding(key: string) {
-    if ((this.form._value.HostPort == null || this.form._value.HostPort == "") &&
-      (this.form._value.ContainerPort == null || this.form._value.ContainerPort == ""))
+    if ((this.form['_value'].HostPort == null || this.form['_value'].HostPort == "") &&
+      (this.form['_value'].ContainerPort == null || this.form['_value'].ContainerPort == ""))
       return;
     delete this.portBinds[key];
     delete this.exposedBinds[key];
@@ -103,7 +103,7 @@ export class StartingFormComponent implements OnInit {
 
   startImage(image: Object) {
     this.spinner = 1;
-    this.imagesService.startImage(image.Id)
+    this.imagesService.startImage(image['Id'])
       .subscribe(data => {
         this.spinner = 0;
         console.log(data);
@@ -111,7 +111,7 @@ export class StartingFormComponent implements OnInit {
   }
 
   getData() {
-    this.imagesService.getData(this.image.Id)
+    this.imagesService.getData(this.image['Id'])
       .subscribe(data => {
         console.log(data);
         this.desc = data.description;
@@ -120,9 +120,9 @@ export class StartingFormComponent implements OnInit {
         // console.log(data.default_conf);
         this.profileConf = data.profile;
         // console.log(this.profileConf);
-        if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
+        if (this.defaultConf && this.defaultConf['HostConfig'] && this.defaultConf['HostConfig'].PortBindings)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
-        if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
+        if (this.profileConf && this.profileConf['HostConfig'] && this.profileConf['HostConfig'].PortBindings)
           this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
         // console.log(this.profilePortKeyArray);
       });
@@ -167,27 +167,27 @@ export class StartingFormComponent implements OnInit {
   }
 
   saveConfig() {
-    this.imagesService.saveConfig(this.configFactory(), this.image.Id)
+    this.imagesService.saveConfig(this.configFactory(), this.image['Id'])
       .subscribe(data => {
         console.log(data);
       })
   }
 
   configFactory() {
-    console.log(this.form._value);
+    console.log(this.form['_value']);
     return {
-      "name": this.form._value.Name,
-      "Image": this.image.RepoTags[0],
-      "Tty": this.form._value.Tty == "true",
-      "Cmd": (this.form._value.Cmd == null || this.form._value.Cmd == "") ? null : this.form._value.Cmd.split(","),
-      //"ExposedPorts": JSON.parse(this.form._value.ExposedPorts),
+      "name": this.form['_value'].Name,
+      "Image": this.image['RepoTags'][0],
+      "Tty": this.form['_value'].Tty == "true",
+      "Cmd": (this.form['_value'].Cmd == null || this.form['_value'].Cmd == "") ? null : this.form['_value'].Cmd.split(","),
+      //"ExposedPorts": JSON.parse(this.form['_value'].ExposedPorts),
       "ExposedPorts": this.exposedBinds,
       "HostConfig": {
-        "Binds": (this.form._value.Binds == null || this.form._value.Binds == "") ? null : (this.form._value.Binds).split(","),
-        //"PortBindings": JSON.parse(this.form._value.PortBindings),
+        "Binds": (this.form['_value'].Binds == null || this.form['_value'].Binds == "") ? null : (this.form['_value'].Binds).split(","),
+        //"PortBindings": JSON.parse(this.form['_value'].PortBindings),
         "PortBindings": this.portBinds,
-        "Privileged": this.form._value.Privileged == "true",
-        "NetworkMode": this.form._value.NetworkMode,
+        "Privileged": this.form['_value'].Privileged == "true",
+        "NetworkMode": this.form['_value'].NetworkMode,
       }
     }
   }

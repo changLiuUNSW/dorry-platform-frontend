@@ -79,7 +79,7 @@ export class ContainersErrorComponent implements OnInit {
         //   this.toastr.success('All services removed', 'SUCCESS', { toastLife: 5000 });
         // this.container.spinner = 0;
 
-        if (data._body == "true") {
+        if (data['_body'] == "true") {
           this.reloadEvent.emit(true);
           this.toastr.success('All error services removed', 'SUCCESS', { toastLife: 5000 });
         }
