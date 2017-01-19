@@ -2,7 +2,6 @@ import { Injectable, Injector } from '@angular/core';
 import { Headers, Http, Response, Request, RequestMethod, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ImageInfo } from './imageInfo';
-import { MAGIC_BOXES } from './MagicBox';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';

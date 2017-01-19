@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.form._value.Username, this.form._value.Password)
+    this.loginService.login(this.form['_value'].Username, this.form['_value'].Password)
       .subscribe(data => {
         if (data.status == 200) {
-          localStorage.setItem('currentUser', JSON.stringify({ name: this.form._value.Username }));
+          localStorage.setItem('currentUser', JSON.stringify({ name: this.form['_value'].Username }));
           this.loginDataService.callComponentMethod();
           this.ar.queryParams.subscribe(
             data => {
