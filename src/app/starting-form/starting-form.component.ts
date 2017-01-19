@@ -79,6 +79,7 @@ export class StartingFormComponent implements OnInit {
             this.image = data;
             this.getData();
             console.log(this.image);
+
           });
       });
   }
@@ -123,12 +124,23 @@ export class StartingFormComponent implements OnInit {
         this.defaultConf = data.default_conf;
         // console.log(data.default_conf);
         this.profileConf = data.profile;
-        // console.log(this.profileConf);
+        console.log(this.profileConf);
         if (this.defaultConf && this.defaultConf.HostConfig && this.defaultConf.HostConfig.PortBindings)
           this.defaultPortKeyArray = Object.keys(this.defaultConf["HostConfig"]["PortBindings"]);
         if (this.profileConf && this.profileConf.HostConfig && this.profileConf.HostConfig.PortBindings)
           this.profilePortKeyArray = Object.keys(this.profileConf["HostConfig"]["PortBindings"]);
         // console.log(this.profilePortKeyArray);
+
+        //set value of input
+        var config = this.profileConf ? this.profileConf : this.defaultConf;
+        if (config && config.HostConfig) {
+          this.form.patchValue({
+            'Cmd': config['Cmd'],
+            'Binds': config['HostConfig']['Binds'],
+            'Links': config['HostConfig']['Links'],
+            'Environment': config['Env']
+          });
+        }
       });
   }
 
