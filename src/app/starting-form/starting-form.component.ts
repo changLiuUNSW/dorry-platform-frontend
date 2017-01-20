@@ -133,12 +133,25 @@ export class StartingFormComponent implements OnInit {
 
         //set value of input
         var config = this.profileConf ? this.profileConf : this.defaultConf;
+        var cmdconfig = "";
+        var bindsconfig = "";
+        var linksconfig = "";
+        var envconfig = "";
         if (config && config['HostConfig']) {
+          if (config['Cmd'] && config['Cmd'].toString().replace(/"/g, "") != "null")
+            cmdconfig = config['Cmd'].toString().replace(/"/g, "");
+          if (config['HostConfig']['Binds'] && config['HostConfig']['Binds'].toString().replace(/"/g, "") != "null")
+            bindsconfig = config['HostConfig']['Binds'].toString().replace(/"/g, "");
+          if (config['HostConfig']['Links'] && config['HostConfig']['Links'].toString().replace(/"/g, "") != "null")
+            linksconfig = config['HostConfig']['Links'].toString().replace(/"/g, "");
+          if (config['Env'] && config['Env'].toString().replace(/"/g, "") != "null")
+            envconfig = config['Env'].toString().replace(/"/g, "");
+          console.log(cmdconfig, bindsconfig, linksconfig, envconfig);
           this.form.patchValue({
-            'Cmd': config['Cmd'],
-            'Binds': config['HostConfig']['Binds'],
-            'Links': config['HostConfig']['Links'],
-            'Environment': config['Env']
+            'Cmd': cmdconfig,
+            'Binds': bindsconfig,
+            'Links': linksconfig,
+            'Environment': envconfig
           });
         }
       });
@@ -191,13 +204,14 @@ export class StartingFormComponent implements OnInit {
 
   configFactory() {
     console.log(this.form['_value']);
+    console.log(this.form['_value'].Environment);
     return {
       "name": this.form['_value'].Name,
       "Image": this.image['RepoTags'][0],
       "Tty": this.form['_value'].Tty == "true",
-      "Cmd": (this.form['_value'].Cmd == null || this.form['_value'].Cmd == "") ? null : this.form['_value'].Cmd.split(","),
+      "Cmd": (this.form['_value'].Cmd == null || this.form['_value'].Cmd == "") ? null : (this.form['_value'].Cmd).split(","),
       //"ExposedPorts": JSON.parse(this.form['_value'].ExposedPorts),
-      "Env": (this.form['_value'].Environment == null || this.form['_value'].Environment == "") ? null : this.form['_value'].Environment.split(","),
+      "Env": (this.form['_value'].Environment == null || this.form['_value'].Environment == "") ? null : (this.form['_value'].Environment).split(","),
       "ExposedPorts": this.exposedBinds,
       "HostConfig": {
         "Binds": (this.form['_value'].Binds == null || this.form['_value'].Binds == "") ? null : (this.form['_value'].Binds).split(","),
