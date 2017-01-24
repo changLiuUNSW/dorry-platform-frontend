@@ -20,6 +20,7 @@ import { JQueryTestComponent } from './j-query-test/j-query-test.component';
 import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
+import { ServicesService } from './services/services.service';
 import { AppService } from './app.service';
 import { MarketService } from './market/market.service';
 import { LoginService } from './login/login.service';
@@ -33,6 +34,7 @@ import { PopoverModule } from 'ng2-popover';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { StartingFormComponent } from './starting-form/starting-form.component';
 import { LoginComponent } from './login/login.component';
+import { ServicesComponent } from './services/services.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { LoginComponent } from './login/login.component';
     JQueryTestComponent,
     ContainerDetailsComponent,
     StartingFormComponent,
-    LoginComponent
+    LoginComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { LoginComponent } from './login/login.component';
     },
     ImagesService,
     ContainerService,
+    ServicesService,
     AppService,
     MarketService,
     LoginService,
