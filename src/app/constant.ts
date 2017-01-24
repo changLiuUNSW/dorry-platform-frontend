@@ -12,6 +12,7 @@ export class Constant {
   public static BUILDVERSION: string = "";
   public static REGISTRYHOST: string = "";
   public static DORRYAPI: string = "";
+  public static KUBE_API: string = "";
 
   public static initConfig(configObject: ConfigObject) {
     this.DAEMONADDR = configObject.daemon_addr;
@@ -19,5 +20,6 @@ export class Constant {
     this.BUILDVERSION = configObject.build_version;
     this.REGISTRYHOST = configObject.registry_host;
     this.DORRYAPI = configObject.dorry_api;
+    this.KUBE_API = 'http://localhost:12000';
   }
 }

@@ -1,0 +1,40 @@
+<div class="content-container">
+  <div class="mdl-grid">
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of services">
+
+      <div class="mdl-card__title">
+        <a routerLink="/services/{{service.Id}}">
+          <img *ngIf="service.pic_url" src="{{service.pic_url}}">
+          <img *ngIf="!service.pic_url" src="/assets/icons/ic_default.svg"/>
+        </a>
+        <div class="mdl-card__title-text">
+          <div class="service-name">{{service.metadata.name}}</div>
+          <div class="service-status">{{service.Status}}</div>
+        </div>
+      </div>
+
+      <div class="mdl-card__supporting-text table">
+        <table class="mdl-data-table mdl-js-data-table">
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Application</td>
+              <td *ngIf="service.metadata.labels.app">{{service.metadata.labels.app}}</td>
+              <td *ngIf="!service.metadata.labels.app">None</td>
+            </tr>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">IP Address</td>
+              <td>{{service.spec.clusterIP}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mdl-card__actions mdl-card--border">
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove">
+          Remove
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
