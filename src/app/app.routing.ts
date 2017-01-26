@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ServicesComponent } from './services/services.component';
+import { ServiceDetailsComponent } from './service-details/service-details.component';
 import { ContainersComponent } from './containers/containers.component';
 import { ImagesComponent } from './images/images.component';
 import { MarketComponent } from './market/market.component';
@@ -26,16 +27,16 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'services/:id',
-    component: ContainerDetailsComponent
+    path: 'services/:name',
+    component: ServiceDetailsComponent
   },
   {
-    path: 'apps',
+    path: 'applications',
     component: ImagesComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'apps/:id',
+    path: 'applications/:id',
     component: StartingFormComponent
   },
   {

@@ -1,0 +1,18 @@
+<mdl-layout-header class="sub-header">
+  <mdl-layout-header-row>
+    <a routerLink="/services">
+      <button mdl-button mdl-button-type="raised" class="button-back">
+        <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
+      </button>
+    </a>
+    <span *ngIf="container!=null">
+      {{ container.Name | slice:1 }}
+    </span>
+  </mdl-layout-header-row>
+</mdl-layout-header>
+
+<div class="container">
+  <p>
+    service-details works!
+  </p>
+</div>
