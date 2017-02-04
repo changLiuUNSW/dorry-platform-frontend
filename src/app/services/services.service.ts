@@ -14,7 +14,16 @@ export class ServicesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.KUBE_API + '/list-service'
+        url: Constant.KUBE_API + '/listservice'
+      }))
+      .map(this.extractData);
+  }
+
+  getServiceDetail(name: string): Observable<Object[]> {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.KUBE_API + '/getservicedetail/' + name
       }))
       .map(this.extractData);
   }
@@ -23,7 +32,7 @@ export class ServicesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.KUBE_API + '/delete-service',
+        url: Constant.KUBE_API + '/deleteservice',
         body: body
       }))
       .map(res => res);

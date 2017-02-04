@@ -1,3 +1,37 @@
 a button.button-back {
   width: 64px;
 }
+
+.container .mdl-layout-title {
+  background: #37474f;
+  color: #ffffff;
+  padding-left: 32px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.8em;
+  font-family: 'Roboto' sans-serif;
+  text-transform: none;
+}
+
+.mdl-card.mdl-shadow--2dp {
+  width: 100%;
+  padding: 32px 160px;
+}
+
+.row {
+  margin: 0;
+}
+
+.row .mdl-cell--4-col {
+  font-weight: 500;
+}
+
+.mdl-cell.mdl-cell--8-col {
+  overflow: auto;
+}
+
+hr {
+  margin: 0 16px;
+  padding: 0;
+  border: 1px solid #999999;
+}
