@@ -1,9 +1,17 @@
-<div class="content-container">
+<div class="container">
+  <div class="message-empty" *ngIf="!services">
+    Your service list is empty.
+  </div>
+
   <div class="mdl-grid">
     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" *ngFor="let service of services">
+      <div class="spinner-container" *ngIf="service.state==1">
+        <mdl-spinner single-color [active]="true"></mdl-spinner>
+        <span>Deleting</span>
+      </div>
 
       <div class="mdl-card__title">
-        <a routerLink="/services/{{service.Id}}">
+        <a routerLink="/services/{{service.metadata.name}}">
           <img *ngIf="service.pic_url" src="{{service.pic_url}}">
           <img *ngIf="!service.pic_url" src="/assets/icons/ic_default.svg"/>
         </a>
@@ -30,11 +38,40 @@
       </div>
 
       <div class="mdl-card__actions mdl-card--border">
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove">
-          Remove
+        <button #deleteButton mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getService(service)" (click)="deleteDialog.show()">
+          Delete
         </button>
       </div>
-
     </div>
   </div>
 </div>
+
+<!-- Delete dialog -->
+<mdl-dialog
+  #deleteDialog
+  [mdl-dialog-config]="{
+  clickOutsideToClose: false,
+  isModal:true,
+  openFrom: deleteButton,
+  enterTransitionDuration: 200,
+  leaveTransitionDuration: 200,
+  styles:{
+    'background':'#ffffff',
+    'height':'240px',
+    'width':'680px',
+    'padding':0
+  }
+}">
+  <div class="mdl-dialog__title">Delete Service</div>
+  <div class="mdl-dialog__content">
+    <span>
+      Do you want to delete service
+      <strong *ngIf="service">{{service.metadata.name}}</strong>
+      ?
+    </span>
+  </div>
+  <div class="mdl-dialog__actions">
+    <button mdl-button class="mdl-button button-remove" mdl-button-type="raised" (click)="deleteDialog.close()" (click)="deleteService(service)">Delete</button>
+    <button mdl-button class="mdl-button button-cancel" mdl-button-type="raised" (click)="deleteDialog.close()">Cancel</button>
+  </div>
+</mdl-dialog>

@@ -35,6 +35,7 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { StartingFormComponent } from './starting-form/starting-form.component';
 import { LoginComponent } from './login/login.component';
 import { ServicesComponent } from './services/services.component';
+import { ServiceDetailsComponent } from './service-details/service-details.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ServicesComponent } from './services/services.component';
     ContainerDetailsComponent,
     StartingFormComponent,
     LoginComponent,
-    ServicesComponent
+    ServicesComponent,
+    ServiceDetailsComponent
   ],
   imports: [
     BrowserModule,

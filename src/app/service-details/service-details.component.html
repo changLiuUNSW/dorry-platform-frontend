@@ -1,0 +1,64 @@
+<mdl-layout-header class="sub-header">
+  <mdl-layout-header-row>
+    <a routerLink="/services">
+      <button mdl-button mdl-button-type="raised" class="button-back">
+        <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
+      </button>
+    </a>
+    <span *ngIf="name!=null">{{name}}</span>
+  </mdl-layout-header-row>
+</mdl-layout-header>
+
+<div *ngIf="main!=null" class="container">
+  <div class="mdl-layout-title">
+    Service Details
+  </div>
+  <div class="mdl-card mdl-shadow--2dp">
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Service Name</span>
+      <span class="mdl-cell mdl-cell--8-col">{{main.name}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Service Creation Time</span>
+      <span class="mdl-cell mdl-cell--8-col">{{main.creationTimestamp}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Service IP</span>
+      <span class="mdl-cell mdl-cell--8-col">{{main.clusterIP}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Service Health</span>
+      <span class="mdl-cell mdl-cell--8-col">{{main.availableReplicas}}/{{main.replicas}}</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="database!=null" class="container">
+  <div *ngIf="main!=null" class="mdl-layout-title">
+    Database Details
+  </div>
+  <div class="mdl-card mdl-shadow--2dp">
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Database Name</span>
+      <span class="mdl-cell mdl-cell--8-col">{{database.name}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Database Creation Time</span>
+      <span class="mdl-cell mdl-cell--8-col">{{database.creationTimestamp}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Database Health</span>
+      <span class="mdl-cell mdl-cell--8-col">{{database.availableReplicas}}/{{main.replicas}}</span>
+    </div>
+  </div>
+</div>

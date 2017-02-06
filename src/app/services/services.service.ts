@@ -10,14 +10,32 @@ export class ServicesService {
 
   constructor(private http: Http) { }
 
-  listServices(): Observable<Object[]> {
+  listService(): Observable<Object[]> {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.KUBE_API + '/list-services'
+        url: Constant.KUBE_API + '/listservice'
       }))
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(this.extractData);
+  }
+
+  getServiceDetail(name: string): Observable<Object[]> {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.KUBE_API + '/getservicedetail/' + name
+      }))
+      .map(this.extractData);
+  }
+
+  deleteService(body: Object) {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Post,
+        url: Constant.KUBE_API + '/deleteservice',
+        body: body
+      }))
+      .map(res => res);
   }
 
   extractData(res: Response) {
