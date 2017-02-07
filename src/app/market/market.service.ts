@@ -14,30 +14,23 @@ export class MarketService {
   NgOninit() {
   }
 
-  listItems(): Observable<any> {
+  listApplication(): Observable<any> {
     return this.http
-      .get(Constant.DORRYAPI + '/api/registry/all')
+      .get('http://localhost:15000/api/listapplication')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  getTags(item: any): Observable<any> {
-    return this.http
-      .get(Constant.DORRYAPI + '/api/registry/tags/' + item.name)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  pullImage(name: string, tag: string, image: Object): Observable<any> {
-    console.log(name, tag, image);
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag,
-        body: image
-      }))
-      .map(this.extractData)
-  }
+  // pullImage(name: string, tag: string, image: Object): Observable<any> {
+  //   console.log(name, tag, image);
+  //   return this.http.request(
+  //     new Request({
+  //       method: RequestMethod.Post,
+  //       url: Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag,
+  //       body: image
+  //     }))
+  //     .map(this.extractData)
+  // }
 
   // Function extractData() extracts the data from the http response, which is
   // a json array, then return as an object.

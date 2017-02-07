@@ -12,54 +12,43 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
   ]
 })
 export class MarketComponent implements OnInit {
-  item: any;
-  items = [];
+  application: any;
+  applications = [];
 
   constructor(private marketService: MarketService, public toastr: ToastsManager) { }
 
   ngOnInit() {
-    this.listItems();
+    this.listApplication();
   }
 
-  private listItems() {
-    this.marketService.listItems()
+  private listApplication() {
+    this.marketService.listApplication()
       .subscribe(data => {
-        this.items = data;
-        console.log(this.items);
-        for (var item of this.items) {
-          this.getTags(item);
-        }
+        this.applications = data['res'];
+        console.log(this.applications);
       });
   }
 
-  private getTags(item: any) {
-    this.marketService.getTags(item)
-      .subscribe(data => {
-        // console.log(data);
-        item.tag = data.tags[0];
-      });
-  }
+  // private installImage(item: any) {
+  //   this.getItem(item);
+  //   item.state = 2;
+  //   this.marketService.getTags(item)
+  //     .subscribe(data => {
+  //       this.marketService.pullImage(data.name, data.tags[0], item)
+  //         .subscribe(data => {
+  //           if (data.statusCode) {
+  //             this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 5000 });
+  //           }
+  //           else {
+  //             this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 5000 });
+  //           }
+  //           item.state = 1;
+  //         });
+  //     })
+  // }
 
-  private installImage(item: any) {
-    this.getItem(item);
-    item.state = 2;
-    this.marketService.getTags(item)
-      .subscribe(data => {
-        this.marketService.pullImage(data.name, data.tags[0], item)
-          .subscribe(data => {
-            if (data.statusCode) {
-              this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 5000 });
-            }
-            else {
-              this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 5000 });
-            }
-            item.state = 1;
-          });
-      })
-  }
-
-  private getItem(item: any) {
-    this.item = item;
+  private getApplication(application: any) {
+    this.application = application;
   }
 
 }

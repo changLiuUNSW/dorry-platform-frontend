@@ -1,51 +1,43 @@
-<div class="content-container">
+<div class="container">
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--3-col" *ngFor="let item of items">
-
+    <div class="mdl-cell mdl-cell--3-col" *ngFor="let application of applications">
       <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-        <div class="spinner-container" *ngIf="item.state==2">
+        <!-- <div class="spinner-container" *ngIf="application.state==2">
           <mdl-spinner single-color="white" [active]="true"></mdl-spinner>
           <span>Installing...</span>
-        </div>
+        </div> -->
         <div class="mdl-card__title">
           <a>
             <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/> -->
-            <img src="{{item.pic_url}}"/>
+            <img src="{{application.pictureUrl}}"/>
           </a>
           <div class="mdl-card__title-text">
             <div class="app-name">
-              {{ item.name }}
+              {{application.name}}
             </div>
             <div class="app-tag">
               <strong>Version:</strong>
-              {{ item.tag }}
+              {{application.version}}
             </div>
           </div>
         </div>
 
         <div class="mdl-card__supporting-text">
-          {{ item.description }}
+          {{application.description}}
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
-          <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="item.state==0 || item.state==2" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
+          <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="application.state==0 || application.state==2" class="button-install" (click)="installImage(application)" (click)="getItem(application)">
             Install
           </button>
-          <button mdl-button mdl-ripple disabled *ngIf="item.state==1" disabled>
+          <button mdl-button mdl-ripple disabled *ngIf="application.state==1" disabled>
             Installed
+          </button> -->
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="button-install">
+            Install
           </button>
-          <!-- <button class="market-spinner" mdl-button mdl-ripple *ngIf="item.installing" disabled>
-          <mdl-spinner [active]="true"></mdl-spinner>
-        </button> -->
-          <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="!item.installing" class="button-install" (click)="installImage(item)" (click)="getItem(item)">
-          Install
-        </button>
-        <button class="market-spiner" mdl-button mdl-js-button *ngIf="item.installing" disabled>
-          <mdl-spinner [active]="true"></mdl-spinner>
-        </button> -->
         </div>
       </div>
     </div>
   </div>
-
 </div>
