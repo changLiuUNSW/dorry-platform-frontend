@@ -55,19 +55,21 @@ export class ImagesComponent implements OnInit {
     this.imagesService.getImageInfoes()
       .subscribe(data => {
         this.imageInfoes = data;
-        this.hasApp = (this.imageInfoes.length !== 0);
+        console.log(this.imageInfoes);
+        console.log(this.imageInfoes[0].pictureUrl);
+        // this.hasApp = (this.imageInfoes.length !== 0);
 
-        // Get the picture url from database
-        for (var i = 0; i < this.imageInfoes.length; i++) {
-          this.imagesService.getData(this.imageInfoes[i].Id)
-            .subscribe(appData => {
-              for (var j = 0; j < this.imageInfoes.length; j++) {
-                if (appData.image_id == this.imageInfoes[j].Id) {
-                  this.imageInfoes[j]['pic_url'] = appData.pic_url;
-                }
-              }
-            });
-        }
+        // // Get the picture url from database
+        // for (var i = 0; i < this.imageInfoes.length; i++) {
+        //   this.imagesService.getData(this.imageInfoes[i].Id)
+        //     .subscribe(appData => {
+        //       for (var j = 0; j < this.imageInfoes.length; j++) {
+        //         if (appData.image_id == this.imageInfoes[j].Id) {
+        //           this.imageInfoes[j]['pic_url'] = appData.pic_url;
+        //         }
+        //       }
+        //     });
+        // }
       })
   }
 
@@ -99,14 +101,14 @@ export class ImagesComponent implements OnInit {
 
   startImage(image: ImageInfo) {
     image.state = 2;
-    this.imagesService.startImage(image.Id)
+    this.imagesService.startImage(image.name)
       .subscribe(data => {
         console.log("start image : ");
         console.log(data);
-        if (data.statusCode)
-          this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
-        else
-          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 3000 });
+        // if (data.statusCode)
+        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
+        // else
+        this.toastr.success('Start ' + image.name + ' successfully', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes();
       });

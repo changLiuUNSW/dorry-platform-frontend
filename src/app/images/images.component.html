@@ -20,27 +20,23 @@
       </div>
 
       <div class="mdl-card__title">
-        <a routerLink="/apps/{{app.Id}}">
-          <img *ngIf="app.pic_url" src="{{app.pic_url}}"/>
-          <img *ngIf="!app.pic_url" src="/assets/icons/ic_default.svg"/>
+        <a routerLink="/applications">
+          <img *ngIf="app.pictureUrl" src="{{app.pictureUrl}}"/>
+          <img *ngIf="!app.pictureUrl" src="/assets/icons/ic_default.svg"/>
         </a>
-        <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default.svg" [popover]="myPopover" [popoverOnHover]="true"/>
-        <a>
-          <img src="/assets/icons/ic_default.svg" [popover]="myPopover" [popoverOnHover]="true"/>
-        </a>
-        <img class="card-img" src="/assets/icons/ic_insert_photo_black_48px.svg" [popover]="myPopover" [popoverOnHover]="true"/> -->
+
         <div class="mdl-card__title-text">
           <div class="app-name">
-            {{app.RepoTags[0].split('/')[app.RepoTags[0].split('/').length-1].split(':')[0]}}
+            {{ app.name }}
           </div>
           <div class="app-misc">
             <strong>Version:</strong>
-            {{app.RepoTags[0].split(':')[app.RepoTags[0].split(':').length-1]}}
+            {{ app.version }}
           </div>
         </div>
       </div>
 
-      <div class="mdl-card__supporting-text">
+      <!-- <div class="mdl-card__supporting-text">
         <div *ngIf="app.RepoTags[0].split('/').length==1">
           <div class="app-misc">
             <strong>Registry:</strong>
@@ -87,14 +83,13 @@
           {{(app.Size/1000000).toFixed(3)}}
           MB
         </div>
-      </div>
+      </div> -->
 
       <div class="mdl-card__actions">
-        <a routerLink="/apps/{{app.Id}}">
-          <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start">
-            Start
-          </button>
-        </a>
+        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="startImage(app)">
+          Start
+        </button>
+
         <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
           Remove
         </button>
@@ -113,7 +108,7 @@
       <span>
         Do you want to remove
         <span>
-          <strong>{{image.RepoTags[0].split("/")[image.RepoTags[0].split("/").length-1]}}</strong>
+          <strong>{{ image.name }}</strong>
         </span>?
         <br>
         <strong>Warning:</strong>

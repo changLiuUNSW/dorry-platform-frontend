@@ -23,7 +23,7 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/api/images/all'
+        url: Constant.KUBE_API + '/listapplication'
       }))
       .map(this.extractData)
       .catch(this.handleError);
@@ -33,8 +33,11 @@ export class ImagesService {
   removeImage(id: string) {
     return this.http.request(
       new Request({
-        method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/api/images/remove/' + id
+        method: RequestMethod.Post,
+        url: Constant.KUBE_API + '/deleteapplication'
+        body: {
+          'name': profile
+        }
       }))
       .map(this.extractData)
   }
@@ -67,13 +70,12 @@ export class ImagesService {
     }
   }
 
-  //start an image
-  //start image = create container + start container
-  startImage(id: string) {
+  //start an application
+  startImage(name: string) {
     return this.http.request(
       new Request({
-        method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/api/images/start/' + id
+        method: RequestMethod.Post,
+        url: Constant.KUBE_API + '/startapplication'
       }))
       .map(this.extractData)
   }

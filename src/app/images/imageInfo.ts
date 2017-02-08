@@ -1,15 +1,15 @@
 export class ImageInfo {
-  url: string;
-  RepoTags: Object[];
-  Id: string;
-  createDate: string;
+  pictureUrl: string;
+  name: string;
+  version: string;
+  config: any;
 
   state: number;
 
-  constructor(url: string, RepoTags: Object[], Id: string, createDate: string) {
-    this.url = url;
-    this.RepoTags = RepoTags;
-    this.Id = Id;
-    this.createDate = createDate;
+  constructor(pictureUrl: string, name: string, version: string, config: any) {
+    this.pictureUrl = pictureUrl;
+    this.name = name;
+    this.version = version;
+    this.config = config;
   }
 }
