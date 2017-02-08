@@ -27,8 +27,8 @@
     <hr>
 
     <div class="row mdl-grid">
-      <span class="mdl-cell mdl-cell--4-col">Service IP</span>
-      <span class="mdl-cell mdl-cell--8-col">{{main.clusterIP}}</span>
+      <span class="mdl-cell mdl-cell--4-col">Port</span>
+      <span class="mdl-cell mdl-cell--8-col" *ngIf="main.ports[0].nodePort">{{main.ports[0].nodePort}}</span>
     </div>
     <hr>
 

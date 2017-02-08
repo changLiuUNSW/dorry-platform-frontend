@@ -17,7 +17,7 @@
         </a>
         <div class="mdl-card__title-text">
           <div class="service-name">{{service.metadata.name}}</div>
-          <div class="service-status">{{service.Status}}</div>
+          <!-- <div class="service-status">{{service.metadata.uid}}</div> -->
         </div>
       </div>
 
@@ -30,8 +30,9 @@
               <td *ngIf="!service.metadata.labels.app">None</td>
             </tr>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric">IP Address</td>
-              <td>{{service.spec.clusterIP}}</td>
+              <td class="mdl-data-table__cell--non-numeric">Port</td>
+              <td *ngIf="service.spec.ports[0].nodePort">{{service.spec.ports[0].nodePort}}</td>
+              <td *ngIf="!service.spec.ports[0].nodePort">None</td>
             </tr>
           </tbody>
         </table>
