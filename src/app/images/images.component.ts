@@ -57,44 +57,31 @@ export class ImagesComponent implements OnInit {
         this.imageInfoes = data;
         console.log(this.imageInfoes);
         console.log(this.imageInfoes[0].pictureUrl);
-        // this.hasApp = (this.imageInfoes.length !== 0);
-
-        // // Get the picture url from database
-        // for (var i = 0; i < this.imageInfoes.length; i++) {
-        //   this.imagesService.getData(this.imageInfoes[i].Id)
-        //     .subscribe(appData => {
-        //       for (var j = 0; j < this.imageInfoes.length; j++) {
-        //         if (appData.image_id == this.imageInfoes[j].Id) {
-        //           this.imageInfoes[j]['pic_url'] = appData.pic_url;
-        //         }
-        //       }
-        //     });
-        // }
+        this.hasApp = (this.imageInfoes.length !== 0);
       })
   }
 
   // Remove image event when click remove button
   removeImage(image: ImageInfo) {
     image.state = 1;
-    let id = image.Id;
+    let name = image.name;
     let message: string;
-    this.imagesService.removeImage(id)
+    this.imagesService.removeImage(name)
       .subscribe(
       data => {
-        if (data.statusCode)
-          this.toastr.error(this.image.RepoTags[0] + this.removeImageStatus(data.statusCode), 'ERROR', { toastLife: 3000 });
+        console.log(data)
+        if (data.returncode != '200')
+          this.toastr.error(this.image.name + this.removeImageStatus(data.returncode), 'ERROR', { toastLife: 3000 });
         else
-          this.toastr.success(this.image.RepoTags[0] + ' removed ', 'SUCCESS', { toastLife: 3000 });
+          this.toastr.success(this.image.name + ' removed ', 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes()
       });
   }
 
-  private removeImageStatus(status: number) {
-    if (status == 409)
+  private removeImageStatus(status: string) {
+    if (status == '500')
       return " has a service , please remove it first."
-    else if (status == 500)
-      return " has server error."
     else
       return " has error."
   }
@@ -168,7 +155,7 @@ export class ImagesComponent implements OnInit {
 
   configFactory() {
     return {
-      "Image": this.image.RepoTags[0],
+      "Image": this.image.name,
       "Tty": this.form['_value'].Tty == "true",
       "Cmd": [this.form['_value'].Cmd],
       "HostConfig": {

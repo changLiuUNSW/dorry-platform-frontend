@@ -181,7 +181,7 @@ export class StartingFormComponent implements OnInit {
           }
         }
         else
-          this.toastr.success('Start ' + image.RepoTags[0] + ' successfully', 'SUCCESS', { toastLife: 5000 });
+          this.toastr.success('Start ' + image.name + ' successfully', 'SUCCESS', { toastLife: 5000 });
       });
   }
 

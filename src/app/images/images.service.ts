@@ -29,14 +29,14 @@ export class ImagesService {
       .catch(this.handleError);
   }
 
-  //remove image by image id
-  removeImage(id: string) {
+  //remove image by image name
+  removeImage(name: string) {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.KUBE_API + '/deleteapplication'
+        url: Constant.KUBE_API + '/deleteapplication',
         body: {
-          'name': profile
+          'name': name
         }
       }))
       .map(this.extractData)
@@ -75,9 +75,12 @@ export class ImagesService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.KUBE_API + '/startapplication'
+        url: Constant.KUBE_API + '/startapplication',
+        body: {
+          "name": name
+        }
       }))
-      .map(this.extractData)
+    //.map(this.extractData)
   }
 
   getData(id: string) {
