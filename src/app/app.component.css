@@ -205,75 +205,76 @@ mdl-layout-header.sub-header mdl-layout-header-row {
   transition: 0.4s;
 }
 
-.mdl-button {
+div button.mdl-button {
   color: #517891;
   font-size: 16px;
   width: 86px;
   padding: 0;
 }
 
-.button-install {
+div button.mdl-button.button-download {
   color: #ffffff;
+  width: 106px;
   background: #81c784;
 }
 
-.button-install:hover {
+div button.mdl-button.button-download:hover {
   background: #56b881;
 }
 
-.button-remove {
+div button.mdl-button.button-remove {
   color: #ffffff;
   background: #E57373;
 }
 
-.button-remove:hover {
+div button.mdl-button.button-remove:hover {
   background: #E53935;
 }
 
-.button-stop {
+div button.mdl-button.button-stop {
   color: #ffffff;
   background: #B9B9B9;
 }
 
-.button-stop:hover {
+div button.mdl-button.button-stop:hover {
   background: #9E9E9E;
 }
 
-.button-start {
+div button.mdl-button.button-start {
   color: #ffffff;
   background: #81c784;
 }
 
-.button-start:hover {
+div button.mdl-button.button-start:hover {
   background: #56b881;
 }
 
-.button-restart {
+div button.mdl-button.button-restart {
   color: #ffffff;
   background: #81c784;
 }
 
-.button-restart:hover {
+div button.mdl-button.button-restart:hover {
   background: #56b881;
 }
 
-.button-cancel {
+div button.mdl-button.button-cancel {
   color: #78909C;
   background: #CFD8DC;
 }
 
-.button-cancel:hover {
+div button.mdl-button.button-cancel:hover {
   color: #ffffff;
   background: #B0BEC5;
 }
 
-.button-back {
+a button.mdl-button.button-back {
   background: #607c8c;
   font-size: 0;
   margin: auto 0;
 }
 
-.button-back:hover {
+a button.mdl-button.button-back:hover {
   background: #4a6777;
 }
 

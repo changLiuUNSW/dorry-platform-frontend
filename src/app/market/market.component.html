@@ -27,14 +27,14 @@
         </div>
 
         <div class="mdl-card__actions mdl-card--border">
-          <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="application.state==0 || application.state==2" class="button-install" (click)="installImage(application)" (click)="getItem(application)">
+          <!-- <button mdl-button mdl-button-type="raised" mdl-ripple *ngIf="application.state==0 || application.state==2" class="button-download" (click)="installImage(application)" (click)="getItem(application)">
             Install
           </button>
           <button mdl-button mdl-ripple disabled *ngIf="application.state==1" disabled>
             Installed
           </button> -->
-          <button mdl-button mdl-button-type="raised" mdl-ripple class="button-install">
-            Install
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="button-download" (click)="downloadApplication(application.name)">
+            Download
           </button>
         </div>
       </div>

@@ -16,7 +16,14 @@ export class MarketService {
 
   listApplication(): Observable<any> {
     return this.http
-      .get('http://localhost:15000/api/listapplication')
+      .get(Constant.KUBE_API + '/listmarketapplication')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  downloadApplication(name: string): Observable<any> {
+    return this.http
+      .get(Constant.KUBE_API + '/downloadapplication/' + name)
       .map(this.extractData)
       .catch(this.handleError);
   }

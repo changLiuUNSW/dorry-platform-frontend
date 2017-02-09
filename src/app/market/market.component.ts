@@ -24,28 +24,17 @@ export class MarketComponent implements OnInit {
   private listApplication() {
     this.marketService.listApplication()
       .subscribe(data => {
+        console.log(data);
         this.applications = data['res'];
-        console.log(this.applications);
       });
   }
 
-  // private installImage(item: any) {
-  //   this.getItem(item);
-  //   item.state = 2;
-  //   this.marketService.getTags(item)
-  //     .subscribe(data => {
-  //       this.marketService.pullImage(data.name, data.tags[0], item)
-  //         .subscribe(data => {
-  //           if (data.statusCode) {
-  //             this.toastr.error('Fail installing ' + item.name, 'ERROR', { toastLife: 5000 });
-  //           }
-  //           else {
-  //             this.toastr.success(item.name + ' Installed', 'SUCCESS', { toastLife: 5000 });
-  //           }
-  //           item.state = 1;
-  //         });
-  //     })
-  // }
+  private downloadApplication(name: string) {
+    this.marketService.downloadApplication(name)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 
   private getApplication(application: any) {
     this.application = application;
