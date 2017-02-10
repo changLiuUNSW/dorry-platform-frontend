@@ -56,7 +56,6 @@ export class ImagesComponent implements OnInit {
       .subscribe(data => {
         this.imageInfoes = data;
         console.log(this.imageInfoes);
-        console.log(this.imageInfoes[0].pictureUrl);
         this.hasApp = (this.imageInfoes.length !== 0);
       })
   }

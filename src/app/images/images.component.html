@@ -1,42 +1,43 @@
-<div class="message-empty" *ngIf="hasApp!=undefined && !hasApp">
-  Your application list is empty.
-</div>
+<div class="container">
+  <div class="message-empty" *ngIf="!hasApp">
+    Your application list is empty.
+  </div>
 
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--3-col" *ngFor="let app of imageInfoes">
-    <!-- <popover-content #myPopover [animation]="true" placement="bottom" [closeOnMouseOutside]="true">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col" *ngFor="let app of imageInfoes">
+      <!-- <popover-content #myPopover [animation]="true" placement="bottom" [closeOnMouseOutside]="true">
       <strong>ID:&nbsp;&nbsp;</strong>{{app.Id}}<br>
       <strong >Repo:&nbsp;&nbsp;</strong>{{app.RepoTags[0]}}
     </popover-content> -->
 
-    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-      <div class="spinner-container" *ngIf="app.state==2">
-        <mdl-spinner single-color [active]="app.state==2"></mdl-spinner>
-        <span>Starting</span>
-      </div>
-      <div class="spinner-container" *ngIf="app.state==1">
-        <mdl-spinner single-color [active]="app.state==1"></mdl-spinner>
-        <span>Removing</span>
-      </div>
+      <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+        <div class="spinner-container" *ngIf="app.state==2">
+          <mdl-spinner single-color [active]="app.state==2"></mdl-spinner>
+          <span>Starting</span>
+        </div>
+        <div class="spinner-container" *ngIf="app.state==1">
+          <mdl-spinner single-color [active]="app.state==1"></mdl-spinner>
+          <span>Removing</span>
+        </div>
 
-      <div class="mdl-card__title">
-        <a routerLink="/applications">
-          <img *ngIf="app.pictureUrl" src="{{app.pictureUrl}}"/>
-          <img *ngIf="!app.pictureUrl" src="/assets/icons/ic_default.svg"/>
-        </a>
+        <div class="mdl-card__title">
+          <a routerLink="/applications">
+            <img *ngIf="app.pictureUrl" src="{{app.pictureUrl}}"/>
+            <img *ngIf="!app.pictureUrl" src="/assets/icons/ic_default.svg"/>
+          </a>
 
-        <div class="mdl-card__title-text">
-          <div class="app-name">
-            {{ app.name }}
-          </div>
-          <div class="app-misc">
-            <strong>Version:</strong>
-            {{ app.version }}
+          <div class="mdl-card__title-text">
+            <div class="app-name">
+              {{ app.name }}
+            </div>
+            <div class="app-misc">
+              <strong>Version:</strong>
+              {{ app.version }}
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- <div class="mdl-card__supporting-text">
+        <!-- <div class="mdl-card__supporting-text">
         <div *ngIf="app.RepoTags[0].split('/').length==1">
           <div class="app-misc">
             <strong>Registry:</strong>
@@ -85,14 +86,15 @@
         </div>
       </div> -->
 
-      <div class="mdl-card__actions">
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="startImage(app)">
-          Start
-        </button>
+        <div class="mdl-card__actions">
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-start" (click)="startImage(app)">
+            Start
+          </button>
 
-        <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
-          Remove
-        </button>
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="mdl-button button-remove" (click)="getImage(app)" (click)="displayAlert()">
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   </div>
