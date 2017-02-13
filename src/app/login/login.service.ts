@@ -19,13 +19,13 @@ export class LoginService {
     return this.http.request(
       new Request({
         method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/users/login',
+        url: Constant.KUBE_API + '/user/login',
         body: {
           'username': username,
           'password': password
         }
-      }));
-    //.map(this.extractData);
+      }))
+      .map(this.extractData);
   }
 
   checkSession() {
