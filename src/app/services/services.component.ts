@@ -12,6 +12,7 @@ import { ServicesService } from './services.service';
 export class ServicesComponent implements OnInit {
   services: Object[];
   service: Object;
+  hasService: boolean;
 
   constructor(private servicesService: ServicesService) { }
 
@@ -23,6 +24,7 @@ export class ServicesComponent implements OnInit {
     this.servicesService.listService()
       .subscribe(data => {
         this.services = data["items"];
+        this.hasService = (this.services.length !== 0)
         console.log(this.services);
       });
   }

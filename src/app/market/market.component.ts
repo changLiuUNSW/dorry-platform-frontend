@@ -29,8 +29,8 @@ export class MarketComponent implements OnInit {
       });
   }
 
-  private downloadApplication(name: string) {
-    this.marketService.downloadApplication(name)
+  private downloadApplication(id: string) {
+    this.marketService.downloadApplication(id)
       .subscribe(data => {
         console.log(data);
       });
