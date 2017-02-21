@@ -30,9 +30,11 @@ export class MarketComponent implements OnInit {
   }
 
   private downloadApplication(id: string) {
+    this.application.state = 1;
     this.marketService.downloadApplication(id)
       .subscribe(data => {
         console.log(data);
+        this.application.state = 0;
       });
   }
 
