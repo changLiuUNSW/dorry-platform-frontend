@@ -21,7 +21,7 @@
         </div>
 
         <div class="mdl-card__title">
-          <a routerLink="/applications">
+          <a routerLink="/application/{{app.applicationId}}">
             <img *ngIf="app.pictureUrl" src="{{app.pictureUrl}}"/>
             <img *ngIf="!app.pictureUrl" src="/assets/icons/ic_default.svg"/>
           </a>
@@ -33,6 +33,10 @@
             <div class="app-misc">
               <strong>Version:</strong>
               {{ app.version }}
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              {{ app.author }}
             </div>
           </div>
         </div>

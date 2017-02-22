@@ -33,7 +33,10 @@ export class MarketComponent implements OnInit {
     this.application.state = 1;
     this.marketService.downloadApplication(id)
       .subscribe(data => {
-        console.log(data);
+        // console.log(data);
+        this.application.state = 0;
+      }, error => {
+        // console.log(error)
         this.application.state = 0;
       });
   }
