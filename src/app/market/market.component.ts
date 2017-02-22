@@ -35,9 +35,11 @@ export class MarketComponent implements OnInit {
       .subscribe(data => {
         // console.log(data);
         this.application.state = 0;
+        this.listApplication();
       }, error => {
         // console.log(error)
         this.application.state = 0;
+        this.listApplication();
       });
   }
 

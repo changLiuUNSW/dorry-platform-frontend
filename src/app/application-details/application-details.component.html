@@ -33,6 +33,14 @@
     <hr>
 
     <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Size</span>
+      <span class="mdl-cell mdl-cell--8-col">{{(application.size/1000000).toFixed(2)}}
+        MB
+      </span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
       <span class="mdl-cell mdl-cell--4-col">Author</span>
       <span class="mdl-cell mdl-cell--8-col">{{application.author}}</span>
     </div>
