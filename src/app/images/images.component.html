@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="message-empty" *ngIf="!hasApp">
+  <div class="message-empty" *ngIf="!imageInfoes">
     Your application list is empty.
   </div>
 
@@ -16,7 +16,7 @@
           <span>Starting</span>
         </div>
         <div class="spinner-container" *ngIf="app.state==1">
-          <mdl-spinner single-color [active]="app.state==1"></mdl-spinner>
+          <mdl-spinner single-color [active]="true"></mdl-spinner>
           <span>Removing</span>
         </div>
 

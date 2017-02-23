@@ -39,7 +39,7 @@ export class ImagesService {
           'name': name
         }
       }))
-      .map(this.extractData)
+      .map(res => res, err => err);
   }
 
   //inspect image by image id
@@ -80,7 +80,7 @@ export class ImagesService {
           "name": name
         }
       }))
-    //.map(this.extractData)
+      .map(res => res);
   }
 
   getData(id: string) {
