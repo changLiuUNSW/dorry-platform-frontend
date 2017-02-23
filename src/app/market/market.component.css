@@ -54,12 +54,12 @@
 }
 
 .app-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 
 .mdl-card__menu {
@@ -82,11 +82,11 @@ div > button {
   width: 100px;
 }
 
-.app-tag {
+.app-misc {
   font-size: 13px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }

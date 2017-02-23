@@ -40,7 +40,7 @@
 </div>
 
 <div *ngIf="database!=null" class="container">
-  <div *ngIf="main!=null" class="mdl-layout-title">
+  <div *ngIf="database!=null" class="mdl-layout-title">
     Database Details
   </div>
   <div class="mdl-card mdl-shadow--2dp">
@@ -58,7 +58,7 @@
 
     <div class="row mdl-grid">
       <span class="mdl-cell mdl-cell--4-col">Database Health</span>
-      <span class="mdl-cell mdl-cell--8-col">{{database.availableReplicas}}/{{main.replicas}}</span>
+      <span class="mdl-cell mdl-cell--8-col">{{database.availableReplicas}}/{{database.replicas}}</span>
     </div>
   </div>
 </div>

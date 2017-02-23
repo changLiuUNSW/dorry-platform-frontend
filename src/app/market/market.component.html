@@ -2,10 +2,10 @@
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--3-col" *ngFor="let application of applications">
       <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-        <!-- <div class="spinner-container" *ngIf="application.state==2">
+        <div class="spinner-container" *ngIf="application.state==1">
           <mdl-spinner single-color="white" [active]="true"></mdl-spinner>
           <span>Installing...</span>
-        </div> -->
+        </div>
         <div class="mdl-card__title">
           <a>
             <!-- <img class="mdl-card mdl-shadow--2dp" src="/assets/icons/ic_default_color.svg"/> -->
@@ -15,9 +15,13 @@
             <div class="app-name">
               {{application.name}}
             </div>
-            <div class="app-tag">
+            <div class="app-misc">
               <strong>Version:</strong>
               {{application.version}}
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              {{application.author}}
             </div>
           </div>
         </div>
@@ -33,8 +37,11 @@
           <button mdl-button mdl-ripple disabled *ngIf="application.state==1" disabled>
             Installed
           </button> -->
-          <button mdl-button mdl-button-type="raised" mdl-ripple class="button-download" (click)="downloadApplication(application.applicationId)">
+          <button mdl-button mdl-button-type="raised" mdl-ripple class="button-download" *ngIf="application.installed!=true" (click)="getApplication(application)" (click)="downloadApplication(application.applicationId)">
             Download
+          </button>
+          <button mdl-button mdl-ripple disabled style="width:106px" *ngIf="application.installed==true" disabled>
+            Installed
           </button>
         </div>
       </div>

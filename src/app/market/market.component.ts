@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from './market.service';
-
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Component({
@@ -15,7 +14,10 @@ export class MarketComponent implements OnInit {
   application: any;
   applications = [];
 
-  constructor(private marketService: MarketService, public toastr: ToastsManager) { }
+  constructor(
+    private marketService: MarketService,
+    public toast: ToastsManager
+  ) { }
 
   ngOnInit() {
     this.listApplication();
@@ -30,9 +32,18 @@ export class MarketComponent implements OnInit {
   }
 
   private downloadApplication(id: string) {
+    this.application.state = 1;
     this.marketService.downloadApplication(id)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(res => {
+        // console.log(res);
+        this.application.state = 0;
+        this.toast.success(res.text(), 'SUCCESS', { toastLife: 3000 });
+        this.listApplication();
+      }, err => {
+        // console.log(error)
+        this.application.state = 0;
+        this.toast.error(err.text(), 'ERROR', { toastLife: 3000 });
+        this.listApplication();
       });
   }
 

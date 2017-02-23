@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './services.service';
+import { ToastsManager } from "ng2-toastr/ng2-toastr";
 
 @Component({
   selector: 'app-services',
@@ -14,7 +15,10 @@ export class ServicesComponent implements OnInit {
   service: Object;
   hasService: boolean;
 
-  constructor(private servicesService: ServicesService) { }
+  constructor(
+    private servicesService: ServicesService,
+    private toast: ToastsManager
+  ) { }
 
   ngOnInit() {
     this.listService();
@@ -36,9 +40,15 @@ export class ServicesComponent implements OnInit {
       "deleteVolume": true
     }
     this.servicesService.deleteService(body)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(res => {
+        // console.log(res);
         service['state'] = 0;
+        this.toast.success(res.text(), 'SUCCESS', { toastLife: 3000 });
+        this.listService();
+      }, err => {
+        // console.log(err);
+        service['state'] = 0;
+        this.toast.error(err.text(), 'ERROR', { toastLife: 3000 });
         this.listService();
       });
   }

@@ -21,7 +21,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 
 .service-status {
@@ -31,7 +31,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 
 .mdl-card__supporting-text.table {

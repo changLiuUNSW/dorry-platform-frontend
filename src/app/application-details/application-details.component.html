@@ -1,0 +1,54 @@
+<mdl-layout-header class="sub-header">
+  <mdl-layout-header-row>
+    <a routerLink="/applications">
+      <button mdl-button mdl-button-type="raised" class="button-back">
+        <img src="/assets/icons/ic_arrow_back_white_24px.svg"/>
+      </button>
+    </a>
+    <span *ngIf="application!=null">{{application.name}}</span>
+  </mdl-layout-header-row>
+</mdl-layout-header>
+
+<div *ngIf="application!=null" class="container">
+  <div class="mdl-layout-title">
+    Application Details
+  </div>
+  <div class="mdl-card mdl-shadow--2dp">
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Name</span>
+      <span class="mdl-cell mdl-cell--8-col">{{application.name}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Version</span>
+      <span class="mdl-cell mdl-cell--8-col">{{application.version}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Id</span>
+      <span class="mdl-cell mdl-cell--8-col">{{application.applicationId}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Size</span>
+      <span class="mdl-cell mdl-cell--8-col">{{(application.size/1000000).toFixed(2)}}
+        MB
+      </span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Author</span>
+      <span class="mdl-cell mdl-cell--8-col">{{application.author}}</span>
+    </div>
+    <hr>
+
+    <div class="row mdl-grid">
+      <span class="mdl-cell mdl-cell--4-col">Description</span>
+      <span class="mdl-cell mdl-cell--8-col">{{application.description}}</span>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="message-empty" *ngIf="!hasApp">
+  <div class="message-empty" *ngIf="!imageInfoes">
     Your application list is empty.
   </div>
 
@@ -12,16 +12,16 @@
 
       <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
         <div class="spinner-container" *ngIf="app.state==2">
-          <mdl-spinner single-color [active]="app.state==2"></mdl-spinner>
+          <mdl-spinner single-color [active]="true"></mdl-spinner>
           <span>Starting</span>
         </div>
         <div class="spinner-container" *ngIf="app.state==1">
-          <mdl-spinner single-color [active]="app.state==1"></mdl-spinner>
+          <mdl-spinner single-color [active]="true"></mdl-spinner>
           <span>Removing</span>
         </div>
 
         <div class="mdl-card__title">
-          <a routerLink="/applications">
+          <a routerLink="/application/{{app.applicationId}}">
             <img *ngIf="app.pictureUrl" src="{{app.pictureUrl}}"/>
             <img *ngIf="!app.pictureUrl" src="/assets/icons/ic_default.svg"/>
           </a>
@@ -33,6 +33,10 @@
             <div class="app-misc">
               <strong>Version:</strong>
               {{ app.version }}
+            </div>
+            <div class="app-misc">
+              <strong>Author:</strong>
+              {{ app.author }}
             </div>
           </div>
         </div>

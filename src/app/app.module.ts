@@ -21,6 +21,7 @@ import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
 import { ContainerService } from './containers/container.service';
 import { ServicesService } from './services/services.service';
+import { ApplicationsService } from './applications/applications.service';
 import { AppService } from './app.service';
 import { MarketService } from './market/market.service';
 import { LoginService } from './login/login.service';
@@ -36,6 +37,8 @@ import { StartingFormComponent } from './starting-form/starting-form.component';
 import { LoginComponent } from './login/login.component';
 import { ServicesComponent } from './services/services.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
+import { ApplicationsComponent } from './applications/applications.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { ServiceDetailsComponent } from './service-details/service-details.compo
     StartingFormComponent,
     LoginComponent,
     ServicesComponent,
-    ServiceDetailsComponent
+    ServiceDetailsComponent,
+    ApplicationDetailsComponent,
+    ApplicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,7 @@ import { ServiceDetailsComponent } from './service-details/service-details.compo
     ImagesService,
     ContainerService,
     ServicesService,
+    ApplicationsService,
     AppService,
     MarketService,
     LoginService,

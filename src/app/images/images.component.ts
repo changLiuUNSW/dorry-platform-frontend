@@ -20,7 +20,6 @@ export class ImagesComponent implements OnInit {
 
   showAlert: boolean;
   showForm: boolean;
-  hasApp: boolean;
 
   dorry = new RegExp(/dorry/, 'i');
 
@@ -56,7 +55,6 @@ export class ImagesComponent implements OnInit {
       .subscribe(data => {
         this.imageInfoes = data;
         console.log(this.imageInfoes);
-        this.hasApp = (this.imageInfoes.length !== 0);
       })
   }
 
@@ -66,15 +64,16 @@ export class ImagesComponent implements OnInit {
     let name = image.name;
     let message: string;
     this.imagesService.removeImage(name)
-      .subscribe(
-      data => {
-        console.log(data)
-        if (data.returncode != '200')
-          this.toastr.error(this.image.name + this.removeImageStatus(data.returncode), 'ERROR', { toastLife: 3000 });
-        else
-          this.toastr.success(this.image.name + ' removed ', 'SUCCESS', { toastLife: 3000 });
+      .subscribe(res => {
+        console.log(res)
         image.state = 0;
-        this.getImageInfoes()
+        this.toastr.success(res.text(), 'SUCCESS', { toastLife: 3000 });
+        this.getImageInfoes();
+      }, err => {
+        console.log(err)
+        image.state = 0;
+        this.toastr.error(err.text(), 'ERROR', { toastLife: 3000 });
+        this.getImageInfoes();
       });
   }
 
@@ -91,10 +90,7 @@ export class ImagesComponent implements OnInit {
       .subscribe(data => {
         console.log("start image : ");
         console.log(data);
-        // if (data.statusCode)
-        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
-        // else
-        this.toastr.success('Start ' + image.name + ' successfully', 'SUCCESS', { toastLife: 3000 });
+        this.toastr.success(data.text(), 'SUCCESS', { toastLife: 3000 });
         image.state = 0;
         this.getImageInfoes();
       });

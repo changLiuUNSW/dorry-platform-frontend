@@ -24,8 +24,7 @@ export class MarketService {
   downloadApplication(id: string): Observable<any> {
     return this.http
       .get(Constant.KUBE_API + '/downloadapplication/' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(res => res);
   }
 
   // pullImage(name: string, tag: string, image: Object): Observable<any> {
