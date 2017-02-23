@@ -36,7 +36,7 @@ export class ServicesComponent implements OnInit {
   deleteService(service: Object) {
     service['state'] = 1;
     var body = {
-      "name": "mediawiki",
+      "name": service["metadata"]["name"],
       "deleteVolume": true
     }
     this.servicesService.deleteService(body)
