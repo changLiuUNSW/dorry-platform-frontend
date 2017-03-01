@@ -4,17 +4,18 @@ sudo: required
 dist: trusty
 # Multiple versions of the language here
 node_js:
-  - '4.2.6'
+  - '6.10.0'
 
 # Install dependencies
 before_install:
-  - npm install -g npm
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - npm install -g
+  # - sudo apt-get install -y libappindicator1 fonts-liberation
+  # - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  # - sudo dpkg -i google-chrome*.deb
+  # - export CHROME_BIN=/usr/bin/google-chrome
+  # - export DISPLAY=:99.0
+  # - sh -e /etc/init.d/xvfb start
+  - ng build -prod --suppress-sizes=true
 
 # Setup the ARM environment, then build and run your Dockerfile
 install:
@@ -22,7 +23,8 @@ install:
   # - sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
   # - sudo update-binfmts --enable qemu-arm
   # - sudo update-binfmts --display qemu-arm
-  # - docker build -t $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION .
+  - docker build -t $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION .
+  - docker images
 
 # Install required packages for testing scripts
 before_script:
@@ -38,11 +40,10 @@ cache:
 # Define your own tests here
 script:
   # - python tests.py
-  # - docker images
 
 # After success, push your images to the registry
 after_success:
-  # - if [ "$TRAVIS_BRANCH" == "master" ]; then
-  #   docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.example.com;
-  #   docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
-  #   fi
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
+    fi
