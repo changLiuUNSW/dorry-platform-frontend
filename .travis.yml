@@ -33,6 +33,3 @@ after_success:
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
     fi
-    
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION
