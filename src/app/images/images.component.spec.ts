@@ -24,11 +24,11 @@ describe('Component: Images', () => {
 
   });
 
-  it('mock-images: hould mock-images construct successfully', () => {
-    let imageUrl: ImageUrl;
-    imageUrl = new ImageUrl("test", "/test/test");
-    expect(imageUrl).toBeTruthy;
-  })
+  // it('mock-images: hould mock-images construct successfully', () => {
+  //   let imageUrl: ImageUrl;
+  //   imageUrl = new ImageUrl("test", "/test/test");
+  //   expect(imageUrl).toBeTruthy;
+  // })
 
   it('ImagesService: init images services successfully', inject([ImagesService], (imagesService: ImagesService) => {
     expect(imagesService).toBeTruthy();
@@ -53,16 +53,16 @@ describe('Component: Images', () => {
   })
   );
 
-  it('ImagesService: create container successfully', inject([ImagesService], (imagesService: ImagesService) => {
-    let create = imagesService.createContainer("test");
-    expect(create).toBeTruthy();
-  })
-  );
+  // it('ImagesService: create container successfully', inject([ImagesService], (imagesService: ImagesService) => {
+  //   let create = imagesService.createContainer("test");
+  //   expect(create).toBeTruthy();
+  // })
+  // );
 
-  it('ImagesService: start container successfully', inject([ImagesService], (imagesService: ImagesService) => {
-    let start = imagesService.startContainer("test");
-    expect(start).toBeTruthy();
-  })
-  );
+  // it('ImagesService: start container successfully', inject([ImagesService], (imagesService: ImagesService) => {
+  //   let start = imagesService.startContainer("test");
+  //   expect(start).toBeTruthy();
+  // })
+  // );
 
 });
