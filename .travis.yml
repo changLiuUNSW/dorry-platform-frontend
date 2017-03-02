@@ -20,7 +20,6 @@ install:
   # - sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
   # - sudo update-binfmts --enable qemu-arm
   # - sudo update-binfmts --display qemu-arm
-  - ls 
   - docker build -t $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION .
 
 before_script:
@@ -34,3 +33,5 @@ after_success:
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
     fi
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
