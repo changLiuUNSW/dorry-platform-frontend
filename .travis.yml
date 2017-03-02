@@ -25,16 +25,19 @@ install:
   # - sudo update-binfmts --display qemu-arm
   - docker build -t $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION .
 
-# Install required packages for testing scripts
-# before_script:
-#   - docker images
-
 # Define your own tests here
 # script:
+#   - docker images
 #   - python tests.py
 
 # After success, push your images to the registry
-after_success:
+# after_success:
+#   - if [ "$TRAVIS_BRANCH" == "ci-test" ]; then
+#     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+#     docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
+#     fi
+
+deploy:
   - if [ "$TRAVIS_BRANCH" == "ci-test" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
