@@ -11,7 +11,7 @@ export class Constant {
   public static REGISTRYADDR: string = "";
   public static BUILDVERSION: string = "";
   public static REGISTRYHOST: string = "";
-  //public static DORRYAPI: string = "";
+  public static DORRYAPI: string = "";
   public static KUBE_API: string = "";
 
   public static initConfig(configObject: ConfigObject) {
@@ -19,7 +19,7 @@ export class Constant {
     this.REGISTRYADDR = configObject.registry_proto + "://" + configObject.registry_host;
     this.BUILDVERSION = configObject.build_version;
     this.REGISTRYHOST = configObject.registry_host;
-    //this.DORRYAPI = configObject.dorry_api;
+    this.DORRYAPI = configObject.dorry_api;
     // this.KUBE_API = 'http://localhost:12000';
     this.KUBE_API = configObject.kube_api;
   }

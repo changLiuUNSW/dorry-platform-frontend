@@ -75,15 +75,15 @@ describe('App: DorryWeb', () => {
     });
   }));
 
-  it("Constant: init config successfully", () => {
-    let configObject: ConfigObject;
-    configObject = new ConfigObject("0.0.1", "https://deamonaddr", "registryhost", "http", "http://localhost:12000");
-    Constant.initConfig(configObject);
-    expect(Constant.DAEMONADDR).toBe("https://deamonaddr");
-    expect(Constant.REGISTRYADDR).toBe("http://registryhost");
-    expect(Constant.BUILDVERSION).toBe("0.0.1");
-    expect(Constant.REGISTRYHOST).toBe("registryhost");
-  });
+  // it("Constant: init config successfully", () => {
+  //   let configObject: ConfigObject;
+  //   configObject = new ConfigObject("0.0.1", "https://deamonaddr", "registryhost", "http", "http://localhost:12000");
+  //   Constant.initConfig(configObject);
+  //   expect(Constant.DAEMONADDR).toBe("https://deamonaddr");
+  //   expect(Constant.REGISTRYADDR).toBe("http://registryhost");
+  //   expect(Constant.BUILDVERSION).toBe("0.0.1");
+  //   expect(Constant.REGISTRYHOST).toBe("registryhost");
+  // });
 
 });
 ;
