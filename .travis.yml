@@ -24,14 +24,14 @@ install:
   # - sudo update-binfmts --enable qemu-arm
   # - sudo update-binfmts --display qemu-arm
   - docker build -t $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION .
-  - docker images
 
 # Install required packages for testing scripts
-before_script:
+# before_script:
+#   - docker images
 
 # Define your own tests here
-script:
-  # - python tests.py
+# script:
+#   - python tests.py
 
 # After success, push your images to the registry
 after_success:
