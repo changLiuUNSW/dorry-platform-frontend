@@ -25,6 +25,15 @@ export class AppService {
       .catch(this.handleError);
   }
 
+  getMarketUrl(): Observable<any> {
+    return this.http.request(
+      new Request({
+        method: RequestMethod.Get,
+        url: Constant.KUBE_API + '/getmarketurl'
+      })
+    ).map(res => res["_body"]);
+  }
+
   extractData(res: Response) {
     // console.log(res.toString())
     let body = res.json();

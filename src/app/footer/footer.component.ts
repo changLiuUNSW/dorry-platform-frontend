@@ -12,12 +12,14 @@ export class FooterComponent implements OnInit {
   private versionInfo;
   private apiVersion = "";
   private uiVersion: string;
+  private marketUrl;
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
     //this.getVersionInfo();
     this.uiVersion = Constant.BUILDVERSION;
+    this.getMarketUrl();
   }
 
   getVersionInfo() {
@@ -35,5 +37,9 @@ export class FooterComponent implements OnInit {
 
   getUiVersion() {
     return this.uiVersion;
+  }
+
+  getMarketUrl() {
+    this.appService.getMarketUrl().subscribe(data => this.marketUrl = data);
   }
 }

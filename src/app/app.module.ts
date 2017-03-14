@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
 import { MdlModule } from 'angular2-mdl';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 
@@ -27,7 +27,6 @@ import { MarketService } from './market/market.service';
 import { LoginService } from './login/login.service';
 import { LoginDataService } from './login/logindata.service';
 import { routing } from './app.routing';
-
 import { AuthGuard } from './authguard/auth.guard';
 
 // Third party
@@ -87,7 +86,8 @@ import { ApplicationsComponent } from './applications/applications.component';
     AppService,
     MarketService,
     LoginService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: XSRFStrategy, useValue: new CookieXSRFStrategy('XSRF-TOKEN', 'X-CSRFToken') }
   ],
   bootstrap: [AppComponent]
 })
