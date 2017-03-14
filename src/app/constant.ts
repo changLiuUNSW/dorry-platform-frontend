@@ -20,7 +20,11 @@ export class Constant {
     this.BUILDVERSION = configObject.build_version;
     this.REGISTRYHOST = configObject.registry_host;
     this.DORRYAPI = configObject.dorry_api;
-    // this.KUBE_API = 'http://localhost:12000';
-    this.KUBE_API = configObject.kube_api;
+    if (location.hostname) {
+      this.KUBE_API = 'http://' + location.hostname + ':12000'
+    }
+    else {
+      this.KUBE_API = configObject.kube_api;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { MdlModule } from 'angular2-mdl';
 import { Location, LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 
@@ -15,7 +15,6 @@ import { ContainerDetailsComponent } from './container-details/container-details
 import { MarketComponent } from './market/market.component';
 import { MastheadComponent } from './masthead/masthead.component';
 import { FooterComponent } from './footer/footer.component';
-import { JQueryTestComponent } from './j-query-test/j-query-test.component';
 
 import { ConfigService } from './config.service';
 import { ImagesService } from './images/images.service';
@@ -50,7 +49,6 @@ import { ApplicationsComponent } from './applications/applications.component';
     MarketComponent,
     MastheadComponent,
     FooterComponent,
-    JQueryTestComponent,
     ContainerDetailsComponent,
     StartingFormComponent,
     LoginComponent,
@@ -87,7 +85,6 @@ import { ApplicationsComponent } from './applications/applications.component';
     MarketService,
     LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    // { provide: XSRFStrategy, useValue: new CookieXSRFStrategy('XSRF-TOKEN', 'X-CSRFToken') }
   ],
   bootstrap: [AppComponent]
 })
