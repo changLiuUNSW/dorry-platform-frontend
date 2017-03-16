@@ -29,7 +29,7 @@ script:
   # - python tests.py
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "ci-test" ]; then
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push $DOCKER_IMAGE:$DOCKER_IMAGE_VERSION;
     fi

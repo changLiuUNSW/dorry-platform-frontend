@@ -1,26 +1,20 @@
 import { ConfigObject } from './configObject';
 
+// Class store constant values
+//
+// KUBE_API: dorry platform backend api url
+// FRONTEND_VERSION: dorry platform frontend version
+// BACKEND_VERSION: dorry platform backend version
 export class Constant {
-  //public static DAEMONADDR = "http://192.168.10.84:10000";
-  //public static DAEMONADDR = 'http://localhost:10000';
 
-  //public static REGISTRYADDR = 'https://dorryServer:5001';
-  //public static BUILDVERSION = "v0.1.6-alpha";
-
-  public static DAEMONADDR: string = "";
-  public static REGISTRYADDR: string = "";
-  public static BUILDVERSION: string = "";
-  public static REGISTRYHOST: string = "";
-  public static DORRYAPI: string = "";
   public static KUBE_API: string = "";
+  public static FRONTEND_VERSION: string = "";
+  public static BACKEND_VERSION: string = "";
 
+  // init constant from config object
   public static initConfig(configObject: ConfigObject) {
-    this.DAEMONADDR = configObject.daemon_addr;
-    this.REGISTRYADDR = configObject.registry_proto + "://" + configObject.registry_host;
-    this.BUILDVERSION = configObject.build_version;
-    this.REGISTRYHOST = configObject.registry_host;
-    this.DORRYAPI = configObject.dorry_api;
-    // this.KUBE_API = 'http://localhost:12000';
     this.KUBE_API = configObject.kube_api;
+    this.FRONTEND_VERSION = configObject.frontend_version;
+    this.BACKEND_VERSION = configObject.backend_version;
   }
 }

@@ -14,6 +14,10 @@ export class LoginService {
   NgOninit() {
   }
 
+  // Function login()
+  // call backend login api
+  //
+  // param      {string} username , {string} password
   login(username: string, password: string) {
     console.log(username, password);
     return this.http.request(
@@ -24,15 +28,6 @@ export class LoginService {
           'username': username,
           'password': password
         }
-      }))
-      .map(this.extractData);
-  }
-
-  checkSession() {
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/users/session'
       }))
       .map(this.extractData);
   }

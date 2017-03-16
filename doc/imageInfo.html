@@ -20,58 +20,38 @@
             <div id="jump_page">
               
                 
-                <a class="source" href="containers-error.component.spec.html">
-                  containers-error.component.spec.ts
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-error.component.html">
-                  containers-error.component.ts
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.spec.html">
-                  containers-running.component.spec.ts
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.html">
-                  containers-running.component.ts
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.spec.html">
-                  containers-stopped.component.spec.ts
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.html">
-                  containers-stopped.component.ts
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
                 </a>
               
                 
-                <a class="source" href="container.service.spec.html">
-                  container.service.spec.ts
-                </a>
-              
-                
-                <a class="source" href="container.service.html">
-                  container.service.ts
-                </a>
-              
-                
-                <a class="source" href="container.html">
-                  container.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.spec.html">
-                  containers.component.spec.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.html">
-                  containers.component.ts
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
                 </a>
               
                 
@@ -100,18 +80,48 @@
                 </a>
               
                 
-                <a class="source" href="images.service.spec.html">
-                  images.service.spec.ts
-                </a>
-              
-                
                 <a class="source" href="images.service.html">
                   images.service.ts
                 </a>
               
                 
-                <a class="source" href="mock-images.html">
-                  mock-images.ts
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
                 </a>
               
                 
@@ -125,23 +135,33 @@
                 </a>
               
                 
-                <a class="source" href="navbar.component.spec.html">
-                  navbar.component.spec.ts
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="navbar.component.html">
-                  navbar.component.ts
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
                 </a>
               
                 
-                <a class="source" href="navbtn.html">
-                  navbtn.ts
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="index.html">
-                  index.ts
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
                 </a>
               
             </div>
@@ -169,16 +189,18 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImageInfo {
-  url: <span class="hljs-built_in">string</span>;
-  RepoTags: <span class="hljs-built_in">Object</span>[];
-  Id: <span class="hljs-built_in">string</span>;
-  createDate: <span class="hljs-built_in">string</span>;
+  pictureUrl: <span class="hljs-built_in">string</span>;
+  name: <span class="hljs-built_in">string</span>;
+  version: <span class="hljs-built_in">string</span>;
+  config: <span class="hljs-built_in">any</span>;
 
-  <span class="hljs-keyword">constructor</span>(url: string, RepoTags: Object[], Id: string, createDate: string) {
-    <span class="hljs-keyword">this</span>.url = url;
-    <span class="hljs-keyword">this</span>.RepoTags = RepoTags;
-    <span class="hljs-keyword">this</span>.Id = Id;
-    <span class="hljs-keyword">this</span>.createDate = createDate;
+  state: <span class="hljs-built_in">number</span>;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">pictureUrl: <span class="hljs-built_in">string</span>, name: <span class="hljs-built_in">string</span>, version: <span class="hljs-built_in">string</span>, config: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-keyword">this</span>.pictureUrl = pictureUrl;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.version = version;
+    <span class="hljs-keyword">this</span>.config = config;
   }
 }</pre></div></div>
             

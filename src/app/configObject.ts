@@ -1,17 +1,16 @@
+// Object store the config values
+//
+// * kube_api: dorry platform backend api url
+// * frontend_version: dorry platform frontend build version
+// * backend_version: dorry platform backend build version
 export class ConfigObject {
-  build_version: string;
-  daemon_addr: string;
-  registry_host: string;
-  registry_proto: string;
-  dorry_api: string;
   kube_api: string;
+  frontend_version: string;
+  backend_version: string;
 
-  constructor(build_version: string, daemon_addr: string, registry_host: string, registry_proto: string, dorry_api: string, kube_api: string) {
-    this.build_version = build_version;
-    this.daemon_addr = daemon_addr;
-    this.registry_host = registry_host;
-    this.dorry_api = dorry_api;
-    this.registry_proto = registry_proto;
+  constructor(kube_api: string, frontend_version: string, backend_version) {
     this.kube_api = kube_api;
+    this.frontend_version = frontend_version;
+    this.backend_version = backend_version;
   }
 }

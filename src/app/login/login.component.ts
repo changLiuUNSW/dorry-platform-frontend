@@ -12,10 +12,17 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+// LoginComponent
+//
+// Show user login page
+//
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  //Username input form
   Username = new FormControl();
+  //Password input form
   Password = new FormControl();
 
   constructor(private loginDataService: LoginDataService, private loginService: LoginService, private fb: FormBuilder, private ar: ActivatedRoute,
@@ -30,14 +37,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Function: login
+  //
+  // Send login body to login service
   login() {
     this.loginService.login(this.form['_value'].Username, this.form['_value'].Password)
       .subscribe(data => {
+        // return success from api
         if (data.returncode == 200) {
           localStorage.setItem('currentUser', JSON.stringify({ name: this.form['_value'].Username }));
           this.loginDataService.callComponentMethod();
           this.ar.queryParams.subscribe(
             data => {
+              // Get return url and redirect to the url
               var returnUrl = data['returnUrl'];
               console.log(returnUrl);
               this.router.navigate([returnUrl]);
@@ -47,12 +59,4 @@ export class LoginComponent implements OnInit {
       },
       err => this.toastr.error("Incorrect username or password.", 'ERROR', { toastLife: 5000 }));
   }
-
-  checkSession() {
-    this.loginService.checkSession()
-      .subscribe(data => {
-        console.log(data);
-      })
-  }
-
 }

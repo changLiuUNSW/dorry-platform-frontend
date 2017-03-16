@@ -5,11 +5,17 @@ import { Constant } from '../constant';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
+ApplicationsService
+
+// call dorry platform backend application api
+// including:
+// * get application details
 @Injectable()
 export class ApplicationsService {
 
   constructor(private http: Http) { }
 
+  //get application detail from backend api
   getApplicationDetail(id: string): Observable<Object[]> {
     return this.http.request(
       new Request({

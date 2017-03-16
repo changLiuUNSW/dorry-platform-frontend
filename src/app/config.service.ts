@@ -15,12 +15,12 @@ export class ConfigService {
 
   }
 
+  //Function:load
+  // read config from '/assets/config/env.json'
+  //
+  // return:Promise<ConfigObject>
+  // return data of configurations
   load(): Promise<ConfigObject> {
-    // return this.http.get('/assets/config/env.json').toPromise()
-    //   .then(data => {
-    //     this.configObject = data.json();
-    //     Constant.initConfig(this.configObject);
-    //   });
     var promise = this.http.get('/assets/config/env.json').map(res => res.json()).toPromise();
     promise.then(site => {
       this.configObject = site;

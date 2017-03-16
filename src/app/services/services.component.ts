@@ -10,6 +10,10 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
     '../app.component.css'
   ]
 })
+
+// Services Conponent
+//
+// get service list and shot service items on service page.
 export class ServicesComponent implements OnInit {
   services: Object[];
   service: Object;
@@ -24,6 +28,8 @@ export class ServicesComponent implements OnInit {
     this.listService();
   }
 
+  // Function: listService
+  // Get service list by services service
   listService() {
     this.servicesService.listService()
       .subscribe(data => {
@@ -33,6 +39,10 @@ export class ServicesComponent implements OnInit {
       });
   }
 
+  // Function: deleteService
+  // delete service by service Object
+  //
+  // params: Object
   deleteService(service: Object) {
     service['state'] = 1;
     var body = {
@@ -41,18 +51,17 @@ export class ServicesComponent implements OnInit {
     }
     this.servicesService.deleteService(body)
       .subscribe(res => {
-        // console.log(res);
         service['state'] = 0;
         this.toast.success(res.text(), 'SUCCESS', { toastLife: 3000 });
         this.listService();
       }, err => {
-        // console.log(err);
         service['state'] = 0;
         this.toast.error(err.text(), 'ERROR', { toastLife: 3000 });
         this.listService();
       });
   }
 
+  // Get service from html template
   getService(service: Object) {
     this.service = service;
   }

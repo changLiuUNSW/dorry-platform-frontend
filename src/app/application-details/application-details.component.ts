@@ -26,6 +26,7 @@ export class ApplicationDetailsComponent implements OnInit {
     this.getApplicationDetail(this.id);
   }
 
+  // get application detail by applicatoin name
   getApplicationDetail(id: string) {
     this.applicationsService.getApplicationDetail(id)
       .subscribe(data => {

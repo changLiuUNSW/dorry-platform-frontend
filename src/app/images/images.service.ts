@@ -9,16 +9,15 @@ import 'rxjs/add/operator/catch';
 
 import { Constant } from '../constant';
 
+
 @Injectable()
 export class ImagesService {
-  private remove = '/images/{id}?force=1';//[DELETE]  remove image ,add image id after the url
-  private inspect = '/images/{id}/json';//[GET] inspect image;
-  private create = '/containers/create';
-  private start = '/containers/{id}/start';
 
   constructor(private http: Http) { }
 
-  //get all image infoes from docker daemon
+  //Function: getImageInfoes
+  //
+  //Get all image infoes from docker daemon
   getImageInfoes() {
     return this.http.request(
       new Request({
@@ -29,7 +28,9 @@ export class ImagesService {
       .catch(this.handleError);
   }
 
-  //remove image by image name
+  //Function: removeImage
+  //
+  //Remove image by image name
   removeImage(name: string) {
     return this.http.request(
       new Request({
@@ -42,20 +43,10 @@ export class ImagesService {
       .map(res => res, err => err);
   }
 
-  //inspect image by image id
-  //get the json object after call the function
-  //the create form : 2016-09-23T16:29:57.276868291Z
-  inspectImage(id: string) {
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/api/images/inspect/' + id
-      }))
-      .map(this.extractData)
-  }
-
-  // get remove image response code
-  // reponse code:
+  // Function: getRemoveImageResMsg
+  //
+  // Get remove image response code
+  // Reponse code:
   // 200 - no error
   // 404 - no such image
   // 409 - conflict
@@ -70,7 +61,9 @@ export class ImagesService {
     }
   }
 
-  //start an application
+  //Function: startImage
+  //
+  //Start an application
   startImage(name: string) {
     return this.http.request(
       new Request({
@@ -83,44 +76,8 @@ export class ImagesService {
       .map(res => res);
   }
 
-  getData(id: string) {
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Get,
-        url: Constant.DORRYAPI + '/api/images/db/' + id,
-      }))
-      .map(this.extractData)
-  }
-
-  startWithConfig(config: Object) {
-    console.log(config);
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/images/db/startwithconfig',
-        body: config
-      }))
-      .map(this.extractData)
-  }
-
-  saveConfig(profile: Object, image_id: string) {
-    console.log(profile, image_id);
-    return this.http.request(
-      new Request({
-        method: RequestMethod.Post,
-        url: Constant.DORRYAPI + '/api/images/db/saveconfig',
-        body: {
-          'profile': profile,
-          'image_id': image_id
-        }
-      }))
-      .map(this.extractData)
-  }
-
   private extractData(res: Response) {
-    // console.log(res.toString())
     let body = res.json();
-    // console.log(res.json());
     return body;
   }
 

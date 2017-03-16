@@ -5,6 +5,13 @@ import { Constant } from '../constant';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
+// ServicesService
+//
+// call dorry-platform-backend service api
+// including:
+// * list service
+// * get service detail
+// * delete service
 @Injectable()
 export class ServicesService {
 

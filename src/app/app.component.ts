@@ -28,16 +28,19 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    window.open(Constant.REGISTRYADDR);
     this.getUser();
   }
 
+  // Function: logout
+  // Logout user
+  // Clean the user data from local storage.
   logout() {
     localStorage.clear();
     this.router.navigate(['/login'], { queryParams: { returnUrl: "" } });
     this.getUser();
   }
 
+  // Get user object, include username and password
   getUser() {
     let userString = localStorage.getItem('currentUser');
     this.user = JSON.parse(userString);

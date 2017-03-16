@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>login.component.ts</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
+                </a>
+              
+                
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.spec.html">
+                  footer.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.html">
+                  footer.component.ts
+                </a>
+              
+                
+                <a class="source" href="imageInfo.html">
+                  imageInfo.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.spec.html">
+                  images.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.html">
+                  images.component.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.html">
+                  images.service.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.spec.html">
+                  masthead.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.html">
+                  masthead.component.ts
+                </a>
+              
+                
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>login.component.ts</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit, EventEmitter, Input, Output } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, FormControl, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { LoginService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./login.service'</span>;
+<span class="hljs-keyword">import</span> { LoginDataService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./logindata.service'</span>;
+<span class="hljs-keyword">import</span> { ActivatedRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/router'</span>;
+<span class="hljs-keyword">import</span> { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/router'</span>;
+
+<span class="hljs-keyword">import</span> { ToastsManager } <span class="hljs-keyword">from</span> <span class="hljs-string">"ng2-toastr/ng2-toastr"</span>;
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-login'</span>,
+  templateUrl: <span class="hljs-string">'./login.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./login.component.css'</span>]
+})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>LoginComponent</p>
+<p>Show user login page</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> LoginComponent <span class="hljs-keyword">implements</span> OnInit {
+
+  form: FormGroup;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Username input form</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Username = <span class="hljs-keyword">new</span> FormControl();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Password input form</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Password = <span class="hljs-keyword">new</span> FormControl();
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> loginDataService: LoginDataService, <span class="hljs-keyword">private</span> loginService: LoginService, <span class="hljs-keyword">private</span> fb: FormBuilder, <span class="hljs-keyword">private</span> ar: ActivatedRoute,
+    <span class="hljs-keyword">private</span> router: Router, <span class="hljs-keyword">public</span> toastr: ToastsManager</span>) {
+
+    <span class="hljs-keyword">this</span>.form = fb.group({
+      <span class="hljs-string">'Username'</span>: <span class="hljs-keyword">this</span>.Username,
+      <span class="hljs-string">'Password'</span>: <span class="hljs-keyword">this</span>.Password
+    });
+  }
+
+  ngOnInit() {
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Function: login</p>
+<p>Send login body to login service</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  login() {
+    <span class="hljs-keyword">this</span>.loginService.login(<span class="hljs-keyword">this</span>.form[<span class="hljs-string">'_value'</span>].Username, <span class="hljs-keyword">this</span>.form[<span class="hljs-string">'_value'</span>].Password)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>return success from api</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> (data.returncode == <span class="hljs-number">200</span>) {
+          localStorage.setItem(<span class="hljs-string">'currentUser'</span>, <span class="hljs-built_in">JSON</span>.stringify({ name: <span class="hljs-keyword">this</span>.form[<span class="hljs-string">'_value'</span>].Username }));
+          <span class="hljs-keyword">this</span>.loginDataService.callComponentMethod();
+          <span class="hljs-keyword">this</span>.ar.queryParams.subscribe(
+            <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Get return url and redirect to the url</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">var</span> returnUrl = data[<span class="hljs-string">'returnUrl'</span>];
+              <span class="hljs-built_in">console</span>.log(returnUrl);
+              <span class="hljs-keyword">this</span>.router.navigate([returnUrl]);
+            }
+          );
+        }
+      },
+      <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-keyword">this</span>.toastr.error(<span class="hljs-string">"Incorrect username or password."</span>, <span class="hljs-string">'ERROR'</span>, { toastLife: <span class="hljs-number">5000</span> }));
+  }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

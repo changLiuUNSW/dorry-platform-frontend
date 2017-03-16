@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { VersionInfo } from './versionInfo';
 import { Constant } from '../constant';
 
 @Component({
@@ -8,32 +7,30 @@ import { Constant } from '../constant';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
+
+// FooterComponent
+// Show navbar footer
+// Including:
+// Frontend version
+// Backend version
 export class FooterComponent implements OnInit {
-  private versionInfo;
-  private apiVersion = "";
-  private uiVersion: string;
+  private frontendVersion: string;
+  private backendVersion: string;
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    //this.getVersionInfo();
-    this.uiVersion = Constant.BUILDVERSION;
+    this.frontendVersion = Constant.FRONTEND_VERSION;
+    this.backendVersion = Constant.BACKEND_VERSION;
   }
 
-  getVersionInfo() {
-    this.appService.getVersion()
-      .then(data => this.versionInfo = data)
-      .then(() => {
-        this.apiVersion = this.versionInfo.ApiVersion
-        this.uiVersion = Constant.BUILDVERSION;
-      });
+  //get dorry platform backend version
+  getBackendVersion() {
+    return this.backendVersion;
   }
 
-  getApiVersion() {
-    return this.apiVersion;
-  }
-
-  getUiVersion() {
-    return this.uiVersion;
+  //get dorry platform frontend version
+  getFrontendVersion() {
+    return this.frontendVersion;
   }
 }

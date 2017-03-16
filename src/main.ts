@@ -14,11 +14,3 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-  // .then(() => {
-  //
-  //   let configService = new ConfigService(this._http);
-  //   configService.load().then(data => {
-  //     this.configObject = data;
-  //     Constant.initConfig(this.configObject);
-  //   });
-  // });

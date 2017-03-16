@@ -20,6 +20,51 @@
             <div id="jump_page">
               
                 
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
+                </a>
+              
+                
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
+                </a>
+              
+                
+                <a class="source" href="container-details.component.spec.html">
+                  container-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="container-details.component.html">
+                  container-details.component.ts
+                </a>
+              
+                
                 <a class="source" href="containers-error.component.spec.html">
                   containers-error.component.spec.ts
                 </a>
@@ -85,6 +130,11 @@
                 </a>
               
                 
+                <a class="source" href="versionInfo.html">
+                  versionInfo.ts
+                </a>
+              
+                
                 <a class="source" href="imageInfo.html">
                   imageInfo.ts
                 </a>
@@ -100,18 +150,58 @@
                 </a>
               
                 
-                <a class="source" href="images.service.spec.html">
-                  images.service.spec.ts
-                </a>
-              
-                
                 <a class="source" href="images.service.html">
                   images.service.ts
                 </a>
               
                 
-                <a class="source" href="mock-images.html">
-                  mock-images.ts
+                <a class="source" href="j-query-test.component.spec.html">
+                  j-query-test.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="j-query-test.component.html">
+                  j-query-test.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
                 </a>
               
                 
@@ -125,23 +215,48 @@
                 </a>
               
                 
-                <a class="source" href="navbar.component.spec.html">
-                  navbar.component.spec.ts
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="navbar.component.html">
-                  navbar.component.ts
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
                 </a>
               
                 
-                <a class="source" href="navbtn.html">
-                  navbtn.ts
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
                 </a>
               
                 
                 <a class="source" href="index.html">
                   index.ts
+                </a>
+              
+                
+                <a class="source" href="starting-form.component.spec.html">
+                  starting-form.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="starting-form.component.html">
+                  starting-form.component.ts
                 </a>
               
             </div>
@@ -170,20 +285,133 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* tslint:disable:no-unused-variable */</span>
 
-<span class="hljs-keyword">import</span> { TestBed, async, inject } from <span class="hljs-string">'@angular/core/testing'</span>;
-<span class="hljs-keyword">import</span> { ContainerService } from <span class="hljs-string">'./container.service'</span>;
+<span class="hljs-keyword">import</span> {Http, ConnectionBackend, BaseRequestOptions, ResponseOptions, Response} <span class="hljs-keyword">from</span> <span class="hljs-string">"@angular/http"</span>;
+<span class="hljs-keyword">import</span> {MockBackend} <span class="hljs-keyword">from</span> <span class="hljs-string">"@angular/http/testing"</span>;
+<span class="hljs-keyword">import</span> {TestBed, tick, fakeAsync, inject} <span class="hljs-keyword">from</span> <span class="hljs-string">"@angular/core/testing"</span>;
 
-describe(<span class="hljs-string">'Service: Container'</span>, () =&gt; {
-  beforeEach(() =&gt; {
+<span class="hljs-keyword">import</span> {ContainerService} <span class="hljs-keyword">from</span> <span class="hljs-string">"./container.service"</span>;
+
+describe(<span class="hljs-string">'Service: Container'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
     TestBed.configureTestingModule({
-      providers: [ContainerService]
+
+      providers: [
+        {
+          provide: Http,
+          useFactory: <span class="hljs-function">(<span class="hljs-params">backend: ConnectionBackend, defaultOptions: BaseRequestOptions</span>) =&gt;</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Http(backend, defaultOptions);
+          }, deps: [MockBackend, BaseRequestOptions]
+        },
+        ContainerService,
+        MockBackend,
+        BaseRequestOptions
+      ]
     });
+
   });
 
-  it(<span class="hljs-string">'should ...'</span>, inject([ContainerService], (service: ContainerService) =&gt; {
-    expect(service).toBeTruthy();
-  }));
-});</pre></div></div>
+
+  it(<span class="hljs-string">'ContainerService: init container services successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    expect(containerService).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: get running containers successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> runningContainers = containerService.getRunningContainers();
+    expect(runningContainers).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: get stopped containers successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> stoppedContainers = containerService.getStoppedContainers();
+    expect(stoppedContainers).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: get error containers successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> errorContainers = containerService.getErrorContainers();
+    expect(errorContainers).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: get all containers successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> allContainers = containerService.getAllContainers();
+    expect(allContainers).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: remove container successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> remove = containerService.removeContainer(<span class="hljs-string">"test"</span>);
+    expect(remove).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: stop container successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> stop = containerService.stopContainer(<span class="hljs-string">"test"</span>);
+    expect(stop).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ContainerService: restart container successfully'</span>, inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> restart = containerService.restartContainer(<span class="hljs-string">"test"</span>);
+    expect(restart).toBeTruthy();
+  })
+  );
+
+  it(<span class="hljs-string">'ImagesService: get restart status successfully /if success'</span>,
+    inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+      <span class="hljs-keyword">let</span> res;
+      res = <span class="hljs-keyword">new</span> Response(<span class="hljs-keyword">new</span> ResponseOptions({
+        body: { <span class="hljs-string">"message"</span>: <span class="hljs-string">"test"</span> }
+      }));
+      <span class="hljs-keyword">let</span> spy = spyOn(containerService, <span class="hljs-string">"getRestartStatus"</span>).and.callThrough();
+      containerService.getRestartStatus(res);
+      expect(containerService.getRestartStatus).toHaveBeenCalled();
+    }));
+
+  it(<span class="hljs-string">'ImagesService: get restart status successfully /if failed'</span>,
+    inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+      <span class="hljs-keyword">let</span> res;
+      res = <span class="hljs-keyword">new</span> Response(<span class="hljs-keyword">new</span> ResponseOptions({
+        body: { <span class="hljs-string">"message"</span>: <span class="hljs-string">"test"</span> },
+        status: <span class="hljs-number">204</span>
+      }));
+      <span class="hljs-keyword">let</span> spy = spyOn(containerService, <span class="hljs-string">"getRestartStatus"</span>).and.callThrough();
+      <span class="hljs-keyword">let</span> tip = containerService.getRestartStatus(res);
+      expect(containerService.getRestartStatus).toHaveBeenCalled();
+      expect(tip).toBe(<span class="hljs-string">"Restart Container successfully"</span>);
+    }));
+
+  it(<span class="hljs-string">'ContainerService: extra data successfully'</span>,
+    inject([ContainerService], <span class="hljs-function">(<span class="hljs-params">containerService: ContainerService</span>) =&gt;</span> {
+      <span class="hljs-keyword">let</span> res;
+      res = <span class="hljs-keyword">new</span> Response(<span class="hljs-keyword">new</span> ResponseOptions({
+        body: { <span class="hljs-string">"message"</span>: <span class="hljs-string">"test"</span> },
+        status: <span class="hljs-number">200</span>
+      }));
+      <span class="hljs-keyword">let</span> spy = spyOn(containerService, <span class="hljs-string">"extractData"</span>).and.callThrough();
+      containerService.extractData(res);
+      expect(containerService.extractData).toHaveBeenCalled();
+    }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>it(‘ContainerService: get container status successfully’, inject([ContainerService], (containerService: ContainerService) =&gt; {
+  let restartStatus = containerService.getRestartStatus(null);
+  expect(restartStatus).toBeTruthy();
+})
+);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>});</pre></div></div>
             
         </li>
         

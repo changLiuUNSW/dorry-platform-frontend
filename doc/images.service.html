@@ -20,58 +20,38 @@
             <div id="jump_page">
               
                 
-                <a class="source" href="containers-error.component.spec.html">
-                  containers-error.component.spec.ts
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-error.component.html">
-                  containers-error.component.ts
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.spec.html">
-                  containers-running.component.spec.ts
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.html">
-                  containers-running.component.ts
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.spec.html">
-                  containers-stopped.component.spec.ts
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.html">
-                  containers-stopped.component.ts
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
                 </a>
               
                 
-                <a class="source" href="container.service.spec.html">
-                  container.service.spec.ts
-                </a>
-              
-                
-                <a class="source" href="container.service.html">
-                  container.service.ts
-                </a>
-              
-                
-                <a class="source" href="container.html">
-                  container.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.spec.html">
-                  containers.component.spec.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.html">
-                  containers.component.ts
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
                 </a>
               
                 
@@ -100,18 +80,48 @@
                 </a>
               
                 
-                <a class="source" href="images.service.spec.html">
-                  images.service.spec.ts
-                </a>
-              
-                
                 <a class="source" href="images.service.html">
                   images.service.ts
                 </a>
               
                 
-                <a class="source" href="mock-images.html">
-                  mock-images.ts
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
                 </a>
               
                 
@@ -125,23 +135,33 @@
                 </a>
               
                 
-                <a class="source" href="navbar.component.spec.html">
-                  navbar.component.spec.ts
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="navbar.component.html">
-                  navbar.component.ts
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
                 </a>
               
                 
-                <a class="source" href="navbtn.html">
-                  navbtn.ts
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="index.html">
-                  index.ts
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
                 </a>
               
             </div>
@@ -168,16 +188,22 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Injectable, Injector } from <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { Headers, Http, Response, Request, RequestMethod, RequestOptions } from <span class="hljs-string">'@angular/http'</span>;
-<span class="hljs-keyword">import</span> { Observable } from <span class="hljs-string">'rxjs/Observable'</span>;
-<span class="hljs-keyword">import</span> { ImageInfo } from <span class="hljs-string">'./imageInfo'</span>;
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Injectable, Injector } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Headers, Http, Response, Request, RequestMethod, RequestOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/http'</span>;
+<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/Observable'</span>;
+<span class="hljs-keyword">import</span> { ImageInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./imageInfo'</span>;
+
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/toPromise'</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/map'</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">'rxjs/add/operator/catch'</span>;
 
-@Injectable()
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesService {</pre></div></div>
+<span class="hljs-keyword">import</span> { Constant } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constant'</span>;
+
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesService {
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> http: Http</span>) { }</pre></div></div>
             
         </li>
         
@@ -188,11 +214,20 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>private address = ‘<a href="http://localhost:5000">http://localhost:5000</a>‘;</p>
+              <p>Function: getImageInfoes</p>
+<p>Get all image infoes from docker daemon</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> address = <span class="hljs-string">'http://192.168.10.84:5000'</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  getImageInfoes() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
+      <span class="hljs-keyword">new</span> Request({
+        method: RequestMethod.Get,
+        url: Constant.KUBE_API + <span class="hljs-string">'/listapplication'</span>
+      }))
+      .map(<span class="hljs-keyword">this</span>.extractData)
+      .catch(<span class="hljs-keyword">this</span>.handleError);
+  }</pre></div></div>
             
         </li>
         
@@ -203,17 +238,22 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>docker remote api part</p>
+              <p>Function: removeImage</p>
+<p>Remove image by image name</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> list = <span class="hljs-string">'/images/json?all=0'</span>;<span class="hljs-comment">//[GET]  list images</span>
-  <span class="hljs-keyword">private</span> remove = <span class="hljs-string">'/images/{id}?force=1'</span>;<span class="hljs-comment">//[DELETE]  remove image ,add image id after the url</span>
-  <span class="hljs-keyword">private</span> inspect = <span class="hljs-string">'/images/{id}/json'</span>;<span class="hljs-comment">//[GET] inspect image;</span>
-
-  <span class="hljs-keyword">private</span> create = <span class="hljs-string">'/containers/create'</span>;
-
-  <span class="hljs-keyword">constructor</span>(private http: Http) { }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  removeImage(name: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
+      <span class="hljs-keyword">new</span> Request({
+        method: RequestMethod.Post,
+        url: Constant.KUBE_API + <span class="hljs-string">'/deleteapplication'</span>,
+        body: {
+          <span class="hljs-string">'name'</span>: name
+        }
+      }))
+      .map(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> err);
+  }</pre></div></div>
             
         </li>
         
@@ -224,19 +264,24 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>get all image infoes from docker daemon</p>
+              <p>Function: getRemoveImageResMsg</p>
+<p>Get remove image response code
+Reponse code:
+200 - no error
+404 - no such image
+409 - conflict
+500 - server error</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  getImageInfoes() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
-      <span class="hljs-keyword">new</span> Request({
-        method: RequestMethod.Get,
-        url: <span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.list
-      }))
-      .toPromise()
-      .then(<span class="hljs-keyword">this</span>.extractData)
-      .catch(<span class="hljs-keyword">this</span>.handleError);
+            <div class="content"><div class='highlight'><pre>  getRemoveImageResMsg(res: Response) {
+    <span class="hljs-keyword">if</span> (res.status) {
+      <span class="hljs-built_in">console</span>.log(res.status);
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"Remove the app successfully"</span>;
+    }
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> res.json();
+    }
   }</pre></div></div>
             
         </li>
@@ -248,18 +293,29 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>remove image by image id</p>
+              <p>Function: startImage</p>
+<p>Start an application</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  removeImage(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.delete(<span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.remove.replace(<span class="hljs-string">"{id}"</span>, id))
-      .toPromise()
-      .then(<span class="hljs-keyword">this</span>.getRemoveImageResMsg,
-      <span class="hljs-keyword">this</span>.extractData
-      )
-      .catch(<span class="hljs-keyword">this</span>.handleError);
-  }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  startImage(name: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
+      <span class="hljs-keyword">new</span> Request({
+        method: RequestMethod.Post,
+        url: Constant.KUBE_API + <span class="hljs-string">'/startapplication'</span>,
+        body: {
+          <span class="hljs-string">"name"</span>: name
+        }
+      }))
+      .map(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res);
+  }
+
+  <span class="hljs-keyword">private</span> extractData(res: Response) {
+    <span class="hljs-keyword">let</span> body = res.json();
+    <span class="hljs-keyword">return</span> body;
+  }
+
+  <span class="hljs-keyword">private</span> handleError(error: <span class="hljs-built_in">any</span>) {</pre></div></div>
             
         </li>
         
@@ -270,73 +326,6 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>inspect image by image id
-get the json object after call the function
-the create form : 2016-09-23T16:29:57.276868291Z</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  inspectImage(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.get(<span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.inspect.replace(<span class="hljs-string">"{id}"</span>, id))
-      .toPromise()
-      .then(<span class="hljs-keyword">this</span>.extractData)
-      .catch(<span class="hljs-keyword">this</span>.handleError);
-  }</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>get remove image response code
-reponse code:
-200 - no error
-404 - no such image
-409 - conflict
-500 - server error</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  getRemoveImageResMsg(res: Response) {
-    <span class="hljs-keyword">if</span> (res.status) {
-      <span class="hljs-keyword">return</span> <span class="hljs-string">"Remove the app successfully"</span>;
-    }
-    <span class="hljs-keyword">else</span> {
-      <span class="hljs-keyword">return</span> res.json();
-    }
-  }
-
-  createContainer(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.request(
-      <span class="hljs-keyword">new</span> Request({
-        method: RequestMethod.Post,
-        url: <span class="hljs-keyword">this</span>.address + <span class="hljs-keyword">this</span>.inspect
-      }))
-      .toPromise();
-  }
-
-  <span class="hljs-keyword">private</span> extractData(res: Response) {
-    <span class="hljs-built_in">console</span>.log(res.toString())
-    <span class="hljs-keyword">let</span> body = res.json();
-    <span class="hljs-built_in">console</span>.log(res.json());
-    <span class="hljs-keyword">return</span> body;
-  }
-
-  <span class="hljs-keyword">private</span> handleError(error: <span class="hljs-built_in">any</span>) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
               <p>In a real world app, we might use a remote logging infrastructure
 We’d also dig deeper into the error to get a better message</p>
 
@@ -345,7 +334,7 @@ We’d also dig deeper into the error to get a better message</p>
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">let</span> errMsg = (error.message) ? error.message :
       error.status ? <span class="hljs-string">`<span class="hljs-subst">${error.status}</span> - <span class="hljs-subst">${error.statusText}</span>`</span> : <span class="hljs-string">'Server error'</span>;
     <span class="hljs-built_in">console</span>.error(errMsg); <span class="hljs-comment">// log to console instead</span>
-    <span class="hljs-keyword">return</span> Promise.reject(errMsg);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(errMsg);
   }
 }</pre></div></div>
             

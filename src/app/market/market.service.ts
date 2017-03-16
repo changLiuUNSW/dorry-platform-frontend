@@ -14,6 +14,9 @@ export class MarketService {
   NgOninit() {
   }
 
+  // Function listApplication() get market application list from kube api
+  //
+  // return Observable<any>
   listApplication(): Observable<any> {
     return this.http
       .get(Constant.KUBE_API + '/listmarketapplication')
@@ -21,22 +24,13 @@ export class MarketService {
       .catch(this.handleError);
   }
 
+  // Function downloadApplication() download the application configration by kube_api
+  // api
   downloadApplication(id: string): Observable<any> {
     return this.http
       .get(Constant.KUBE_API + '/downloadapplication/' + id)
       .map(res => res);
   }
-
-  // pullImage(name: string, tag: string, image: Object): Observable<any> {
-  //   console.log(name, tag, image);
-  //   return this.http.request(
-  //     new Request({
-  //       method: RequestMethod.Post,
-  //       url: Constant.DORRYAPI + '/api/registry/pull/' + name + '/' + tag,
-  //       body: image
-  //     }))
-  //     .map(this.extractData)
-  // }
 
   // Function extractData() extracts the data from the http response, which is
   // a json array, then return as an object.
@@ -44,9 +38,7 @@ export class MarketService {
   // param      {Response} res
   // returns    None
   private extractData(res: Response) {
-    // console.log(res.toString());
     let body = res.json();
-    // console.log(res.json());
     return body;
   }
 

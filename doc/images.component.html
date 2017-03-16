@@ -20,58 +20,38 @@
             <div id="jump_page">
               
                 
-                <a class="source" href="containers-error.component.spec.html">
-                  containers-error.component.spec.ts
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-error.component.html">
-                  containers-error.component.ts
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.spec.html">
-                  containers-running.component.spec.ts
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-running.component.html">
-                  containers-running.component.ts
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.spec.html">
-                  containers-stopped.component.spec.ts
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
                 </a>
               
                 
-                <a class="source" href="containers-stopped.component.html">
-                  containers-stopped.component.ts
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
                 </a>
               
                 
-                <a class="source" href="container.service.spec.html">
-                  container.service.spec.ts
-                </a>
-              
-                
-                <a class="source" href="container.service.html">
-                  container.service.ts
-                </a>
-              
-                
-                <a class="source" href="container.html">
-                  container.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.spec.html">
-                  containers.component.spec.ts
-                </a>
-              
-                
-                <a class="source" href="containers.component.html">
-                  containers.component.ts
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
                 </a>
               
                 
@@ -100,18 +80,48 @@
                 </a>
               
                 
-                <a class="source" href="images.service.spec.html">
-                  images.service.spec.ts
-                </a>
-              
-                
                 <a class="source" href="images.service.html">
                   images.service.ts
                 </a>
               
                 
-                <a class="source" href="mock-images.html">
-                  mock-images.ts
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
                 </a>
               
                 
@@ -125,23 +135,33 @@
                 </a>
               
                 
-                <a class="source" href="navbar.component.spec.html">
-                  navbar.component.spec.ts
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="navbar.component.html">
-                  navbar.component.ts
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
                 </a>
               
                 
-                <a class="source" href="navbtn.html">
-                  navbtn.ts
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
                 </a>
               
                 
-                <a class="source" href="index.html">
-                  index.ts
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
                 </a>
               
             </div>
@@ -168,39 +188,21 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { DEFAULTURL, IMAGELIST, ImageUrl } from <span class="hljs-string">'./mock-images'</span>;
-<span class="hljs-keyword">import</span> { ImagesService } from <span class="hljs-string">'./images.service'</span>;
-<span class="hljs-keyword">import</span> { Observable } from <span class="hljs-string">'rxjs/Observable'</span>;
-<span class="hljs-keyword">import</span> { ImageInfo } from <span class="hljs-string">'./imageInfo'</span>;
-<span class="hljs-keyword">import</span> {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from <span class="hljs-string">'@angular/core'</span>;
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { ImagesService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./images.service'</span>;
+<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/Observable'</span>;
+<span class="hljs-keyword">import</span> { ImageInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./imageInfo'</span>;
+<span class="hljs-keyword">import</span> { trigger, state, style, transition, animate } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, FormControl, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
 
-@Component({
+<span class="hljs-keyword">import</span> { PopoverModule } <span class="hljs-keyword">from</span> <span class="hljs-string">"ng2-popover"</span>;
+<span class="hljs-keyword">import</span> { ToastsManager } <span class="hljs-keyword">from</span> <span class="hljs-string">"ng2-toastr/ng2-toastr"</span>;
+
+<span class="hljs-meta">@Component</span>({
   selector: <span class="hljs-string">'app-images'</span>,
   templateUrl: <span class="hljs-string">'./images.component.html'</span>,
-  styleUrls: [<span class="hljs-string">'./images.component.css'</span>],
-})
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesComponent <span class="hljs-keyword">implements</span> OnInit {
-
-  imageList: ImageUrl[];
-  imageInfoes: ImageInfo[];
-
-  showAlert: <span class="hljs-built_in">boolean</span>;
-  imageId: <span class="hljs-built_in">string</span>;
-
-  <span class="hljs-keyword">constructor</span>(private imagesService: ImagesService) { }
-
-  ngOnInit() {
-    <span class="hljs-keyword">this</span>.imageList = IMAGELIST;
-    <span class="hljs-keyword">this</span>.getImageInfoes();
-    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">false</span>;
-  }</pre></div></div>
+  styleUrls: [<span class="hljs-string">'./images.component.css'</span>, <span class="hljs-string">'../app.component.css'</span>],
+})</pre></div></div>
             
         </li>
         
@@ -211,21 +213,27 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>bindding the ImageInfo and image url</p>
+              <p>ImageComponent</p>
+<p>List application on application page &amp; dialog
+Including</p>
+<ul>
+<li>remove application</li>
+<li>start application</li>
+</ul>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  initImages() {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.imageInfoes);
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ImagesComponent <span class="hljs-keyword">implements</span> OnInit {
+  image: ImageInfo;
+  imageInfoes: ImageInfo[];
 
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> imageInfo of <span class="hljs-keyword">this</span>.imageInfoes) {
-      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> imageUrl of <span class="hljs-keyword">this</span>.imageList) {
-        <span class="hljs-keyword">if</span> (imageInfo.RepoTags[<span class="hljs-number">0</span>] == imageUrl.name)
-          imageInfo.url = imageUrl.name;
-        <span class="hljs-keyword">else</span>
-          imageInfo.url = DEFAULTURL;
-      }
-    }
+  dorry = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-regexp">/dorry/</span>, <span class="hljs-string">'i'</span>);
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> imagesService: ImagesService, <span class="hljs-keyword">public</span> toastr: ToastsManager</span>) {
+  }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.getImageInfoes();
   }</pre></div></div>
             
         </li>
@@ -237,14 +245,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>get json object array from Docker Daemon</p>
+              <p>Get json object array from Docker Daemon</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>  getImageInfoes() {
     <span class="hljs-keyword">this</span>.imagesService.getImageInfoes()
-      .then(data =&gt; <span class="hljs-keyword">this</span>.imageInfoes = data)
-      .then(data =&gt; <span class="hljs-keyword">this</span>.initImages());
+      .subscribe(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.imageInfoes = data;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.imageInfoes);
+      })
   }</pre></div></div>
             
         </li>
@@ -256,17 +266,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>remove image event when click remove button</p>
+              <p>Remove image event when click remove button</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  removeImage(id: <span class="hljs-built_in">string</span>) {
+            <div class="content"><div class='highlight'><pre>  removeImage(image: ImageInfo) {
+    image.state = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">let</span> name = image.name;
     <span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span>;
-    <span class="hljs-keyword">this</span>.imagesService.removeImage(id)
-      .then(msg =&gt; <span class="hljs-keyword">this</span>.showMessage(msg))
-      .then(msg =&gt; <span class="hljs-keyword">this</span>.getImageInfoes());
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"remove Image : "</span> + id);
-  }</pre></div></div>
+    <span class="hljs-keyword">this</span>.imagesService.removeImage(name)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {</pre></div></div>
             
         </li>
         
@@ -277,33 +286,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>show message after removing image
-success:Remove the app successfully
-error: Remove the app error</p>
+              <p>If in stdout, show successful toast</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> alertMessage: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// alert dialog message after removing image</span>
-  <span class="hljs-keyword">private</span> messageState: <span class="hljs-built_in">boolean</span>; <span class="hljs-comment">// whether need to show the message</span>
-  <span class="hljs-keyword">private</span> isError: <span class="hljs-built_in">boolean</span>;<span class="hljs-comment">//is message correctly</span>
-  showMessage(msg: <span class="hljs-built_in">any</span>) {
-    <span class="hljs-keyword">let</span> msgType = <span class="hljs-keyword">typeof</span> msg;
-    <span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span>;
-    <span class="hljs-keyword">if</span> (msgType == <span class="hljs-string">"string"</span>) {
-      message = msg;
-      <span class="hljs-keyword">this</span>.isError = <span class="hljs-literal">false</span>;
-    }
-    <span class="hljs-keyword">else</span> {
-      message = msg.message;
-      <span class="hljs-keyword">this</span>.isError = <span class="hljs-literal">true</span>;
-    }
-
-    <span class="hljs-keyword">this</span>.messageState = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">this</span>.alertMessage = message;
-    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-      <span class="hljs-keyword">this</span>.messageState = <span class="hljs-literal">false</span>;
-    }.bind(<span class="hljs-keyword">this</span>), <span class="hljs-number">3000</span>);
-  }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-built_in">console</span>.log(res)
+        image.state = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">this</span>.toastr.success(res.text(), <span class="hljs-string">'SUCCESS'</span>, { toastLife: <span class="hljs-number">3000</span> });
+        <span class="hljs-keyword">this</span>.getImageInfoes();
+      }, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {</pre></div></div>
             
         </li>
         
@@ -314,18 +305,15 @@ error: Remove the app error</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>click image icon show image info</p>
+              <p>If in stderr, show error toast</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> showInfoWindow: <span class="hljs-built_in">boolean</span>; <span class="hljs-comment">//whether need to show imageinfo popup window</span>
-  <span class="hljs-keyword">private</span> detailApp: ImageInfo;<span class="hljs-comment">//the app need to show detail</span>
-  openDetailInfo(app: ImageInfo) {
-    <span class="hljs-built_in">console</span>.log(app.Id);
-    <span class="hljs-keyword">this</span>.showInfoWindow = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">this</span>.detailApp = app;
-    <span class="hljs-keyword">this</span>.imagesService.inspectImage(app.Id)
-      .then(data =&gt; <span class="hljs-keyword">this</span>.detailApp.createDate = <span class="hljs-keyword">this</span>.formatCreatedTime(data.Created));
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-built_in">console</span>.log(err)
+        image.state = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">this</span>.toastr.error(err.text(), <span class="hljs-string">'ERROR'</span>, { toastLife: <span class="hljs-number">3000</span> });
+        <span class="hljs-keyword">this</span>.getImageInfoes();
+      });
   }</pre></div></div>
             
         </li>
@@ -337,7 +325,57 @@ error: Remove the app error</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>format the create time of image
+              <p>Function: removeImageStatus
+Return message by status code</p>
+<p>500: there is running service
+!500: has other error</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> removeImageStatus(status: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">if</span> (status == <span class="hljs-string">'500'</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-string">" has a service , please remove it first."</span>
+    <span class="hljs-keyword">else</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-string">" has error."</span>
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Function: startImage
+Call images.service start image api</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  startImage(image: ImageInfo) {
+    image.state = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">this</span>.imagesService.startImage(image.name)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"start image : "</span>);
+        <span class="hljs-built_in">console</span>.log(data);
+        <span class="hljs-keyword">this</span>.toastr.success(data.text(), <span class="hljs-string">'SUCCESS'</span>, { toastLife: <span class="hljs-number">3000</span> });
+        image.state = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">this</span>.getImageInfoes();
+      });
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Function formatCreatedTime
+format the create time of image
 Input: 2016-09-23T16:29:57.276868291Z,etc
 Output: string 2016-09-23 16:29:57</p>
 
@@ -347,22 +385,23 @@ Output: string 2016-09-23 16:29:57</p>
     <span class="hljs-keyword">let</span> datetime: <span class="hljs-built_in">string</span>;
     datetime = created.split(<span class="hljs-string">"."</span>)[<span class="hljs-number">0</span>].replace(<span class="hljs-string">"T"</span>, <span class="hljs-string">" "</span>);
     <span class="hljs-keyword">return</span> datetime;
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Get image instance from template</p>
 
-  closeDetailInfo() {
-    <span class="hljs-keyword">this</span>.showInfoWindow = <span class="hljs-literal">false</span>;
-  }
-
-  displayAlert(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">true</span>;
-  }
-
-  hideAlert(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">this</span>.showAlert = <span class="hljs-literal">false</span>;
-  }
-
-  getImageId(id: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">this</span>.imageId = id;
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  getImage(image: ImageInfo) {
+    <span class="hljs-keyword">this</span>.image = image;
   }
 }</pre></div></div>
             

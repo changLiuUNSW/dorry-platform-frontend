@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>services.component.ts</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="application-details.component.spec.html">
+                  application-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="application-details.component.html">
+                  application-details.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.spec.html">
+                  applications.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.component.html">
+                  applications.component.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.spec.html">
+                  applications.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="applications.service.html">
+                  applications.service.ts
+                </a>
+              
+                
+                <a class="source" href="auth.guard.html">
+                  auth.guard.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.spec.html">
+                  footer.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="footer.component.html">
+                  footer.component.ts
+                </a>
+              
+                
+                <a class="source" href="imageInfo.html">
+                  imageInfo.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.spec.html">
+                  images.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="images.component.html">
+                  images.component.ts
+                </a>
+              
+                
+                <a class="source" href="images.service.html">
+                  images.service.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.spec.html">
+                  login.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="login.component.html">
+                  login.component.ts
+                </a>
+              
+                
+                <a class="source" href="login.service.html">
+                  login.service.ts
+                </a>
+              
+                
+                <a class="source" href="logindata.service.html">
+                  logindata.service.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.spec.html">
+                  market.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.component.html">
+                  market.component.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.spec.html">
+                  market.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="market.service.html">
+                  market.service.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.spec.html">
+                  masthead.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="masthead.component.html">
+                  masthead.component.ts
+                </a>
+              
+                
+                <a class="source" href="service-details.component.spec.html">
+                  service-details.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="service-details.component.html">
+                  service-details.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.component.spec.html">
+                  services.component.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.component.html">
+                  services.component.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.spec.html">
+                  services.service.spec.ts
+                </a>
+              
+                
+                <a class="source" href="services.service.html">
+                  services.service.ts
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>services.component.ts</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { ServicesService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./services.service'</span>;
+<span class="hljs-keyword">import</span> { ToastsManager } <span class="hljs-keyword">from</span> <span class="hljs-string">"ng2-toastr/ng2-toastr"</span>;
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-services'</span>,
+  templateUrl: <span class="hljs-string">'./services.component.html'</span>,
+  styleUrls: [
+    <span class="hljs-string">'./services.component.css'</span>,
+    <span class="hljs-string">'../app.component.css'</span>
+  ]
+})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Services Conponent</p>
+<p>get service list and shot service items on service page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ServicesComponent <span class="hljs-keyword">implements</span> OnInit {
+  services: <span class="hljs-built_in">Object</span>[];
+  service: <span class="hljs-built_in">Object</span>;
+  hasService: <span class="hljs-built_in">boolean</span>;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> servicesService: ServicesService,
+    <span class="hljs-keyword">private</span> toast: ToastsManager
+  </span>) { }
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.listService();
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Function: listService
+Get service list by services service</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  listService() {
+    <span class="hljs-keyword">this</span>.servicesService.listService()
+      .subscribe(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.services = data[<span class="hljs-string">"items"</span>];
+        <span class="hljs-keyword">this</span>.hasService = (<span class="hljs-keyword">this</span>.services.length !== <span class="hljs-number">0</span>)
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.services);
+      });
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Function: deleteService
+delete service by service Object</p>
+<p>params: Object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  deleteService(service: <span class="hljs-built_in">Object</span>) {
+    service[<span class="hljs-string">'state'</span>] = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">var</span> body = {
+      <span class="hljs-string">"name"</span>: service[<span class="hljs-string">"metadata"</span>][<span class="hljs-string">"name"</span>],
+      <span class="hljs-string">"deleteVolume"</span>: <span class="hljs-literal">true</span>
+    }
+    <span class="hljs-keyword">this</span>.servicesService.deleteService(body)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+        service[<span class="hljs-string">'state'</span>] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">this</span>.toast.success(res.text(), <span class="hljs-string">'SUCCESS'</span>, { toastLife: <span class="hljs-number">3000</span> });
+        <span class="hljs-keyword">this</span>.listService();
+      }, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        service[<span class="hljs-string">'state'</span>] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">this</span>.toast.error(err.text(), <span class="hljs-string">'ERROR'</span>, { toastLife: <span class="hljs-number">3000</span> });
+        <span class="hljs-keyword">this</span>.listService();
+      });
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Get service from html template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  getService(service: <span class="hljs-built_in">Object</span>) {
+    <span class="hljs-keyword">this</span>.service = service;
+  }
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

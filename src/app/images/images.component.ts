@@ -14,39 +14,24 @@ import { ToastsManager } from "ng2-toastr/ng2-toastr";
   styleUrls: ['./images.component.css', '../app.component.css'],
 })
 
+// ImageComponent
+//
+// List application on application page & dialog
+// Including
+// * remove application
+// * start application
+//
 export class ImagesComponent implements OnInit {
   image: ImageInfo;
   imageInfoes: ImageInfo[];
 
-  showAlert: boolean;
-  showForm: boolean;
-
   dorry = new RegExp(/dorry/, 'i');
 
-  // Config form
-  form: FormGroup;
-  Name = new FormControl();
-  Cmd = new FormControl();
-  Entrypoint = new FormControl();
-  Binds = new FormControl();
-  PortBindings = new FormControl();
-  Tty = new FormControl();
-
-  constructor(private imagesService: ImagesService, public toastr: ToastsManager, private fb: FormBuilder) {
-    this.form = fb.group({
-      'Name': this.Name,
-      'Cmd': this.Cmd,
-      'Entrypoint': this.Entrypoint,
-      'Binds': this.Binds,
-      'PortBindings': this.PortBindings,
-      'Tty': this.Tty
-    });
+  constructor(private imagesService: ImagesService, public toastr: ToastsManager) {
   }
 
   ngOnInit() {
     this.getImageInfoes();
-    this.showAlert = false;
-    this.showForm = false;
   }
 
   // Get json object array from Docker Daemon
@@ -65,11 +50,13 @@ export class ImagesComponent implements OnInit {
     let message: string;
     this.imagesService.removeImage(name)
       .subscribe(res => {
+        //If in stdout, show successful toast
         console.log(res)
         image.state = 0;
         this.toastr.success(res.text(), 'SUCCESS', { toastLife: 3000 });
         this.getImageInfoes();
       }, err => {
+        //If in stderr, show error toast
         console.log(err)
         image.state = 0;
         this.toastr.error(err.text(), 'ERROR', { toastLife: 3000 });
@@ -77,6 +64,11 @@ export class ImagesComponent implements OnInit {
       });
   }
 
+  //Function: removeImageStatus
+  //Return message by status code
+  //
+  //500: there is running service
+  //!500: has other error
   private removeImageStatus(status: string) {
     if (status == '500')
       return " has a service , please remove it first."
@@ -84,6 +76,8 @@ export class ImagesComponent implements OnInit {
       return " has error."
   }
 
+  // Function: startImage
+  // Call images.service start image api
   startImage(image: ImageInfo) {
     image.state = 2;
     this.imagesService.startImage(image.name)
@@ -96,29 +90,7 @@ export class ImagesComponent implements OnInit {
       });
   }
 
-  // Start a container with config
-  startWithConfig(image: ImageInfo) {
-    this.imagesService.startWithConfig(this.configFactory())
-      .subscribe(data => {
-        // if (data.statusCode)
-        //   this.toastr.error(this.startImageMessage(data.json.message), 'ERROR', { toastLife: 3000 });
-        // else
-        //   this.toastr.success('Service started', 'SUCCESS', { toastLife: 3000 });
-        image.state = 0;
-        this.getImageInfoes();
-      });
-  }
-
-  private startImageMessage(message) {
-    try {
-      let str;
-      str = message.match(/(\(.*?\))/)[1];
-      return message.replace(str, '');
-    } catch (e) {
-      return message;
-    }
-  }
-
+  //Function formatCreatedTime
   //format the create time of image
   //Input: 2016-09-23T16:29:57.276868291Z,etc
   //Output: string 2016-09-23 16:29:57
@@ -128,36 +100,8 @@ export class ImagesComponent implements OnInit {
     return datetime;
   }
 
-  displayAlert(id: string) {
-    this.showAlert = true;
-  }
-
-  hideAlert(id: string) {
-    this.showAlert = false;
-  }
-
-  displayForm() {
-    this.showForm = true;
-  }
-
-  hideForm(id: string) {
-    this.showForm = false;
-  }
-
+  //Get image instance from template
   getImage(image: ImageInfo) {
     this.image = image;
   }
-
-  configFactory() {
-    return {
-      "Image": this.image.name,
-      "Tty": this.form['_value'].Tty == "true",
-      "Cmd": [this.form['_value'].Cmd],
-      "HostConfig": {
-        "Binds": this.form['_value'].Binds,
-        "PortBindings": this.form['_value'].PortBindings,
-      }
-    }
-  }
-
 }

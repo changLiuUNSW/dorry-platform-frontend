@@ -4,14 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ServicesComponent } from './services/services.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
 import { ApplicationDetailsComponent } from './application-details/application-details.component';
-import { ContainersComponent } from './containers/containers.component';
 import { ImagesComponent } from './images/images.component';
 import { MarketComponent } from './market/market.component';
-import { ContainerDetailsComponent } from './container-details/container-details.component';
-import { StartingFormComponent } from './starting-form/starting-form.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authguard/auth.guard';
 
+//File: app.routing.ts
+// 
+//Define routing of dorry web
 const appRoutes: Routes = [
   {
     path: '',
